@@ -22,8 +22,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7Nu-x8-sh3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIERRA VALLEY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-tG-XjZ">
-                                <rect key="frame" x="56" y="70" width="489" height="101"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIERRA VALLEY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-tG-XjZ">
+                                <rect key="frame" x="55" y="70" width="490" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="e9J-4w-orV"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                             <constraint firstItem="7Nu-x8-sh3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="MjN-yQ-Osa"/>
                             <constraint firstItem="Qm4-tG-XjZ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="50" id="NIw-nX-72C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gXM-2L-AUP" secondAttribute="trailing" constant="80" id="Qd7-LD-9CC"/>
-                            <constraint firstItem="Qm4-tG-XjZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="36" id="Sw4-08-xAo"/>
+                            <constraint firstItem="Qm4-tG-XjZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="35" id="Sw4-08-xAo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qm4-tG-XjZ" secondAttribute="trailing" constant="35" id="fre-6K-SUK"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7Nu-x8-sh3" secondAttribute="bottom" id="ghZ-0E-f0G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gXM-2L-AUP" secondAttribute="trailing" constant="80" id="vPw-fb-zVM"/>

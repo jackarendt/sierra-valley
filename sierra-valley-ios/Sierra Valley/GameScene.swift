@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
+        view.allowsTransparency = true
         backgroundColor = SKColor.clearColor()
     }
     

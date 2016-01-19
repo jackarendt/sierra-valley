@@ -11,13 +11,16 @@
 		2EBA3BED1C4D9E16005C0D76 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */; };
 		2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */; };
 		2EBA3BF11C4D9E16005C0D76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF01C4D9E16005C0D76 /* GameViewController.swift */; };
-		2EBA3BF41C4D9E16005C0D76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF21C4D9E16005C0D76 /* Main.storyboard */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
 		2EBA3C041C4D9E16005C0D76 /* Sierra_ValleyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */; };
 		2EBA3C0F1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C0E1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift */; };
-		2EBA3C1D1C4DA9FD005C0D76 /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C1C1C4DA9FD005C0D76 /* GradientBackgroundView.swift */; };
 		2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */; };
+		2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */; };
+		2EBA3C241C4DE104005C0D76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C231C4DE104005C0D76 /* HomeViewController.swift */; };
+		2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */; };
+		2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */; };
+		2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,6 @@
 		2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2EBA3BF01C4D9E16005C0D76 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		2EBA3BF31C4D9E16005C0D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EBA3BF81C4D9E16005C0D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EBA3BFA1C4D9E16005C0D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,8 +55,12 @@
 		2EBA3C0A1C4D9E16005C0D76 /* Sierra ValleyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sierra ValleyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3C0E1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sierra_ValleyUITests.swift; sourceTree = "<group>"; };
 		2EBA3C101C4D9E16005C0D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EBA3C1C1C4DA9FD005C0D76 /* GradientBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientBackgroundView.swift; path = "Custom Views/GradientBackgroundView.swift"; sourceTree = "<group>"; };
 		2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseViewController.swift; path = "View Controllers/SVBaseViewController.swift"; sourceTree = "<group>"; };
+		2EBA3C231C4DE104005C0D76 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "Extensions/UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBorderedButton.swift; path = "Custom Views/SVBorderedButton.swift"; sourceTree = "<group>"; };
+		2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extensions.swift"; path = "Extensions/UIFont+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +114,9 @@
 				2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */,
 				2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */,
 				2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */,
-				2EBA3BF01C4D9E16005C0D76 /* GameViewController.swift */,
-				2EBA3C1C1C4DA9FD005C0D76 /* GradientBackgroundView.swift */,
-				2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */,
-				2EBA3BF21C4D9E16005C0D76 /* Main.storyboard */,
+				2EBA3C2A1C4DED45005C0D76 /* Custom Views */,
+				2EBA3C271C4DEB06005C0D76 /* View Controllers */,
+				2EBA3C201C4DDBF2005C0D76 /* Extensions */,
 				2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */,
 				2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */,
 				2EBA3BFA1C4D9E16005C0D76 /* Info.plist */,
@@ -135,6 +140,34 @@
 				2EBA3C101C4D9E16005C0D76 /* Info.plist */,
 			);
 			path = "Sierra ValleyUITests";
+			sourceTree = "<group>";
+		};
+		2EBA3C201C4DDBF2005C0D76 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */,
+				2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */,
+				2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		2EBA3C271C4DEB06005C0D76 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA3BF01C4D9E16005C0D76 /* GameViewController.swift */,
+				2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */,
+				2EBA3C231C4DE104005C0D76 /* HomeViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2EBA3C2A1C4DED45005C0D76 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */,
+			);
+			name = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +278,6 @@
 				2EBA3BED1C4D9E16005C0D76 /* GameScene.sks in Resources */,
 				2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
-				2EBA3BF41C4D9E16005C0D76 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EBA3C1D1C4DA9FD005C0D76 /* GradientBackgroundView.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
+				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */,
 				2EBA3BF11C4D9E16005C0D76 /* GameViewController.swift in Sources */,
+				2EBA3C241C4DE104005C0D76 /* HomeViewController.swift in Sources */,
+				2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
+				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
+				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,14 +346,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2EBA3BF21C4D9E16005C0D76 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2EBA3BF31C4D9E16005C0D76 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
