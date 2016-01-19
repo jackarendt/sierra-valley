@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +18,64 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7Nu-x8-sh3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIERRA VALLEY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-tG-XjZ">
+                                <rect key="frame" x="56" y="70" width="489" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="e9J-4w-orV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="70"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountains" highlightedImage="mountains" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-2L-AUP">
+                                <rect key="frame" x="100" y="450" width="400" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gXM-2L-AUP" secondAttribute="height" multiplier="8:3" id="UEe-48-Zwr"/>
+                                    <constraint firstAttribute="width" secondItem="gXM-2L-AUP" secondAttribute="height" multiplier="16:9" id="UVq-XK-Tak"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UVq-XK-Tak"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gXM-2L-AUP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="80" id="6TR-z6-Nj0"/>
+                            <constraint firstItem="gXM-2L-AUP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="80" id="9wN-th-VxJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Nu-x8-sh3" secondAttribute="trailing" constant="-20" id="BeO-Qp-dhU"/>
+                            <constraint firstItem="7Nu-x8-sh3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="CC3-Bh-Dx3"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="gXM-2L-AUP" secondAttribute="bottom" id="D4V-FR-btU"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="gXM-2L-AUP" secondAttribute="bottom" id="Lci-sZ-YZl"/>
+                            <constraint firstItem="7Nu-x8-sh3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="MjN-yQ-Osa"/>
+                            <constraint firstItem="Qm4-tG-XjZ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="50" id="NIw-nX-72C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gXM-2L-AUP" secondAttribute="trailing" constant="80" id="Qd7-LD-9CC"/>
+                            <constraint firstItem="Qm4-tG-XjZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="36" id="Sw4-08-xAo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qm4-tG-XjZ" secondAttribute="trailing" constant="35" id="fre-6K-SUK"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="7Nu-x8-sh3" secondAttribute="bottom" id="ghZ-0E-f0G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gXM-2L-AUP" secondAttribute="trailing" constant="80" id="vPw-fb-zVM"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6TR-z6-Nj0"/>
+                                <exclude reference="vPw-fb-zVM"/>
+                                <exclude reference="D4V-FR-btU"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="17" y="202"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="640" height="640"/>
+        <image name="mountains" width="640" height="243"/>
+    </resources>
 </document>
