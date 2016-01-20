@@ -31,15 +31,15 @@ class HomeViewController: SVBaseViewController {
         logoLabel.adjustsFontSizeToFitWidth = true
         logoLabel.frame = CGRect(x: 35, y: view.bounds.height, width: view.bounds.width - 70, height: 100) // put at bottom
         logoLabel.alpha = 0
-        view.addSubview(logoLabel)
+        contentView.addSubview(logoLabel)
         
         
-        let mountains = UIImage(asset: .Mountains)
-        let mountainsImageView = UIImageView(image: mountains)
-        let mountainWidth = view.bounds.width - 200
-        let mountainHeight = 0.375 * mountainWidth
-        mountainsImageView.frame = CGRect(x: 100, y: view.bounds.height - mountainHeight, width: mountainWidth, height: mountainHeight)
-        view.addSubview(mountainsImageView)
+        let _mountains = UIImage(asset: .Mountains)
+        let _mountainsImageView = UIImageView(image: _mountains)
+        let _mountainWidth = view.bounds.width - 200
+        let _mountainHeight = 0.375 * _mountainWidth
+        _mountainsImageView.frame = CGRect(x: 100, y: view.bounds.height - _mountainHeight, width: _mountainWidth, height: _mountainHeight)
+        contentView.addSubview(_mountainsImageView)
         
 
         tapToPlayLabel.text = "TAP TO PLAY"
@@ -50,12 +50,12 @@ class HomeViewController: SVBaseViewController {
         tapToPlayLabel.adjustsFontSizeToFitWidth = true
         tapToPlayLabel.frame = CGRect(x: 75, y: 130, width: view.bounds.width - 150, height: 35)
         tapToPlayLabel.alpha = 0
-        view.addSubview(tapToPlayLabel)
+        contentView.addSubview(tapToPlayLabel)
         
         let settingsExpandedButton = UIButton(frame: CGRect(x: view.bounds.width - 225, y: view.bounds.height - 100, width: 225, height: 100))
         // currently not adding extra space for hit box
 //        settingsExpandedButton.addTarget(self, action: "settingsButtonTapped", forControlEvents: .TouchUpInside)
-        view.addSubview(settingsExpandedButton)
+        contentView.addSubview(settingsExpandedButton)
         
         settingsButton.frame = CGRect(x: view.bounds.width - 150, y: view.bounds.height - 50, width: 150, height: 50)
         settingsButton.titleLabel?.font = UIFont.svHeavyFont(20)
@@ -64,12 +64,12 @@ class HomeViewController: SVBaseViewController {
         settingsButton.setTitle("SETTINGS", forState: .Normal)
         settingsButton.alpha = 0
         settingsButton.addTarget(self, action: "settingsButtonTapped", forControlEvents: .TouchUpInside)
-        view.addSubview(settingsButton)
+        contentView.addSubview(settingsButton)
         
         // larger hit boxes for the choose car button so that there are no accidental taps
         let chooseCarExpandedButton = UIButton(frame: CGRect(x: 0, y: view.bounds.height - 100, width: 225, height: 100))
 //        chooseCarExpandedButton.addTarget(self, action: "chooseCarButtonTapped", forControlEvents: .TouchUpInside)
-        view.addSubview(chooseCarExpandedButton)
+        contentView.addSubview(chooseCarExpandedButton)
         
         chooseCarButton.frame = CGRect(x: 0, y: view.bounds.height - 50, width: 150, height: 50)
         chooseCarButton.titleLabel?.font = UIFont.svHeavyFont(20)
@@ -78,11 +78,11 @@ class HomeViewController: SVBaseViewController {
         chooseCarButton.setTitle("CHOOSE CAR", forState: .Normal)
         chooseCarButton.alpha = 0
         chooseCarButton.addTarget(self, action: "chooseCarButtonTapped", forControlEvents: .TouchUpInside)
-        view.addSubview(chooseCarButton)
+        contentView.addSubview(chooseCarButton)
         
         // add tap gesture to start the game
         let tapGesture = UITapGestureRecognizer(target: self, action: "startGame")
-        view.addGestureRecognizer(tapGesture)
+        contentView.addGestureRecognizer(tapGesture)
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,7 +139,7 @@ class HomeViewController: SVBaseViewController {
     
     // segues to settings page
     func settingsButtonTapped() {
-        print("settings tapped")
+        presentViewController(SettingsViewController(), animated: true, completion: nil)
     }
     
     // segues to choosing the car
