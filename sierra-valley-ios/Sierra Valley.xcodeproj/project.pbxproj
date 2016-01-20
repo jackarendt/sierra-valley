@@ -21,6 +21,7 @@
 		2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */; };
 		2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */; };
 		2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */; };
+		2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2D1C4E175D005C0D76 /* SVConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "Extensions/UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBorderedButton.swift; path = "Custom Views/SVBorderedButton.swift"; sourceTree = "<group>"; };
 		2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+Extensions.swift"; path = "Extensions/UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		2EBA3C2D1C4E175D005C0D76 /* SVConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVConstants.swift; path = Extensions/SVConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */,
 				2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */,
 				2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */,
+				2EBA3C2D1C4E175D005C0D76 /* SVConstants.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */,

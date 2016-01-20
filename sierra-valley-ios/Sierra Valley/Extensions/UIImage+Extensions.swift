@@ -10,8 +10,13 @@ import UIKit
 
 /// Enumeration containing all images in the Asset Catalog
 enum SVImage : String {
+    case Avalanche = "avalanche"
+    case BackButton = "back-button"
     case Background = "background"
+    case CloseButton = "close-button"
     case Mountains = "mountains"
+    case MuteIcon = "mute-icon"
+    case VolumeIcon = "volume-icon"
 }
 
 extension UIImage {

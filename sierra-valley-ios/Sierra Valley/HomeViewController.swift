@@ -84,16 +84,19 @@ class HomeViewController: SVBaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: "startGame")
         view.addGestureRecognizer(tapGesture)
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animateWithDuration(0.75, delay: 0, options: .CurveLinear, animations: {
+        UIView.animateWithDuration(1.0, delay: 0, options: .CurveLinear, animations: {
             // raise the logo from the bottom of the screen
             self.logoLabel.frame = CGRect(x: 35, y: 35, width: self.view.bounds.width - 70, height: 100)
             self.logoLabel.alpha = 1
@@ -119,6 +122,19 @@ class HomeViewController: SVBaseViewController {
                 self.tapToPlayLabel.alpha = 0
             })
         }, completion: nil)
+    }
+    
+    override func applicationDidBecomeActive(notification: NSNotification) {
+        if animationsFinished {
+            blinkTapToPlay()
+        }
+    }
+    
+    override func applicationWillResignActive(notification: NSNotification) {
+        if animationsFinished {
+            tapToPlayLabel.layer.removeAllAnimations()
+            tapToPlayLabel.alpha = 0
+        }
     }
     
     // segues to settings page
