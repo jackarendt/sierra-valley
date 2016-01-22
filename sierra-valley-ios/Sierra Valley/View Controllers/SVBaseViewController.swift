@@ -33,8 +33,6 @@ public class SVBaseViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        modalTransitionStyle = .CrossDissolve
-        
         // Add the background to every view
         let background =  UIImageView(image: UIImage(asset: .Background))
         background.frame = view.bounds
@@ -101,5 +99,18 @@ public class SVBaseViewController: UIViewController {
     public func applicationDidEnterBackground(notification : NSNotification) {
         
     }
+}
+
+// MARK: - UIViewController Transititioning Delegate methods
+extension SVBaseViewController : UIViewControllerTransitioningDelegate {
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = SVFadeAnimator()
+        animator.presenting = true
+        return animator
+    }
     
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = SVFadeAnimator()
+        return animator
+    }
 }

@@ -139,7 +139,9 @@ class HomeViewController: SVBaseViewController {
     
     // segues to settings page
     func settingsButtonTapped() {
-        presentViewController(SettingsViewController(), animated: true, completion: nil)
+        let settings = SettingsViewController()
+        settings.transitioningDelegate = self        
+        presentViewController(settings, animated: true, completion: nil)
     }
     
     // segues to choosing the car

@@ -29,7 +29,7 @@ public class SVBorderedButton: UIButton {
     }
     
     private func commonInit() {
-        titleLabel?.font = UIFont.svFont(17)
+        titleLabel?.font = UIFont.svHeavyFont(17)
         layer.borderColor = borderColor.CGColor
         layer.borderWidth = 1
         
@@ -38,7 +38,7 @@ public class SVBorderedButton: UIButton {
     }
     
     public func setFontSize(size: CGFloat) {
-        titleLabel?.font = UIFont.svFont(size)
+        titleLabel?.font = UIFont.svHeavyFont(size)
     }
     
     // MARK: - Selectors
@@ -46,10 +46,12 @@ public class SVBorderedButton: UIButton {
     func touchUp() {
         backgroundColor = UIColor.clearColor()
         setTitleColor(borderColor, forState: .Normal)
+        tintColor = borderColor
     }
     
     func touchDown() {
         backgroundColor = borderColor
-        setTitleColor(UIColor.blackColor(), forState: .Normal)
+        setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+//        tintColor = UIColor.lightGrayColor()
     }
 }

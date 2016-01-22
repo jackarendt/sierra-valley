@@ -23,6 +23,7 @@
 		2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */; };
 		2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C311C4F5093005C0D76 /* GameViewController.swift */; };
 		2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */; };
+		2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C311C4F5093005C0D76 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "View Controllers/GameViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
+		2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVFadeAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */,
 				2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */,
 				2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */,
+				2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */,
 				2EBA3C2A1C4DED45005C0D76 /* Custom Views */,
 				2EBA3C271C4DEB06005C0D76 /* View Controllers */,
 				2EBA3C201C4DDBF2005C0D76 /* Extensions */,
@@ -318,6 +321,7 @@
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
+				2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */,
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
