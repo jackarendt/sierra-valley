@@ -128,6 +128,12 @@ class HomeViewController: SVBaseViewController {
         }
     }
     
+    override func applicationWillEnterForeground(notification: NSNotification) {
+        if animationsFinished {
+            blinkTapToPlay()
+        }
+    }
+    
     override func applicationWillResignActive(notification: NSNotification) {
         if animationsFinished {
             blinkAnimation.stopBlink(false)

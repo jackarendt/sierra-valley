@@ -69,8 +69,6 @@ class HelpViewController: SVBaseViewController {
         
         let skView = SKView(frame: CGRect(x: 0, y: navigationTitleLabel.frame.maxY, width: contentView.bounds.width, height: contentView.bounds.height - navigationTitleLabel.frame.maxY))
         let scene = HelpCarScene(size: skView.bounds.size)
-        skView.showsFPS = true
-        skView.showsNodeCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true

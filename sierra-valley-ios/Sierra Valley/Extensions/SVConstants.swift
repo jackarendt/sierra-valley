@@ -15,3 +15,9 @@ let applicationDidEnterBackgroundNotification = "applicationDidEnterBackground"
 
 
 let carsTextureAtlas = "Cars"
+
+
+enum CollisionBitmaskCategory : UInt32 {
+    case Car    = 0x01
+    case Floor  = 0x10
+}

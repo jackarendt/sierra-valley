@@ -21,7 +21,9 @@ class Arrow: UIView {
     
     var fillColor = UIColor.whiteColor() {
         didSet {
-            
+            base.strokeColor = fillColor.CGColor
+            topLine.strokeColor = fillColor.CGColor
+            bottomLine.strokeColor = fillColor.CGColor
         }
     }
     

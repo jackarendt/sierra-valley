@@ -9,11 +9,22 @@
 import SpriteKit
 
 /// Base SKScene class that has the tap gestures involved with the game.
-public class SVBaseScene: SKScene, UIGestureRecognizerDelegate {
+public class SVBaseScene: SKScene, UIGestureRecognizerDelegate, SKPhysicsContactDelegate {
     
     public var tapGesture : UITapGestureRecognizer?
     public var swipeLeftGesture : UISwipeGestureRecognizer?
     public var swipeRightGesture : UISwipeGestureRecognizer?
+    
+    
+    override public init(size: CGSize) {
+        super.init(size: size)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -8.0)
+        physicsWorld.contactDelegate = self
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override public func didMoveToView(view: SKView) {
         // Add tap gesture for jumping
@@ -34,6 +45,8 @@ public class SVBaseScene: SKScene, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(swipeRightGesture!)
     }
     
+    // MARK: - Gesture recognizer selectors
+    
     public func tapGestureRecognized(tap : UITapGestureRecognizer) {
         
     }
@@ -46,7 +59,13 @@ public class SVBaseScene: SKScene, UIGestureRecognizerDelegate {
         
     }
     
+    // MARK: - Gesture recorgnizer delegate
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    // MARK: - Physics world contact delegate
+    public func didBeginContact(contact: SKPhysicsContact) {
+        
     }
 }
