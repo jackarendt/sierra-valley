@@ -12,3 +12,6 @@ let applicationWillResignNotification = "applicationWillResign"
 let applicationDidEnterForegroundNotification = "applicationDidEnterForeground"
 let applicationDidBecomeActiveNotification = "applicationDidBecomeActive"
 let applicationDidEnterBackgroundNotification = "applicationDidEnterBackground"
+
+
+let carsTextureAtlas = "Cars"
