@@ -101,7 +101,7 @@ public class SVBaseViewController: UIViewController {
     }
 }
 
-// MARK: - UIViewController Transititioning Delegate methods
+// MARK: - UIViewController Transititioning Delegate methods & segues
 extension SVBaseViewController : UIViewControllerTransitioningDelegate {
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = SVFadeAnimator()
@@ -112,5 +112,15 @@ extension SVBaseViewController : UIViewControllerTransitioningDelegate {
     public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = SVFadeAnimator()
         return animator
+    }
+    
+    public override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+        if viewControllerToPresent is SVBaseViewController {
+//            viewControllerToPresent.modalPresentationStyle = .Custom
+            viewControllerToPresent.transitioningDelegate = self
+        } else {
+            viewControllerToPresent.modalTransitionStyle = .CrossDissolve
+        }
+        super.presentViewController(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

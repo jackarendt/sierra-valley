@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */; };
+		2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */; };
+		2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */; };
+		2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A921A1C5339EA00CF8E65 /* Arrow.swift */; };
+		2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582C81C53439D000508EB /* Number+Extensions.swift */; };
+		2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CA1C534FEE000508EB /* HelpCarScene.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BED1C4D9E16005C0D76 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */; };
 		2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */; };
@@ -44,6 +50,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = "View Controllers/HelpViewController.swift"; sourceTree = "<group>"; };
+		2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBlinkAnimation.swift; path = "Custom Views/SVBlinkAnimation.swift"; sourceTree = "<group>"; };
+		2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapAnimationView.swift; path = "Custom Views/TapAnimationView.swift"; sourceTree = "<group>"; };
+		2E6A921A1C5339EA00CF8E65 /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arrow.swift; path = "Custom Views/Arrow.swift"; sourceTree = "<group>"; };
+		2E8582C81C53439D000508EB /* Number+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Number+Extensions.swift"; path = "Extensions/Number+Extensions.swift"; sourceTree = "<group>"; };
+		2E8582CA1C534FEE000508EB /* HelpCarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpCarScene.swift; path = "Game Scenes/HelpCarScene.swift"; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -94,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E8582CC1C534FF3000508EB /* Game Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */,
+				2E8582CA1C534FEE000508EB /* HelpCarScene.swift */,
+			);
+			name = "Game Scenes";
+			sourceTree = "<group>";
+		};
 		2EBA3BDE1C4D9E16005C0D76 = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +140,7 @@
 			children = (
 				2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */,
 				2EBA3BEC1C4D9E16005C0D76 /* GameScene.sks */,
-				2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */,
+				2E8582CC1C534FF3000508EB /* Game Scenes */,
 				2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */,
 				2EBA3C2A1C4DED45005C0D76 /* Custom Views */,
 				2EBA3C271C4DEB06005C0D76 /* View Controllers */,
@@ -156,6 +177,7 @@
 				2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */,
 				2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */,
 				2EBA3C2D1C4E175D005C0D76 /* SVConstants.swift */,
+				2E8582C81C53439D000508EB /* Number+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +187,7 @@
 			children = (
 				2EBA3C311C4F5093005C0D76 /* GameViewController.swift */,
 				2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */,
+				2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */,
 				2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */,
 				2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */,
 			);
@@ -175,6 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */,
+				2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */,
+				2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */,
+				2E6A921A1C5339EA00CF8E65 /* Arrow.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -312,14 +338,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */,
+				2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */,
 				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
+				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
+				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */,
+				2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */,
 				2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */,
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
+				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
+				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
 				2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */,
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,

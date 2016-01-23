@@ -9,13 +9,13 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: SVBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let skView = SKView(frame: view.bounds)
-        view.addSubview(skView)
+        contentView.addSubview(skView)
         
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
@@ -29,18 +29,6 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-        }
-    }
-
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
         }
     }
 

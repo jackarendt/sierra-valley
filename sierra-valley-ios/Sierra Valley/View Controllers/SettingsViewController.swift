@@ -60,6 +60,7 @@ class SettingsViewController: SVBaseViewController {
         helpButton.frame = CGRect(x: contentView.bounds.width/4 + 20, y: contentView.bounds.height - 75, width: contentView.bounds.width/2 - 40, height: 45)
         helpButton.setTitle("HELP", forState: .Normal)
         helpButton.setFontSize(min(25, contentView.bounds.width * 0.03748))
+        helpButton.addTarget(self, action: "helpButtonPressed:", forControlEvents: .TouchUpInside)
         contentView.addSubview(helpButton)
     }
 
@@ -79,6 +80,10 @@ class SettingsViewController: SVBaseViewController {
     
     func musicButtonTapped(button : SVBorderedButton) {
         toggleButton(button)
+    }
+    
+    func helpButtonPressed(button : SVBorderedButton) {
+        presentViewController(HelpViewController(), animated: true, completion: nil)
     }
     
     private func toggleButton(button : SVBorderedButton) {

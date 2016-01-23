@@ -19,6 +19,8 @@ class HomeViewController: SVBaseViewController {
     let chooseCarButton = UIButton()
     
     var animationsFinished = false
+    
+    var blinkAnimation = SVBlinkAnimation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,9 @@ class HomeViewController: SVBaseViewController {
         tapToPlayLabel.alpha = 0
         contentView.addSubview(tapToPlayLabel)
         
+        blinkAnimation.blinkView = tapToPlayLabel
+        blinkAnimation.blinkDuration = 3.0
+        
         let settingsExpandedButton = UIButton(frame: CGRect(x: view.bounds.width - 225, y: view.bounds.height - 100, width: 225, height: 100))
         // currently not adding extra space for hit box
 //        settingsExpandedButton.addTarget(self, action: "settingsButtonTapped", forControlEvents: .TouchUpInside)
@@ -75,7 +80,7 @@ class HomeViewController: SVBaseViewController {
         chooseCarButton.titleLabel?.font = UIFont.svHeavyFont(20)
         chooseCarButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         chooseCarButton.setTitleColor(UIColor(white: 1, alpha: 0.7), forState: .Highlighted)
-        chooseCarButton.setTitle("CHOOSE CAR", forState: .Normal)
+        chooseCarButton.setTitle("CHANGE CAR", forState: .Normal)
         chooseCarButton.alpha = 0
         chooseCarButton.addTarget(self, action: "chooseCarButtonTapped", forControlEvents: .TouchUpInside)
         contentView.addSubview(chooseCarButton)
@@ -114,14 +119,7 @@ class HomeViewController: SVBaseViewController {
     
     // blinks the tap to play label
     private func blinkTapToPlay() {
-        UIView.animateKeyframesWithDuration(3, delay: 0, options: .Repeat, animations: {
-            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.25, animations: {
-                self.tapToPlayLabel.alpha = 1
-            })
-            UIView.addKeyframeWithRelativeStartTime(0.75, relativeDuration: 0.25, animations: {
-                self.tapToPlayLabel.alpha = 0
-            })
-        }, completion: nil)
+        blinkAnimation.blink()
     }
     
     override func applicationDidBecomeActive(notification: NSNotification) {
@@ -132,15 +130,14 @@ class HomeViewController: SVBaseViewController {
     
     override func applicationWillResignActive(notification: NSNotification) {
         if animationsFinished {
-            tapToPlayLabel.layer.removeAllAnimations()
+            blinkAnimation.stopBlink(false)
             tapToPlayLabel.alpha = 0
         }
     }
     
     // segues to settings page
     func settingsButtonTapped() {
-        let settings = SettingsViewController()
-        settings.transitioningDelegate = self        
+        let settings = SettingsViewController()      
         presentViewController(settings, animated: true, completion: nil)
     }
     
@@ -155,6 +152,6 @@ class HomeViewController: SVBaseViewController {
             print("not so fast")
             return
         }
-        print("start game")
+        presentViewController(GameViewController(), animated: true, completion: nil)
     }
 }

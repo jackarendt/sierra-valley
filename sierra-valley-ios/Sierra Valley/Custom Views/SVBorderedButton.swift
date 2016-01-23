@@ -10,8 +10,8 @@ import UIKit
 
 /// UIButton subclass with a border around the edges
 public class SVBorderedButton: UIButton {
-    
-   public var borderColor : UIColor = UIColor.whiteColor() {
+    /// The color of the button's border and title/image
+    public var borderColor : UIColor = UIColor.whiteColor() {
         didSet {
             layer.borderColor = borderColor.CGColor
             setTitleColor(borderColor, forState: .Normal)
@@ -37,6 +37,7 @@ public class SVBorderedButton: UIButton {
         addTarget(self, action: "touchDown", forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside, .TouchDownRepeat])
     }
     
+    /// Sets the font size of the title
     public func setFontSize(size: CGFloat) {
         titleLabel?.font = UIFont.svHeavyFont(size)
     }
@@ -52,6 +53,5 @@ public class SVBorderedButton: UIButton {
     func touchDown() {
         backgroundColor = borderColor
         setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
-//        tintColor = UIColor.lightGrayColor()
     }
 }

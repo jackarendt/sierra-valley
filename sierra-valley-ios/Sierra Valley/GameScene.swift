@@ -20,7 +20,7 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"mountains")
+            let sprite = SKSpriteNode(imageNamed:"sierra-turbo-large")
             
             sprite.xScale = 0.5
             sprite.yScale = 0.5

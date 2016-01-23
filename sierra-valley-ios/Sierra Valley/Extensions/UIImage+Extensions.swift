@@ -19,9 +19,17 @@ enum SVImage : String {
     case VolumeIcon = "volume-icon"
 }
 
+enum SVCar : String {
+    case SierraTurboLarge = "sierra-turbo-large"
+}
+
 extension UIImage {
     /// Initialize image using the SVImage enum
     convenience init!(asset: SVImage) {
         self.init(named: asset.rawValue)
+    }
+    
+    convenience init!(car : SVCar) {
+        self.init(named: car.rawValue)
     }
 }
