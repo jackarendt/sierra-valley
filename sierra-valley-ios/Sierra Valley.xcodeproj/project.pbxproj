@@ -31,6 +31,11 @@
 		2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C311C4F5093005C0D76 /* GameViewController.swift */; };
 		2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */; };
 		2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */; };
+		2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186B1C543A0B008ADAEF /* Settings.swift */; };
+		2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */; };
+		2EF818711C544A93008ADAEF /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818701C544A93008ADAEF /* PauseView.swift */; };
+		2EF818731C547336008ADAEF /* SVPauseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818721C547336008ADAEF /* SVPauseBaseView.swift */; };
+		2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818741C557BBA008ADAEF /* GameOverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,11 @@
 		2EBA3C311C4F5093005C0D76 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "View Controllers/GameViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVFadeAnimator.swift; sourceTree = "<group>"; };
+		2EF8186B1C543A0B008ADAEF /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Models/Settings.swift; sourceTree = "<group>"; };
+		2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeCarViewController.swift; path = "View Controllers/ChangeCarViewController.swift"; sourceTree = "<group>"; };
+		2EF818701C544A93008ADAEF /* PauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PauseView.swift; path = "Custom Views/PauseView.swift"; sourceTree = "<group>"; };
+		2EF818721C547336008ADAEF /* SVPauseBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVPauseBaseView.swift; path = "Custom Views/SVPauseBaseView.swift"; sourceTree = "<group>"; };
+		2EF818741C557BBA008ADAEF /* GameOverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverView.swift; path = "Custom Views/GameOverView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */,
+				2EF8186D1C543C67008ADAEF /* Models */,
 				2E8582D01C536A9D000508EB /* Sprites */,
 				2E8582CC1C534FF3000508EB /* Game Scenes */,
 				2E8582CD1C535E22000508EB /* Custom Animations */,
@@ -206,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3C311C4F5093005C0D76 /* GameViewController.swift */,
+				2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */,
 				2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */,
 				2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */,
 				2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */,
@@ -218,10 +230,21 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */,
+				2EF818701C544A93008ADAEF /* PauseView.swift */,
+				2EF818741C557BBA008ADAEF /* GameOverView.swift */,
+				2EF818721C547336008ADAEF /* SVPauseBaseView.swift */,
 				2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */,
 				2E6A921A1C5339EA00CF8E65 /* Arrow.swift */,
 			);
 			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		2EF8186D1C543C67008ADAEF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,8 +379,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */,
+				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
+				2EF818711C544A93008ADAEF /* PauseView.swift in Sources */,
 				2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */,
 				2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */,
+				2EF818731C547336008ADAEF /* SVPauseBaseView.swift in Sources */,
 				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
@@ -372,7 +398,9 @@
 				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
+				2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */,
 				2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */,
+				2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */,
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 				2E8582CF1C536A99000508EB /* CarNode.swift in Sources */,
 			);

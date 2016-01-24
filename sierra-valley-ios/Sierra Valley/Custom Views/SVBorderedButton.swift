@@ -33,6 +33,8 @@ public class SVBorderedButton: UIButton {
         layer.borderColor = borderColor.CGColor
         layer.borderWidth = 1
         
+        tintColor = borderColor
+        
         addTarget(self, action: "touchUp", forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
         addTarget(self, action: "touchDown", forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside, .TouchDownRepeat])
     }

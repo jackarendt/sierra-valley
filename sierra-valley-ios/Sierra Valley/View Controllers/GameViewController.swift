@@ -11,13 +11,20 @@ import SpriteKit
 
 class GameViewController: SVBaseViewController {
 
+    let pauseButton = UIButton()
+    
+    var gameScene : SKScene!
+    var skView : SKView!
+    
+    var pauseView : PauseView!
+    var gameOverView : GameOverView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let skView = SKView(frame: view.bounds)
+        skView = SKView(frame: view.bounds)
         contentView.addSubview(skView)
-        
-        let scene = GameScene(size: view.bounds.size)
+        gameScene = GameScene(size: view.bounds.size)
         // Configure the view.
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -26,9 +33,27 @@ class GameViewController: SVBaseViewController {
         skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        gameScene.scaleMode = .AspectFill
+        skView.presentScene(gameScene)
         
-        skView.presentScene(scene)
+        
+        pauseButton.setImage(UIImage(asset: .PauseIcon), forState: .Normal)
+        pauseButton.frame = CGRect(x: contentView.frame.width - 60, y: 0, width: 60, height: 65)
+        pauseButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 25, bottom: 20, right: 20)
+        pauseButton.addTarget(self, action: "pauseButtonTapped:", forControlEvents: .TouchUpInside)
+        contentView.addSubview(pauseButton)
+        
+        pauseView = PauseView(frame: contentView.bounds)
+        pauseView.delegate = self
+        pauseView.alpha = 0
+        pauseView.hidden = true
+        contentView.addSubview(pauseView)
+        
+        gameOverView = GameOverView(frame: contentView.bounds)
+        gameOverView.delegate = self
+        gameOverView.alpha = 0
+        gameOverView.hidden = true
+        contentView.addSubview(gameOverView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +61,48 @@ class GameViewController: SVBaseViewController {
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    
+    func pauseButtonTapped(button : UIButton) {
+        skView.scene?.paused = true
+        gameOverView.hidden = false
+        gameOverView.showMenu()
+        UIView.animateWithDuration(0.5, animations: {
+            self.gameOverView.alpha = 1
+            self.pauseButton.alpha = 0
+        }, completion: { finsihed in
+        })
+    }
+}
+
+extension GameViewController : PauseViewDelegate {
+    func pauseViewDidHitResume(pauseView: PauseView) {
+        UIView.animateWithDuration(0.5, animations: {
+            pauseView.alpha = 0
+            self.pauseButton.alpha = 1
+        }, completion: { finished in
+            pauseView.hidden = true
+            self.skView.scene?.paused = false
+        })
+    }
+}
+
+extension GameViewController : GameOverViewDelegate {
+    func gameOverViewDidHitRetry(gameOverView: GameOverView) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func gameOverViewDidHitNewCar(gameOverView: GameOverView) {
+        // show garage view controller
+        gameOverView.subtitleText = "TAP TO RETRY"
+    }
+    
+    func gameOverViewDidHitShare(gameOverView: GameOverView) {
+        let activityController = UIActivityViewController(activityItems: ["Share your high score: 75"], applicationActivities: nil)
+        activityController.excludedActivityTypes = [UIActivityTypeAirDrop]
+        presentViewController(activityController, animated: true, completion: nil)
+    }
+    
+    func gameOverViewDidHitLeaderboard(gameOverView: GameOverView) {
+        
     }
 }

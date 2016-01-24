@@ -16,6 +16,7 @@ enum SVImage : String {
     case CloseButton = "close-button"
     case Mountains = "mountains"
     case MuteIcon = "mute-icon"
+    case PauseIcon = "pause"
     case VolumeIcon = "volume-icon"
 }
 

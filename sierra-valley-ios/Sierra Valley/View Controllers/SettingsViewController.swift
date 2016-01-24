@@ -17,6 +17,8 @@ class SettingsViewController: SVBaseViewController {
     private let musicButton = SVBorderedButton()
     private let soundButton = SVBorderedButton()
     
+    private let settings = Settings()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationTitle = "SETTINGS"
@@ -62,6 +64,11 @@ class SettingsViewController: SVBaseViewController {
         helpButton.setFontSize(min(25, contentView.bounds.width * 0.03748))
         helpButton.addTarget(self, action: "helpButtonPressed:", forControlEvents: .TouchUpInside)
         contentView.addSubview(helpButton)
+        
+        musicButton.selected = !settings.musicMuted
+        soundButton.selected = !settings.soundMuted
+        toggleButton(musicButton)
+        toggleButton(soundButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,10 +82,12 @@ class SettingsViewController: SVBaseViewController {
     
     
     func soundButtonTapped(button : SVBorderedButton) {
+        settings.soundMuted = !button.selected
         toggleButton(button)
     }
     
     func musicButtonTapped(button : SVBorderedButton) {
+        settings.musicMuted = !button.selected
         toggleButton(button)
     }
     

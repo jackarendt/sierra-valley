@@ -149,7 +149,8 @@ class HomeViewController: SVBaseViewController {
     
     // segues to choosing the car
     func chooseCarButtonTapped() {
-        print("choose car tapped")
+        let changeCar = ChangeCarViewController()
+        presentViewController(changeCar, animated: true, completion: nil)
     }
     
     // segues to start the game
