@@ -29,12 +29,15 @@ class CarNode: SKSpriteNode {
         let texture = SKTextureAtlas(named: carsTextureAtlas).textureNamed(car.rawValue)
         super.init(texture: texture, color: UIColor.whiteColor(), size: texture.size())
         
-        physicsBody = SKPhysicsBody(rectangleOfSize: texture.size())
+        name = SVSpriteName.Car.rawValue
+        
+        physicsBody = SKPhysicsBody(rectangleOfSize: size)
         physicsBody?.dynamic = true
         physicsBody?.allowsRotation = true
         physicsBody?.restitution = 0
         
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car.rawValue
+        setContactBitmask([.Spike])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,6 +50,13 @@ class CarNode: SKSpriteNode {
             bitmask = bitmask | c.rawValue
         }
         physicsBody?.collisionBitMask = bitmask
+    }
+    
+    func setContactBitmask(contacts : [CollisionBitmaskCategory]) {
+        var bitmask : UInt32 = 0
+        for c in contacts {
+            bitmask = bitmask | c.rawValue
+        }
         physicsBody?.contactTestBitMask = bitmask
     }
     

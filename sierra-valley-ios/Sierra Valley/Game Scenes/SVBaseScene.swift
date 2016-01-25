@@ -68,4 +68,8 @@ public class SVBaseScene: SKScene, UIGestureRecognizerDelegate, SKPhysicsContact
     public func didBeginContact(contact: SKPhysicsContact) {
         
     }
+    
+    public func didEndContact(contact: SKPhysicsContact) {
+        
+    }
 }

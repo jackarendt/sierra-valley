@@ -22,13 +22,13 @@ class SVPauseBaseView: UIView {
         }
     }
     
-    var distance = 60 {
+    var distance = 0 {
         didSet {
             distanceLabel.text = String(format: "%i", distance)
         }
     }
     
-    var avalanche = 25 {
+    var avalanche = 0 {
         didSet {
             avalancheLabel.text = String(format: "%i", avalanche)
         }

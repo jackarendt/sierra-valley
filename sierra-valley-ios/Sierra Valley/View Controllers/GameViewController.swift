@@ -13,7 +13,7 @@ class GameViewController: SVBaseViewController {
 
     let pauseButton = UIButton()
     
-    var gameScene : SKScene!
+    var gameScene : GameScene!
     var skView : SKView!
     
     var pauseView : PauseView!
@@ -25,9 +25,11 @@ class GameViewController: SVBaseViewController {
         skView = SKView(frame: view.bounds)
         contentView.addSubview(skView)
         gameScene = GameScene(size: view.bounds.size)
+        gameScene.gameDelegate = self
         // Configure the view.
         skView.showsFPS = true
         skView.showsNodeCount = true
+        skView.showsPhysics = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
@@ -63,13 +65,28 @@ class GameViewController: SVBaseViewController {
 
     
     func pauseButtonTapped(button : UIButton) {
-        skView.scene?.paused = true
+        gameScene.pause()
+        pauseView.hidden = false
+        pauseView.showMenu()
+        pauseView.distance = gameScene.currentDistance()
+        UIView.animateWithDuration(0.5, animations: {
+            self.pauseView.alpha = 1
+            self.pauseButton.alpha = 0
+        }, completion: { finsihed in
+        })
+    }
+}
+
+extension GameViewController : GameSceneDelegate {
+    func gameDidEnd(finalScore: Int, newAvalanches: Int) {
         gameOverView.hidden = false
         gameOverView.showMenu()
+        gameOverView.distance = finalScore
+        gameOverView.avalanche = 0
         UIView.animateWithDuration(0.5, animations: {
             self.gameOverView.alpha = 1
             self.pauseButton.alpha = 0
-        }, completion: { finsihed in
+            }, completion: { finsihed in
         })
     }
 }
@@ -81,7 +98,7 @@ extension GameViewController : PauseViewDelegate {
             self.pauseButton.alpha = 1
         }, completion: { finished in
             pauseView.hidden = true
-            self.skView.scene?.paused = false
+            self.gameScene.resume()
         })
     }
 }

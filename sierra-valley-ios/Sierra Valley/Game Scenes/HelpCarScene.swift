@@ -37,17 +37,14 @@ class HelpCarScene: SVBaseScene {
     }
     
     override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
-        print("swipe left")
         car.switchDirection(.Left)
     }
     
     override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
-        print("swipe right")
         car.switchDirection(.Right)
     }
     
     override func didBeginContact(contact: SKPhysicsContact) {
-        print("we've made contact")
         car.endJump()
     }
 }

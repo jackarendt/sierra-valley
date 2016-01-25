@@ -8,33 +8,70 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+protocol GameSceneDelegate : class {
+    func gameDidEnd(finalScore : Int, newAvalanches : Int)
+}
+
+class GameScene: SVBaseScene {
+    
+    weak var gameDelegate : GameSceneDelegate?
+    
     override func didMoveToView(view: SKView) {
+        super.didMoveToView(view)
         view.allowsTransparency = true
         backgroundColor = SKColor.clearColor()
+        
+        let spike = SpikeNode(position: CGPoint(x: -15, y: 13), spikeColor: SVColor.orangeColor())
+        let slideAction = SKAction.moveToX(view.bounds.width, duration: 3.0)
+        spike.runAction(slideAction)
+        addChild(spike)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"sierra-turbo-large")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+    override func tapGestureRecognized(tap: UITapGestureRecognizer) {
+        // replace this eventually
+        let location = tap.locationInView(view!)
+        let car = CarNode(car: .SierraTurbo)
+        car.position = CGPoint(x: location.x, y: view!.bounds.height - location.y)
+        car.physicsBody?.affectedByGravity = false
+        self.addChild(car)
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        enumerateChildNodesWithName(SVSpriteName.Spike.rawValue) { (node, stop) -> Void in
+            if node.position.x == self.view?.bounds.width {
+                node.position = CGPoint(x: -15, y: 13)
+                let slideAction = SKAction.moveToX(self.view!.bounds.width, duration: 3.0)
+                node.runAction(slideAction)
+            }
+        }
+    }
+}
+
+extension GameScene {
+    override func didBeginContact(contact: SKPhysicsContact) {
+        
+        pause()
+        gameDelegate?.gameDidEnd(0, newAvalanches: 0)
+    }
+    
+    override func didEndContact(contact: SKPhysicsContact) {
+        
+    }
+}
+
+extension GameScene {
+    /// Pauses the game
+    func pause() {
+        view?.paused = true
+    }
+    
+    /// Resumes the game
+    func resume() {
+        view?.paused = false
+    }
+    
+    /// Returns the current distance that the car has traveled
+    func currentDistance() -> Int {
+        return 0 // TODO: update this with real data
     }
 }

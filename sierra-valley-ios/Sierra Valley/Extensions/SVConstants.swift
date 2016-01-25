@@ -8,16 +8,24 @@
 
 import Foundation
 
-let applicationWillResignNotification = "applicationWillResign"
-let applicationDidEnterForegroundNotification = "applicationDidEnterForeground"
-let applicationDidBecomeActiveNotification = "applicationDidBecomeActive"
-let applicationDidEnterBackgroundNotification = "applicationDidEnterBackground"
+public let applicationWillResignNotification = "applicationWillResign"
+public let applicationDidEnterForegroundNotification = "applicationDidEnterForeground"
+public let applicationDidBecomeActiveNotification = "applicationDidBecomeActive"
+public let applicationDidEnterBackgroundNotification = "applicationDidEnterBackground"
 
 
-let carsTextureAtlas = "Cars"
+public let carsTextureAtlas = "Cars"
+public let levelTextureAtlas = "LevelResources"
 
 
-enum CollisionBitmaskCategory : UInt32 {
-    case Car    = 0x01
-    case Floor  = 0x10
+public enum CollisionBitmaskCategory : UInt32 {
+    case Car    = 1
+    case Floor  = 2
+    case Spike  = 4
 }
+
+public enum SVSpriteName : String {
+    case Car = "car"
+    case Spike = "Spike"
+}
+

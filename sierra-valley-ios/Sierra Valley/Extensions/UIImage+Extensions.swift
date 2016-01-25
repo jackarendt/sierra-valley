@@ -9,7 +9,7 @@
 import UIKit
 
 /// Enumeration containing all images in the Asset Catalog
-enum SVImage : String {
+public enum SVImage : String {
     case Avalanche = "avalanche"
     case BackButton = "back-button"
     case Background = "background"
@@ -20,8 +20,13 @@ enum SVImage : String {
     case VolumeIcon = "volume-icon"
 }
 
-enum SVCar : String {
+public enum SVCar : String {
+    case SierraTurbo = "sierra-turbo"
     case SierraTurboLarge = "sierra-turbo-large"
+}
+
+public enum SVLevelResource : String {
+    case Spike = "spike"
 }
 
 extension UIImage {
@@ -32,5 +37,9 @@ extension UIImage {
     
     convenience init!(car : SVCar) {
         self.init(named: car.rawValue)
+    }
+    
+    convenience init!(resource : SVLevelResource) {
+        self.init(named: resource.rawValue)
     }
 }
