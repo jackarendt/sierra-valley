@@ -19,13 +19,15 @@ public let levelTextureAtlas = "LevelResources"
 
 
 public enum CollisionBitmaskCategory : UInt32 {
-    case Car    = 1
-    case Floor  = 2
-    case Spike  = 4
+    case Car        = 1
+    case Floor      = 2
+    case Spike      = 4
+    case Rectangle  = 8
 }
 
 public enum SVSpriteName : String {
     case Car = "car"
     case Spike = "Spike"
+    case Rectangle = "Rectangle"
 }
 

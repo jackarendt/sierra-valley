@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
+        
+        let gameSettings = GameSettings()
+        print(gameSettings.actualWidth)
         return true
     }
 

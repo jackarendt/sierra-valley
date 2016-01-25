@@ -16,14 +16,21 @@ class GameScene: SVBaseScene {
     
     weak var gameDelegate : GameSceneDelegate?
     
+    var gameManager : GameManager!
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         view.allowsTransparency = true
         backgroundColor = SKColor.clearColor()
         
-        let spike = SpikeNode(position: CGPoint(x: -15, y: 13), spikeColor: SVColor.orangeColor())
-        let slideAction = SKAction.moveToX(view.bounds.width, duration: 3.0)
+        let spike = SpikeNode(position: CGPoint(x: view.bounds.width + 15, y: 92), color: SVColor.orangeColor(), resourceSize: CGSize(width: 30, height: 80))
+        let slideAction = SKAction.moveTo(CGPoint(x: -15, y: 52), duration: 3.0)
         spike.runAction(slideAction)
+        
+        let rectangle = RectangleNode(position: CGPoint(x: view.bounds.width + 15, y: 40), color: SVColor.orangeColor(), resourceSize: CGSize(width: 30, height: 80))
+        let rectSlideAction = SKAction.moveTo(CGPoint(x: -15, y: 0), duration: 3.0)
+        rectangle.runAction(rectSlideAction)
+        addChild(rectangle)
         addChild(spike)
     }
     
@@ -37,13 +44,21 @@ class GameScene: SVBaseScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        enumerateChildNodesWithName(SVSpriteName.Spike.rawValue) { (node, stop) -> Void in
-            if node.position.x == self.view?.bounds.width {
-                node.position = CGPoint(x: -15, y: 13)
-                let slideAction = SKAction.moveToX(self.view!.bounds.width, duration: 3.0)
+        enumerateChildNodesWithName(SVSpriteName.Rectangle.rawValue) { (node, stop) -> Void in
+            if node.position.x <= -15 {
+                node.position = CGPoint(x: self.view!.bounds.width + 15, y: 40)
+                let slideAction = SKAction.moveTo(CGPoint(x: -15, y: 0), duration: 3.0)
                 node.runAction(slideAction)
             }
         }
+        
+        enumerateChildNodesWithName(SVSpriteName.Spike.rawValue, usingBlock: { (node, stop) -> Void in
+            if node.position.x <= -15 {
+                node.position = CGPoint(x: self.view!.bounds.width + 15, y: 92)
+                let slideAction = SKAction.moveTo(CGPoint(x: -15, y: 52), duration: 3.0)
+                node.runAction(slideAction)
+            }
+        })
     }
 }
 

@@ -10,9 +10,8 @@ import SpriteKit
 
 
 public protocol GameManagerDelegate : class {
-    func placeResource(resource : SKSpriteNode)
-    func removeResource(resource : SKSpriteNode)
-    func moveResource(resource : SVLevelResource, toPoint newLoc : CGPoint)
+    func placeResource(resource : SKNode)
+    func removeResource(resource : SKNode)
     func scoreChanged(newScore : Int)
 }
 
@@ -23,6 +22,8 @@ public class GameManager {
     public var bounds : CGRect
     
     public var score = 0
+    
+    public var gameSettings = GameSettings()
     
     public init(delegate : GameManagerDelegate, gameBounds : CGRect) {
         self.delegate = delegate
@@ -45,6 +46,10 @@ public class GameManager {
     }
     
     public func resume() {
+        
+    }
+    
+    public func update(time : CFTimeInterval) {
         
     }
 }

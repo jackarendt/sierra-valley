@@ -8,11 +8,10 @@
 
 import SpriteKit
 
-class SpikeNode: SKSpriteNode {
-    init(position : CGPoint, spikeColor : UIColor) {
+class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
+    required init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
         let texture = SKTextureAtlas(named: levelTextureAtlas).textureNamed(SVLevelResource.Spike.rawValue)
-        super.init(texture: texture, color: spikeColor, size: texture.size())
-        
+        super.init(texture: texture, color: color, size: texture.size())
         name = SVSpriteName.Spike.rawValue
         
         self.position = position
@@ -29,8 +28,7 @@ class SpikeNode: SKSpriteNode {
         physicsBody?.allowsRotation = true
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Spike.rawValue
         physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car.rawValue
-        
-        color = spikeColor
+
         colorBlendFactor = 1.0
     }
     

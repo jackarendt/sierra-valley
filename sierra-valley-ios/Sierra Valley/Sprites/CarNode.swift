@@ -37,7 +37,8 @@ class CarNode: SKSpriteNode {
         physicsBody?.restitution = 0
         
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car.rawValue
-        setContactBitmask([.Spike])
+        setContactBitmask([.Spike, .Rectangle])
+        setCollisionBitmask([.Spike, .Rectangle])
     }
     
     required init?(coder aDecoder: NSCoder) {
