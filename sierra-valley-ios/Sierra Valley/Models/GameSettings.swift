@@ -26,7 +26,7 @@ public struct GameSettings {
     public let vSyncTime : CFTimeInterval = 1.0/60.0
     
     /// The number of frames that it takes for a row to become fully visible on the screen
-    public var framesPerRow : CFTimeInterval = 8.0
+    public var framesPerRow : Int = 8
     
     /// The screen width
     public let screenWidth : CGFloat = UIScreen.mainScreen().bounds.width
@@ -57,7 +57,7 @@ public struct GameSettings {
     /// The amount of time it takes for a row to be fully visible on the screen
     public var rowRefreshRate : CFTimeInterval {
         get {
-            return vSyncTime * framesPerRow
+            return vSyncTime * CFTimeInterval(framesPerRow)
         }
     }
 }

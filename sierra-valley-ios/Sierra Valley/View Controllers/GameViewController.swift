@@ -24,12 +24,15 @@ class GameViewController: SVBaseViewController {
         
         skView = SKView(frame: view.bounds)
         contentView.addSubview(skView)
-        gameScene = GameScene(size: view.bounds.size)
+        let width = view.bounds.width * 1000
+        let height = width / view.bounds.width * view.bounds.height
+        gameScene = GameScene(size: CGSize(width: width, height: height))
         gameScene.gameDelegate = self
+        
         // Configure the view.
         skView.showsFPS = true
         skView.showsNodeCount = true
-//        skView.showsPhysics = true
+        skView.showsDrawCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true

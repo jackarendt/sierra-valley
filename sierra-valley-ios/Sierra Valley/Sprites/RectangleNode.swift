@@ -18,7 +18,8 @@ class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         physicsBody?.dynamic = true
         physicsBody?.affectedByGravity = false
         physicsBody?.allowsRotation = false
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle.rawValue
+        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
+        physicsBody?.collisionBitMask = 0
         name = SVSpriteName.Rectangle.rawValue
     }
     

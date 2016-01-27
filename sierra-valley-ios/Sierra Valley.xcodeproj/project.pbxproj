@@ -42,6 +42,8 @@
 		2EF818801C55C3E0008ADAEF /* RectangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8187F1C55C3E0008ADAEF /* RectangleNode.swift */; };
 		2EF818821C55C5BC008ADAEF /* LevelResourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818811C55C5BC008ADAEF /* LevelResourceProtocol.swift */; };
 		2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818831C55E1EA008ADAEF /* GameSettings.swift */; };
+		2EF818861C572AE0008ADAEF /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818851C572AE0008ADAEF /* Queue.swift */; };
+		2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818871C572D8F008ADAEF /* ResourceRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		2EF8187F1C55C3E0008ADAEF /* RectangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RectangleNode.swift; path = Sprites/RectangleNode.swift; sourceTree = "<group>"; };
 		2EF818811C55C5BC008ADAEF /* LevelResourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelResourceProtocol.swift; path = Sprites/LevelResourceProtocol.swift; sourceTree = "<group>"; };
 		2EF818831C55E1EA008ADAEF /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = Models/GameSettings.swift; sourceTree = "<group>"; };
+		2EF818851C572AE0008ADAEF /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Models/Queue.swift; sourceTree = "<group>"; };
+		2EF818871C572D8F008ADAEF /* ResourceRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRow.swift; path = Models/ResourceRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,8 @@
 				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
 				2EF8187D1C559719008ADAEF /* GameManager.swift */,
 				2EF818831C55E1EA008ADAEF /* GameSettings.swift */,
+				2EF818851C572AE0008ADAEF /* Queue.swift */,
+				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
+				2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */,
@@ -440,6 +447,7 @@
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EF818801C55C3E0008ADAEF /* RectangleNode.swift in Sources */,
 				2EF818821C55C5BC008ADAEF /* LevelResourceProtocol.swift in Sources */,
+				2EF818861C572AE0008ADAEF /* Queue.swift in Sources */,
 				2EF8187C1C559438008ADAEF /* SpikeNode.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
 				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
@@ -585,7 +593,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,7 +610,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";

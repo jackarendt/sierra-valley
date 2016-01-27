@@ -26,8 +26,8 @@ class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         physicsBody?.dynamic = true
         physicsBody?.affectedByGravity = false
         physicsBody?.allowsRotation = true
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Spike.rawValue
-        physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car.rawValue
+        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Spike
+        physicsBody?.collisionBitMask = 0
 
         colorBlendFactor = 1.0
     }

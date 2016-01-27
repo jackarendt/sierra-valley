@@ -36,27 +36,27 @@ class CarNode: SKSpriteNode {
         physicsBody?.allowsRotation = true
         physicsBody?.restitution = 0
         
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car.rawValue
-        setContactBitmask([.Spike, .Rectangle])
-        setCollisionBitmask([.Spike, .Rectangle])
+        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car
+        setContactBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle])
+        setCollisionBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle])
     }
     
     required init?(coder aDecoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
     }
     
-    func setCollisionBitmask(collisions : [CollisionBitmaskCategory]) {
+    func setCollisionBitmask(collisions : [UInt32]) {
         var bitmask : UInt32 = 0
         for c in collisions {
-            bitmask = bitmask | c.rawValue
+            bitmask = bitmask | c
         }
         physicsBody?.collisionBitMask = bitmask
     }
     
-    func setContactBitmask(contacts : [CollisionBitmaskCategory]) {
+    func setContactBitmask(contacts : [UInt32]) {
         var bitmask : UInt32 = 0
         for c in contacts {
-            bitmask = bitmask | c.rawValue
+            bitmask = bitmask | c
         }
         physicsBody?.contactTestBitMask = bitmask
     }

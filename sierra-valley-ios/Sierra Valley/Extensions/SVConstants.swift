@@ -18,16 +18,18 @@ public let carsTextureAtlas = "Cars"
 public let levelTextureAtlas = "LevelResources"
 
 
-public enum CollisionBitmaskCategory : UInt32 {
-    case Car        = 1
-    case Floor      = 2
-    case Spike      = 4
-    case Rectangle  = 8
+public struct CollisionBitmaskCategory {
+    static let Car       : UInt32 = 1 << 0
+    static let Floor     : UInt32 = 1 << 1
+    static let Spike     : UInt32 = 1 << 2
+    static let Rectangle : UInt32 = 1 << 3
 }
 
 public enum SVSpriteName : String {
     case Car = "car"
     case Spike = "Spike"
     case Rectangle = "Rectangle"
+    case Triangle = "Triangle"
+    case None = "none"
 }
 
