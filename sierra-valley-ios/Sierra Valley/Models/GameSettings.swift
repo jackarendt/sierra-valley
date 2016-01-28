@@ -14,13 +14,20 @@ public struct GameSettings {
     public var rowWidth : CGFloat = 30
     
     /// The height of the rectangle when on the maximum edge
-    public var rectangleHeight : CGFloat = 80
+    public var maxMountainHeight : CGFloat {
+        get {
+            return actualWidth * tan(angle) + minMountainHeight
+        }
+    }
     
     /// The height of the rectangle when on the minimum edge
     public var minMountainHeight : CGFloat = 40
     
-    /// The time it takes for a row to go from one edge to another
-    public var edgeToEdgeTime : CFTimeInterval = 3.0
+    public var triangleHeight : CGFloat {
+        get {
+            return rowWidth * tan(angle)
+        }
+    }
     
     /// The refresh rate of the display
     public let vSyncTime : CFTimeInterval = 1.0/60.0
@@ -50,7 +57,7 @@ public struct GameSettings {
     /// The angle at which the rows drop across the screen
     public var angle : CGFloat {
         get {
-            return (rectangleHeight - minMountainHeight) / actualWidth
+            return atan(2.0/15.0)
         }
     }
     

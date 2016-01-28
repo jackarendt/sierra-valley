@@ -26,6 +26,8 @@ public class GameManager {
     
     weak public var scene : SKScene?
     
+    weak public var camera : SKCameraNode?
+    
     public init(delegate : GameManagerDelegate, gameBounds : CGRect, scene : SKScene) {
         self.delegate = delegate
         self.bounds = gameBounds
@@ -48,6 +50,13 @@ public class GameManager {
         }
         rowBuffer = RowBuffer(items: buf)
         readyToRender = true
+        
+        if let camera = camera {
+            delegate?.placeResource(camera)
+            let moveDifference = gameSettings.maxMountainHeight - gameSettings.minMountainHeight
+            let action = SKAction.moveTo(CGPoint(x: 20 * UIScreen.mainScreen().bounds.width + camera.position.x, y: camera.position.y + 20 * moveDifference), duration: 60.0)
+            camera.runAction(action)
+        }
     }
     
     public func pause() {
@@ -65,7 +74,7 @@ public class GameManager {
                 let diff = frameCount - gameSettings.framesPerRow
                 cameraPosition.x += 3.75 * CGFloat(diff)
                 let buffer = rowBuffer.next()
-                let sprites = renderResourceRow(ResourceRow(row: [.Rectangle], baseHeight: 0), rowBuffer: buffer, cameraPosition: cameraPosition, color: UIColor.orangeColor(), screenSize: UIScreen.mainScreen().bounds.size)
+                let sprites = renderResourceRow(ResourceRow(row: [.Rectangle], baseHeight: 0), rowBuffer: buffer, cameraPosition: cameraPosition, color: UIColor.orangeColor(), direction: .Right, gameSettings: gameSettings)
                 for s in sprites {
                     if s.scene == nil {
                         delegate?.placeResource(s)

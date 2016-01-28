@@ -27,14 +27,14 @@ class GameScene: SVBaseScene {
         
         gameManager = GameManager(delegate: self, gameBounds: CGRect(x: 0, y: 0, width: size.width, height: size.height), scene: self)
         
+        
         let newCamera = SKCameraNode()
         newCamera.position = CGPoint(x: view.bounds.width/2, y: view.bounds.height/2)
-        let action = SKAction.moveTo(CGPoint(x: 20 * view.bounds.width + newCamera.position.x, y: newCamera.position.y + 2100), duration: 60.0)
-        newCamera.runAction(action)
         newCamera.xScale = view.bounds.width / size.width
         newCamera.yScale = view.bounds.height / size.height
         camera = newCamera
-        addChild(newCamera)
+        
+        gameManager.camera = newCamera
         
         blendMode = .Replace
         
