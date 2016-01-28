@@ -15,6 +15,8 @@
 		2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CA1C534FEE000508EB /* HelpCarScene.swift */; };
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
+		2E8A88421C5887120009CF1C /* RowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88411C5887120009CF1C /* RowRenderer.swift */; };
+		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		2E8582CA1C534FEE000508EB /* HelpCarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpCarScene.swift; path = "Game Scenes/HelpCarScene.swift"; sourceTree = "<group>"; };
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
+		2E8A88411C5887120009CF1C /* RowRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowRenderer.swift; path = Models/RowRenderer.swift; sourceTree = "<group>"; };
+		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				2EF818831C55E1EA008ADAEF /* GameSettings.swift */,
 				2EF818851C572AE0008ADAEF /* Queue.swift */,
 				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
+				2E8A88411C5887120009CF1C /* RowRenderer.swift */,
+				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -451,6 +457,8 @@
 				2EF8187C1C559438008ADAEF /* SpikeNode.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
 				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
+				2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */,
+				2E8A88421C5887120009CF1C /* RowRenderer.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
 				2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */,

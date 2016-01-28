@@ -10,8 +10,7 @@ import SpriteKit
 
 class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
     required init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
-        let texture = SKTextureAtlas(named: levelTextureAtlas).textureNamed(SVLevelResource.Spike.rawValue)
-        super.init(texture: texture, color: color, size: texture.size())
+        super.init(texture: spikeTexture, color: color, size: spikeTexture.size())
         name = SVSpriteName.Spike.rawValue
         
         self.position = position
@@ -30,6 +29,7 @@ class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         physicsBody?.collisionBitMask = 0
 
         colorBlendFactor = 1.0
+        blendMode = SKBlendMode.Replace
     }
     
     required init?(coder aDecoder: NSCoder) {

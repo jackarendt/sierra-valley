@@ -27,6 +27,7 @@ public enum SVCar : String {
 
 public enum SVLevelResource : String {
     case Spike = "spike"
+    case Rectangle = "rectangle"
 }
 
 extension UIImage {

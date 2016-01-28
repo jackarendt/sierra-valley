@@ -52,11 +52,17 @@ public class GameManager {
         
     }
     
-    public func update(time : CFTimeInterval) {
+    public func update(time : CFTimeInterval, var cameraPosition : CGPoint) {
         if previousTime != 0 {
             frameCount += calcPassedFrames(time)
             if frameCount >= gameSettings.framesPerRow {
-                // TODO: dequeue row
+                let diff = frameCount - gameSettings.framesPerRow
+                cameraPosition.x += 3.75 * CGFloat(diff)
+                let sprites = renderResourceRow(ResourceRow(row: [.Rectangle], baseHeight: 0), cameraPosition: cameraPosition, color: UIColor.orangeColor(), screenSize: UIScreen.mainScreen().bounds.size)
+                for s in sprites {
+                    delegate?.placeResource(s)
+                }
+                frameCount = diff
             }
         }
         previousTime = time

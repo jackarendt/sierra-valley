@@ -10,7 +10,7 @@ import SpriteKit
 
 class RectangleNode: SKSpriteNode, LevelResourceProtocol {
     required init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
-        super.init(texture: nil, color: color, size: resourceSize)
+        super.init(texture: rectangleTexture, color: color, size: resourceSize)
         
         self.position = position
         
@@ -21,6 +21,9 @@ class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
         physicsBody?.collisionBitMask = 0
         name = SVSpriteName.Rectangle.rawValue
+        
+        blendMode = SKBlendMode.Replace
+        colorBlendFactor = 1.0
     }
     
     required init?(coder aDecoder: NSCoder) {

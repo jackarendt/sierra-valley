@@ -6,7 +6,7 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 public let applicationWillResignNotification = "applicationWillResign"
 public let applicationDidEnterForegroundNotification = "applicationDidEnterForeground"
@@ -15,7 +15,9 @@ public let applicationDidEnterBackgroundNotification = "applicationDidEnterBackg
 
 
 public let carsTextureAtlas = "Cars"
-public let levelTextureAtlas = "LevelResources"
+
+public let rectangleTexture = SKTexture(imageNamed: SVLevelResource.Rectangle.rawValue)
+public let spikeTexture = SKTexture(imageNamed: SVLevelResource.Spike.rawValue)
 
 
 public struct CollisionBitmaskCategory {
@@ -27,9 +29,11 @@ public struct CollisionBitmaskCategory {
 
 public enum SVSpriteName : String {
     case Car = "car"
-    case Spike = "Spike"
-    case Rectangle = "Rectangle"
-    case Triangle = "Triangle"
+    case Spike = "spike"
+    case Rectangle = "rectangle"
+    case Triangle = "triangle"
     case None = "none"
 }
+
+
 
