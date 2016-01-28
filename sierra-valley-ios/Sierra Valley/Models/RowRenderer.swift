@@ -8,11 +8,18 @@
 
 import SpriteKit
 
-func renderResourceRow(row : ResourceRow, cameraPosition : CGPoint, color : UIColor , screenSize : CGSize) -> [SKNode] {
+func renderResourceRow(row : ResourceRow, rowBuffer: RowBufferItem, cameraPosition : CGPoint, color : UIColor , screenSize : CGSize) -> [SKNode] {
     // TODO: actually do this
     let positionX = cameraPosition.x + screenSize.width/2 + 30
     let positionY = cameraPosition.y - screenSize.height/2 + 80
-    let rect = RectangleNode(position: CGPoint(x: positionX, y: positionY), color: color, resourceSize: CGSize(width: 30, height: 200))
-    let spike = SpikeNode(position: CGPoint(x: positionX, y: positionY + rect.size.height/2 + 13), color: color, resourceSize: CGSizeZero)
-    return [rect, spike]
+    let rect = rowBuffer.rectangle!
+    rect.position = CGPoint(x: positionX, y: positionY)
+    rect.color = color
+    rect.size = CGSize(width: 30, height: 200)
+    
+    let triangle = rowBuffer.triangle!
+    triangle.position = CGPoint(x: positionX, y: positionY + rect.size.height/2 + 1.825)
+    triangle.color = color
+    triangle.size = CGSize(width: 30, height: 3.65)
+    return [rect, triangle] // still BSed. needs to actually be fixed
 }

@@ -26,7 +26,7 @@ class CarNode: SKSpriteNode {
     
     init(car : SVCar) {
         self.car = car
-        let texture = SKTextureAtlas(named: carsTextureAtlas).textureNamed(car.rawValue)
+        let texture = SKTexture(imageNamed: car.rawValue)
         super.init(texture: texture, color: UIColor.whiteColor(), size: texture.size())
         
         name = SVSpriteName.Car.rawValue

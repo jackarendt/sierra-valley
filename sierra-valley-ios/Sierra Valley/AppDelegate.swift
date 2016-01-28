@@ -6,7 +6,7 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import UIKit
+import SpriteKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
         
-        let gameSettings = GameSettings()
-        print(gameSettings.actualWidth)
         return true
     }
 

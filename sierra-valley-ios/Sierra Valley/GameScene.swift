@@ -25,8 +25,7 @@ class GameScene: SVBaseScene {
         view.allowsTransparency = true
         backgroundColor = SKColor.clearColor()
         
-        gameManager = GameManager(delegate: self, gameBounds: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-    
+        gameManager = GameManager(delegate: self, gameBounds: CGRect(x: 0, y: 0, width: size.width, height: size.height), scene: self)
         
         let newCamera = SKCameraNode()
         newCamera.position = CGPoint(x: view.bounds.width/2, y: view.bounds.height/2)
@@ -36,6 +35,10 @@ class GameScene: SVBaseScene {
         newCamera.yScale = view.bounds.height / size.height
         camera = newCamera
         addChild(newCamera)
+        
+        blendMode = .Replace
+        
+        gameManager.startGame()
     }
     
     override func tapGestureRecognized(tap: UITapGestureRecognizer) {
@@ -58,10 +61,6 @@ class GameScene: SVBaseScene {
 extension GameScene : GameManagerDelegate {
     func placeResource(resource: SKNode) {
         addChild(resource)
-    }
-    
-    func removeResource(resource: SKNode) {
-        resource.removeFromParent()
     }
     
     func scoreChanged(newScore: Int) {

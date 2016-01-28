@@ -12,6 +12,15 @@ import Foundation
 public class Queue<T> {
     private var _queue = [T]()
     
+    public var count : Int {
+        get {
+            return _queue.count
+        }
+    }
+    
+    private var enqueueIndex = 0
+    private var dequeueIndex = 0
+    
     public init() {
         
     }

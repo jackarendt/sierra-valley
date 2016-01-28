@@ -14,10 +14,9 @@ public let applicationDidBecomeActiveNotification = "applicationDidBecomeActive"
 public let applicationDidEnterBackgroundNotification = "applicationDidEnterBackground"
 
 
-public let carsTextureAtlas = "Cars"
-
 public let rectangleTexture = SKTexture(imageNamed: SVLevelResource.Rectangle.rawValue)
-public let spikeTexture = SKTexture(imageNamed: SVLevelResource.Spike.rawValue)
+public let spikeTexture     = SKTexture(imageNamed: SVLevelResource.Spike.rawValue)
+public let triangleTexture  = SKTexture(imageNamed: SVLevelResource.Triangle.rawValue)
 
 
 public struct CollisionBitmaskCategory {
@@ -25,6 +24,7 @@ public struct CollisionBitmaskCategory {
     static let Floor     : UInt32 = 1 << 1
     static let Spike     : UInt32 = 1 << 2
     static let Rectangle : UInt32 = 1 << 3
+    static let Triangle  : UInt32 = 1 << 4
 }
 
 public enum SVSpriteName : String {

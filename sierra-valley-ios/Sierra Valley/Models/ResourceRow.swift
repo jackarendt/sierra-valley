@@ -13,6 +13,7 @@ public struct ResourceRow {
     /// The height of the rectangle (or the amount that the track should be off the ground at the max
     public var rectHeight : CGFloat = 0
     
+    
     /// The different types that make up that row.
     /// Maximum number are 3. [0] is the base (or first to be added), while the last idx is the top piece.
     ///
