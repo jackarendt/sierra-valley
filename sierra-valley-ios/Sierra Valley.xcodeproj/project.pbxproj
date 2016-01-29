@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C891C59C1AB003D3B26 /* Buffer.swift */; };
 		2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */; };
+		2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8D1C5B077A003D3B26 /* Level.swift */; };
 		2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */; };
 		2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */; };
 		2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		2E2F0C891C59C1AB003D3B26 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buffer.swift; path = Models/Buffer.swift; sourceTree = "<group>"; };
 		2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleNode.swift; path = Sprites/TriangleNode.swift; sourceTree = "<group>"; };
+		2E2F0C8D1C5B077A003D3B26 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Models/Level.swift; sourceTree = "<group>"; };
 		2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = "View Controllers/HelpViewController.swift"; sourceTree = "<group>"; };
 		2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBlinkAnimation.swift; path = "Custom Views/SVBlinkAnimation.swift"; sourceTree = "<group>"; };
 		2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapAnimationView.swift; path = "Custom Views/TapAnimationView.swift"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
 				2E8A88411C5887120009CF1C /* RowRenderer.swift */,
 				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
+				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				2EF818731C547336008ADAEF /* SVPauseBaseView.swift in Sources */,
 				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */,
+				2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,

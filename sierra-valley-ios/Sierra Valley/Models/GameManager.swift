@@ -12,9 +12,10 @@ import SpriteKit
 public protocol GameManagerDelegate : class {
     func placeResource(resource : SKNode)
     func scoreChanged(newScore : Int)
+    func gameEnded(finalScore : Int)
 }
 
-public class GameManager {
+final public class GameManager {
     
     weak public var delegate : GameManagerDelegate?
     
@@ -28,19 +29,24 @@ public class GameManager {
     
     weak public var camera : SKCameraNode?
     
+    private var previousTime : CFTimeInterval = 0
+    
+    private var frameCount = 0
+    
     public init(delegate : GameManagerDelegate, gameBounds : CGRect, scene : SKScene) {
         self.delegate = delegate
         self.bounds = gameBounds
         self.scene = scene
     }
     
-    private var previousTime : CFTimeInterval = 0
-    
-    private var frameCount = 0
-    
+    // temporary variables until things get set up
     private var rowBuffer : RowBuffer!
     
     private var readyToRender = false
+    
+    private var orange = true
+    
+    private var level : Level!
     
     /// Call this when the game starts to start placing sprites
     public func startGame() {
@@ -49,13 +55,25 @@ public class GameManager {
             buf.append(RowBufferItem())
         }
         rowBuffer = RowBuffer(items: buf)
+        
+        level = Level(settings: gameSettings, difficulty: 0)
+        
         readyToRender = true
         
         if let camera = camera {
             delegate?.placeResource(camera)
             let moveDifference = gameSettings.maxMountainHeight - gameSettings.minMountainHeight
-            let action = SKAction.moveTo(CGPoint(x: 20 * UIScreen.mainScreen().bounds.width + camera.position.x, y: camera.position.y + 20 * moveDifference), duration: 60.0)
-            camera.runAction(action)
+            print("expected: \(225 * 60) actual : \(level.levelWidth)")
+            print("expected: \(20 * moveDifference) actual: \(level.levelHeight)")
+            
+            
+            
+            let action = SKAction.moveTo(CGPoint(x: level.levelWidth + camera.position.x, y: camera.position.y + level.levelHeight), duration: level.levelTime)
+            let endAction = SKAction.runBlock(){ // junk code. please remove eventually
+                self.scene?.paused = true
+                self.delegate?.gameEnded(0)
+            }
+            camera.runAction(SKAction.sequence([action, endAction]))
         }
     }
     
@@ -74,7 +92,15 @@ public class GameManager {
                 let diff = frameCount - gameSettings.framesPerRow
                 cameraPosition.x += 3.75 * CGFloat(diff)
                 let buffer = rowBuffer.next()
-                let sprites = renderResourceRow(ResourceRow(row: [.Rectangle], baseHeight: 0), rowBuffer: buffer, cameraPosition: cameraPosition, color: UIColor.orangeColor(), direction: .Right, gameSettings: gameSettings)
+                
+                // FOR DEBUG USE ONLY
+                var color = SVColor.maroonColor()
+                if orange {
+                    color = SVColor.orangeColor()
+                }
+                orange = !orange
+                let row = level.rows.dequeue()
+                let sprites = renderResourceRow(row!, rowBuffer: buffer, cameraPosition: cameraPosition, color: color, direction: .Right, gameSettings: gameSettings)
                 for s in sprites {
                     if s.scene == nil {
                         delegate?.placeResource(s)

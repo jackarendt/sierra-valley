@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class TriangleNode: SKSpriteNode, LevelResourceProtocol {
+final class TriangleNode: SKSpriteNode, LevelResourceProtocol {
     required init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
         super.init(texture: triangleTexture, color: color, size: resourceSize)
         

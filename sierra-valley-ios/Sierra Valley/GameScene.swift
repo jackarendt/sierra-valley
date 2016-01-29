@@ -66,6 +66,10 @@ extension GameScene : GameManagerDelegate {
     func scoreChanged(newScore: Int) {
         
     }
+    
+    func gameEnded(finalScore: Int) {
+        gameDelegate?.gameDidEnd(0, newAvalanches: 0)
+    }
 }
 
 extension GameScene {

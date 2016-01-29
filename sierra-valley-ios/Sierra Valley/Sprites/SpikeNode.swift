@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
+final class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
     required init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
         super.init(texture: spikeTexture, color: color, size: spikeTexture.size())
         name = SVSpriteName.Spike.rawValue

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
         
-        print(GameSettings().maxMountainHeight)
+        print(GameSettings().numFrames)
         
         return true
     }

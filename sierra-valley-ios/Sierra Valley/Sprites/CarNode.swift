@@ -14,7 +14,7 @@ enum CarDirection {
 }
 
 /// The CarNode contains all of the business logic associated with driving the car
-class CarNode: SKSpriteNode {
+final class CarNode: SKSpriteNode {
     
     /// The current car that is being presented
     var car : SVCar?

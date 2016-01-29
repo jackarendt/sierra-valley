@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class RectangleNode: SKSpriteNode, LevelResourceProtocol {
+final class RectangleNode: SKSpriteNode, LevelResourceProtocol {
     required init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
         super.init(texture: rectangleTexture, color: color, size: resourceSize)
         

@@ -10,9 +10,9 @@ import SpriteKit
 
 /// Represents the logic behind a row.  Does not hold any reference types.
 public struct ResourceRow {
-    /// The height of the rectangle (or the amount that the track should be off the ground at the max
-    public var rectHeight : CGFloat = 0
     
+    /// height to drop the rectangle by, relative to its neighbors
+    public var depressedHeight : CGFloat = 0
     
     /// The different types that make up that row.
     /// Maximum number are 3. [0] is the base (or first to be added), while the last idx is the top piece.
@@ -20,13 +20,14 @@ public struct ResourceRow {
     /// Rectangle - 0, Triangle - 1, Spike - 2
     public var row = [UInt8]()
     
-    public init(row : [SVSpriteName], baseHeight : CGFloat) {
+    
+    public init(row : [SVSpriteName], depressedHeight : CGFloat) {
         var rows = [UInt8]()
         for sprite in row {
             rows.append(spriteNameToPiece(sprite))
         }
         self.row = rows
-        self.rectHeight = baseHeight
+        self.depressedHeight = depressedHeight
     }
     
     /// Converts the row into a bunch of sprite names so that it's easily rendered
