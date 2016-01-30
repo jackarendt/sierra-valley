@@ -86,11 +86,13 @@ extension GameScene {
 extension GameScene {
     /// Pauses the game
     func pause() {
+        gameManager.pause()
         view?.paused = true
     }
     
     /// Resumes the game
     func resume() {
+        gameManager.resume()
         view?.paused = false
     }
     

@@ -33,7 +33,7 @@ public struct GameSettings {
     public let vSyncTime : CFTimeInterval = 1.0/60.0
     
     /// The number of frames that it takes for a row to become fully visible on the screen
-    public var framesPerRow : Int = 8
+    public var framesPerRow : Int = 6
     
     /// The screen width
     public let screenWidth : CGFloat = UIScreen.mainScreen().bounds.width

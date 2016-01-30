@@ -78,7 +78,7 @@ final public class GameManager {
     }
     
     public func pause() {
-        
+        previousTime = 0
     }
     
     public func resume() {

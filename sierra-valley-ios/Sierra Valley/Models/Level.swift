@@ -34,28 +34,11 @@ public final class Level {
     
     let rows = Queue<ResourceRow>()
     
+    var avalanche = false
+    
     init(settings : GameSettings, difficulty : Int) {
         self.gameSettings = settings
         self.difficulty = difficulty
-        computeLevel(difficulty, avalanche: false, queue: rows)
-    }
-}
-
-
-func computeLevel(difficulty : Int, avalanche : Bool, queue : Queue<ResourceRow>) {
-    for _ in 0.stride(through: 200, by: 1) { // TODO: don't bs this
-        var vals : [SVSpriteName] = [.Rectangle]
-        var depressedHeight : CGFloat = 0
-        if arc4random() % 5 == 0 {
-            vals.append(.Spike)
-            if arc4random() % 5 == 0 {
-                depressedHeight = 80
-            }
-        } else {
-            vals.append(.Triangle)
-        }
-        let row = ResourceRow(row: vals, depressedHeight: depressedHeight)
-        
-        queue.enqueue(row)
+        computeLevel(difficulty, queue: rows)
     }
 }
