@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SpriteKit
 
 extension UIColor {
     
@@ -23,39 +22,44 @@ class SVColor {
     // MARK: - Background Colors
     
     /// The Dark Blue background color - #0f3057
-    class func darkBlueBackgroundColor() -> SKColor {
-        return SKColor(r: 15, g: 48, b: 87)
+    class func darkBlueBackgroundColor() -> UIColor {
+        return UIColor(r: 15, g: 48, b: 87)
     }
     
     /// The Light Blue background color - #84ccd1
-    class func lightBlueBackgroundColor() -> SKColor {
-        return SKColor(r: 132, g: 204, b: 209)
+    class func lightBlueBackgroundColor() -> UIColor {
+        return UIColor(r: 132, g: 204, b: 209)
     }
     
     // MARK: - Mountain Colors
     
     /// The darkest color of the mountains - #721544
-    class func darkMaroonColor() -> SKColor {
-        return SKColor(r: 114, g: 21, b: 68)
+    class func darkMaroonColor() -> UIColor {
+        return UIColor(r: 114, g: 21, b: 68)
     }
     
     /// The second darkest color of the mountains - #962543
-    class func maroonColor() -> SKColor {
-        return SKColor(r: 150, g: 37, b: 67)
+    class func maroonColor() -> UIColor {
+        return UIColor(r: 150, g: 37, b: 67)
     }
     
     /// The off-red color of the mountains #b43c45
-    class func redColor() -> SKColor {
-        return SKColor(r: 180, g: 60, b: 69)
+    class func redColor() -> UIColor {
+        return UIColor(r: 180, g: 60, b: 69)
     }
     
     /// The sunrise orange color of the mountains (second lightest) - #ce4847
-    class func sunriseOrangeColor() -> SKColor {
-        return SKColor(r: 206, g: 72, b: 71)
+    class func sunriseOrangeColor() -> UIColor {
+        return UIColor(r: 206, g: 72, b: 71)
     }
     
     /// The orange color of the mountains (lightest) - #f67a47
-    class func orangeColor() -> SKColor {
-        return SKColor(r: 246, g: 122, b: 71)
+    class func orangeColor() -> UIColor {
+        return UIColor(r: 246, g: 122, b: 71)
+    }
+    
+    /// The light color that is used throughout - #ffffff
+    class func lightColor() -> UIColor {
+        return UIColor.whiteColor()
     }
 }

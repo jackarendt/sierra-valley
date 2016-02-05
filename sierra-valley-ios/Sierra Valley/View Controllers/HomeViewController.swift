@@ -26,7 +26,7 @@ class HomeViewController: SVBaseViewController {
         super.viewDidLoad()
         
         logoLabel.text = "SIERRA VALLEY"
-        logoLabel.textColor = UIColor.whiteColor()
+        logoLabel.textColor = SKColor.whiteColor()
         logoLabel.textAlignment = .Center
         logoLabel.font = UIFont.svFont(72)
         logoLabel.minimumScaleFactor = 0.7
@@ -45,7 +45,7 @@ class HomeViewController: SVBaseViewController {
         
 
         tapToPlayLabel.text = "TAP TO PLAY"
-        tapToPlayLabel.textColor = UIColor.whiteColor()
+        tapToPlayLabel.textColor = SVColor.lightColor()
         tapToPlayLabel.textAlignment = .Center
         tapToPlayLabel.font = UIFont.svHeavyFont(30)
         tapToPlayLabel.minimumScaleFactor = 0.7
@@ -64,8 +64,8 @@ class HomeViewController: SVBaseViewController {
         
         settingsButton.frame = CGRect(x: view.bounds.width - 150, y: view.bounds.height - 50, width: 150, height: 50)
         settingsButton.titleLabel?.font = UIFont.svHeavyFont(20)
-        settingsButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        settingsButton.setTitleColor(UIColor(white: 1, alpha: 0.7), forState: .Highlighted)
+        settingsButton.setTitleColor(SVColor.lightColor(), forState: .Normal)
+        settingsButton.setTitleColor(SVColor.lightColor().colorWithAlphaComponent(0.7), forState: .Highlighted)
         settingsButton.setTitle("SETTINGS", forState: .Normal)
         settingsButton.alpha = 0
         settingsButton.addTarget(self, action: "settingsButtonTapped", forControlEvents: .TouchUpInside)
@@ -78,8 +78,8 @@ class HomeViewController: SVBaseViewController {
         
         chooseCarButton.frame = CGRect(x: 0, y: view.bounds.height - 50, width: 150, height: 50)
         chooseCarButton.titleLabel?.font = UIFont.svHeavyFont(20)
-        chooseCarButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        chooseCarButton.setTitleColor(UIColor(white: 1, alpha: 0.7), forState: .Highlighted)
+        chooseCarButton.setTitleColor(SVColor.lightColor(), forState: .Normal)
+        chooseCarButton.setTitleColor(SVColor.lightColor().colorWithAlphaComponent(0.7), forState: .Highlighted)
         chooseCarButton.setTitle("CHANGE CAR", forState: .Normal)
         chooseCarButton.alpha = 0
         chooseCarButton.addTarget(self, action: "chooseCarButtonTapped", forControlEvents: .TouchUpInside)

@@ -17,35 +17,24 @@ public struct ResourceRow {
     /// The different types that make up that row.
     /// Maximum number are 3. [0] is the base (or first to be added), while the last idx is the top piece.
     ///
-    /// Rectangle - 0, Triangle - 1, Spike - 2
+    /// Rectangle - 0, Triangle - 1, Spike - 2, blank - 3
     public var row = [UInt8]()
     
-    
+    /// Initializes a row with a set of rows to be used and a height to drop the rectangle
+    /// - Parameter row: The SVSpriteName representation of what a row will look like once it's rendered
+    /// - Parameter depressedHeight: The height to drop a rectangle if there is a valley in the track
     public init(row : [SVSpriteName], depressedHeight : CGFloat) {
         var rows = [UInt8]()
+        
+        func spriteNameToPiece(name : SVSpriteName) -> UInt8 {
+            let pieces : [SVSpriteName : UInt8] = [.Rectangle : 0, .Triangle : 1, .Spike : 2, .None : 3]
+            return pieces[name]!
+        }
+
         for sprite in row {
             rows.append(spriteNameToPiece(sprite))
         }
         self.row = rows
         self.depressedHeight = depressedHeight
-    }
-    
-    /// Converts the row into a bunch of sprite names so that it's easily rendered
-    public func rowPieces() -> Queue<SVSpriteName> {
-        let queue = Queue<SVSpriteName>()
-        for piece in row {
-            queue.enqueue(pieceToSpriteName(piece))
-        }
-        return queue
-    }
-    
-    private func pieceToSpriteName(piece : UInt8) -> SVSpriteName {
-        let sprites : [SVSpriteName] =  [.Rectangle, .Triangle, .Spike]
-        return sprites[Int(piece)]
-    }
-    
-    private func spriteNameToPiece(name : SVSpriteName) -> UInt8 {
-        let pieces : [SVSpriteName : UInt8] = [.Rectangle : 0, .Triangle : 1, .Spike : 2]
-        return pieces[name]!
     }
 }

@@ -8,8 +8,11 @@
 
 import SpriteKit
 
-final class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
-    required init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
+/// The triangle node is subclass of SKSpriteNode that renders a spike on the level.  It is the main objective for the
+/// car to avoid.  The SpikeNode also adheres to the LevelResourceProtocol which allows it to be used interchangably
+/// with other level resource nodes.
+final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
+    required public init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
         super.init(texture: spikeTexture, color: color, size: spikeTexture.size())
         name = SVSpriteName.Spike.rawValue
         
@@ -32,7 +35,7 @@ final class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         blendMode = SKBlendMode.Replace
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }

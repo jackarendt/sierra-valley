@@ -11,7 +11,7 @@ import UIKit
 /// UIButton subclass with a border around the edges
 public class SVBorderedButton: UIButton {
     /// The color of the button's border and title/image
-    public var borderColor : UIColor = UIColor.whiteColor() {
+    public var borderColor : UIColor = SVColor.lightColor() {
         didSet {
             layer.borderColor = borderColor.CGColor
             setTitleColor(borderColor, forState: .Normal)

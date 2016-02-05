@@ -8,7 +8,9 @@
 
 import UIKit
 
-
+/// Generates a level with a given difficulty and a queue to load it in to
+/// - Parameter difficulty: The difficulty of the level
+/// - Parameter queue: The queue to load the level in to.
 func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
     while queue.count < 200 {
         var rows : [ResourceRow]!
@@ -22,14 +24,29 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
         }
     }
     
-    for row in FlatTrail.generatePath(0, suggestedLength: 5) {
+    // adds flat at the end so the user can go up to the top level
+    for row in FlatTrail.generatePath(0, suggestedLength: 8){
+        queue.enqueue(row)
+    }
+    
+    // add extra space to end so the camera pans
+    for row in EmptyRowTrail.generatePath(0, suggestedLength: 5) {
         queue.enqueue(row)
     }
 }
 
+/// The Level Generation Protocol eases making different level pieces and makes them interchangable
 protocol LevelGenerationProtocol {
+    /// The easiest the level can get
     static var minDifficulty : Int { get set }
+    
+    /// The hardest the level can get
     static var maxDifficulty : Int { get set }
+    
+    /// Generates the path for a given difficulty and suggested length
+    /// - Parameter difficulty: How difficult the level should be [0-100]
+    /// - Paramerter suggestedLength: How long the path should be (will not always be honored)
+    /// - Returns: An array of resource rows to be enqueued
     static func generatePath(difficulty : Int, suggestedLength: Int) -> [ResourceRow]
 }
 
@@ -136,6 +153,20 @@ struct SpikePitTrail : LevelGenerationProtocol {
         var rows = [ResourceRow]()
         for i in 0.stride(to: suggestedLength, by: 1) {
             rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: CGFloat(30 + i * 4)))
+        }
+        return rows
+    }
+}
+
+struct EmptyRowTrail : LevelGenerationProtocol {
+    
+    static var minDifficulty = 0
+    static var maxDifficulty = 0
+    
+    static func generatePath(difficulty: Int, suggestedLength: Int) -> [ResourceRow] {
+        var rows = [ResourceRow]()
+        for _ in 0.stride(to: suggestedLength, by: 1) {
+            rows.append(ResourceRow(row: [.None], depressedHeight: 0))
         }
         return rows
     }

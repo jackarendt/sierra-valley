@@ -6,7 +6,7 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import SpriteKit
+import UIKit
 
 /// A bunch of important information regarding the scene's info
 public struct GameSettings {

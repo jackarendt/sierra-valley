@@ -8,8 +8,11 @@
 
 import SpriteKit
 
-final class RectangleNode: SKSpriteNode, LevelResourceProtocol {
-    required init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
+/// The rectangle node is subclass of SKSpriteNode that renders a rectangle on the level.  It is the main building block
+/// to build a row on screen.  The RectangleNode also adheres to the LevelResourceProtocol which allows it to be used
+///interchangably with other level resource nodes.
+final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
+    required public init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
         super.init(texture: rectangleTexture, color: color, size: resourceSize)
         
         self.position = position
@@ -26,7 +29,7 @@ final class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         colorBlendFactor = 1.0
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

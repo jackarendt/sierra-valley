@@ -6,92 +6,100 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import SpriteKit
+import UIKit
 
-
+/// The GameManagerDelegate is a collection of methods used to execute critical game functionality
+/// such as rendering on screen objects, moving the camera, ending the game, and updating the score.
 public protocol GameManagerDelegate : class {
-    func placeResource(resource : SKNode)
+    /// Tells the delegate to render a given row with a color
+    /// - Parameter row: The specific row encoding for rendering.  Includes what pieces to use, and at what height
+    /// - Parameter color: The color of the row to be rendered
+    /// - Parameter direction: The direction of the triangle.
+    /// - Parameter position: The position where the row should be rendered.
+    func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint)
+    
+    /// Tells the delegate to enqueue a camera action for the specific values
+    /// - Parameter width: The length that the camera will pan across the x-axis
+    /// - Parameter height: The height that the camera will pan across the y-axis
+    /// - Parameter time: The time it takes to complete that action
+    func levelDequeuedWithCameraAction(width : CGFloat, height : CGFloat, time : CFTimeInterval)
+    
+    /// Called when the score changed
+    /// - Parameter newScore: The updated score of the game
     func scoreChanged(newScore : Int)
+    
+    /// Called when the game has ended.
+    // TODO: revise this function
     func gameEnded(finalScore : Int)
 }
 
+/// The GameManager manages level generation, and telling the delegate what to render, where it should placed and when. 
+/// It also handles updating the score, and determining how hard a level should be.
 final public class GameManager {
     
     weak public var delegate : GameManagerDelegate?
     
-    public var bounds : CGRect
-    
+    /// The score of the game
     public var score = 0
     
-    public var gameSettings = GameSettings()
+    /// Game settings, specifically different things about the game such as frames/row, height difference between rows, amongst
+    /// many other things
+    public let gameSettings = GameSettings()
     
-    weak public var scene : SKScene?
-    
-    weak public var camera : SKCameraNode?
-    
+    /// The previous time the gameloop was updated. (used for counting frames)
     private var previousTime : CFTimeInterval = 0
     
+    /// Number of frames that have passed since the last row was rendered on screen
     private var frameCount = 0
     
-    public init(delegate : GameManagerDelegate, gameBounds : CGRect, scene : SKScene) {
-        self.delegate = delegate
-        self.bounds = gameBounds
-        self.scene = scene
-    }
-    
-    // temporary variables until things get set up
-    private var rowBuffer : RowBuffer!
-    
+    /// Boolean denoting whether a scene is ready to be rendered.  This helps delay lag
     private var readyToRender = false
     
-    private var orange = true
+    /// Initializes the game manager.  Using the game manager with the delegate is required.
+    /// If the delegate was not used, this would basically be a useless class now wouldn't it?
+    public init(delegate : GameManagerDelegate) {
+        self.delegate = delegate // set the delegate
+    }
     
+    // bullshit temp variables until i get setup correctly
+    private var orange = true
     private var level : Level!
     
     /// Call this when the game starts to start placing sprites
     public func startGame() {
-        var buf = [RowBufferItem]()
-        for _ in 0.stride(through: Int(gameSettings.numFrames), by: 1){
-            buf.append(RowBufferItem())
-        }
-        rowBuffer = RowBuffer(items: buf)
-        
         level = Level(settings: gameSettings, difficulty: 0)
-        
+        delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
         readyToRender = true
-        
-        if let camera = camera {
-            delegate?.placeResource(camera)
-            let moveDifference = gameSettings.maxMountainHeight - gameSettings.minMountainHeight
-            print("expected: \(225 * 60) actual : \(level.levelWidth)")
-            print("expected: \(20 * moveDifference) actual: \(level.levelHeight)")
-            
-            
-            
-            let action = SKAction.moveTo(CGPoint(x: level.levelWidth + camera.position.x, y: camera.position.y + level.levelHeight), duration: level.levelTime)
-            let endAction = SKAction.runBlock(){ // junk code. please remove eventually
-                self.scene?.paused = true
-                self.delegate?.gameEnded(0)
-            }
-            camera.runAction(SKAction.sequence([action, endAction]))
-        }
     }
     
+    /// Call this to temporarily pause the game loop from updating.
     public func pause() {
         previousTime = 0
+//        readyToRender = false
     }
     
+    /// Call this to resume the game after pausing
     public func resume() {
-        
+//        readyToRender = true
     }
     
+    
+    /// Updates the game state, and determines if new pieces should be rendered, or if a level should be dequeued, etc.
+    /// - Parameter time: The time of the game loop
+    /// - Parameter cameraPosition: the position of the camera at that specific time
     public func update(time : CFTimeInterval, var cameraPosition : CGPoint) {
-        if previousTime != 0 {
-            frameCount += calcPassedFrames(time)
+        if previousTime != 0 { // if this is the first loop, just ignore it
+            frameCount += calcPassedFrames(time) // add the new frames to the game
+            
+            // if the game is ready to render, and sufficient frames have passed, create a new row
             if frameCount >= gameSettings.framesPerRow && readyToRender {
+                
+                // get the difference of the frame count and suggested frames/row
                 let diff = frameCount - gameSettings.framesPerRow
-                cameraPosition.x += 3.75 * CGFloat(diff)
-                let buffer = rowBuffer.next()
+                frameCount = diff // assign it to the frame count for smooth operations
+                
+                // move the camera position accordingly so that the pieces line up correctly
+                cameraPosition.x += (gameSettings.rowWidth/CGFloat(gameSettings.framesPerRow)) * CGFloat(diff)
                 
                 // FOR DEBUG USE ONLY
                 var color = SVColor.maroonColor()
@@ -99,22 +107,22 @@ final public class GameManager {
                     color = SVColor.orangeColor()
                 }
                 orange = !orange
-                let row = level.rows.dequeue()
-                let sprites = renderResourceRow(row!, rowBuffer: buffer, cameraPosition: cameraPosition, color: color, direction: .Right, gameSettings: gameSettings)
-                for s in sprites {
-                    if s.scene == nil {
-                        delegate?.placeResource(s)
-                    }
+                
+                // dequeue a new row, and render it
+                if let row = level.rows.dequeue() {
+                    delegate?.renderRow(row, color: color, direction: .Right, position: cameraPosition)
+                } else { // if false, do some bullshit temporarily.  TODO: actually move to new level
+                    delegate?.levelDequeuedWithCameraAction(-900, height: 120, time: 3)
                 }
-                frameCount = diff
             }
         }
         previousTime = time
     }
     
     /// Calculates the number of frames that have passed since the last update
+    /// - Parameter time: The current time of the application
     private func calcPassedFrames(time : CFTimeInterval) -> Int {
-        let diff = time - previousTime
-        return Int(round(60 * diff))
+        let diff = time - previousTime // get time difference
+        return Int(round(60 * diff)) // get the approximate number of frames that have passed
     }
 }

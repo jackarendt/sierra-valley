@@ -12,7 +12,7 @@ import UIKit
 class TapAnimationView: UIView {
     
     /// The tint color of the tap view
-    var fillColor = UIColor.whiteColor() {
+    var fillColor = SVColor.lightColor() {
         didSet {
             outerCircle.strokeColor = fillColor.CGColor
             innerCircle.fillColor = fillColor.CGColor
@@ -42,7 +42,7 @@ class TapAnimationView: UIView {
         
         let innerCirclePath = UIBezierPath(ovalInRect: CGRect(x: 3*bounds.width/10, y: 3*bounds.height/10, width: 2*bounds.width/5, height: 2*bounds.height/5))
         innerCircle.path = innerCirclePath.CGPath
-        innerCircle.fillColor = UIColor.whiteColor().CGColor
+        innerCircle.fillColor = SVColor.lightColor().CGColor
         innerCircle.fillMode = kCAFillModeForwards
         layer.addSublayer(innerCircle)
     }

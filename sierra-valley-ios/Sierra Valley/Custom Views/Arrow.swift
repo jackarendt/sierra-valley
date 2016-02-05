@@ -19,7 +19,7 @@ class Arrow: UIView {
     
     let direction : ArrowDirection
     
-    var fillColor = UIColor.whiteColor() {
+    var fillColor = SVColor.lightColor() {
         didSet {
             base.strokeColor = fillColor.CGColor
             topLine.strokeColor = fillColor.CGColor

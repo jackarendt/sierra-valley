@@ -6,37 +6,49 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import SpriteKit
+import UIKit
 
+/// The level class is an encoded version of what the user will drive over.  It uses a unique formula
+/// to create a level based on a difficulty level
 public final class Level {
     
-    var gameSettings : GameSettings
+    /// Contains important settings about the current game such as how high the camera will have to pan, etc.
+    public var gameSettings : GameSettings
     
-    var levelWidth : CGFloat {
+    /// The width of a level
+    public var levelWidth : CGFloat {
         get {
             return CGFloat(rows.count) * gameSettings.rowWidth
         }
     }
     
-    var difficulty = 0
-    
-    var levelTime : CFTimeInterval {
+    /// The amount of time it will take to move across the level
+    public var levelTime : CFTimeInterval {
         get {
             return CFTimeInterval(rows.count) * gameSettings.rowRefreshRate
         }
     }
     
-    var levelHeight : CGFloat {
+    /// The height that the car will climb across the level
+    public var levelHeight : CGFloat {
         get {
             return levelWidth * tan(gameSettings.angle)
         }
     }
     
-    let rows = Queue<ResourceRow>()
+    /// The rows that are used to create the level in the form of a queue
+    public let rows = Queue<ResourceRow>()
     
-    var avalanche = false
+    /// The difficulty of the level
+    public var difficulty = 0
     
-    init(settings : GameSettings, difficulty : Int) {
+    /// Whether the level is an avalanche or not
+    public var avalanche = false
+    
+    /// Initializes a level with the settings object and a difficulty
+    /// - Parameter settings: The game settings for proper computation
+    /// - Parameter difficulty: The difficulty of a level between 0 and 100
+    public init(settings : GameSettings, difficulty : Int) {
         self.gameSettings = settings
         self.difficulty = difficulty
         computeLevel(difficulty, queue: rows)

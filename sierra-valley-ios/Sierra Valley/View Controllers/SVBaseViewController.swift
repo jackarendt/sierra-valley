@@ -46,7 +46,7 @@ public class SVBaseViewController: UIViewController {
         navigationTitleLabel.frame = CGRect(x: 70, y: 15, width: view.bounds.width - 140, height: 40)
         navigationTitleLabel.font = UIFont.svFont(40)
         navigationTitleLabel.textAlignment = .Center
-        navigationTitleLabel.textColor = UIColor.whiteColor()
+        navigationTitleLabel.textColor = SVColor.lightColor()
         contentView.addSubview(navigationTitleLabel)
         
         // create left navigation item

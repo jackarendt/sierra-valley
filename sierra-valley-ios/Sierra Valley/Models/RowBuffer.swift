@@ -9,22 +9,22 @@
 import SpriteKit
 
 /// Set typealias of row buffer to that of a queue of row buffer items
-typealias RowBuffer = Buffer<RowBufferItem>
+public typealias RowBuffer = Buffer<RowBufferItem>
 
 
 /// Reperesents an item in the buffer, contains memory for the rectangle, triangle, and spike
-final class RowBufferItem {
-    init() {
+final public class RowBufferItem {
+    public init() {
         self.rectangle = RectangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
         self.triangle = TriangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
         self.spike = SpikeNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
     }
     /// The Rectangle node.
-    var rectangle : RectangleNode?
+    public var rectangle : RectangleNode?
     
     /// The Triangle node.  inits the triangle with the slope on the right side
-    var triangle : TriangleNode?
+    public var triangle : TriangleNode?
     
     /// The spike node
-    var spike : SpikeNode?
+    public var spike : SpikeNode?
 }

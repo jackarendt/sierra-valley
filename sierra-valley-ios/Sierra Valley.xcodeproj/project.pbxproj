@@ -11,6 +11,8 @@
 		2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */; };
 		2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8D1C5B077A003D3B26 /* Level.swift */; };
 		2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37562E1C5C616400DA7715 /* LevelGenerator.swift */; };
+		2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3756301C5D88E000DA7715 /* Renderer.swift */; };
+		2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */; };
 		2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */; };
 		2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */; };
 		2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */; };
@@ -19,7 +21,6 @@
 		2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CA1C534FEE000508EB /* HelpCarScene.swift */; };
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
-		2E8A88421C5887120009CF1C /* RowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88411C5887120009CF1C /* RowRenderer.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */; };
@@ -74,6 +75,8 @@
 		2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleNode.swift; path = Sprites/TriangleNode.swift; sourceTree = "<group>"; };
 		2E2F0C8D1C5B077A003D3B26 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Models/Level.swift; sourceTree = "<group>"; };
 		2E37562E1C5C616400DA7715 /* LevelGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelGenerator.swift; path = Models/LevelGenerator.swift; sourceTree = "<group>"; };
+		2E3756301C5D88E000DA7715 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Models/Renderer.swift; sourceTree = "<group>"; };
+		2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBufferPool.swift; path = Models/RowBufferPool.swift; sourceTree = "<group>"; };
 		2E6A92121C531D8A00CF8E65 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = "View Controllers/HelpViewController.swift"; sourceTree = "<group>"; };
 		2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBlinkAnimation.swift; path = "Custom Views/SVBlinkAnimation.swift"; sourceTree = "<group>"; };
 		2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapAnimationView.swift; path = "Custom Views/TapAnimationView.swift"; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		2E8582CA1C534FEE000508EB /* HelpCarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpCarScene.swift; path = "Game Scenes/HelpCarScene.swift"; sourceTree = "<group>"; };
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
-		2E8A88411C5887120009CF1C /* RowRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowRenderer.swift; path = Models/RowRenderer.swift; sourceTree = "<group>"; };
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -281,8 +283,9 @@
 				2EF818851C572AE0008ADAEF /* Queue.swift */,
 				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
 				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
-				2E8A88411C5887120009CF1C /* RowRenderer.swift */,
+				2E3756301C5D88E000DA7715 /* Renderer.swift */,
 				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
+				2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */,
 				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
 				2E37562E1C5C616400DA7715 /* LevelGenerator.swift */,
 			);
@@ -447,6 +450,7 @@
 				2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */,
 				2EF8187E1C559719008ADAEF /* GameManager.swift in Sources */,
 				2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */,
+				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
 				2EF818711C544A93008ADAEF /* PauseView.swift in Sources */,
@@ -474,7 +478,7 @@
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
 				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
 				2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */,
-				2E8A88421C5887120009CF1C /* RowRenderer.swift in Sources */,
+				2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
 				2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */,
@@ -622,6 +626,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -639,6 +644,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

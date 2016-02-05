@@ -28,7 +28,7 @@ class SettingsViewController: SVBaseViewController {
         let _musicLabel = UILabel(frame: CGRect(x: 20, y: contentView.frame.height/4 + 20, width: contentView.frame.width/2 - 80, height: 35))
         _musicLabel.text = "MUSIC"
         _musicLabel.font = UIFont.svHeavyFont(30)
-        _musicLabel.textColor = UIColor.whiteColor()
+        _musicLabel.textColor = SVColor.lightColor()
         contentView.addSubview(_musicLabel)
         
         musicButton.frame = CGRect(x: contentView.frame.width/2 - 75, y: _musicLabel.frame.origin.y, width: 55, height: 35)
@@ -40,7 +40,7 @@ class SettingsViewController: SVBaseViewController {
         let _soundLabel = UILabel(frame: CGRect(x: contentView.bounds.width/2 + 20, y: contentView.frame.height/4 + 20, width: contentView.frame.width/2 - 80, height: 35))
         _soundLabel.text = "SOUND"
         _soundLabel.font = UIFont.svHeavyFont(30)
-        _soundLabel.textColor = UIColor.whiteColor()
+        _soundLabel.textColor = SVColor.lightColor()
         contentView.addSubview(_soundLabel)
         
         soundButton.frame = CGRect(x: contentView.frame.width - 75, y: _soundLabel.frame.origin.y, width: 55, height: 35)
