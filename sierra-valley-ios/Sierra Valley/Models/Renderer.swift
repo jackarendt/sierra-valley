@@ -74,7 +74,8 @@ final class Renderer {
         if direction == .Left {
             offset *= -1
         }
-        let positionX = cameraPosition.x + offset // get the far left edge of the screen
+        // by rounding to the nearest whole number reduces the chances of getting a blank line
+        let positionX = round(cameraPosition.x + offset) // get the far left edge of the screen
         let positionY = cameraPosition.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - 100 - row.depressedHeight
         
         var usedResources = [SKNode]()
@@ -98,7 +99,11 @@ final class Renderer {
             triangle.position = CGPoint(x: positionX, y: positionY + rect.size.height/2 + gameSettings.triangleHeight/2)
             triangle.color = color
             triangle.size = CGSize(width: 30, height: gameSettings.triangleHeight)
-            // TODO: add scale for the triangle
+            if triangle.xScale < 0 && direction == .Right {
+                triangle.xScale *= -1
+            } else if triangle.xScale > 0 && direction == .Left {
+                triangle.xScale *= -1
+            }
             usedResources.append(triangle)
         }
         
@@ -124,6 +129,7 @@ final class Renderer {
     /// Dequeues a camera action and then applies it to the camera
     private func dequeueAndRunCameraAction() {
         if let action = cameraActionQueue.dequeue(), camera = camera {
+            bufferPool.incrementPool()
             camera.runAction(action)
         }
     }

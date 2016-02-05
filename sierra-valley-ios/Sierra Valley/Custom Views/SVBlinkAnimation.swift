@@ -16,6 +16,9 @@ class SVBlinkAnimation {
     /// The duration of a full blink (visible -> invisible -> visible)
     var blinkDuration : NSTimeInterval = 0.0
     
+    /// Initializes a blink animation with a view to animate and a time interval
+    /// - Parameter view: The view to blink
+    /// - Parameter duration: The period of a blink
     init(view: UIView, duration : NSTimeInterval) {
         blinkView = view
         blinkDuration = duration
@@ -25,7 +28,7 @@ class SVBlinkAnimation {
         
     }
     
-    /// Blinks the
+    /// Blinks the view over a given duration
     func blink() {
         guard let _blinkView = blinkView else {
             print("ERROR: Cannot blink. No View")
@@ -42,6 +45,7 @@ class SVBlinkAnimation {
     }
     
     /// Removes the blink animation and returns the desired state of visible or invisible
+    /// - Parameter visible: Boolean denoting whether the view should be visible or invisible when the blink is finished
     func stopBlink(visible : Bool) {
         if let _blinkView = blinkView {
             _blinkView.layer.removeAllAnimations() // remove animation

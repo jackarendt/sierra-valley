@@ -55,19 +55,24 @@ final public class GameManager {
     /// Boolean denoting whether a scene is ready to be rendered.  This helps delay lag
     private var readyToRender = false
     
+    private var levelQueue = LevelQueue()
+    
+    private var level : Level!
+    
+    private var currentDirection : CarDirection = .Right
+    
     /// Initializes the game manager.  Using the game manager with the delegate is required.
     /// If the delegate was not used, this would basically be a useless class now wouldn't it?
     public init(delegate : GameManagerDelegate) {
         self.delegate = delegate // set the delegate
+        self.level = levelQueue.dequeue()
     }
     
     // bullshit temp variables until i get setup correctly
-    private var orange = true
-    private var level : Level!
-    
+    private var color = SVColor.sunriseOrangeColor()
+
     /// Call this when the game starts to start placing sprites
     public func startGame() {
-        level = Level(settings: gameSettings, difficulty: 0)
         delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
         readyToRender = true
     }
@@ -101,22 +106,35 @@ final public class GameManager {
                 // move the camera position accordingly so that the pieces line up correctly
                 cameraPosition.x += (gameSettings.rowWidth/CGFloat(gameSettings.framesPerRow)) * CGFloat(diff)
                 
-                // FOR DEBUG USE ONLY
-                var color = SVColor.maroonColor()
-                if orange {
-                    color = SVColor.orangeColor()
+                if level.rows.isEmpty() {
+                    dequeueNewLevel()
                 }
-                orange = !orange
                 
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
-                    delegate?.renderRow(row, color: color, direction: .Right, position: cameraPosition)
-                } else { // if false, do some bullshit temporarily.  TODO: actually move to new level
-                    delegate?.levelDequeuedWithCameraAction(-900, height: 120, time: 3)
+                    delegate?.renderRow(row, color: color, direction: currentDirection, position: cameraPosition)
                 }
             }
         }
         previousTime = time
+    }
+    
+    private func dequeueNewLevel() {
+        level = levelQueue.dequeue()
+        var levelWidth = level.levelWidth
+        if currentDirection == .Right {
+            currentDirection = .Left
+            levelWidth *= -1
+        } else {
+            currentDirection = .Right
+        }
+        delegate?.levelDequeuedWithCameraAction(levelWidth, height: level.levelHeight, time: level.levelTime)
+        
+        if color == SVColor.sunriseOrangeColor() {
+            color = SVColor.maroonColor()
+        } else {
+            color = SVColor.sunriseOrangeColor()
+        }
     }
     
     /// Calculates the number of frames that have passed since the last update

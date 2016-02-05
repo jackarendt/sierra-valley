@@ -9,7 +9,7 @@
 import Foundation
 
 /// Generic queue where the first index is the front of the queue
-public final class Queue<T> {
+public class Queue<T> {
     /// contains the actual queue
     private var _queue : [T]
     

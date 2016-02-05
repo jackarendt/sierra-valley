@@ -89,7 +89,6 @@ struct IslandTrail : LevelGenerationProtocol {
 
         let islandFraction : Double = Double(difficulty - minDifficulty)/Double(maxDifficulty)
         let islandLength = Int(6 * 1 - islandFraction)
-        print(islandLength)
         var moatLength = 1
         if difficulty > maxDifficulty - diff/2 {
             moatLength = 2
