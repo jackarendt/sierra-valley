@@ -25,14 +25,19 @@ final class Renderer {
             oldValue?.removeFromParent()
             if let cam = camera {
                 scene?.addChild(cam)
+                rowXLocation = round(cam.position.x) + gameSettings.actualWidth/2
             }
         }
     }
     
+    /// The information of the game for renders
     private let gameSettings = GameSettings()
     
     /// The camera queue is used for when a level is generated and that action needs to be stored
     private let cameraActionQueue = Queue<SKAction>()
+    
+    /// The location where the row is rendered
+    private var rowXLocation : CGFloat = 0
     
     /// Initializes the renderer with the current scene, and allocates the buffer pool
     /// - Parameter scene: The scene that is being presented
@@ -67,17 +72,27 @@ final class Renderer {
     /// - Parameter direction: The direction that the car will travel
     /// - Parameter cameraPosition: The center of the camear in the scene
     func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, cameraPosition : CGPoint){
+        // get the next item in the foreground buffer
         let buffer = bufferPool.nextForegroundItem()
         
-        var offset = gameSettings.actualWidth/2
-        
+        // If moving to the left continually move slightly to the left
         if direction == .Left {
-            offset *= -1
+            rowXLocation -= gameSettings.rowWidth
+        } else { // if moving to the right, continually move slightly to the right
+            rowXLocation += gameSettings.rowWidth
         }
-        // by rounding to the nearest whole number reduces the chances of getting a blank line
-        let positionX = round(cameraPosition.x + offset) // get the far left edge of the screen
+        
+        // if direction changes, but haven't adjusted yet, reset where render location
+        if direction == .Left && cameraPosition.x < rowXLocation {
+            rowXLocation = round(cameraPosition.x) - gameSettings.actualWidth/2
+        } else if direction == .Right && cameraPosition.x > rowXLocation {
+            rowXLocation = round(cameraPosition.x) + gameSettings.actualWidth/2
+        }
+        
+        
         let positionY = cameraPosition.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - 100 - row.depressedHeight
         
+        // resources that will be rendered on the screen
         var usedResources = [SKNode]()
         
         // if empty row, make them all hidden
@@ -89,14 +104,14 @@ final class Renderer {
         }
         
         let rect = buffer.rectangle! // there will always be a rectangle, so don't check for that
-        rect.position = CGPoint(x: positionX, y: positionY)
+        rect.position = CGPoint(x: rowXLocation, y: positionY)
         rect.color = color
         rect.size = CGSize(width: 30, height: 200)
         usedResources.append(rect)
         
         if row.row.contains(1) { // render triangle if necessary
             let triangle = buffer.triangle!
-            triangle.position = CGPoint(x: positionX, y: positionY + rect.size.height/2 + gameSettings.triangleHeight/2)
+            triangle.position = CGPoint(x: rowXLocation, y: positionY + rect.size.height/2 + gameSettings.triangleHeight/2)
             triangle.color = color
             triangle.size = CGSize(width: 30, height: gameSettings.triangleHeight)
             if triangle.xScale < 0 && direction == .Right {
@@ -109,7 +124,7 @@ final class Renderer {
         
         if row.row.contains(2) { // render spike if necessary
             let spike = buffer.spike!
-            spike.position = CGPoint(x: positionX, y: positionY + rect.size.height/2 + spike.size.height/2)
+            spike.position = CGPoint(x: rowXLocation, y: positionY + rect.size.height/2 + spike.size.height/2)
             spike.color = color
             usedResources.append(spike)
         }
