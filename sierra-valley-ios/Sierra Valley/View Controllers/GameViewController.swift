@@ -68,6 +68,10 @@ class GameViewController: SVBaseViewController {
 
     
     func pauseButtonTapped(button : UIButton) {
+        pause()
+    }
+    
+    func pause() {
         gameScene.pause()
         pauseView.hidden = false
         pauseView.showMenu()
@@ -75,8 +79,16 @@ class GameViewController: SVBaseViewController {
         UIView.animateWithDuration(0.5, animations: {
             self.pauseView.alpha = 1
             self.pauseButton.alpha = 0
-        }, completion: { finsihed in
+            }, completion: { finsihed in
         })
+    }
+    
+    override func applicationDidEnterBackground(notification: NSNotification) {
+        pause()
+    }
+    
+    override func applicationWillResignActive(notification: NSNotification) {
+        pause()
     }
 }
 

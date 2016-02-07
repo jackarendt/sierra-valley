@@ -12,7 +12,7 @@ import UIKit
 /// - Parameter difficulty: The difficulty of the level
 /// - Parameter queue: The queue to load the level in to.
 func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
-    while queue.count < 200 {
+    while queue.count < 100 {
         var rows : [ResourceRow]!
         if arc4random() % 3 == 0 {
             rows = SpikeIslandTrail.generatePath(Int(30 + arc4random() % 41), suggestedLength: 0)
@@ -32,6 +32,13 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
     // add extra space to end so the camera pans
     for row in EmptyRowTrail.generatePath(0, suggestedLength: 5) {
         queue.enqueue(row)
+    }
+}
+
+
+func generateOpeningFlatLevel(length : Int, queue : Queue<ResourceRow>) {
+    for _ in 0.stride(to: length, by: 1) {
+        queue.enqueue(ResourceRow(row: [.Rectangle], depressedHeight: 0))
     }
 }
 

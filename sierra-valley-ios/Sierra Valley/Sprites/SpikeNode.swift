@@ -33,6 +33,8 @@ final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
 
         colorBlendFactor = 1.0
         blendMode = SKBlendMode.Replace
+        
+        zPosition = 100
     }
     
     required public init?(coder aDecoder: NSCoder) {

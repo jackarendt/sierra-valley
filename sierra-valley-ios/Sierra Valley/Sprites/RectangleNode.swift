@@ -27,6 +27,8 @@ final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         
         blendMode = SKBlendMode.Replace
         colorBlendFactor = 1.0
+        
+        zPosition = 100
     }
     
     required public init?(coder aDecoder: NSCoder) {

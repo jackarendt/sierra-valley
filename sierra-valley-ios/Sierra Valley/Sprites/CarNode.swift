@@ -12,6 +12,14 @@ import SpriteKit
 public enum CarDirection {
     case Left // front of the car faces the left edge of the screen
     case Right // front of the car faces the right edge of the screen
+    
+    static func oppositeDirection(direction : CarDirection) -> CarDirection {
+        if direction == .Left {
+            return .Right
+        } else {
+            return .Left
+        }
+    }
 }
 
 /// The CarNode contains all of the business logic associated with driving the car.

@@ -36,6 +36,9 @@ public final class Level {
         }
     }
     
+    /// The number of empty and flat rows at the end of a level
+    public var flatRowCount : Int = 0
+    
     /// The rows that are used to create the level in the form of a queue
     public let rows = Queue<ResourceRow>()
     
@@ -52,5 +55,6 @@ public final class Level {
         self.gameSettings = settings
         self.difficulty = difficulty
         computeLevel(difficulty, queue: rows)
+        flatRowCount = 13
     }
 }

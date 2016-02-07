@@ -16,7 +16,10 @@ public protocol GameManagerDelegate : class {
     /// - Parameter color: The color of the row to be rendered
     /// - Parameter direction: The direction of the triangle.
     /// - Parameter position: The position where the row should be rendered.
-    func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint)
+    func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint, background : Bool)
+    
+    
+    func introPathFinishedRendering()
     
     /// Tells the delegate to enqueue a camera action for the specific values
     /// - Parameter width: The length that the camera will pan across the x-axis
@@ -73,6 +76,16 @@ final public class GameManager {
 
     /// Call this when the game starts to start placing sprites
     public func startGame() {
+//        let introLevelQueue = Queue<ResourceRow>()
+//        generateOpeningFlatLevel(Int(gameSettings.numFrames), queue: introLevelQueue)
+//        var xPos : CGFloat = 0
+//        while let row = introLevelQueue.dequeue() {
+//            let pos = CGPoint(x: xPos, y: gameSettings.maxMountainHeight + gameSettings.minMountainHeight)
+//            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
+//            xPos += gameSettings.rowWidth
+//        }
+        delegate?.introPathFinishedRendering()
+        
         delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
         readyToRender = true
     }
@@ -106,13 +119,25 @@ final public class GameManager {
                 // move the camera position accordingly so that the pieces line up correctly
                 cameraPosition.x += (gameSettings.rowWidth/CGFloat(gameSettings.framesPerRow)) * CGFloat(diff)
                 
+                // dequeue a new level
                 if level.rows.isEmpty() {
                     dequeueNewLevel()
                 }
                 
+                let remainingLevelRows = level.rows.count - level.flatRowCount
+                if remainingLevelRows < gameSettings.framesToTop && remainingLevelRows > 0 {
+//                    let row = ResourceRow(row: [.Rectangle], depressedHeight: 0)
+//                    var c = SVColor.sunriseOrangeColor()
+//                    if color == SVColor.sunriseOrangeColor() {
+//                        c = SVColor.maroonColor()
+//                    }
+//                    let yPos = cameraPosition.y + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(remainingLevelRows) / CGFloat(gameSettings.framesToTop)
+//                    delegate?.renderRow(row, color: c, direction: currentDirection, position: CGPoint(x: cameraPosition.x, y: yPos), background: true)
+                }
+                
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
-                    delegate?.renderRow(row, color: color, direction: currentDirection, position: cameraPosition)
+                    delegate?.renderRow(row, color: color, direction: currentDirection, position: cameraPosition, background: false)
                 }
             }
         }

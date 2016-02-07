@@ -38,6 +38,15 @@ public struct GameSettings {
     /// The screen width
     public let screenWidth : CGFloat = UIScreen.mainScreen().bounds.width
     
+    /// The number of frames it takes to move from the minimum mountain height to the maximum
+    public var framesToTop : Int {
+        get {
+            let height = maxMountainHeight - minMountainHeight
+            let ftt = height / triangleHeight
+            return Int(ceil(ftt))
+        }
+    }
+    
     /// The actual width is the width of the scene.  It is calculated by figuring out how many frames can be visible
     /// on the screen at one time and calculates the width needed to fit all of the rows fully on the screen.
     public var actualWidth : CGFloat {
@@ -50,7 +59,7 @@ public struct GameSettings {
     /// Adds an additional frame for padding
     public var numFrames : CGFloat {
         get {
-            return ceil(screenWidth / rowWidth) + 1
+            return ceil(screenWidth / rowWidth) + 2
         }
     }
     

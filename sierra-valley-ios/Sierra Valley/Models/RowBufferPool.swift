@@ -33,8 +33,8 @@ class RowBufferPool {
             buf.append(RowBuffer(items: rowBuffer)) // create buffer
         }
         pool = Buffer<RowBuffer>(items: buf) // allocate the pool
-        foregroundRowBuffer = pool.next() // the foreground buffer will start at index 0
-        backgroundRowBuffer = pool.next() // the background buffer will start at index 1
+        backgroundRowBuffer = pool.next() // the foreground buffer will start at index 0
+        incrementPool()
     }
     
     /// Increments the pool index
