@@ -35,23 +35,13 @@ final class Renderer {
     /// The camera queue is used for when a level is generated and that action needs to be stored
     private let cameraActionQueue = Queue<SKAction>()
     
-    /// The location where the row is rendered
-    private var rowXLocation : CGFloat = 0
-    
     /// Initializes the renderer with the current scene, and allocates the buffer pool
     /// - Parameter scene: The scene that is being presented
     init(scene : SKScene) {
         self.scene = scene
         bufferPool = RowBufferPool(poolSize: 4, bufferSize: Int(gameSettings.numFrames))
-        rowXLocation = -gameSettings.actualWidth
     }
     
-    /// Temp function to reset the camera once the flat intro is rendered
-    func introPathFinished() {
-        if let camera = camera {
-            rowXLocation = round(camera.position.x) + gameSettings.actualWidth/2
-        }
-    }
     
     /// Adds a camera action to the camera queue
     /// - Parameter width: The width that the camera needs to pan
@@ -78,34 +68,20 @@ final class Renderer {
     /// - Parameter color: The color for the row
     /// - Parameter direction: The direction that the car will travel
     /// - Parameter cameraPosition: The center of the camear in the scene
-    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, cameraPosition : CGPoint, background : Bool){
+    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, var position : CGPoint, background : Bool){
         // get proper buffer and z position for the row
-        var buffer = bufferPool.nextForegroundItem()
+        var buffer : RowBufferItem!
         var zPos : CGFloat = 100
         
         if background {
             buffer = bufferPool.nextBackgroundItem()
-            zPos = 99
-        }
-        
-        // If moving to the left continually move slightly to the left
-        if direction == .Left {
-            rowXLocation -= gameSettings.rowWidth
-        } else { // if moving to the right, continually move slightly to the right
-            rowXLocation += gameSettings.rowWidth
-        }
-        
-        // if direction changes, but haven't adjusted yet, reset where render location
-        if direction == .Left && cameraPosition.x < rowXLocation {
-            rowXLocation = round(cameraPosition.x) - gameSettings.actualWidth/2
-        } else if direction == .Right && cameraPosition.x > rowXLocation {
-            rowXLocation = round(cameraPosition.x) + gameSettings.actualWidth/2
+            zPos = 0.0
+        } else {
+            buffer = bufferPool.nextForegroundItem()
         }
         
         let rectHeight : CGFloat = 200
-        let positionY = cameraPosition.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
-        let position = CGPoint(x: rowXLocation, y: positionY)
-        
+        position.y = position.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
         renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
     }
     
@@ -131,7 +107,7 @@ final class Renderer {
         
         if row.row.contains(1) { // render triangle if necessary
             let triangle = buffer.triangle!
-            triangle.position = CGPoint(x: rowXLocation, y: position.y + rect.size.height/2 + gameSettings.triangleHeight/2)
+            triangle.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + gameSettings.triangleHeight/2)
             triangle.color = color
             triangle.size = CGSize(width: 30, height: gameSettings.triangleHeight)
             triangle.zPosition = zPos
@@ -145,7 +121,7 @@ final class Renderer {
         
         if row.row.contains(2) { // render spike if necessary
             let spike = buffer.spike!
-            spike.position = CGPoint(x: rowXLocation, y: position.y + rect.size.height/2 + spike.size.height/2)
+            spike.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + spike.size.height/2)
             spike.color = color
             spike.zPosition = zPos
             usedResources.append(spike)

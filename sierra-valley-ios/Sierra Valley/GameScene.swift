@@ -78,13 +78,10 @@ extension GameScene : GameManagerDelegate {
         renderer.enqueueCameraAction(width, height: height, time: time) // enqueue camera action
     }
     
-    func introPathFinishedRendering() {
-        renderer.introPathFinished()
-    }
     
     func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, background : Bool) {
         // get a list of nodes from the renderer to show on the screen
-        renderer.renderResourceRow(row, color: color, direction: direction, cameraPosition: position, background: background)
+        renderer.renderResourceRow(row, color: color, direction: direction, position: position, background: background)
     }
 
     func scoreChanged(newScore: Int) {

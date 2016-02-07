@@ -29,8 +29,6 @@ final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
         // set the blend mode to replace for increased drawing performance, and allow it to be recolored
         blendMode = SKBlendMode.Replace
         colorBlendFactor = 1.0
-        
-        zPosition = 100
     }
     
     required public init?(coder aDecoder: NSCoder) {

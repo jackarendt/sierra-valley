@@ -18,9 +18,6 @@ public protocol GameManagerDelegate : class {
     /// - Parameter position: The position where the row should be rendered.
     func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint, background : Bool)
     
-    
-    func introPathFinishedRendering()
-    
     /// Tells the delegate to enqueue a camera action for the specific values
     /// - Parameter width: The length that the camera will pan across the x-axis
     /// - Parameter height: The height that the camera will pan across the y-axis
@@ -64,6 +61,8 @@ final public class GameManager {
     
     private var currentDirection : CarDirection = .Right
     
+    private var renderXLocation : CGFloat = 0
+    
     /// Initializes the game manager.  Using the game manager with the delegate is required.
     /// If the delegate was not used, this would basically be a useless class now wouldn't it?
     public init(delegate : GameManagerDelegate) {
@@ -76,16 +75,13 @@ final public class GameManager {
 
     /// Call this when the game starts to start placing sprites
     public func startGame() {
-//        let introLevelQueue = Queue<ResourceRow>()
-//        generateOpeningFlatLevel(Int(gameSettings.numFrames), queue: introLevelQueue)
-//        var xPos : CGFloat = 0
-//        while let row = introLevelQueue.dequeue() {
-//            let pos = CGPoint(x: xPos, y: gameSettings.maxMountainHeight + gameSettings.minMountainHeight)
-//            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
-//            xPos += gameSettings.rowWidth
-//        }
-        delegate?.introPathFinishedRendering()
-        
+        let introLevelQueue = Queue<ResourceRow>()
+        generateOpeningFlatLevel(Int(gameSettings.numFrames), queue: introLevelQueue)
+        while let row = introLevelQueue.dequeue() {
+            let pos = CGPoint(x: renderXLocation, y: gameSettings.maxMountainHeight + gameSettings.minMountainHeight)
+            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
+            renderXLocation += gameSettings.rowWidth
+        }
         delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
         readyToRender = true
     }
@@ -121,7 +117,7 @@ final public class GameManager {
                 
                 // dequeue a new level
                 if level.rows.isEmpty() {
-                    dequeueNewLevel()
+                    dequeueNewLevel(cameraPosition.x)
                 }
                 
                 let remainingLevelRows = level.rows.count - level.flatRowCount
@@ -132,26 +128,38 @@ final public class GameManager {
 //                        c = SVColor.maroonColor()
 //                    }
 //                    let yPos = cameraPosition.y + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(remainingLevelRows) / CGFloat(gameSettings.framesToTop)
-//                    delegate?.renderRow(row, color: c, direction: currentDirection, position: CGPoint(x: cameraPosition.x, y: yPos), background: true)
+//                    delegate?.renderRow(row, color: c, direction: currentDirection, position: CGPoint(x: renderXLocation, y: yPos), background: true)
                 }
                 
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
-                    delegate?.renderRow(row, color: color, direction: currentDirection, position: cameraPosition, background: false)
+                    let position = CGPoint(x: renderXLocation, y: cameraPosition.y)
+                    delegate?.renderRow(row, color: color, direction: currentDirection, position: position, background: false)
+                    adjustRenderLocation()
                 }
             }
         }
         previousTime = time
     }
     
-    private func dequeueNewLevel() {
+    private func adjustRenderLocation() {
+        if currentDirection == .Left {
+            renderXLocation -= gameSettings.rowWidth
+        } else {
+            renderXLocation += gameSettings.rowWidth
+        }
+    }
+    
+    private func dequeueNewLevel(centerX : CGFloat) {
         level = levelQueue.dequeue()
         var levelWidth = level.levelWidth
         if currentDirection == .Right {
             currentDirection = .Left
             levelWidth *= -1
+            renderXLocation = centerX - gameSettings.actualWidth/2
         } else {
             currentDirection = .Right
+            renderXLocation = centerX + gameSettings.actualWidth/2
         }
         delegate?.levelDequeuedWithCameraAction(levelWidth, height: level.levelHeight, time: level.levelTime)
         
