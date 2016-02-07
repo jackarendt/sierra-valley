@@ -27,7 +27,6 @@ final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
         name = SVSpriteName.Triangle.rawValue
         
         // set the blend mode to replace for increased drawing performance, and allow it to be recolored
-        blendMode = SKBlendMode.Replace
         colorBlendFactor = 1.0
     }
     

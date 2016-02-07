@@ -39,7 +39,7 @@ final class Renderer {
     /// - Parameter scene: The scene that is being presented
     init(scene : SKScene) {
         self.scene = scene
-        bufferPool = RowBufferPool(poolSize: 4, bufferSize: Int(gameSettings.numFrames))
+        bufferPool = RowBufferPool(poolSize: 5, bufferSize: Int(gameSettings.numFrames))
     }
     
     
@@ -74,8 +74,8 @@ final class Renderer {
         var zPos : CGFloat = 100
         
         if background {
-            buffer = bufferPool.nextBackgroundItem()
-            zPos = 0.0
+            buffer = bufferPool.nextContinuationItem()
+            zPos = -100
         } else {
             buffer = bufferPool.nextForegroundItem()
         }

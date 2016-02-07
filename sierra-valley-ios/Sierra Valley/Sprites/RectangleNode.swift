@@ -25,7 +25,6 @@ final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         physicsBody?.collisionBitMask = 0
         name = SVSpriteName.Rectangle.rawValue
         
-        blendMode = SKBlendMode.Replace
         colorBlendFactor = 1.0
     }
     

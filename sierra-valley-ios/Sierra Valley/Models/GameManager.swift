@@ -55,12 +55,16 @@ final public class GameManager {
     /// Boolean denoting whether a scene is ready to be rendered.  This helps delay lag
     private var readyToRender = false
     
+    /// Contains all of the levels of the game, and also creates new levels when needed
     private var levelQueue = LevelQueue()
     
+    /// The current level being rendered
     private var level : Level!
     
+    /// The current direction that the car is moving
     private var currentDirection : CarDirection = .Right
     
+    /// The location where new rows should be rendered
     private var renderXLocation : CGFloat = 0
     
     /// Initializes the game manager.  Using the game manager with the delegate is required.
@@ -120,22 +124,23 @@ final public class GameManager {
                     dequeueNewLevel(cameraPosition.x)
                 }
                 
-                let remainingLevelRows = level.rows.count - level.flatRowCount
-                if remainingLevelRows < gameSettings.framesToTop && remainingLevelRows > 0 {
-//                    let row = ResourceRow(row: [.Rectangle], depressedHeight: 0)
-//                    var c = SVColor.sunriseOrangeColor()
-//                    if color == SVColor.sunriseOrangeColor() {
-//                        c = SVColor.maroonColor()
-//                    }
-//                    let yPos = cameraPosition.y + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(remainingLevelRows) / CGFloat(gameSettings.framesToTop)
-//                    delegate?.renderRow(row, color: c, direction: currentDirection, position: CGPoint(x: renderXLocation, y: yPos), background: true)
-                }
-                
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
                     let position = CGPoint(x: renderXLocation, y: cameraPosition.y)
                     delegate?.renderRow(row, color: color, direction: currentDirection, position: position, background: false)
                     adjustRenderLocation()
+                }
+                
+                
+                let remainingLevelRows = level.rows.count - level.flatRowCount - 1
+                if remainingLevelRows < gameSettings.framesToTop  && remainingLevelRows > 0 {
+                    let row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0)
+                    var c = SVColor.sunriseOrangeColor()
+                    if color == SVColor.sunriseOrangeColor() {
+                        c = SVColor.maroonColor()
+                    }
+                    let yPos = cameraPosition.y + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
+                    delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), background: true)
                 }
             }
         }

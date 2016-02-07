@@ -32,7 +32,6 @@ final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         physicsBody?.collisionBitMask = 0
 
         colorBlendFactor = 1.0
-        blendMode = SKBlendMode.Replace
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -19,6 +19,8 @@ class RowBufferPool {
     /// contains the buffer used for rendering the background level of the game
     private var backgroundRowBuffer : RowBuffer!
     
+    private var continuationRowBuffer : RowBuffer!
+    
     /// Initializes a pool with n number of buffers, of m size
     /// - Parameter poolSize: The number of buffers in the pool
     /// - Parameter bufferSize: The size of each buffer
@@ -33,14 +35,18 @@ class RowBufferPool {
             buf.append(RowBuffer(items: rowBuffer)) // create buffer
         }
         pool = Buffer<RowBuffer>(items: buf) // allocate the pool
-        backgroundRowBuffer = pool.next() // the foreground buffer will start at index 0
+        backgroundRowBuffer = pool.next() // 0
+        foregroundRowBuffer = pool.next() // 1
         incrementPool()
     }
     
     /// Increments the pool index
     func incrementPool() {
-        backgroundRowBuffer = pool.next()
-        foregroundRowBuffer = backgroundRowBuffer
+        let origForeground = foregroundRowBuffer // 1
+        let origBackground = backgroundRowBuffer // 0
+        foregroundRowBuffer = pool.next() // 2
+        backgroundRowBuffer = origForeground // 1
+        continuationRowBuffer = origBackground // 0
     }
     
     /// Returns the next buffer item in the foreground buffer
@@ -53,5 +59,9 @@ class RowBufferPool {
     /// - Returns: RowBufferItem of the background buffer
     func nextBackgroundItem() -> RowBufferItem {
         return backgroundRowBuffer.next()
+    }
+    
+    func nextContinuationItem() -> RowBufferItem {
+        return continuationRowBuffer.next()
     }
 }

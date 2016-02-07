@@ -50,6 +50,8 @@ class GameScene: SVBaseScene {
         renderer.camera = newCamera
         blendMode = .Replace
         
+        zPosition = 300
+        
         // start the game when the scene is set up
         gameManager.startGame()
     }
