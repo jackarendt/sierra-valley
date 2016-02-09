@@ -15,9 +15,9 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
     while queue.count < 100 {
         var rows : [ResourceRow]!
         if arc4random() % 3 == 0 {
-            rows = SpikeIslandTrail.generatePath(Int(30 + arc4random() % 41), suggestedLength: 0)
+            rows = NoRoadblockTrail.generatePath(Int(30 + arc4random() % 41), suggestedLength: 0)
         } else {
-            rows = NoRoadblockTrail.generatePath(0, suggestedLength: min(Int(arc4random() % 10 + 1), 200 - queue.count))
+            rows = NoRoadblockTrail.generatePath(0, suggestedLength: min(Int(arc4random() % 10 + 1), 100 - queue.count))
         }
         for row in rows {
             queue.enqueue(row)
@@ -25,12 +25,12 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
     }
     
     // adds flat at the end so the user can go up to the top level
-    for row in FlatTrail.generatePath(0, suggestedLength: 8){
+    for row in FlatTrail.generatePath(0, suggestedLength: 7){
         queue.enqueue(row)
     }
     
     // add extra space to end so the camera pans
-    for row in EmptyRowTrail.generatePath(0, suggestedLength: 5) {
+    for row in EmptyRowTrail.generatePath(0, suggestedLength: 3) {
         queue.enqueue(row)
     }
 }

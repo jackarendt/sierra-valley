@@ -82,7 +82,9 @@ final public class GameManager {
         let introLevelQueue = Queue<ResourceRow>()
         generateOpeningFlatLevel(Int(gameSettings.numFrames), queue: introLevelQueue)
         while let row = introLevelQueue.dequeue() {
-            let pos = CGPoint(x: renderXLocation, y: gameSettings.maxMountainHeight + gameSettings.minMountainHeight)
+            // make the beginning height half of the screen, plus adjust it up to the height of a triangle to simulate
+            // it passing by one render before the level starts for a smooth transition
+            let pos = CGPoint(x: renderXLocation, y:  UIScreen.mainScreen().bounds.height/2 + gameSettings.triangleHeight)
             delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
             renderXLocation += gameSettings.rowWidth
         }
@@ -94,11 +96,6 @@ final public class GameManager {
     public func pause() {
         previousTime = 0
 //        readyToRender = false
-    }
-    
-    /// Call this to resume the game after pausing
-    public func resume() {
-//        readyToRender = true
     }
     
     

@@ -48,6 +48,7 @@ public final class Level {
     /// Whether the level is an avalanche or not
     public var avalanche = false
     
+    
     /// Initializes a level with the settings object and a difficulty
     /// - Parameter settings: The game settings for proper computation
     /// - Parameter difficulty: The difficulty of a level between 0 and 100
@@ -55,6 +56,6 @@ public final class Level {
         self.gameSettings = settings
         self.difficulty = difficulty
         computeLevel(difficulty, queue: rows)
-        flatRowCount = 13
+        flatRowCount = 10
     }
 }

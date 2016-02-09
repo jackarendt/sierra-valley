@@ -8,10 +8,10 @@
 
 import SpriteKit
 
+
 /// The Renderer class is specific to the platform.  The renderer is in charge of placing all of the
 /// different level pieces into their respective places.
 final class Renderer {
-
     /// The buffer pool contains all of the initialized the row data so that you don't need to allocate
     /// a node every single time you use a piece
     private var bufferPool : RowBufferPool!
@@ -85,7 +85,14 @@ final class Renderer {
         renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
     }
     
-    
+    /// Does the actually rendering of the pieces and adds them to the scene
+    /// - Parameter buffer: The buffer item to use when rendering
+    /// - Parameter color: The color of the row
+    /// - Parameter row: The row information to be renderered
+    /// - Parameter position: The x & y information of where rendering takes place
+    /// - Parameter zPos: The z position of the row
+    /// - Parameter rectHeight: The height of the rectangle to be rendered
+    /// - Parameter direction: The direction of the triangle to be rendered (whether it should face left or right)
     private func renderPieces(buffer : RowBufferItem, color : UIColor, row : ResourceRow, position : CGPoint, zPos : CGFloat, rectHeight : CGFloat, direction : CarDirection) {
         // resources that will be rendered on the screen
         var usedResources = [SKNode]()
@@ -109,7 +116,7 @@ final class Renderer {
             let triangle = buffer.triangle!
             triangle.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + gameSettings.triangleHeight/2)
             triangle.color = color
-            triangle.size = CGSize(width: 30, height: gameSettings.triangleHeight)
+            triangle.size = CGSize(width: gameSettings.rowWidth, height: gameSettings.triangleHeight)
             triangle.zPosition = zPos
             if triangle.xScale < 0 && direction == .Right {
                 triangle.xScale *= -1

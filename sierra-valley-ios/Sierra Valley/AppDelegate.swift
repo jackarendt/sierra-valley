@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
+        
+        print(GameSettings().numFrames)
         return true
     }
 

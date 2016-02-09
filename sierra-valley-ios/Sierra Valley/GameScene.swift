@@ -117,7 +117,6 @@ extension GameScene {
     
     /// Resumes the game
     func resume() {
-        gameManager.resume()
         view?.paused = false
     }
     
