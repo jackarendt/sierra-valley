@@ -67,6 +67,8 @@ final public class GameManager {
     /// The location where new rows should be rendered
     private var renderXLocation : CGFloat = 0
     
+    private var renderYLocation : CGFloat = 0
+    
     /// Initializes the game manager.  Using the game manager with the delegate is required.
     /// If the delegate was not used, this would basically be a useless class now wouldn't it?
     public init(delegate : GameManagerDelegate) {
@@ -81,10 +83,11 @@ final public class GameManager {
     public func startGame() {
         let introLevelQueue = Queue<ResourceRow>()
         generateOpeningFlatLevel(Int(gameSettings.numFrames), queue: introLevelQueue)
+        renderYLocation = UIScreen.mainScreen().bounds.height/2 + gameSettings.triangleHeight
         while let row = introLevelQueue.dequeue() {
             // make the beginning height half of the screen, plus adjust it up to the height of a triangle to simulate
             // it passing by one render before the level starts for a smooth transition
-            let pos = CGPoint(x: renderXLocation, y:  UIScreen.mainScreen().bounds.height/2 + gameSettings.triangleHeight)
+            let pos = CGPoint(x: renderXLocation, y:  renderYLocation)
             delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
             renderXLocation += gameSettings.rowWidth
         }
@@ -123,20 +126,20 @@ final public class GameManager {
                 
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
-                    let position = CGPoint(x: renderXLocation, y: cameraPosition.y)
+                    let position = CGPoint(x: renderXLocation, y: renderYLocation)
                     delegate?.renderRow(row, color: color, direction: currentDirection, position: position, background: false)
                     adjustRenderLocation()
                 }
                 
                 
                 let remainingLevelRows = level.rows.count - level.flatRowCount - 1
-                if remainingLevelRows < gameSettings.framesToTop  && remainingLevelRows > 0 {
+                if remainingLevelRows < gameSettings.framesToTop  && remainingLevelRows >= 0 {
                     let row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0)
                     var c = SVColor.sunriseOrangeColor()
                     if color == SVColor.sunriseOrangeColor() {
                         c = SVColor.maroonColor()
                     }
-                    let yPos = cameraPosition.y + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
+                    let yPos = renderYLocation + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
                     delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), background: true)
                 }
             }
@@ -150,6 +153,7 @@ final public class GameManager {
         } else {
             renderXLocation += gameSettings.rowWidth
         }
+        renderYLocation += gameSettings.triangleHeight
     }
     
     private func dequeueNewLevel(centerX : CGFloat) {

@@ -42,7 +42,7 @@ class GameScene: SVBaseScene {
         
         // create the camera node, and make it the default camera of the game
         let newCamera = SKCameraNode()
-        newCamera.position = CGPoint(x: view.bounds.width/2, y: view.bounds.height/2)
+        newCamera.position = CGPoint(x: gameManager.gameSettings.actualWidth/2, y: view.bounds.height/2)
         newCamera.xScale = view.bounds.width / size.width
         newCamera.yScale = view.bounds.height / size.height
         camera = newCamera

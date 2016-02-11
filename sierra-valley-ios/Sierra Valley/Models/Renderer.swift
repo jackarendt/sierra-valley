@@ -49,7 +49,7 @@ final class Renderer {
     /// - Parameter time: The time it takes to pan the camera to the end point
     func enqueueCameraAction(width : CGFloat, height : CGFloat, time : CFTimeInterval) {
         if let camera = camera {
-            let action = SKAction.moveTo(CGPoint(x: width + camera.position.x, y: camera.position.y + height), duration: time)
+            let action = SKAction.moveTo(CGPoint(x: width + camera.position.x /*- gameSettings.rowWidth/2*/, y: camera.position.y + height /*- gameSettings.triangleHeight/2*/), duration: time /*- gameSettings.rowRefreshRate/2*/)
             let completionAction = SKAction.runBlock({ // when the camera is done executing, automatically start the next one
                 self.cameraMovementFinished()
             })

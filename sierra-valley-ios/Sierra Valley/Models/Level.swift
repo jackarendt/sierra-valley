@@ -56,6 +56,6 @@ public final class Level {
         self.gameSettings = settings
         self.difficulty = difficulty
         computeLevel(difficulty, queue: rows)
-        flatRowCount = 10
+        flatRowCount = Int(gameSettings.numFrames/2) - 1
     }
 }
