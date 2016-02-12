@@ -19,48 +19,14 @@ final class Renderer {
     /// the scene that the game is being presented
     weak var scene : SKScene?
     
-    /// the camera that pans through the scene
-    weak var camera : SKCameraNode? {
-        didSet {
-            oldValue?.removeFromParent()
-            if let cam = camera {
-                scene?.addChild(cam)
-            }
-        }
-    }
-    
     /// The information of the game for renders
     private let gameSettings = GameSettings()
-    
-    /// The camera queue is used for when a level is generated and that action needs to be stored
-    private let cameraActionQueue = Queue<SKAction>()
     
     /// Initializes the renderer with the current scene, and allocates the buffer pool
     /// - Parameter scene: The scene that is being presented
     init(scene : SKScene) {
         self.scene = scene
         bufferPool = RowBufferPool(poolSize: 5, bufferSize: Int(gameSettings.numFrames))
-    }
-    
-    
-    /// Adds a camera action to the camera queue
-    /// - Parameter width: The width that the camera needs to pan
-    /// - Parameter height: The height that the camera needs to pan
-    /// - Parameter time: The time it takes to pan the camera to the end point
-    func enqueueCameraAction(width : CGFloat, height : CGFloat, time : CFTimeInterval) {
-        if let camera = camera {
-            let action = SKAction.moveTo(CGPoint(x: width + camera.position.x /*- gameSettings.rowWidth/2*/, y: camera.position.y + height /*- gameSettings.triangleHeight/2*/), duration: time /*- gameSettings.rowRefreshRate/2*/)
-            let completionAction = SKAction.runBlock({ // when the camera is done executing, automatically start the next one
-                self.cameraMovementFinished()
-            })
-            let sequence = SKAction.sequence([action, completionAction])
-            cameraActionQueue.enqueue(sequence) // add the action to the queue
-        }
-        
-        // if the camera is still and doesn't have any actions, run the first available action
-        if cameraActionQueue.count == 1 && camera?.hasActions() == false {
-            dequeueAndRunCameraAction()
-        }
     }
     
     /// Renders a row on the screen to the given position and color and adds it to the scene if necessary
@@ -83,6 +49,10 @@ final class Renderer {
         let rectHeight : CGFloat = 200
         position.y = position.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
         renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
+    }
+    
+    func incrementBufferPool() {
+        bufferPool.incrementPool()
     }
     
     /// Does the actually rendering of the pieces and adds them to the scene
@@ -144,17 +114,5 @@ final class Renderer {
                 scene?.addChild(node)
             }
         }
-    }
-    
-    /// Dequeues a camera action and then applies it to the camera
-    private func dequeueAndRunCameraAction() {
-        if let action = cameraActionQueue.dequeue(), camera = camera {
-            bufferPool.incrementPool()
-            camera.runAction(action)
-        }
-    }
-    
-    func cameraMovementFinished() {
-        dequeueAndRunCameraAction()
     }
 }

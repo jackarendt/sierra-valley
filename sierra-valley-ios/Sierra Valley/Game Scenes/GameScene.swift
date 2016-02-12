@@ -31,6 +31,8 @@ class GameScene: SVBaseScene {
     /// buffers, and handle rendering the correct row & different obstacles along the way.
     var renderer : Renderer!
     
+    var cameraManager : CameraManager!
+    
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
     let car = CarNode(car: .SierraTurbo)
     
@@ -46,8 +48,10 @@ class GameScene: SVBaseScene {
         newCamera.xScale = view.bounds.width / size.width
         newCamera.yScale = view.bounds.height / size.height
         camera = newCamera
-        
-        renderer.camera = newCamera
+        scene?.addChild(newCamera)
+
+        cameraManager = CameraManager(camera: camera)
+        cameraManager.delegate = self
         blendMode = .Replace
 
         
@@ -76,9 +80,8 @@ class GameScene: SVBaseScene {
 // MARK: - GameManagerDelegate
 extension GameScene : GameManagerDelegate {
     func levelDequeuedWithCameraAction(width: CGFloat, height: CGFloat, time: CFTimeInterval) {
-        renderer.enqueueCameraAction(width, height: height, time: time) // enqueue camera action
+        cameraManager.enqueueGameAction(width, height: height, time: time) // enqueue camera action
     }
-    
     
     func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, background : Bool) {
         // get a list of nodes from the renderer to show on the screen
@@ -91,6 +94,12 @@ extension GameScene : GameManagerDelegate {
 
     func gameEnded(finalScore: Int) {
         gameDelegate?.gameDidEnd(0, newAvalanches: 0) // send that action to the delegate for handling
+    }
+}
+
+extension GameScene : CameraManagerDelegate {
+    func cameraActionDequeued(action: SKAction) {
+        renderer.incrementBufferPool()
     }
 }
 

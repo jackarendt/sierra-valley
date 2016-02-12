@@ -23,8 +23,12 @@
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
+		2EB3A37A1C6D820200979DE5 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A3791C6D820200979DE5 /* CameraManager.swift */; };
+		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
+		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
+		2EB3A3801C6D85A900979DE5 /* ParallaxBackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */; };
+		2EB3A3821C6D872000979DE5 /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
-		2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
 		2EBA3C041C4D9E16005C0D76 /* Sierra_ValleyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */; };
@@ -38,7 +42,6 @@
 		2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */; };
 		2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C311C4F5093005C0D76 /* GameViewController.swift */; };
 		2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */; };
-		2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */; };
 		2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186B1C543A0B008ADAEF /* Settings.swift */; };
 		2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */; };
 		2EF818711C544A93008ADAEF /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818701C544A93008ADAEF /* PauseView.swift */; };
@@ -88,9 +91,13 @@
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
+		2EB3A3791C6D820200979DE5 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraManager.swift; path = Models/CameraManager.swift; sourceTree = "<group>"; };
+		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
+		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
+		2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundManager.swift; path = Models/ParallaxBackgroundManager.swift; sourceTree = "<group>"; };
+		2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Models/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EBA3BF81C4D9E16005C0D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EBA3BFA1C4D9E16005C0D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +116,6 @@
 		2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C311C4F5093005C0D76 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "View Controllers/GameViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
-		2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVFadeAnimator.swift; sourceTree = "<group>"; };
 		2EF8186B1C543A0B008ADAEF /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Models/Settings.swift; sourceTree = "<group>"; };
 		2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeCarViewController.swift; path = "View Controllers/ChangeCarViewController.swift"; sourceTree = "<group>"; };
 		2EF818701C544A93008ADAEF /* PauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PauseView.swift; path = "Custom Views/PauseView.swift"; sourceTree = "<group>"; };
@@ -155,7 +161,7 @@
 		2E8582CC1C534FF3000508EB /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				2EBA3BEE1C4D9E16005C0D76 /* GameScene.swift */,
+				2EB3A37D1C6D855C00979DE5 /* GameScene.swift */,
 				2E8582D11C536CE9000508EB /* SVBaseScene.swift */,
 				2E8582CA1C534FEE000508EB /* HelpCarScene.swift */,
 			);
@@ -165,8 +171,8 @@
 		2E8582CD1C535E22000508EB /* Custom Animations */ = {
 			isa = PBXGroup;
 			children = (
+				2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */,
 				2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */,
-				2EBA3C351C51D527005C0D76 /* SVFadeAnimator.swift */,
 			);
 			name = "Custom Animations";
 			sourceTree = "<group>";
@@ -286,6 +292,9 @@
 				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
 				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
 				2E3756301C5D88E000DA7715 /* Renderer.swift */,
+				2EB3A3791C6D820200979DE5 /* CameraManager.swift */,
+				2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */,
+				2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */,
 				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
 				2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */,
 				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
@@ -453,6 +462,7 @@
 				2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */,
 				2EF8187E1C559719008ADAEF /* GameManager.swift in Sources */,
 				2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */,
+				2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */,
 				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
@@ -463,22 +473,25 @@
 				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */,
 				2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */,
+				2EB3A37A1C6D820200979DE5 /* CameraManager.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
 				2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
-				2EBA3BEF1C4D9E16005C0D76 /* GameScene.swift in Sources */,
 				2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */,
 				2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */,
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EF818801C55C3E0008ADAEF /* RectangleNode.swift in Sources */,
 				2EF818821C55C5BC008ADAEF /* LevelResourceProtocol.swift in Sources */,
+				2EB3A3801C6D85A900979DE5 /* ParallaxBackgroundManager.swift in Sources */,
 				2EF818861C572AE0008ADAEF /* Queue.swift in Sources */,
+				2EB3A3821C6D872000979DE5 /* GameActionQueueProtocol.swift in Sources */,
 				2EF8187C1C559438008ADAEF /* SpikeNode.swift in Sources */,
 				2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
+				2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */,
 				2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */,
 				2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */,
 				2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */,
@@ -486,7 +499,6 @@
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
 				2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */,
-				2EBA3C361C51D527005C0D76 /* SVFadeAnimator.swift in Sources */,
 				2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */,
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 				2E8582CF1C536A99000508EB /* CarNode.swift in Sources */,
