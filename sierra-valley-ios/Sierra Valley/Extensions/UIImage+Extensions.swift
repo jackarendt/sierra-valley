@@ -29,6 +29,8 @@ public enum SVLevelResource : String {
     case Spike = "spike"
     case Rectangle = "rectangle"
     case Triangle = "triangle"
+    case DarkParallaxBackground = "dark-parallax-background"
+    case LightParallaxBackground = "light-parallax-background"
 }
 
 extension UIImage {

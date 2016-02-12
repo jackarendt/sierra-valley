@@ -88,7 +88,7 @@ final public class GameManager {
             // make the beginning height half of the screen, plus adjust it up to the height of a triangle to simulate
             // it passing by one render before the level starts for a smooth transition
             let pos = CGPoint(x: renderXLocation, y:  renderYLocation)
-            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: true)
+            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: false)
             renderXLocation += gameSettings.rowWidth
         }
         delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
@@ -110,7 +110,6 @@ final public class GameManager {
             
             // if the game is ready to render, and sufficient frames have passed, create a new row
             if frameCount >= gameSettings.framesPerRow && readyToRender {
-                
                 // get the difference of the frame count and suggested frames/row
                 let diff = frameCount - gameSettings.framesPerRow
                 frameCount = diff // assign it to the frame count for smooth operations
@@ -126,7 +125,6 @@ final public class GameManager {
                     delegate?.renderRow(row, color: color, direction: currentDirection, position: position, background: false)
                     adjustRenderLocation()
                 }
-                
                 
                 let remainingLevelRows = level.rows.count - level.flatRowCount - 1
                 if remainingLevelRows < gameSettings.framesToTop  && remainingLevelRows >= 0 {

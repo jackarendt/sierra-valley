@@ -41,7 +41,7 @@ final class Renderer {
         
         if background {
             buffer = bufferPool.nextContinuationItem()
-            zPos = -100
+            zPos = 0
         } else {
             buffer = bufferPool.nextForegroundItem()
         }

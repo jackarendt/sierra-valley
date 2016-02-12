@@ -35,14 +35,12 @@ class CameraManager {
 // MARK - GameActionQueueProtocol methods
 extension CameraManager : GameActionQueueProtocol {
     func enqueueGameAction(width : CGFloat, height : CGFloat, time : CFTimeInterval) {
-        if let camera = camera {
-            let action = SKAction.moveTo(CGPoint(x: width + camera.position.x, y: camera.position.y + height), duration: time)
-            let completionAction = SKAction.runBlock({ // when the camera is done executing, automatically start the next one
-                self.cameraMovementFinished()
-            })
-            let sequence = SKAction.sequence([action, completionAction])
-            cameraActionQueue.enqueue(sequence) // add the action to the queue
-        }
+        let action = SKAction.moveBy(CGVector(dx: width, dy: height), duration: time)
+        let completionAction = SKAction.runBlock({ // when the camera is done executing, automatically start the next one
+            self.cameraMovementFinished()
+        })
+        let sequence = SKAction.sequence([action, completionAction])
+        cameraActionQueue.enqueue(sequence) // add the action to the queue
         
         // if the camera is still and doesn't have any actions, run the first available action
         if cameraActionQueue.count == 1 && camera?.hasActions() == false {

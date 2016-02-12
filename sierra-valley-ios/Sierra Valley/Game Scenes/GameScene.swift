@@ -27,11 +27,13 @@ class GameScene: SVBaseScene {
     /// Manages all of the important game operations such as level creation and what to render
     var gameManager : GameManager!
     
-    /// Handles all of the rendering and actions of a scene.  It will setup the level by managing all of the different
-    /// buffers, and handle rendering the correct row & different obstacles along the way.
+    /// Handles all of the rendering of sprites on the screen
     var renderer : Renderer!
     
+    /// Manages all of movements of the camera
     var cameraManager : CameraManager!
+    
+    var backgroundManager : ParallaxBackgroundManager!
     
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
     let car = CarNode(car: .SierraTurbo)
@@ -52,8 +54,9 @@ class GameScene: SVBaseScene {
 
         cameraManager = CameraManager(camera: camera)
         cameraManager.delegate = self
-        blendMode = .Replace
+        blendMode = .Alpha
 
+        backgroundManager = ParallaxBackgroundManager(scene: self)
         
         // start the game when the scene is set up
         gameManager.startGame()
@@ -81,6 +84,7 @@ class GameScene: SVBaseScene {
 extension GameScene : GameManagerDelegate {
     func levelDequeuedWithCameraAction(width: CGFloat, height: CGFloat, time: CFTimeInterval) {
         cameraManager.enqueueGameAction(width, height: height, time: time) // enqueue camera action
+        backgroundManager.enqueueGameAction(width, height: height, time: time)
     }
     
     func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, background : Bool) {
