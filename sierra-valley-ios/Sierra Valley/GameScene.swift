@@ -49,8 +49,7 @@ class GameScene: SVBaseScene {
         
         renderer.camera = newCamera
         blendMode = .Replace
-        
-        zPosition = 300
+
         
         // start the game when the scene is set up
         gameManager.startGame()
@@ -70,7 +69,7 @@ class GameScene: SVBaseScene {
    
     override func update(currentTime: CFTimeInterval) {
         // every time the game loop updates, send that update to the game manager, and send the current camera position
-        gameManager.update(currentTime, cameraPosition: camera!.position)
+        gameManager.update(currentTime)
     }
 }
 

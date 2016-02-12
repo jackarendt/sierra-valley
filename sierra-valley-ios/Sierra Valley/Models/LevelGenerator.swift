@@ -11,7 +11,7 @@ import UIKit
 /// Generates a level with a given difficulty and a queue to load it in to
 /// - Parameter difficulty: The difficulty of the level
 /// - Parameter queue: The queue to load the level in to.
-func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
+func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : Int) {
     while queue.count < 100 {
         var rows : [ResourceRow]!
         if arc4random() % 3 == 0 {
@@ -30,7 +30,7 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>) {
     }
     
     // add extra space to end so the camera pans
-    for row in EmptyRowTrail.generatePath(0, suggestedLength: 3) {
+    for row in EmptyRowTrail.generatePath(0, suggestedLength: flatRowLength - 7) {
         queue.enqueue(row)
     }
 }

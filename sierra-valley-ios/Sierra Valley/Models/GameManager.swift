@@ -104,8 +104,7 @@ final public class GameManager {
     
     /// Updates the game state, and determines if new pieces should be rendered, or if a level should be dequeued, etc.
     /// - Parameter time: The time of the game loop
-    /// - Parameter cameraPosition: the position of the camera at that specific time
-    public func update(time : CFTimeInterval, var cameraPosition : CGPoint) {
+    public func update(time : CFTimeInterval) {
         if previousTime != 0 { // if this is the first loop, just ignore it
             frameCount += calcPassedFrames(time) // add the new frames to the game
             
@@ -116,12 +115,9 @@ final public class GameManager {
                 let diff = frameCount - gameSettings.framesPerRow
                 frameCount = diff // assign it to the frame count for smooth operations
                 
-                // move the camera position accordingly so that the pieces line up correctly
-                cameraPosition.x += (gameSettings.rowWidth/CGFloat(gameSettings.framesPerRow)) * CGFloat(diff)
-                
                 // dequeue a new level
                 if level.rows.isEmpty() {
-                    dequeueNewLevel(cameraPosition.x)
+                    dequeueNewLevel()
                 }
                 
                 // dequeue a new row, and render it
@@ -156,16 +152,16 @@ final public class GameManager {
         renderYLocation += gameSettings.triangleHeight
     }
     
-    private func dequeueNewLevel(centerX : CGFloat) {
+    private func dequeueNewLevel() {
         level = levelQueue.dequeue()
         var levelWidth = level.levelWidth
         if currentDirection == .Right {
             currentDirection = .Left
             levelWidth *= -1
-            renderXLocation = centerX - gameSettings.actualWidth/2
+            renderXLocation = renderXLocation - gameSettings.actualWidth
         } else {
             currentDirection = .Right
-            renderXLocation = centerX + gameSettings.actualWidth/2
+            renderXLocation = renderXLocation + gameSettings.actualWidth
         }
         delegate?.levelDequeuedWithCameraAction(levelWidth, height: level.levelHeight, time: level.levelTime)
         
