@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
+		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
 		2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C891C59C1AB003D3B26 /* Buffer.swift */; };
 		2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */; };
 		2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8D1C5B077A003D3B26 /* Level.swift */; };
@@ -23,11 +25,8 @@
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
-		2EB3A37A1C6D820200979DE5 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A3791C6D820200979DE5 /* CameraManager.swift */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
-		2EB3A3801C6D85A900979DE5 /* ParallaxBackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */; };
-		2EB3A3821C6D872000979DE5 /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
@@ -75,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
+		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
 		2E2F0C891C59C1AB003D3B26 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buffer.swift; path = Models/Buffer.swift; sourceTree = "<group>"; };
 		2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleNode.swift; path = Sprites/TriangleNode.swift; sourceTree = "<group>"; };
 		2E2F0C8D1C5B077A003D3B26 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Models/Level.swift; sourceTree = "<group>"; };
@@ -91,11 +92,8 @@
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
-		2EB3A3791C6D820200979DE5 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraManager.swift; path = Models/CameraManager.swift; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
-		2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundManager.swift; path = Models/ParallaxBackgroundManager.swift; sourceTree = "<group>"; };
-		2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Models/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				2E8582CE1C536A99000508EB /* CarNode.swift */,
+				2E156DAE1C71016100EE1C0F /* CameraNode.swift */,
+				2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */,
 				2EF8187B1C559438008ADAEF /* SpikeNode.swift */,
 				2EF8187F1C55C3E0008ADAEF /* RectangleNode.swift */,
 				2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */,
@@ -292,9 +292,6 @@
 				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
 				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
 				2E3756301C5D88E000DA7715 /* Renderer.swift */,
-				2EB3A3791C6D820200979DE5 /* CameraManager.swift */,
-				2EB3A37F1C6D85A900979DE5 /* ParallaxBackgroundManager.swift */,
-				2EB3A3811C6D872000979DE5 /* GameActionQueueProtocol.swift */,
 				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
 				2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */,
 				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
@@ -473,7 +470,7 @@
 				2EBA3C2E1C4E175D005C0D76 /* SVConstants.swift in Sources */,
 				2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */,
 				2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */,
-				2EB3A37A1C6D820200979DE5 /* CameraManager.swift in Sources */,
+				2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */,
 				2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */,
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
@@ -485,9 +482,7 @@
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EF818801C55C3E0008ADAEF /* RectangleNode.swift in Sources */,
 				2EF818821C55C5BC008ADAEF /* LevelResourceProtocol.swift in Sources */,
-				2EB3A3801C6D85A900979DE5 /* ParallaxBackgroundManager.swift in Sources */,
 				2EF818861C572AE0008ADAEF /* Queue.swift in Sources */,
-				2EB3A3821C6D872000979DE5 /* GameActionQueueProtocol.swift in Sources */,
 				2EF8187C1C559438008ADAEF /* SpikeNode.swift in Sources */,
 				2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */,
 				2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */,
@@ -497,6 +492,7 @@
 				2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */,
 				2E3756621C646FDA00DA7715 /* LevelQueue.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
+				2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
 				2EF818751C557BBA008ADAEF /* GameOverView.swift in Sources */,
 				2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */,

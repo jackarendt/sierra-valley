@@ -30,10 +30,8 @@ class GameScene: SVBaseScene {
     /// Handles all of the rendering of sprites on the screen
     var renderer : Renderer!
     
-    /// Manages all of movements of the camera
-    var cameraManager : CameraManager!
-    
-    var backgroundManager : ParallaxBackgroundManager!
+
+    var backgroundNode : ParallaxBackgroundNode!
     
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
     let car = CarNode(car: .SierraTurbo)
@@ -45,25 +43,24 @@ class GameScene: SVBaseScene {
         renderer = Renderer(scene: self)
         
         // create the camera node, and make it the default camera of the game
-        let newCamera = SKCameraNode()
+        let newCamera = CameraNode()
         newCamera.position = CGPoint(x: gameManager.gameSettings.actualWidth/2, y: view.bounds.height/2)
         newCamera.xScale = view.bounds.width / size.width
         newCamera.yScale = view.bounds.height / size.height
         camera = newCamera
-        scene?.addChild(newCamera)
+        addChild(newCamera)
 
-        cameraManager = CameraManager(camera: camera)
-        cameraManager.delegate = self
         blendMode = .Alpha
 
-        backgroundManager = ParallaxBackgroundManager(scene: self)
+        backgroundNode = ParallaxBackgroundNode()
+        addChild(backgroundNode)
         
         // start the game when the scene is set up
         gameManager.startGame()
     }
     
     override func tapGestureRecognized(tap: UITapGestureRecognizer) {
-        
+        car.jump()
     }
     
     override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
@@ -83,8 +80,11 @@ class GameScene: SVBaseScene {
 // MARK: - GameManagerDelegate
 extension GameScene : GameManagerDelegate {
     func levelDequeuedWithCameraAction(width: CGFloat, height: CGFloat, time: CFTimeInterval) {
-        cameraManager.enqueueGameAction(width, height: height, time: time) // enqueue camera action
-        backgroundManager.enqueueGameAction(width, height: height, time: time)
+        renderer.incrementBufferPool()
+        if let camera = camera as? CameraNode {
+            camera.enqueueGameAction(width, height: height, time: time) // enqueue camera action
+        }
+        backgroundNode.enqueueGameAction(width, height: height, time: time)
     }
     
     func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, background : Bool) {
@@ -98,12 +98,6 @@ extension GameScene : GameManagerDelegate {
 
     func gameEnded(finalScore: Int) {
         gameDelegate?.gameDidEnd(0, newAvalanches: 0) // send that action to the delegate for handling
-    }
-}
-
-extension GameScene : CameraManagerDelegate {
-    func cameraActionDequeued(action: SKAction) {
-        renderer.incrementBufferPool()
     }
 }
 
