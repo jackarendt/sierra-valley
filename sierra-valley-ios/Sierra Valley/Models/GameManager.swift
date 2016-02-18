@@ -16,7 +16,7 @@ public protocol GameManagerDelegate : class {
     /// - Parameter color: The color of the row to be rendered
     /// - Parameter direction: The direction of the triangle.
     /// - Parameter position: The position where the row should be rendered.
-    func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint, background : Bool)
+    func renderRow(row : ResourceRow, color : UIColor, direction : CarDirection, position : CGPoint, duration : CFTimeInterval)
     
     /// Tells the delegate to enqueue a camera action for the specific values
     /// - Parameter width: The length that the camera will pan across the x-axis
@@ -88,7 +88,7 @@ final public class GameManager {
             // make the beginning height half of the screen, plus adjust it up to the height of a triangle to simulate
             // it passing by one render before the level starts for a smooth transition
             let pos = CGPoint(x: renderXLocation, y:  renderYLocation)
-            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, background: false)
+            delegate?.renderRow(row, color: color, direction: currentDirection, position: pos, duration: -1)
             renderXLocation += gameSettings.rowWidth
         }
         delegate?.levelDequeuedWithCameraAction(level.levelWidth, height: level.levelHeight, time: level.levelTime)
@@ -122,7 +122,7 @@ final public class GameManager {
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
                     let position = CGPoint(x: renderXLocation, y: renderYLocation)
-                    delegate?.renderRow(row, color: color, direction: currentDirection, position: position, background: false)
+                    delegate?.renderRow(row, color: color, direction: currentDirection, position: position, duration: -1)
                     adjustRenderLocation()
                 }
                 
@@ -134,7 +134,7 @@ final public class GameManager {
                         c = SVColor.maroonColor()
                     }
                     let yPos = renderYLocation + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
-                    delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), background: true)
+                    delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), duration: CFTimeInterval(gameSettings.numFrames) * 0.75 * gameSettings.vSyncTime)
                 }
             }
         }

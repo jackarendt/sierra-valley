@@ -30,7 +30,7 @@ class GameScene: SVBaseScene {
     /// Handles all of the rendering of sprites on the screen
     var renderer : Renderer!
     
-
+    /// The background mountains that parallax with the game
     var backgroundNode : ParallaxBackgroundNode!
     
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
@@ -53,10 +53,18 @@ class GameScene: SVBaseScene {
         blendMode = .Alpha
 
         backgroundNode = ParallaxBackgroundNode()
+        backgroundNode.position = CGPoint(x: gameManager.gameSettings.actualWidth/2 + 50, y: view.bounds.height/2)
         addChild(backgroundNode)
         
         // start the game when the scene is set up
         gameManager.startGame()
+        
+        let carYPos = gameManager.gameSettings.maxMountainHeight + car.size.height/2
+        let carXPos = (gameManager.gameSettings.actualWidth - gameManager.gameSettings.screenWidth)/2 + car.size.width/2 + 20
+        car.position = CGPoint(x: carXPos, y: carYPos)
+        addChild(car)
+        car.zPosition = 101
+        swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
     }
     
     override func tapGestureRecognized(tap: UITapGestureRecognizer) {
@@ -65,10 +73,16 @@ class GameScene: SVBaseScene {
     
     override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
         car.switchDirection(.Left)
+        car.removeAllActions()
+        let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
+        car.runAction(SKAction.repeatActionForever(moveLeftAction))
     }
     
     override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
         car.switchDirection(.Right)
+        car.removeAllActions()
+        let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
+        car.runAction(SKAction.repeatActionForever(moveRightAction))
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -84,12 +98,17 @@ extension GameScene : GameManagerDelegate {
         if let camera = camera as? CameraNode {
             camera.enqueueGameAction(width, height: height, time: time) // enqueue camera action
         }
-        backgroundNode.enqueueGameAction(width, height: height, time: time)
+        var backgroundWidth = width - 100
+        if width < 0 {
+            backgroundWidth = width + 100
+        }
+        
+        backgroundNode.enqueueGameAction(backgroundWidth, height: height, time: time)
     }
     
-    func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, background : Bool) {
+    func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, duration : CFTimeInterval) {
         // get a list of nodes from the renderer to show on the screen
-        renderer.renderResourceRow(row, color: color, direction: direction, position: position, background: background)
+        renderer.renderResourceRow(row, color: color, direction: direction, position: position, duration: duration)
     }
 
     func scoreChanged(newScore: Int) {
@@ -104,12 +123,15 @@ extension GameScene : GameManagerDelegate {
 // MARK: - Physics Contact delegate methods
 extension GameScene {
     override func didBeginContact(contact: SKPhysicsContact) {
-        pause() // pause the scene
-        gameDelegate?.gameDidEnd(0, newAvalanches: 0) // end the game
+        
+        if contact.bodyA.node?.name == SVLevelResource.Spike.rawValue && contact.bodyB.node?.name == SVLevelResource.Spike.rawValue {
+            pause() // pause the scene
+            gameDelegate?.gameDidEnd(0, newAvalanches: 0) // end the game
+        }
     }
     
     override func didEndContact(contact: SKPhysicsContact) {
-        
+        car.endJump()
     }
 }
 

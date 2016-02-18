@@ -30,30 +30,27 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
         super.init()
         middleBackground.alpha = 0.65
         middleBackground.zPosition = -3
-        middleBackground.position = CGPoint(x: gameSettings.actualWidth/2, y: UIScreen.mainScreen().bounds.height/2 - 75)
+        middleBackground.position = CGPoint(x: position.x, y: position.y - 75)
         addChild(middleBackground)
         
         leftBackground.alpha = 0.85
         leftBackground.zPosition = -2
-        leftBackground.position = CGPoint(x: gameSettings.actualWidth/4, y: UIScreen.mainScreen().bounds.height/2 - 175)
+        leftBackground.position = CGPoint(x: position.x - gameSettings.actualWidth/4, y: position.y - 175)
         addChild(leftBackground)
         
         rightBackground.alpha = 0.85
         rightBackground.zPosition = -2
-        rightBackground.position = CGPoint(x: 3*gameSettings.actualWidth/4, y: UIScreen.mainScreen().bounds.height/2 - 175)
+        rightBackground.position = CGPoint(x: position.x + gameSettings.actualWidth/4, y: position.y - 175)
         addChild(rightBackground)
-        
-        
-        //        let farYPos = CGFloat(gameSettings.framesToTop) * gameSettings.triangleHeight + gameSettings.minMountainHeight
         
         farLeftBackground.alpha = 0.9
         farLeftBackground.zPosition = -1
-        farLeftBackground.position = CGPoint(x: gameSettings.actualWidth * 0.1, y: UIScreen.mainScreen().bounds.height/2 - 225)
+        farLeftBackground.position = CGPoint(x: position.x - gameSettings.actualWidth * 0.4, y: position.y - 225)
         addChild(farLeftBackground)
         
         farRightBackground.alpha = 0.9
         farRightBackground.zPosition = -1
-        farRightBackground.position = CGPoint(x: gameSettings.actualWidth * 0.9, y: UIScreen.mainScreen().bounds.height/2 - 225)
+        farRightBackground.position = CGPoint(x: position.x + gameSettings.actualWidth * 0.4, y: position.y - 225)
         addChild(farRightBackground)
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
 		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
+		2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */; };
 		2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C891C59C1AB003D3B26 /* Buffer.swift */; };
 		2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */; };
 		2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8D1C5B077A003D3B26 /* Level.swift */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
 		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
+		2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Extensions/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
 		2E2F0C891C59C1AB003D3B26 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buffer.swift; path = Models/Buffer.swift; sourceTree = "<group>"; };
 		2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleNode.swift; path = Sprites/TriangleNode.swift; sourceTree = "<group>"; };
 		2E2F0C8D1C5B077A003D3B26 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Models/Level.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				2EBA3C2B1C4DEF23005C0D76 /* UIFont+Extensions.swift */,
 				2EBA3C251C4DE1A6005C0D76 /* UIImage+Extensions.swift */,
 				2EBA3C2D1C4E175D005C0D76 /* SVConstants.swift */,
+				2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */,
 				2E8582C81C53439D000508EB /* Number+Extensions.swift */,
 			);
 			name = Extensions;
@@ -461,6 +464,7 @@
 				2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */,
 				2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */,
 				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
+				2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
 				2EF818711C544A93008ADAEF /* PauseView.swift in Sources */,

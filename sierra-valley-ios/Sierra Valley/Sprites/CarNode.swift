@@ -30,10 +30,10 @@ final public class CarNode: SKSpriteNode {
     public var car : SVCar?
     
     /// The direction that the car is heading
-    public var direction : CarDirection = .Left
+    public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var impulse : CGFloat = 600
+    public var impulse : CGFloat = 70
     
     /// boolean denoting whether the car is currently jumping or not
     private var inAir = false
@@ -49,6 +49,8 @@ final public class CarNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: car.rawValue)
         super.init(texture: texture, color: SVColor.lightColor(), size: texture.size())
         
+        xScale *= -1
+        
         // set the name of the car
         name = SVSpriteName.Car.rawValue
         
@@ -57,11 +59,15 @@ final public class CarNode: SKSpriteNode {
         physicsBody?.dynamic = true
         physicsBody?.allowsRotation = true
         physicsBody?.restitution = 0
+        physicsBody?.collisionBitMask = 0
         
         // set default collision and contact bitmasks
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car
-        setContactBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle])
-        setCollisionBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle])
+        
+        setCollisionBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle, CollisionBitmaskCategory.Triangle])
+        setContactBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle, CollisionBitmaskCategory.Triangle])
+        
+        print(physicsBody?.collisionBitMask)
     }
     
     required public init?(coder aDecoder: NSCoder) {

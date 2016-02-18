@@ -14,11 +14,38 @@ import SpriteKit
 /// interchangably with other level resources
 final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
     
+    
+    override public var size : CGSize {
+        didSet {
+            let path = UIBezierPath()
+            path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
+            path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
+            path.addLineToPoint(CGPoint(x: size.width/2, y: size.height/2))
+            path.closePath()
+            
+            // create physics body
+            physicsBody = SKPhysicsBody(polygonFromPath: path.CGPath)
+            physicsBody?.dynamic = true
+            physicsBody?.affectedByGravity = false // not affected by gravity
+            physicsBody?.allowsRotation = false
+            physicsBody?.categoryBitMask = CollisionBitmaskCategory.Triangle
+            physicsBody?.collisionBitMask = 0 // doesn't collide with anything
+            name = SVSpriteName.Triangle.rawValue
+        }
+    }
+    
     required public init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
-        super.init(texture: triangleTexture, color: color, size: resourceSize)
+        super.init(texture: triangleTexture, color: color, size: triangleTexture.size())
         self.position = position
+        
+        let path = UIBezierPath()
+        path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
+        path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
+        path.addLineToPoint(CGPoint(x: size.width/2, y: size.height/2))
+        path.closePath()
+        
         // create physics body
-        physicsBody = SKPhysicsBody(rectangleOfSize: resourceSize)
+        physicsBody = SKPhysicsBody(polygonFromPath: path.CGPath)
         physicsBody?.dynamic = true
         physicsBody?.affectedByGravity = false // not affected by gravity
         physicsBody?.allowsRotation = false

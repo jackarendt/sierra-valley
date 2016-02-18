@@ -19,7 +19,7 @@ final class HelpCarScene: SVBaseScene {
         super.didMoveToView(view)
         // add car to scene
         car.position = CGPoint(x: view.bounds.width/2, y: car.size.height/2 + 10)
-        car.setCollisionBitmask([CollisionBitmaskCategory.Floor])
+        car.impulse = 600
         addChild(car)
         
         // Create a "floor" that is clear below the car so that the car can rest on it easily.
@@ -28,7 +28,7 @@ final class HelpCarScene: SVBaseScene {
         
         // create floor's physics body
         floorNode.physicsBody = SKPhysicsBody(rectangleOfSize: floorNode.size)
-        floorNode.physicsBody?.categoryBitMask = CollisionBitmaskCategory.Floor
+        floorNode.physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
         floorNode.physicsBody?.dynamic = false
         floorNode.physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
         floorNode.physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car

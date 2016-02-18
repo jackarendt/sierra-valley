@@ -12,17 +12,28 @@ import SpriteKit
 /// to build a row on screen.  The RectangleNode also adheres to the LevelResourceProtocol which allows it to be used
 ///interchangably with other level resource nodes.
 final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
+    
+    override public var size : CGSize {
+        didSet {
+            physicsBody = SKPhysicsBody(rectangleOfSize: size)
+            physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
+            physicsBody?.dynamic = false
+            physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
+            physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car
+            name = SVSpriteName.Rectangle.rawValue
+        }
+    }
+    
+    
     required public init(position: CGPoint, color: UIColor, resourceSize: CGSize) {
         super.init(texture: rectangleTexture, color: color, size: resourceSize)
         
         self.position = position
-        
         physicsBody = SKPhysicsBody(rectangleOfSize: resourceSize)
-        physicsBody?.dynamic = true
-        physicsBody?.affectedByGravity = false
-        physicsBody?.allowsRotation = false
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
-        physicsBody?.collisionBitMask = 0
+        physicsBody?.dynamic = false
+        physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
+        physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car
         name = SVSpriteName.Rectangle.rawValue
         
         zPosition = 100

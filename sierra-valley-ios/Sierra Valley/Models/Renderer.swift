@@ -34,12 +34,12 @@ final class Renderer {
     /// - Parameter color: The color for the row
     /// - Parameter direction: The direction that the car will travel
     /// - Parameter cameraPosition: The center of the camear in the scene
-    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, var position : CGPoint, background : Bool){
+    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, var position : CGPoint, duration : CFTimeInterval){
         // get proper buffer and z position for the row
         var buffer : RowBufferItem!
         var zPos : CGFloat = 100
         
-        if background {
+        if duration >= 0 {
             buffer = bufferPool.nextContinuationItem()
             zPos = 0
         } else {
@@ -48,7 +48,17 @@ final class Renderer {
         
         let rectHeight : CGFloat = 200
         position.y = position.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
-        renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
+        let usedResrouces = renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
+
+        if duration >= 0 {
+            for resource in usedResrouces {
+                resource.position.y += 3 * rectHeight
+                let delay = SKAction.waitForDuration(duration)
+                let rise = SKAction.moveBy(CGVector(dx: 0, dy: -3 * rectHeight), duration: 0.5)
+                resource.runAction(SKAction.sequence([delay,rise]))
+            }
+        }
+        
     }
     
     func incrementBufferPool() {
@@ -63,7 +73,7 @@ final class Renderer {
     /// - Parameter zPos: The z position of the row
     /// - Parameter rectHeight: The height of the rectangle to be rendered
     /// - Parameter direction: The direction of the triangle to be rendered (whether it should face left or right)
-    private func renderPieces(buffer : RowBufferItem, color : UIColor, row : ResourceRow, position : CGPoint, zPos : CGFloat, rectHeight : CGFloat, direction : CarDirection) {
+    private func renderPieces(buffer : RowBufferItem, color : UIColor, row : ResourceRow, position : CGPoint, zPos : CGFloat, rectHeight : CGFloat, direction : CarDirection) -> [SKNode] {
         // resources that will be rendered on the screen
         var usedResources = [SKNode]()
         
@@ -72,7 +82,7 @@ final class Renderer {
             buffer.rectangle?.size = CGSizeZero
             buffer.triangle?.size = CGSizeZero
             buffer.spike?.size = CGSizeZero
-            return
+            return [buffer.rectangle!, buffer.triangle!, buffer.spike!]
         }
         
         let rect = buffer.rectangle! // there will always be a rectangle, so don't check for that
@@ -104,6 +114,7 @@ final class Renderer {
             usedResources.append(spike)
         }
         addNodes(usedResources)
+        return usedResources
     }
     
     /// Adds nodes to the scene if necessary
