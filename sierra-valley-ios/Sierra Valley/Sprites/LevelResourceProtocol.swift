@@ -18,4 +18,6 @@ protocol LevelResourceProtocol {
     /// - Parameter color: The color of the resource
     /// - Parameter resrouceSize: The size of the resource (for some pieces, this will not be used, and will simply be ignored)
     init(position : CGPoint, color : UIColor, resourceSize : CGSize)
+    
+    var categoryBitMask : UInt32 { get set }
 }

@@ -14,23 +14,29 @@ import SpriteKit
 /// interchangably with other level resources
 final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
     
+    var categoryBitMask : UInt32 = CollisionBitmaskCategory.Triangle {
+        didSet {
+            physicsBody?.categoryBitMask = categoryBitMask
+        }
+    }
     
     override public var size : CGSize {
         didSet {
-            let path = UIBezierPath()
-            path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
-            path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
-            path.addLineToPoint(CGPoint(x: size.width/2, y: size.height/2))
-            path.closePath()
-            
-            // create physics body
-            physicsBody = SKPhysicsBody(polygonFromPath: path.CGPath)
-            physicsBody?.dynamic = true
-            physicsBody?.affectedByGravity = false // not affected by gravity
-            physicsBody?.allowsRotation = false
-            physicsBody?.categoryBitMask = CollisionBitmaskCategory.Triangle
-            physicsBody?.collisionBitMask = 0 // doesn't collide with anything
-            name = SVSpriteName.Triangle.rawValue
+            if size != CGSizeZero {
+                let path = UIBezierPath()
+                path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
+                path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
+                path.addLineToPoint(CGPoint(x: size.width/2, y: size.height/2))
+                path.closePath()
+                
+                // create physics body
+                physicsBody = SKPhysicsBody(polygonFromPath: path.CGPath)
+                physicsBody?.dynamic = true
+                physicsBody?.affectedByGravity = false // not affected by gravity
+                physicsBody?.allowsRotation = false
+                physicsBody?.categoryBitMask = categoryBitMask
+                physicsBody?.collisionBitMask = 0 // doesn't collide with anything
+            }
         }
     }
     
@@ -49,7 +55,7 @@ final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
         physicsBody?.dynamic = true
         physicsBody?.affectedByGravity = false // not affected by gravity
         physicsBody?.allowsRotation = false
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Triangle
+        physicsBody?.categoryBitMask = categoryBitMask
         physicsBody?.collisionBitMask = 0 // doesn't collide with anything
         name = SVSpriteName.Triangle.rawValue
         

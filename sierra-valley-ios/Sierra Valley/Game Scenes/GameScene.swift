@@ -76,6 +76,8 @@ class GameScene: SVBaseScene {
         car.removeAllActions()
         let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveLeftAction))
+        
+        renderer.alterCategoryBitMask()
     }
     
     override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
@@ -83,6 +85,8 @@ class GameScene: SVBaseScene {
         car.removeAllActions()
         let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveRightAction))
+        
+        renderer.alterCategoryBitMask()
     }
    
     override func update(currentTime: CFTimeInterval) {

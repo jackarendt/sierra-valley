@@ -25,6 +25,7 @@ public struct CollisionBitmaskCategory {
     static let Spike     : UInt32 = 1 << 2
     static let Rectangle : UInt32 = 1 << 3
     static let Triangle  : UInt32 = 1 << 4
+    static let Background: UInt32 = 1 << 5
 }
 
 public enum SVSpriteName : String {

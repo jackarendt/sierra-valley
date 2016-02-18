@@ -13,14 +13,21 @@ import SpriteKit
 ///interchangably with other level resource nodes.
 final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
     
+    var categoryBitMask : UInt32 = CollisionBitmaskCategory.Rectangle {
+        didSet {
+            physicsBody?.categoryBitMask = categoryBitMask
+        }
+    }
+    
     override public var size : CGSize {
         didSet {
-            physicsBody = SKPhysicsBody(rectangleOfSize: size)
-            physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
-            physicsBody?.dynamic = false
-            physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
-            physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car
-            name = SVSpriteName.Rectangle.rawValue
+            if size != CGSizeZero {
+                physicsBody = SKPhysicsBody(rectangleOfSize: size)
+                physicsBody?.categoryBitMask = categoryBitMask
+                physicsBody?.dynamic = false
+                physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
+                physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car
+            }
         }
     }
     
@@ -30,10 +37,11 @@ final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
         
         self.position = position
         physicsBody = SKPhysicsBody(rectangleOfSize: resourceSize)
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Rectangle
+        physicsBody?.categoryBitMask = categoryBitMask
         physicsBody?.dynamic = false
         physicsBody?.collisionBitMask = CollisionBitmaskCategory.Car
         physicsBody?.contactTestBitMask = CollisionBitmaskCategory.Car
+        
         name = SVSpriteName.Rectangle.rawValue
         
         zPosition = 100

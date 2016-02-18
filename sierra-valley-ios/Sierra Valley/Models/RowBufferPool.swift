@@ -19,8 +19,6 @@ class RowBufferPool {
     /// contains the buffer used for rendering the background level of the game
     private var backgroundRowBuffer : RowBuffer!
     
-    private var continuationRowBuffer : RowBuffer!
-    
     /// Initializes a pool with n number of buffers, of m size
     /// - Parameter poolSize: The number of buffers in the pool
     /// - Parameter bufferSize: The size of each buffer
@@ -36,17 +34,37 @@ class RowBufferPool {
         }
         pool = Buffer<RowBuffer>(items: buf) // allocate the pool
         backgroundRowBuffer = pool.next() // 0
-        foregroundRowBuffer = pool.next() // 1
         incrementPool()
     }
     
     /// Increments the pool index
     func incrementPool() {
-        let origForeground = foregroundRowBuffer // 1
-        let origBackground = backgroundRowBuffer // 0
-        foregroundRowBuffer = pool.next() // 2
-        backgroundRowBuffer = origForeground // 1
-        continuationRowBuffer = origBackground // 0
+        let origBackground = backgroundRowBuffer // 1
+        backgroundRowBuffer = pool.next() // 2
+        foregroundRowBuffer = origBackground // 1
+    }
+    
+    func alterCategoryBitMask() {
+        formatForegroundElements(foregroundRowBuffer)
+        formatBackgroundElements(backgroundRowBuffer)
+    }
+    
+    private func formatBackgroundElements(buffer : RowBuffer) {
+        for _ in 0.stride(to: buffer.capacity, by: 1) {
+            let item = buffer.next()
+            item.rectangle?.categoryBitMask = CollisionBitmaskCategory.Background
+            item.spike?.categoryBitMask = CollisionBitmaskCategory.Background
+            item.triangle?.categoryBitMask = CollisionBitmaskCategory.Background
+        }
+    }
+    
+    private func formatForegroundElements(buffer : RowBuffer) {
+        for _ in 0.stride(to: buffer.capacity, by: 1) {
+            let item = buffer.next()
+            item.rectangle?.categoryBitMask = CollisionBitmaskCategory.Rectangle
+            item.spike?.categoryBitMask = CollisionBitmaskCategory.Triangle
+            item.triangle?.categoryBitMask = CollisionBitmaskCategory.Spike
+        }
     }
     
     /// Returns the next buffer item in the foreground buffer
@@ -59,9 +77,5 @@ class RowBufferPool {
     /// - Returns: RowBufferItem of the background buffer
     func nextBackgroundItem() -> RowBufferItem {
         return backgroundRowBuffer.next()
-    }
-    
-    func nextContinuationItem() -> RowBufferItem {
-        return continuationRowBuffer.next()
     }
 }

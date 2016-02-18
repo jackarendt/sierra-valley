@@ -18,7 +18,7 @@ public class Buffer<T> {
     private var idx = 0
     
     /// capacity of the buffer
-    private var capacity = 0
+    public var capacity = 0
     
     /// Initializes a new buffer with a set of items
     /// - Parameter items: The items to initialize the buffer with

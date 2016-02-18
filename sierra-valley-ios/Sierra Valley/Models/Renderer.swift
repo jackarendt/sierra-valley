@@ -26,7 +26,7 @@ final class Renderer {
     /// - Parameter scene: The scene that is being presented
     init(scene : SKScene) {
         self.scene = scene
-        bufferPool = RowBufferPool(poolSize: 5, bufferSize: Int(gameSettings.numFrames))
+        bufferPool = RowBufferPool(poolSize: 3, bufferSize: Int(gameSettings.numFrames * 1.5))
     }
     
     /// Renders a row on the screen to the given position and color and adds it to the scene if necessary
@@ -40,7 +40,7 @@ final class Renderer {
         var zPos : CGFloat = 100
         
         if duration >= 0 {
-            buffer = bufferPool.nextContinuationItem()
+            buffer = bufferPool.nextBackgroundItem()
             zPos = 0
         } else {
             buffer = bufferPool.nextForegroundItem()
@@ -63,6 +63,10 @@ final class Renderer {
     
     func incrementBufferPool() {
         bufferPool.incrementPool()
+    }
+    
+    func alterCategoryBitMask() {
+        bufferPool.alterCategoryBitMask()
     }
     
     /// Does the actually rendering of the pieces and adds them to the scene

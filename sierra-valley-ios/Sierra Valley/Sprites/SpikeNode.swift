@@ -12,6 +12,13 @@ import SpriteKit
 /// car to avoid.  The SpikeNode also adheres to the LevelResourceProtocol which allows it to be used interchangably
 /// with other level resource nodes.
 final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
+    
+    var categoryBitMask : UInt32 = CollisionBitmaskCategory.Spike {
+        didSet {
+            physicsBody?.categoryBitMask = categoryBitMask
+        }
+    }
+    
     required public init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
         super.init(texture: spikeTexture, color: color, size: spikeTexture.size())
         name = SVSpriteName.Spike.rawValue
@@ -28,7 +35,7 @@ final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         physicsBody?.dynamic = true
         physicsBody?.affectedByGravity = false
         physicsBody?.allowsRotation = true
-        physicsBody?.categoryBitMask = CollisionBitmaskCategory.Spike
+        physicsBody?.categoryBitMask = categoryBitMask
         physicsBody?.collisionBitMask = 0
 
         colorBlendFactor = 1.0
