@@ -99,7 +99,10 @@ final public class CarNode: SKSpriteNode {
     /// Causes the car to jump up by the set impulse amount
     /// - Note: The car can double jump
     public func jump() {
-        if doubleJumped { // don't allow for triple or quadruple jumps
+        print(inAir)
+        print(doubleJumped)
+        print("")
+        if inAir { // don't allow for triple or quadruple jumps
             return
         }
         // applies the impulse to the car to make it "jump"
@@ -110,6 +113,7 @@ final public class CarNode: SKSpriteNode {
             doubleJumped = true
         }
         inAir = true
+        return
     }
     
     /// This will switch the car direction based on the new direction.  If the direction has not changed,

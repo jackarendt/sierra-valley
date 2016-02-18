@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+protocol RendererDelegate : class {
+    func zPositionChanged(newZPosition : CGFloat)
+}
+
 
 /// The Renderer class is specific to the platform.  The renderer is in charge of placing all of the
 /// different level pieces into their respective places.
@@ -19,14 +23,19 @@ final class Renderer {
     /// the scene that the game is being presented
     weak var scene : SKScene?
     
+    weak var delegate : RendererDelegate?
+    
     /// The information of the game for renders
     private let gameSettings = GameSettings()
+    
+    private var zPosition : CGFloat = 1000000
     
     /// Initializes the renderer with the current scene, and allocates the buffer pool
     /// - Parameter scene: The scene that is being presented
     init(scene : SKScene) {
         self.scene = scene
         bufferPool = RowBufferPool(poolSize: 3, bufferSize: Int(gameSettings.numFrames * 1.5))
+        delegate?.zPositionChanged(zPosition)
     }
     
     /// Renders a row on the screen to the given position and color and adds it to the scene if necessary
@@ -37,11 +46,11 @@ final class Renderer {
     func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, var position : CGPoint, duration : CFTimeInterval){
         // get proper buffer and z position for the row
         var buffer : RowBufferItem!
-        var zPos : CGFloat = 100
+        var zPos : CGFloat = zPosition
         
         if duration >= 0 {
             buffer = bufferPool.nextBackgroundItem()
-            zPos = 0
+            zPos = zPosition - 1
         } else {
             buffer = bufferPool.nextForegroundItem()
         }
@@ -63,6 +72,9 @@ final class Renderer {
     
     func incrementBufferPool() {
         bufferPool.incrementPool()
+        zPosition -= 1
+        delegate?.zPositionChanged(zPosition)
+        
     }
     
     func alterCategoryBitMask() {

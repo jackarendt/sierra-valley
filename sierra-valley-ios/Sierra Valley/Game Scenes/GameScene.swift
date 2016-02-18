@@ -41,6 +41,7 @@ class GameScene: SVBaseScene {
         // create game manager and renderer
         gameManager = GameManager(delegate: self)
         renderer = Renderer(scene: self)
+        renderer.delegate = self
         
         // create the camera node, and make it the default camera of the game
         let newCamera = CameraNode()
@@ -54,6 +55,7 @@ class GameScene: SVBaseScene {
 
         backgroundNode = ParallaxBackgroundNode()
         backgroundNode.position = CGPoint(x: gameManager.gameSettings.actualWidth/2 + 50, y: view.bounds.height/2)
+        backgroundNode.zPosition = -100000000
         addChild(backgroundNode)
         
         // start the game when the scene is set up
@@ -62,8 +64,8 @@ class GameScene: SVBaseScene {
         let carYPos = gameManager.gameSettings.maxMountainHeight + car.size.height/2
         let carXPos = (gameManager.gameSettings.actualWidth - gameManager.gameSettings.screenWidth)/2 + car.size.width/2 + 20
         car.position = CGPoint(x: carXPos, y: carYPos)
+        car.zPosition = 1000001
         addChild(car)
-        car.zPosition = 101
         swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
     }
     
@@ -74,7 +76,8 @@ class GameScene: SVBaseScene {
     override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
         car.switchDirection(.Left)
         car.removeAllActions()
-        let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
+        let dy = sin(atan(gameManager.gameSettings.angle))/6
+        let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveLeftAction))
         
         renderer.alterCategoryBitMask()
@@ -83,7 +86,8 @@ class GameScene: SVBaseScene {
     override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
         car.switchDirection(.Right)
         car.removeAllActions()
-        let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth, dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
+        let dy = sin(atan(gameManager.gameSettings.angle))/6
+        let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveRightAction))
         
         renderer.alterCategoryBitMask()
@@ -121,6 +125,12 @@ extension GameScene : GameManagerDelegate {
 
     func gameEnded(finalScore: Int) {
         gameDelegate?.gameDidEnd(0, newAvalanches: 0) // send that action to the delegate for handling
+    }
+}
+
+extension GameScene : RendererDelegate {
+    func zPositionChanged(newZPosition: CGFloat) {
+//        car.zPosition = newZPosition
     }
 }
 
