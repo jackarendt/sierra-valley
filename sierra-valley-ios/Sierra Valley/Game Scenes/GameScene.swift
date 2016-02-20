@@ -140,14 +140,16 @@ extension GameScene : RendererDelegate {
 extension GameScene {
     override func didBeginContact(contact: SKPhysicsContact) {
         
-        if contact.bodyA.node?.name == SVLevelResource.Spike.rawValue && contact.bodyB.node?.name == SVLevelResource.Spike.rawValue {
+        if contact.bodyA.categoryBitMask == CollisionBitmaskCategory.Spike || contact.bodyB.categoryBitMask == CollisionBitmaskCategory.Spike {
+            print(contact.bodyA.categoryBitMask)
+            print(contact.bodyB.node?.name)
             pause() // pause the scene
             gameDelegate?.gameDidEnd(0, newAvalanches: 0) // end the game
+        } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
+            car.endJump()
+        } else if contact.bodyA.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0 && contact.bodyB.categoryBitMask & CollisionBitmaskCategory.Car > 0 {
+            car.endJump()
         }
-    }
-    
-    override func didEndContact(contact: SKPhysicsContact) {
-        car.endJump()
     }
 }
 

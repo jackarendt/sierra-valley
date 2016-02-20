@@ -99,20 +99,16 @@ final public class CarNode: SKSpriteNode {
     /// Causes the car to jump up by the set impulse amount
     /// - Note: The car can double jump
     public func jump() {
-        print(inAir)
-        print(doubleJumped)
-        print("")
-        if inAir { // don't allow for triple or quadruple jumps
-            return
+        if !doubleJumped { // don't allow for triple or quadruple jumps
+            // applies the impulse to the car to make it "jump"
+            physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
+            
+            // if the car has already jumped, set a flag to make sure it can't jump again
+            if inAir {
+                doubleJumped = true
+            }
+            inAir = true
         }
-        // applies the impulse to the car to make it "jump"
-        physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
-        
-        // if the car has already jumped, set a flag to make sure it can't jump again
-        if inAir {
-            doubleJumped = true
-        }
-        inAir = true
         return
     }
     

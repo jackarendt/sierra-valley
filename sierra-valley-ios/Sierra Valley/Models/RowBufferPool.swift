@@ -62,8 +62,8 @@ class RowBufferPool {
         for _ in 0.stride(to: buffer.capacity, by: 1) {
             let item = buffer.next()
             item.rectangle?.categoryBitMask = CollisionBitmaskCategory.Rectangle
-            item.spike?.categoryBitMask = CollisionBitmaskCategory.Triangle
-            item.triangle?.categoryBitMask = CollisionBitmaskCategory.Spike
+            item.spike?.categoryBitMask = CollisionBitmaskCategory.Spike
+            item.triangle?.categoryBitMask = CollisionBitmaskCategory.Triangle
         }
     }
     
