@@ -14,6 +14,8 @@ protocol GameSceneDelegate : class {
     /// - Parameter finalScore: The final score that the user ended up with
     /// - Parameter newAvalanches: The number of new avalanches that the user got
     func gameDidEnd(finalScore : Int, newAvalanches : Int)
+    
+    func scoreDidChange(newScore : Int)
 }
 
 /// The GameScene is where the actual game takes place.  A majority of the game logic has been loaded off of the scene
@@ -120,7 +122,7 @@ extension GameScene : GameManagerDelegate {
     }
 
     func scoreChanged(newScore: Int) {
-        // TODO: update the score of the game
+        gameDelegate?.scoreDidChange(newScore)
     }
 
     func gameEnded(finalScore: Int) {

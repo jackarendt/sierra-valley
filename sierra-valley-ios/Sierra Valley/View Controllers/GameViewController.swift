@@ -53,7 +53,7 @@ class GameViewController: SVBaseViewController {
         
         distanceLabel.frame = CGRect(x: 20, y: 5, width: view.bounds.width/2 - 40, height: 60)
         distanceLabel.textColor = SVColor.lightColor()
-        distanceLabel.text = String(format: "%i", distance)
+        distanceLabel.text = "\(distance)"
         distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))
         view.addSubview(distanceLabel)
         
@@ -114,6 +114,10 @@ extension GameViewController : GameSceneDelegate {
             self.distanceLabel.alpha = 0
             }, completion: { finsihed in
         })
+    }
+    
+    func scoreDidChange(newScore: Int) {
+        distanceLabel.text = "\(newScore)"
     }
 }
 
