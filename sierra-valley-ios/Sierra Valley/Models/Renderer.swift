@@ -124,6 +124,7 @@ final class Renderer {
         
         if row.row.contains(2) { // render spike if necessary
             let spike = buffer.spike!
+            spike.size = CGSizeMake(spike.size.width, 20)
             spike.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + spike.size.height/2)
             spike.color = color
             spike.zPosition = zPos

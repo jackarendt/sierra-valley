@@ -19,6 +19,25 @@ final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         }
     }
     
+    override public var size : CGSize {
+        didSet {
+            if size != CGSizeZero {
+                let path = UIBezierPath()
+                path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
+                path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
+                path.addLineToPoint(CGPoint(x: 0, y: size.height/2))
+                path.closePath()
+                
+                physicsBody = SKPhysicsBody(polygonFromPath: path.CGPath)
+                physicsBody?.dynamic = true
+                physicsBody?.affectedByGravity = false
+                physicsBody?.allowsRotation = true
+                physicsBody?.categoryBitMask = categoryBitMask
+                physicsBody?.collisionBitMask = 0
+            }
+        }
+    }
+    
     required public init(position : CGPoint, color : UIColor, resourceSize: CGSize) {
         super.init(texture: spikeTexture, color: color, size: spikeTexture.size())
         name = SVSpriteName.Spike.rawValue

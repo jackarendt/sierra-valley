@@ -103,14 +103,17 @@ final public class GameManager {
 //        readyToRender = false
     }
     
-    public func checkCarRotation(rotation : CGFloat) {
+    public func checkCarRotation(rotation : CGFloat) -> Bool{
         if rotation < CGFloat(-M_PI/4) && rotation < CGFloat(7*M_PI/4) {
             pause()
             delegate?.gameEnded(0)
+            return true
         } else if rotation > CGFloat(3*M_PI/4) && rotation < CGFloat(5*M_PI/4) {
             pause()
             delegate?.gameEnded(0)
+            return true
         }
+        return false
     }
     
     
@@ -148,7 +151,7 @@ final public class GameManager {
                     let row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0)
                     var c = SVColor.sunriseOrangeColor()
                     if color == SVColor.sunriseOrangeColor() {
-                        c = SVColor.maroonColor()
+                        c = SVColor.darkMaroonColor()
                     }
                     let yPos = renderYLocation + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
                     delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), duration: CFTimeInterval(gameSettings.numFrames) * 0.75 * gameSettings.vSyncTime)
@@ -181,7 +184,7 @@ final public class GameManager {
         delegate?.levelDequeuedWithCameraAction(levelWidth, height: level.levelHeight, time: level.levelTime)
         
         if color == SVColor.sunriseOrangeColor() {
-            color = SVColor.maroonColor()
+            color = SVColor.darkMaroonColor()
         } else {
             color = SVColor.sunriseOrangeColor()
         }

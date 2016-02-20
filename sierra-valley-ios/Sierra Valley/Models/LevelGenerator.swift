@@ -66,7 +66,7 @@ struct SpikeTrail : LevelGenerationProtocol {
         let spikes = Int(Double(difficulty - minDifficulty)/Double(maxDifficulty - minDifficulty) * 4) // maximum of 4 spikes
         var rows = [ResourceRow]()
         for _ in 0.stride(to: spikes, by: 1) {
-            rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: 0))
+            rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
         }
         return rows
     }

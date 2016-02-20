@@ -81,7 +81,7 @@ class GameScene: SVBaseScene {
         }
         car.switchDirection(.Left)
         car.removeAllActions()
-        let dy = sin(atan(gameManager.gameSettings.angle))/6
+        let dy = sin(atan(gameManager.gameSettings.angle))/2
         let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveLeftAction))
         
@@ -94,7 +94,7 @@ class GameScene: SVBaseScene {
         }
         car.switchDirection(.Right)
         car.removeAllActions()
-        let dy = sin(atan(gameManager.gameSettings.angle))/6
+        let dy = sin(atan(gameManager.gameSettings.angle))/2
         let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveRightAction))
         
@@ -154,7 +154,9 @@ extension GameScene {
     /// Method that handles when the car touches back down to the level
     private func handleCarCollision() {
         car.endJump()
-        gameManager.checkCarRotation(car.zRotation)
+        if gameManager.checkCarRotation(car.zRotation) {
+            pause()
+        }
     }
 }
 
