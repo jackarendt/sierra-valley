@@ -20,6 +20,9 @@ public struct ResourceRow {
     /// Rectangle - 0, Triangle - 1, Spike - 2, blank - 3
     public var row = [UInt8]()
     
+    /// If the row is empty this will be true
+    public var isEmpty = false
+    
     /// Initializes a row with a set of rows to be used and a height to drop the rectangle
     /// - Parameter row: The SVSpriteName representation of what a row will look like once it's rendered
     /// - Parameter depressedHeight: The height to drop a rectangle if there is a valley in the track
@@ -30,9 +33,13 @@ public struct ResourceRow {
             let pieces : [SVSpriteName : UInt8] = [.Rectangle : 0, .Triangle : 1, .Spike : 2, .None : 3]
             return pieces[name]!
         }
-
+        
         for sprite in row {
-            rows.append(spriteNameToPiece(sprite))
+            let piece = spriteNameToPiece(sprite)
+            if piece == 3 {
+                isEmpty = true
+            }
+            rows.append(piece)
         }
         self.row = rows
         self.depressedHeight = depressedHeight

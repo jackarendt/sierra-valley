@@ -33,7 +33,7 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var impulse : CGFloat = 70
+    public var impulse : CGFloat = 80
     
     /// boolean denoting whether the car is currently jumping or not
     private var inAir = false

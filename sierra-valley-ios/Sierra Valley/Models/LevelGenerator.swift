@@ -15,7 +15,7 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
     while queue.count < 100 {
         var rows : [ResourceRow]!
         if arc4random() % 3 == 0 {
-            rows = NoRoadblockTrail.generatePath(Int(30 + arc4random() % 41), suggestedLength: 0)
+            rows = SpikeTrail.generatePath(10, suggestedLength: 0)
         } else {
             rows = NoRoadblockTrail.generatePath(0, suggestedLength: min(Int(arc4random() % 10 + 1), 100 - queue.count))
         }

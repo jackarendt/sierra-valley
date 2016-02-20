@@ -42,6 +42,8 @@ final public class GameManager {
     /// The score of the game
     public var score = 0
     
+    public var totalFrames = 0
+    
     /// Game settings, specifically different things about the game such as frames/row, height difference between rows, amongst
     /// many other things
     public let gameSettings = GameSettings()
@@ -101,6 +103,16 @@ final public class GameManager {
 //        readyToRender = false
     }
     
+    public func checkCarRotation(rotation : CGFloat) {
+        if rotation < CGFloat(-M_PI/4) && rotation < CGFloat(7*M_PI/4) {
+            pause()
+            delegate?.gameEnded(0)
+        } else if rotation > CGFloat(3*M_PI/4) && rotation < CGFloat(5*M_PI/4) {
+            pause()
+            delegate?.gameEnded(0)
+        }
+    }
+    
     
     /// Updates the game state, and determines if new pieces should be rendered, or if a level should be dequeued, etc.
     /// - Parameter time: The time of the game loop
@@ -121,6 +133,11 @@ final public class GameManager {
                 
                 // dequeue a new row, and render it
                 if let row = level.rows.dequeue() {
+                    if !row.isEmpty {
+                        totalFrames += 1
+                        score = totalFrames/10
+                        delegate?.scoreChanged(score)
+                    }
                     let position = CGPoint(x: renderXLocation, y: renderYLocation)
                     delegate?.renderRow(row, color: color, direction: currentDirection, position: position, duration: -1)
                     adjustRenderLocation()

@@ -43,7 +43,6 @@ class GameScene: SVBaseScene {
         // create game manager and renderer
         gameManager = GameManager(delegate: self)
         renderer = Renderer(scene: self)
-        renderer.delegate = self
         
         // create the camera node, and make it the default camera of the game
         let newCamera = CameraNode()
@@ -67,6 +66,7 @@ class GameScene: SVBaseScene {
         let carXPos = (gameManager.gameSettings.actualWidth - gameManager.gameSettings.screenWidth)/2 + car.size.width/2 + 20
         car.position = CGPoint(x: carXPos, y: carYPos)
         car.zPosition = 1000001
+        car.switchDirection(.Left)
         addChild(car)
         swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
     }
@@ -76,6 +76,9 @@ class GameScene: SVBaseScene {
     }
     
     override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
+        if car.direction == .Left {
+            return
+        }
         car.switchDirection(.Left)
         car.removeAllActions()
         let dy = sin(atan(gameManager.gameSettings.angle))/6
@@ -86,6 +89,9 @@ class GameScene: SVBaseScene {
     }
     
     override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
+        if car.direction == .Right {
+            return
+        }
         car.switchDirection(.Right)
         car.removeAllActions()
         let dy = sin(atan(gameManager.gameSettings.angle))/6
@@ -126,30 +132,29 @@ extension GameScene : GameManagerDelegate {
     }
 
     func gameEnded(finalScore: Int) {
-        gameDelegate?.gameDidEnd(0, newAvalanches: 0) // send that action to the delegate for handling
-    }
-}
-
-extension GameScene : RendererDelegate {
-    func zPositionChanged(newZPosition: CGFloat) {
-//        car.zPosition = newZPosition
+        gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // send that action to the delegate for handling
     }
 }
 
 // MARK: - Physics Contact delegate methods
 extension GameScene {
     override func didBeginContact(contact: SKPhysicsContact) {
-        
         if contact.bodyA.categoryBitMask == CollisionBitmaskCategory.Spike || contact.bodyB.categoryBitMask == CollisionBitmaskCategory.Spike {
             print(contact.bodyA.categoryBitMask)
             print(contact.bodyB.node?.name)
             pause() // pause the scene
-            gameDelegate?.gameDidEnd(0, newAvalanches: 0) // end the game
+            gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // end the game
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
-            car.endJump()
+            handleCarCollision()
         } else if contact.bodyA.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0 && contact.bodyB.categoryBitMask & CollisionBitmaskCategory.Car > 0 {
-            car.endJump()
+            handleCarCollision()
         }
+    }
+    
+    /// Method that handles when the car touches back down to the level
+    private func handleCarCollision() {
+        car.endJump()
+        gameManager.checkCarRotation(car.zRotation)
     }
 }
 
@@ -168,6 +173,6 @@ extension GameScene {
     
     /// Returns the current distance that the car has traveled
     func currentDistance() -> Int {
-        return 0 // TODO: update this with real data
+        return gameManager.score
     }
 }
