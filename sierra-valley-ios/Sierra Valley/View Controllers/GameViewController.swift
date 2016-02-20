@@ -11,13 +11,16 @@ import SpriteKit
 
 class GameViewController: SVBaseViewController {
 
-    let pauseButton = UIButton()
+    private let pauseButton = UIButton()
+    private let distanceLabel = UILabel()
     
     var gameScene : GameScene!
     var skView : SKView!
     
     var pauseView : PauseView!
     var gameOverView : GameOverView!
+    
+    var distance = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,12 @@ class GameViewController: SVBaseViewController {
         pauseButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 25, bottom: 20, right: 20)
         pauseButton.addTarget(self, action: "pauseButtonTapped:", forControlEvents: .TouchUpInside)
         contentView.addSubview(pauseButton)
+        
+        distanceLabel.frame = CGRect(x: 20, y: 5, width: view.bounds.width/2 - 40, height: 60)
+        distanceLabel.textColor = SVColor.lightColor()
+        distanceLabel.text = String(format: "%i", distance)
+        distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))
+        view.addSubview(distanceLabel)
         
         pauseView = PauseView(frame: contentView.bounds)
         pauseView.delegate = self
@@ -79,6 +88,7 @@ class GameViewController: SVBaseViewController {
         UIView.animateWithDuration(0.5, animations: {
             self.pauseView.alpha = 1
             self.pauseButton.alpha = 0
+            self.distanceLabel.alpha = 0
             }, completion: { finsihed in
         })
     }
@@ -101,6 +111,7 @@ extension GameViewController : GameSceneDelegate {
         UIView.animateWithDuration(0.5, animations: {
             self.gameOverView.alpha = 1
             self.pauseButton.alpha = 0
+            self.distanceLabel.alpha = 0
             }, completion: { finsihed in
         })
     }
@@ -111,6 +122,7 @@ extension GameViewController : PauseViewDelegate {
         UIView.animateWithDuration(0.5, animations: {
             pauseView.alpha = 0
             self.pauseButton.alpha = 1
+            self.distanceLabel.alpha = 1
         }, completion: { finished in
             pauseView.hidden = true
             self.gameScene.resume()

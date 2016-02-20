@@ -693,6 +693,7 @@
 		2EBA3C1A1C4D9E16005C0D76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -706,6 +707,7 @@
 		2EBA3C1B1C4D9E16005C0D76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.Sierra-ValleyUITests";

@@ -86,17 +86,17 @@ class SVPauseBaseView: UIView {
         addSubview(subtitleLabel)
         blinkAnimation = SVBlinkAnimation(view: subtitleLabel, duration: 3.0)
         
-        avalancheImageView.frame = CGRect(x: bounds.width - 70, y: 25, width: 50, height: 50)
+        avalancheImageView.frame = CGRect(x: bounds.width - 70, y: 10, width: 50, height: 50)
         addSubview(avalancheImageView)
         
-        avalancheLabel.frame = CGRect(x: bounds.width/2, y: 20, width: bounds.width/2 - 80, height: 60)
+        avalancheLabel.frame = CGRect(x: bounds.width/2, y: 5, width: bounds.width/2 - 80, height: 60)
         avalancheLabel.textColor = SVColor.lightColor()
         avalancheLabel.text = String(format: "%i", avalanche)
         avalancheLabel.textAlignment = .Right
         avalancheLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))
         addSubview(avalancheLabel)
         
-        distanceLabel.frame = CGRect(x: 20, y: 20, width: bounds.width/2 - 40, height: 60)
+        distanceLabel.frame = CGRect(x: 20, y: 5, width: bounds.width/2 - 40, height: 60)
         distanceLabel.textColor = SVColor.lightColor()
         distanceLabel.text = String(format: "%i", distance)
         distanceLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))
