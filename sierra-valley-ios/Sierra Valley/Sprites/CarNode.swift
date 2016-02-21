@@ -8,20 +8,6 @@
 
 import SpriteKit
 
-/// Enumeration for determining which direction the car is facing
-public enum CarDirection {
-    case Left // front of the car faces the left edge of the screen
-    case Right // front of the car faces the right edge of the screen
-    
-    static func oppositeDirection(direction : CarDirection) -> CarDirection {
-        if direction == .Left {
-            return .Right
-        } else {
-            return .Left
-        }
-    }
-}
-
 /// The CarNode contains all of the business logic associated with driving the car.
 /// It allows for a user to change directions and jump.
 final public class CarNode: SKSpriteNode {
@@ -33,7 +19,7 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var impulse : CGFloat = 80
+    public var impulse : CGFloat = 160
     
     /// boolean denoting whether the car is currently jumping or not
     private var inAir = false

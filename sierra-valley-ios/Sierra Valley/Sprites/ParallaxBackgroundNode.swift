@@ -28,7 +28,7 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     
     override init() {
         super.init()
-        middleBackground.alpha = 0.65
+        middleBackground.alpha = 0.8
         middleBackground.zPosition = -3
         middleBackground.position = CGPoint(x: position.x, y: position.y - 75)
         addChild(middleBackground)

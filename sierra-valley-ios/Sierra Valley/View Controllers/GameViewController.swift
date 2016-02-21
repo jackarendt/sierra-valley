@@ -33,9 +33,9 @@ class GameViewController: SVBaseViewController {
         gameScene.gameDelegate = self
         
         // Configure the view.
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.showsDrawCount = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.showsDrawCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
@@ -94,11 +94,15 @@ class GameViewController: SVBaseViewController {
     }
     
     override func applicationDidEnterBackground(notification: NSNotification) {
-        pause()
+        if gameOverView.alpha == 0 {
+            pause()
+        }
     }
     
     override func applicationWillResignActive(notification: NSNotification) {
-        pause()
+        if gameOverView.alpha == 0 {
+            pause()
+        }
     }
 }
 

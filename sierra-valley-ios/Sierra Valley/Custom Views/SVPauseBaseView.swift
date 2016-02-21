@@ -67,7 +67,7 @@ class SVPauseBaseView: UIView {
     private func commonInit() {
         let backgroundView = UIImageView(image: UIImage(asset: .Background))
         backgroundView.frame = bounds
-        backgroundView.alpha = 0.8
+        backgroundView.alpha = 0.7
         addSubview(backgroundView)
         
         tapGesture = UITapGestureRecognizer(target: self, action: "tapGestureRecognized:")

@@ -38,6 +38,8 @@ class GameScene: SVBaseScene {
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
     let car = CarNode(car: .SierraTurbo)
     
+    let starEmitter = SKEmitterNode(fileNamed: "StarParticle.sks")
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         // create game manager and renderer
@@ -69,6 +71,12 @@ class GameScene: SVBaseScene {
         car.switchDirection(.Left)
         addChild(car)
         swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
+        
+        starEmitter?.position = newCamera.position
+        starEmitter?.zPosition = backgroundNode.zPosition - 3
+        if let starEmitter = starEmitter {
+            addChild(starEmitter)
+        }
     }
     
     override func tapGestureRecognized(tap: UITapGestureRecognizer) {
@@ -113,6 +121,9 @@ extension GameScene : GameManagerDelegate {
         renderer.incrementBufferPool()
         if let camera = camera as? CameraNode {
             camera.enqueueGameAction(width, height: height, time: time) // enqueue camera action
+        }
+        if let starEmitter = starEmitter {
+            starEmitter.runAction(SKAction.moveBy(CGVector(dx: width, dy: height), duration: time))
         }
         var backgroundWidth = width - 100
         if width < 0 {

@@ -36,5 +36,19 @@ public enum SVSpriteName : String {
     case None = "none"
 }
 
+/// Enumeration for determining which direction the car is facing
+public enum CarDirection {
+    case Left // front of the car faces the left edge of the screen
+    case Right // front of the car faces the right edge of the screen
+    
+    static func oppositeDirection(direction : CarDirection) -> CarDirection {
+        if direction == .Left {
+            return .Right
+        } else {
+            return .Left
+        }
+    }
+}
+
 
 

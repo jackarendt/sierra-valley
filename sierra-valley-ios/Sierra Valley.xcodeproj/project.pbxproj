@@ -10,6 +10,8 @@
 		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
 		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
 		2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */; };
+		2E284D1F1C784F6200B3805A /* StarParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2E284D1D1C784F6200B3805A /* StarParticle.sks */; };
+		2E284D201C784F6200B3805A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E284D1E1C784F6200B3805A /* spark.png */; };
 		2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C891C59C1AB003D3B26 /* Buffer.swift */; };
 		2E2F0C8C1C59CB93003D3B26 /* TriangleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */; };
 		2E2F0C8E1C5B077A003D3B26 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2F0C8D1C5B077A003D3B26 /* Level.swift */; };
@@ -78,6 +80,8 @@
 		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
 		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
 		2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Extensions/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
+		2E284D1D1C784F6200B3805A /* StarParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = StarParticle.sks; path = Sprites/StarParticle.sks; sourceTree = "<group>"; };
+		2E284D1E1C784F6200B3805A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Sprites/spark.png; sourceTree = "<group>"; };
 		2E2F0C891C59C1AB003D3B26 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buffer.swift; path = Models/Buffer.swift; sourceTree = "<group>"; };
 		2E2F0C8B1C59CB93003D3B26 /* TriangleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleNode.swift; path = Sprites/TriangleNode.swift; sourceTree = "<group>"; };
 		2E2F0C8D1C5B077A003D3B26 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Level.swift; path = Models/Level.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				2E8582CE1C536A99000508EB /* CarNode.swift */,
+				2E284D1D1C784F6200B3805A /* StarParticle.sks */,
+				2E284D1E1C784F6200B3805A /* spark.png */,
 				2E156DAE1C71016100EE1C0F /* CameraNode.swift */,
 				2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */,
 				2EF8187B1C559438008ADAEF /* SpikeNode.swift */,
@@ -434,7 +440,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */,
+				2E284D201C784F6200B3805A /* spark.png in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
+				2E284D1F1C784F6200B3805A /* StarParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
