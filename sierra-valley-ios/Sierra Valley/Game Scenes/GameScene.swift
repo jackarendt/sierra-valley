@@ -38,7 +38,7 @@ class GameScene: SVBaseScene {
     /// The car that is part of the game.  Currently just set as the only available car.  will change later
     let car = CarNode(car: .SierraTurbo)
     
-    let starEmitter = SKEmitterNode(fileNamed: "StarParticle.sks")
+    var starNode : StarBackgroundManager!
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -61,6 +61,9 @@ class GameScene: SVBaseScene {
         backgroundNode.zPosition = -100000000
         addChild(backgroundNode)
         
+        starNode = StarBackgroundManager(position: newCamera.position, scene: self)
+        starNode.zPosition = backgroundNode.zPosition - 3
+        
         // start the game when the scene is set up
         gameManager.startGame()
         
@@ -71,12 +74,6 @@ class GameScene: SVBaseScene {
         car.switchDirection(.Left)
         addChild(car)
         swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
-        
-        starEmitter?.position = newCamera.position
-        starEmitter?.zPosition = backgroundNode.zPosition - 3
-        if let starEmitter = starEmitter {
-            addChild(starEmitter)
-        }
     }
     
     override func tapGestureRecognized(tap: UITapGestureRecognizer) {
@@ -122,15 +119,13 @@ extension GameScene : GameManagerDelegate {
         if let camera = camera as? CameraNode {
             camera.enqueueGameAction(width, height: height, time: time) // enqueue camera action
         }
-        if let starEmitter = starEmitter {
-            starEmitter.runAction(SKAction.moveBy(CGVector(dx: width, dy: height), duration: time))
-        }
         var backgroundWidth = width - 100
         if width < 0 {
             backgroundWidth = width + 100
         }
         
         backgroundNode.enqueueGameAction(backgroundWidth, height: height, time: time)
+        starNode.enqueueGameAction(width, height: height, time: time)
     }
     
     func renderRow(row: ResourceRow, color : UIColor, direction : CarDirection, position: CGPoint, duration : CFTimeInterval) {
@@ -151,10 +146,16 @@ extension GameScene : GameManagerDelegate {
 extension GameScene {
     override func didBeginContact(contact: SKPhysicsContact) {
         if contact.bodyA.categoryBitMask == CollisionBitmaskCategory.Spike || contact.bodyB.categoryBitMask == CollisionBitmaskCategory.Spike {
-            print(contact.bodyA.categoryBitMask)
-            print(contact.bodyB.node?.name)
-            pause() // pause the scene
-            gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // end the game
+            var spike = contact.bodyA
+            var car = contact.bodyB
+            if contact.bodyA.categoryBitMask == CollisionBitmaskCategory.Car {
+                car = contact.bodyA
+                spike = contact.bodyB
+            }
+            if validateSpikeCollision(spike, car: car, contactPoint: contact.contactPoint) {
+                pause() // pause the scene
+                gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // end the game
+            }
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
             handleCarCollision()
         } else if contact.bodyA.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0 && contact.bodyB.categoryBitMask & CollisionBitmaskCategory.Car > 0 {
@@ -168,6 +169,13 @@ extension GameScene {
         if gameManager.checkCarRotation(car.zRotation) {
             pause()
         }
+    }
+    
+    private func validateSpikeCollision(spike : SKPhysicsBody, car : SKPhysicsBody, contactPoint : CGPoint) -> Bool {
+        if car.velocity.dy > gameManager.gameSettings.triangleHeight * 1.1 {
+            return false
+        }
+        return true
     }
 }
 

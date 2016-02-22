@@ -44,6 +44,8 @@
 		2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */; };
 		2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C311C4F5093005C0D76 /* GameViewController.swift */; };
 		2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */; };
+		2EF330681C7A4E1C00085E5F /* ShootingStarParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2EF330671C7A4E1C00085E5F /* ShootingStarParticle.sks */; };
+		2EF3306C1C7A608E00085E5F /* StarBackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF3306B1C7A608E00085E5F /* StarBackgroundManager.swift */; };
 		2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186B1C543A0B008ADAEF /* Settings.swift */; };
 		2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */; };
 		2EF818711C544A93008ADAEF /* PauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818701C544A93008ADAEF /* PauseView.swift */; };
@@ -120,6 +122,8 @@
 		2EBA3C2F1C4F5075005C0D76 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C311C4F5093005C0D76 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "View Controllers/GameViewController.swift"; sourceTree = "<group>"; };
 		2EBA3C321C4F5093005C0D76 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
+		2EF330671C7A4E1C00085E5F /* ShootingStarParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ShootingStarParticle.sks; path = Sprites/ShootingStarParticle.sks; sourceTree = "<group>"; };
+		2EF3306B1C7A608E00085E5F /* StarBackgroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarBackgroundManager.swift; path = Sprites/StarBackgroundManager.swift; sourceTree = "<group>"; };
 		2EF8186B1C543A0B008ADAEF /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Models/Settings.swift; sourceTree = "<group>"; };
 		2EF8186E1C543FD3008ADAEF /* ChangeCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeCarViewController.swift; path = "View Controllers/ChangeCarViewController.swift"; sourceTree = "<group>"; };
 		2EF818701C544A93008ADAEF /* PauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PauseView.swift; path = "Custom Views/PauseView.swift"; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				2E8582CE1C536A99000508EB /* CarNode.swift */,
+				2EF3306B1C7A608E00085E5F /* StarBackgroundManager.swift */,
+				2EF330671C7A4E1C00085E5F /* ShootingStarParticle.sks */,
 				2E284D1D1C784F6200B3805A /* StarParticle.sks */,
 				2E284D1E1C784F6200B3805A /* spark.png */,
 				2E156DAE1C71016100EE1C0F /* CameraNode.swift */,
@@ -439,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF330681C7A4E1C00085E5F /* ShootingStarParticle.sks in Resources */,
 				2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */,
 				2E284D201C784F6200B3805A /* spark.png in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
@@ -510,6 +517,7 @@
 				2EF8186C1C543A0B008ADAEF /* Settings.swift in Sources */,
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 				2E8582CF1C536A99000508EB /* CarNode.swift in Sources */,
+				2EF3306C1C7A608E00085E5F /* StarBackgroundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
