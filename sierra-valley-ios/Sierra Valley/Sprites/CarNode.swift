@@ -19,7 +19,10 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var impulse : CGFloat = 160
+    public var impulse : CGFloat = 140
+    
+    /// The current impulse value for jumping
+    private var currentImpulse : CGFloat = 0
     
     /// boolean denoting whether the car is currently jumping or not
     private var inAir = false
@@ -35,6 +38,9 @@ final public class CarNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: car.rawValue)
         super.init(texture: texture, color: SVColor.lightColor(), size: texture.size())
         
+        currentImpulse = impulse
+        
+        // shrink slightly
         xScale = 0.9
         yScale = 0.9
         
@@ -89,17 +95,8 @@ final public class CarNode: SKSpriteNode {
     /// Causes the car to jump up by the set impulse amount
     /// - Note: The car can double jump
     public func jump() {
-        if !doubleJumped { // don't allow for triple or quadruple jumps
-            // applies the impulse to the car to make it "jump"
-            physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
-            
-            // if the car has already jumped, set a flag to make sure it can't jump again
-            if inAir {
-                doubleJumped = true
-            }
-            inAir = true
-        }
-        return
+        physicsBody?.applyImpulse(CGVector(dx: 0, dy: currentImpulse), atPoint: position)
+        currentImpulse /= 2 // shrink it in half for each jump
     }
     
     /// This will switch the car direction based on the new direction.  If the direction has not changed,
@@ -117,5 +114,6 @@ final public class CarNode: SKSpriteNode {
     public func endJump() {
         inAir = false
         doubleJumped = false
+        currentImpulse = impulse
     }
 }

@@ -38,6 +38,9 @@ public struct GameSettings {
     /// The screen width
     public let screenWidth : CGFloat = UIScreen.mainScreen().bounds.width
     
+    /// The screen height
+    public let screenHeight : CGFloat = UIScreen.mainScreen().bounds.height
+    
     /// The number of frames it takes to move from the minimum mountain height to the maximum
     public var framesToTop : Int {
         get {
@@ -59,7 +62,7 @@ public struct GameSettings {
     /// Adds an additional frame for padding
     public var numFrames : CGFloat {
         get {
-            var orig = ceil(screenWidth / rowWidth) + 2
+            var orig = ceil(screenWidth / rowWidth) + 4
             if orig % 2 == 1 {
                 orig += 1
             }

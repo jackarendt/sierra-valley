@@ -116,15 +116,27 @@ final public class GameManager {
     /// - Returns: Boolean denoting whether the car is on it's back or not
     public func checkCarRotation(rotation : CGFloat) -> Bool {
         var adjustedRotation = rotation
-        
-        if rotation < 0 { // make the value between
+        if rotation < 0 { // make the value between 0 and 2 pi
             adjustedRotation += CGFloat(2 * M_PI)
         }
         
-        if adjustedRotation > CGFloat(7*M_PI/8) && adjustedRotation < CGFloat(9*M_PI/8) {
+        if adjustedRotation > CGFloat(M_PI) - gameSettings.angle && adjustedRotation < CGFloat(M_PI) + gameSettings.angle {
             pause()
             delegate?.gameEnded(score)
-            print(adjustedRotation)
+            return true
+        }
+        return false
+    }
+    
+    /// Checks to see if the car is still on the screen, only checks to make sure it is above the minimum height
+    /// - Parameter position: The position of the car
+    /// - Paremeter size: The size of the car
+    /// - Returns: Whether the car is on or off screen
+    public func checkCarPosition(position position : CGPoint, size : CGSize) -> Bool {
+        let minY = renderYLocation - size.height - gameSettings.maxMountainHeight
+        if position.y < minY { // checks to see if the car is still above the screen
+            pause()
+            delegate?.gameEnded(score)
             return true
         }
         return false
@@ -133,7 +145,7 @@ final public class GameManager {
     
     /// Updates the game state, and determines if new pieces should be rendered, or if a level should be dequeued, etc.
     /// - Parameter time: The time of the game loop
-    public func update(time : CFTimeInterval) {
+    public func update(time time : CFTimeInterval) {
         if previousTime != 0 { // if this is the first loop, just ignore it
             frameCount += calcPassedFrames(time) // add the new frames to the game
             

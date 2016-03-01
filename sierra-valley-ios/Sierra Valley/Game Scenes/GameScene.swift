@@ -108,7 +108,10 @@ class GameScene: SVBaseScene {
    
     override func update(currentTime: CFTimeInterval) {
         // every time the game loop updates, send that update to the game manager, and send the current camera position
-        gameManager.update(currentTime)
+        gameManager.update(time: currentTime)
+        if gameManager.checkCarPosition(position: car.position, size: car.size) {
+            pause()
+        }
     }
 }
 
@@ -172,9 +175,6 @@ extension GameScene {
     }
     
     private func validateSpikeCollision(spike : SKPhysicsBody, car : SKPhysicsBody, contactPoint : CGPoint) -> Bool {
-        if car.velocity.dy > gameManager.gameSettings.triangleHeight * 1.1 {
-            return false
-        }
         return true
     }
 }

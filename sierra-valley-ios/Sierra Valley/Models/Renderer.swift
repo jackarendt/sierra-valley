@@ -55,7 +55,7 @@ final class Renderer {
             buffer = bufferPool.nextForegroundItem()
         }
         
-        let rectHeight : CGFloat = 200
+        let rectHeight : CGFloat = 300
         position.y = position.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
         let usedResrouces = renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
 
