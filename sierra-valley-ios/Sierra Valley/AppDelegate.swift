@@ -18,7 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = HomeViewController()
         window?.makeKeyAndVisible()
+        
+        // set up google analytics
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
 
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+//        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+        gai.defaultTracker = gai.trackerWithTrackingId("UA-74428626-1")
         return true
     }
 

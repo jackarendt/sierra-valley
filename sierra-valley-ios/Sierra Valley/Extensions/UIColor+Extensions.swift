@@ -35,7 +35,7 @@ class SVColor {
     
     /// The darkest color of the mountains - #721544
     class func darkMaroonColor() -> UIColor {
-        return UIColor(r: 114, g: 21, b: 68)
+        return UIColor(r: 114, g: 32, b: 61)
     }
     
     /// The second darkest color of the mountains - #962543

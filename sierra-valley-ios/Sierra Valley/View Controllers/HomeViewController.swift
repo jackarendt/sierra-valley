@@ -25,6 +25,8 @@ class HomeViewController: SVBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gaName = "Home" // set the name for Google Analytics
+        
         logoLabel.text = "SIERRA VALLEY"
         logoLabel.textColor = SKColor.whiteColor()
         logoLabel.textAlignment = .Center

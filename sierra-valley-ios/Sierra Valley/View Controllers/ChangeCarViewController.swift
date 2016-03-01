@@ -12,6 +12,9 @@ class ChangeCarViewController: SVBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gaName = "Change Car" // set the name for Google Analytics
+        
         navigationTitle = "CHANGE CAR"
         leftNavigationButton.setImage(UIImage(asset: .CloseButton), forState: .Normal)
         // Do any additional setup after loading the view.

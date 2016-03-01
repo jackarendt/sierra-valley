@@ -5,6 +5,7 @@ Sierra Valley is an iOS Application built using Swift 2.1 and SpriteKit.  It is 
 - **Swipe from left to right** - Makes the car face right
 - **Swipe from right to left** - Makes the car face left
 - **Tap** - Makes the car jump
+- **Double Tap** - Makes car jump higher
 
 
 ## Colors
@@ -19,6 +20,11 @@ Sierra Valley is an iOS Application built using Swift 2.1 and SpriteKit.  It is 
 #### [Mountain Colors](http://flatcolors.net/palette/159-flat-surface-shading)
 - Dark Maroon - #721544 - 114, 21, 68
 - Maroon - #962543 - 150, 37, 67
-- Red - #B43C45 - 180, 60, 69
+- Red - #b43c45 - 180, 60, 69
 - Sunrise Orange - #CE4847 - 206, 72, 71
-- Orange - #F67A47 - 246, 122, 71
+- Orange - #f67a47 - 246, 122, 71
+
+
+## External Libraries
+- [Google Analytics](https://www.google.com/analytics/)
+- [Chartboost Video Ads](https://www.chartboost.com/)

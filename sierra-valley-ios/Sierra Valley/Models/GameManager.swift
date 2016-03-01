@@ -42,6 +42,8 @@ final public class GameManager {
     /// The score of the game
     public var score = 0
     
+    /// The number of total frames that have been passed since the beginning
+    /// - Note: Used for scoring
     public var totalFrames = 0
     
     /// Game settings, specifically different things about the game such as frames/row, height difference between rows, amongst
@@ -66,10 +68,20 @@ final public class GameManager {
     /// The current direction that the car is moving
     private var currentDirection : CarDirection = .Right
     
-    /// The location where new rows should be rendered
+    /// The x-location where new rows should be rendered
     private var renderXLocation : CGFloat = 0
     
+    /// The y-location where new rows should be rendered
     private var renderYLocation : CGFloat = 0
+    
+    /// Current color of the level being rendered
+    private var color = SVColor.sunriseOrangeColor()
+    
+    /// The color of the level when the car is heading to the right
+    private let rightColor = SVColor.sunriseOrangeColor()
+    
+    /// The color of the level when the car is heading to the left
+    private let leftColor = SVColor.darkMaroonColor()
     
     /// Initializes the game manager.  Using the game manager with the delegate is required.
     /// If the delegate was not used, this would basically be a useless class now wouldn't it?
@@ -77,9 +89,6 @@ final public class GameManager {
         self.delegate = delegate // set the delegate
         self.level = levelQueue.dequeue()
     }
-    
-    // bullshit temp variables until i get setup correctly
-    private var color = SVColor.sunriseOrangeColor()
 
     /// Call this when the game starts to start placing sprites
     public func startGame() {
@@ -100,17 +109,22 @@ final public class GameManager {
     /// Call this to temporarily pause the game loop from updating.
     public func pause() {
         previousTime = 0
-//        readyToRender = false
     }
     
-    public func checkCarRotation(rotation : CGFloat) -> Bool{
-        if rotation < CGFloat(-M_PI/4) && rotation < CGFloat(7*M_PI/4) {
+    /// Checks to see if the car has rotated on to its back
+    /// - Parameter rotation: The zRotation of the car
+    /// - Returns: Boolean denoting whether the car is on it's back or not
+    public func checkCarRotation(rotation : CGFloat) -> Bool {
+        var adjustedRotation = rotation
+        
+        if rotation < 0 { // make the value between
+            adjustedRotation += CGFloat(2 * M_PI)
+        }
+        
+        if adjustedRotation > CGFloat(7*M_PI/8) && adjustedRotation < CGFloat(9*M_PI/8) {
             pause()
-            delegate?.gameEnded(0)
-            return true
-        } else if rotation > CGFloat(3*M_PI/4) && rotation < CGFloat(5*M_PI/4) {
-            pause()
-            delegate?.gameEnded(0)
+            delegate?.gameEnded(score)
+            print(adjustedRotation)
             return true
         }
         return false
@@ -148,21 +162,16 @@ final public class GameManager {
                 
                 let remainingLevelRows = level.rows.count - level.flatRowCount - 1
                 if remainingLevelRows < gameSettings.framesToTop  && remainingLevelRows >= 0 {
-                    let row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0)
-                    var c = SVColor.sunriseOrangeColor()
-                    if color == SVColor.sunriseOrangeColor() {
-                        c = SVColor.darkMaroonColor()
-                    }
-                    let yPos = renderYLocation + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
-                    delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), duration: CFTimeInterval(gameSettings.numFrames) * 0.75 * gameSettings.vSyncTime)
+                    dequeueBackgroundRow(remainingLevelRows)
                 }
             }
         }
         previousTime = time
     }
     
+    /// Updates where the next row is rendered
     private func adjustRenderLocation() {
-        if currentDirection == .Left {
+        if currentDirection == .Left { // if heading to the left,
             renderXLocation -= gameSettings.rowWidth
         } else {
             renderXLocation += gameSettings.rowWidth
@@ -170,6 +179,8 @@ final public class GameManager {
         renderYLocation += gameSettings.triangleHeight
     }
     
+    /// Dequeues a new level from the level queue and alerts the delegate that
+    /// a new level has been dequeued.
     private func dequeueNewLevel() {
         level = levelQueue.dequeue()
         var levelWidth = level.levelWidth
@@ -177,21 +188,30 @@ final public class GameManager {
             currentDirection = .Left
             levelWidth *= -1
             renderXLocation = renderXLocation - gameSettings.actualWidth
+            color = leftColor
         } else {
             currentDirection = .Right
             renderXLocation = renderXLocation + gameSettings.actualWidth
+            color = rightColor
         }
         delegate?.levelDequeuedWithCameraAction(levelWidth, height: level.levelHeight, time: level.levelTime)
-        
-        if color == SVColor.sunriseOrangeColor() {
-            color = SVColor.darkMaroonColor()
-        } else {
-            color = SVColor.sunriseOrangeColor()
+    }
+    
+    /// Dequeues a new row for background use
+    /// - Parameter remainingLevelRows: The number of rows until the flat row is 
+    private func dequeueBackgroundRow(remainingLevelRows : Int) {
+        let row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0)
+        var c = rightColor
+        if currentDirection == .Right {
+            c = leftColor // use the opposite color
         }
+        let yPos = renderYLocation + (gameSettings.maxMountainHeight - gameSettings.minMountainHeight) * CGFloat(2 * remainingLevelRows) / CGFloat(gameSettings.framesToTop)
+        delegate?.renderRow(row, color: c, direction: CarDirection.oppositeDirection(currentDirection), position: CGPoint(x: renderXLocation, y: yPos), duration: CFTimeInterval(gameSettings.numFrames) * 0.75 * gameSettings.vSyncTime)
     }
     
     /// Calculates the number of frames that have passed since the last update
     /// - Parameter time: The current time of the application
+    /// - Returns: The number of frames that have passed
     private func calcPassedFrames(time : CFTimeInterval) -> Int {
         let diff = time - previousTime // get time difference
         return Int(round(60 * diff)) // get the approximate number of frames that have passed

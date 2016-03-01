@@ -35,6 +35,10 @@ final public class CarNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: car.rawValue)
         super.init(texture: texture, color: SVColor.lightColor(), size: texture.size())
         
+        xScale = 0.9
+        yScale = 0.9
+        
+        // car initially faces left, need it to face right.
         xScale *= -1
         
         // set the name of the car

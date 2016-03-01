@@ -18,6 +18,9 @@ public class SVBaseViewController: UIViewController {
         }
     }
     
+    /// The name of the view controller for Google Analytics
+    public var gaName = "VC Name Not Set"
+    
     /// Title at the top of the view controller. Similar to a UINavigationItem's title.
     public let navigationTitleLabel = UILabel()
     
@@ -65,6 +68,16 @@ public class SVBaseViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: applicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: applicationDidEnterBackgroundNotification, object: nil)
         
+    }
+    
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tracker = GAI.sharedInstance().defaultTracker, builder = GAIDictionaryBuilder.createScreenView() {
+            tracker.set(kGAIScreenName, value: gaName)
+            tracker.send(builder.build() as [NSObject : AnyObject])
+        } else {
+            print("tracker is nil. cannot update")
+        }
     }
 
     override public func viewDidDisappear(animated: Bool) {

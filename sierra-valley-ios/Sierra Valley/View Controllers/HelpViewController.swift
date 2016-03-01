@@ -20,6 +20,9 @@ class HelpViewController: SVBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gaName = "Help" // set the name for Google Analytics
+        
         navigationTitle = "HELP"
         leftNavigationButton.setImage(UIImage(asset: .BackButton), forState: .Normal)
         // Do any additional setup after loading the view.

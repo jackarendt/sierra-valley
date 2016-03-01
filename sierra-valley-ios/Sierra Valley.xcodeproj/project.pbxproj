@@ -28,6 +28,7 @@
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
+		2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818831C55E1EA008ADAEF /* GameSettings.swift */; };
 		2EF818861C572AE0008ADAEF /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818851C572AE0008ADAEF /* Queue.swift */; };
 		2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818871C572D8F008ADAEF /* ResourceRow.swift */; };
+		93B2FA10D585D8EEDF8F0EC2 /* libPods-Sierra Valley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
+		2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sierra Valley-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +142,9 @@
 		2EF818831C55E1EA008ADAEF /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = Models/GameSettings.swift; sourceTree = "<group>"; };
 		2EF818851C572AE0008ADAEF /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Models/Queue.swift; sourceTree = "<group>"; };
 		2EF818871C572D8F008ADAEF /* ResourceRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRow.swift; path = Models/ResourceRow.swift; sourceTree = "<group>"; };
+		5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra Valley.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley.debug.xcconfig"; sourceTree = "<group>"; };
+		6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra Valley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E86030DCF37FFF78E0C663 /* Pods-Sierra Valley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra Valley.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF818781C558F6D008ADAEF /* CloudKit.framework in Frameworks */,
+				93B2FA10D585D8EEDF8F0EC2 /* libPods-Sierra Valley.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		160D8204577D497E1DB1EBAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */,
+				B6E86030DCF37FFF78E0C663 /* Pods-Sierra Valley.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2E8582CC1C534FF3000508EB /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,11 +205,9 @@
 		2E8582D01C536A9D000508EB /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				2E9AAF0D1C8527B70051465F /* Particles */,
 				2E8582CE1C536A99000508EB /* CarNode.swift */,
 				2EF3306B1C7A608E00085E5F /* StarBackgroundManager.swift */,
-				2EF330671C7A4E1C00085E5F /* ShootingStarParticle.sks */,
-				2E284D1D1C784F6200B3805A /* StarParticle.sks */,
-				2E284D1E1C784F6200B3805A /* spark.png */,
 				2E156DAE1C71016100EE1C0F /* CameraNode.swift */,
 				2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */,
 				2EF8187B1C559438008ADAEF /* SpikeNode.swift */,
@@ -203,6 +218,16 @@
 			name = Sprites;
 			sourceTree = "<group>";
 		};
+		2E9AAF0D1C8527B70051465F /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				2EF330671C7A4E1C00085E5F /* ShootingStarParticle.sks */,
+				2E284D1D1C784F6200B3805A /* StarParticle.sks */,
+				2E284D1E1C784F6200B3805A /* spark.png */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		2EBA3BDE1C4D9E16005C0D76 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +236,7 @@
 				2EBA3C021C4D9E16005C0D76 /* Sierra ValleyTests */,
 				2EBA3C0D1C4D9E16005C0D76 /* Sierra ValleyUITests */,
 				2EBA3BE81C4D9E16005C0D76 /* Products */,
+				160D8204577D497E1DB1EBAB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				2EF818771C558F6D008ADAEF /* CloudKit.framework */,
+				6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -330,7 +357,9 @@
 				2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */,
 				2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */,
 				2EF818761C558F69008ADAEF /* Sierra Valley.entitlements */,
+				2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */,
 				2EBA3BFA1C4D9E16005C0D76 /* Info.plist */,
+				2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -342,9 +371,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EBA3C131C4D9E16005C0D76 /* Build configuration list for PBXNativeTarget "Sierra Valley" */;
 			buildPhases = (
+				33399DC986FB1BDDA5CCFCE9 /* Check Pods Manifest.lock */,
 				2EBA3BE31C4D9E16005C0D76 /* Sources */,
 				2EBA3BE41C4D9E16005C0D76 /* Frameworks */,
 				2EBA3BE51C4D9E16005C0D76 /* Resources */,
+				7F9683DB464DEB3E57ADA3A8 /* Embed Pods Frameworks */,
+				2761C3DFEB99C4A389D5CE76 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -450,6 +482,7 @@
 				2E284D201C784F6200B3805A /* spark.png in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
 				2E284D1F1C784F6200B3805A /* StarParticle.sks in Resources */,
+				2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +501,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2761C3DFEB99C4A389D5CE76 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33399DC986FB1BDDA5CCFCE9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7F9683DB464DEB3E57ADA3A8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2EBA3BE31C4D9E16005C0D76 /* Sources */ = {
@@ -647,17 +728,21 @@
 		};
 		2EBA3C141C4D9E16005C0D76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sierra Valley/Sierra Valley-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -665,17 +750,21 @@
 		};
 		2EBA3C151C4D9E16005C0D76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6E86030DCF37FFF78E0C663 /* Pods-Sierra Valley.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.johnarendt.sierra-valley";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sierra Valley/Sierra Valley-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

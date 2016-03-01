@@ -25,6 +25,8 @@ class GameViewController: SVBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gaName = "Main Game Loop" // set the name for Google Analytics
+        
         skView = SKView(frame: view.bounds)
         contentView.addSubview(skView)
         let width = view.bounds.width * 1000
