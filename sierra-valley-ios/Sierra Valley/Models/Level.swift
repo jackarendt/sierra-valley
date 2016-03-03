@@ -58,5 +58,7 @@ public final class Level {
         flatRowCount = Int(gameSettings.numFrames/2) - 1
         computeLevel(difficulty, queue: rows, flatRowLength: flatRowCount)
         
+        avalanche = arc4random() % 2 == 0
+        
     }
 }

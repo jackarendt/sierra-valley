@@ -31,6 +31,11 @@ public protocol GameManagerDelegate : class {
     /// Called when the game has ended.
     // TODO: revise this function
     func gameEnded(finalScore : Int)
+    
+    
+    /// Changes the background to make it either an avalanche or not
+    /// - Parameter avalanche: Whether the background should resemeble an avalanche or not
+    func alterBackground(avalanche : Bool)
 }
 
 /// The GameManager manages level generation, and telling the delegate what to render, where it should placed and when. 
@@ -75,13 +80,13 @@ final public class GameManager {
     private var renderYLocation : CGFloat = 0
     
     /// Current color of the level being rendered
-    private var color = SVColor.sunriseOrangeColor()
+    private var color = SVColor.levelPrimaryColor()
     
     /// The color of the level when the car is heading to the right
-    private let rightColor = SVColor.sunriseOrangeColor()
+    private let rightColor = SVColor.levelPrimaryColor()
     
     /// The color of the level when the car is heading to the left
-    private let leftColor = SVColor.darkMaroonColor()
+    private let leftColor = SVColor.levelSecondaryColor()
     
     /// Initializes the game manager.  Using the game manager with the delegate is required.
     /// If the delegate was not used, this would basically be a useless class now wouldn't it?
@@ -132,9 +137,11 @@ final public class GameManager {
     /// - Parameter position: The position of the car
     /// - Paremeter size: The size of the car
     /// - Returns: Whether the car is on or off screen
-    public func checkCarPosition(position position : CGPoint, size : CGSize) -> Bool {
+    public func checkCarPosition(position position : CGPoint, size : CGSize, cameraPosition : CGPoint) -> Bool {
         let minY = renderYLocation - size.height - gameSettings.maxMountainHeight
-        if position.y < minY { // checks to see if the car is still above the screen
+        let minX = cameraPosition.x - gameSettings.screenWidth/2 - size.width
+        let maxX = cameraPosition.x + gameSettings.screenWidth/2 + size.width
+        if position.y < minY || position.x < minX || position.x > maxX { // checks to see if the car is still above the screen
             pause()
             delegate?.gameEnded(score)
             return true
@@ -195,6 +202,8 @@ final public class GameManager {
     /// a new level has been dequeued.
     private func dequeueNewLevel() {
         level = levelQueue.dequeue()
+        delegate?.alterBackground(level.avalanche)
+        // TODO: do something with avalanche
         var levelWidth = level.levelWidth
         if currentDirection == .Right {
             currentDirection = .Left

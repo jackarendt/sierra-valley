@@ -19,7 +19,7 @@ final class HelpCarScene: SVBaseScene {
         super.didMoveToView(view)
         // add car to scene
         car.position = CGPoint(x: view.bounds.width/2, y: car.size.height/2 + 10)
-        car.impulse = 600
+        car.impulse = 900
         addChild(car)
         
         // Create a "floor" that is clear below the car so that the car can rest on it easily.

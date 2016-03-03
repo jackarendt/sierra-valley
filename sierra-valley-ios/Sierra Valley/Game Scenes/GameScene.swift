@@ -109,7 +109,7 @@ class GameScene: SVBaseScene {
     override func update(currentTime: CFTimeInterval) {
         // every time the game loop updates, send that update to the game manager, and send the current camera position
         gameManager.update(time: currentTime)
-        if gameManager.checkCarPosition(position: car.position, size: car.size) {
+        if gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position) {
             pause()
         }
     }
@@ -142,6 +142,10 @@ extension GameScene : GameManagerDelegate {
 
     func gameEnded(finalScore: Int) {
         gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // send that action to the delegate for handling
+    }
+    
+    func alterBackground(avalanche: Bool) {
+        backgroundNode.avalancheActive = avalanche
     }
 }
 

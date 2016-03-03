@@ -19,6 +19,17 @@ final public class RowBufferItem {
         self.triangle = TriangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
         self.spike = SpikeNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
     }
+    
+    /// Initializes and adds to a scene
+    public init(scene : SKScene) {
+        self.rectangle = RectangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
+        self.triangle = TriangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
+        self.spike = SpikeNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
+        
+        scene.addChild(rectangle!)
+        scene.addChild(triangle!)
+        scene.addChild(spike!)
+    }
     /// The Rectangle node.
     public var rectangle : RectangleNode?
     

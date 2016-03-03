@@ -62,4 +62,27 @@ class SVColor {
     class func lightColor() -> UIColor {
         return UIColor.whiteColor()
     }
+    
+    
+    class func avalancheColor() -> UIColor {
+        return UIColor(r: 222, g: 222, b: 222)
+    }
+    
+    class func levelPrimaryColor() -> UIColor {
+//        return UIColor(r: 231, g: 96, b: 55)
+        return sunriseOrangeColor()
+    }
+    
+    class func levelSecondaryColor() -> UIColor {
+//        return UIColor(r: 171, g: 63, b: 63)
+        return darkMaroonColor()
+    }
+    
+    class func backgroundMaroonColor() -> UIColor {
+        return UIColor(r: 150, g: 40, b: 27)
+    }
+    
+    class func backgroundPurpleColor() -> UIColor {
+        return UIColor(r: 102, g: 59, b: 120)
+    }
 }
