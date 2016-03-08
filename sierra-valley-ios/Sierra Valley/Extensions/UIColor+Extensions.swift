@@ -31,33 +31,6 @@ class SVColor {
         return UIColor(r: 132, g: 204, b: 209)
     }
     
-    // MARK: - Mountain Colors
-    
-    /// The darkest color of the mountains - #721544
-    class func darkMaroonColor() -> UIColor {
-        return UIColor(r: 114, g: 32, b: 61)
-    }
-    
-    /// The second darkest color of the mountains - #962543
-    class func maroonColor() -> UIColor {
-        return UIColor(r: 150, g: 37, b: 67)
-    }
-    
-    /// The off-red color of the mountains #b43c45
-    class func redColor() -> UIColor {
-        return UIColor(r: 180, g: 60, b: 69)
-    }
-    
-    /// The sunrise orange color of the mountains (second lightest) - #ce4847
-    class func sunriseOrangeColor() -> UIColor {
-        return UIColor(r: 206, g: 72, b: 71)
-    }
-    
-    /// The orange color of the mountains (lightest) - #f67a47
-    class func orangeColor() -> UIColor {
-        return UIColor(r: 246, g: 122, b: 71)
-    }
-    
     /// The light color that is used throughout - #ffffff
     class func lightColor() -> UIColor {
         return UIColor.whiteColor()
@@ -65,24 +38,22 @@ class SVColor {
     
     
     class func avalancheColor() -> UIColor {
-        return UIColor(r: 222, g: 222, b: 222)
+        return UIColor(r: 236, g: 240, b: 241)
     }
     
     class func levelPrimaryColor() -> UIColor {
-//        return UIColor(r: 231, g: 96, b: 55)
-        return sunriseOrangeColor()
+        return UIColor(r: 22, g: 160, b: 133)
     }
     
     class func levelSecondaryColor() -> UIColor {
-//        return UIColor(r: 171, g: 63, b: 63)
-        return darkMaroonColor()
+       return UIColor(r: 34, g: 49, b: 63)
     }
     
-    class func backgroundMaroonColor() -> UIColor {
-        return UIColor(r: 150, g: 40, b: 27)
+    class func backgroundPrimaryColor() -> UIColor {
+        return UIColor(r: 74, g: 84, b: 94)
     }
     
-    class func backgroundPurpleColor() -> UIColor {
-        return UIColor(r: 102, g: 59, b: 120)
+    class func backgroundSecondaryColor() -> UIColor {
+        return UIColor(r: 114, g: 127, b: 128)
     }
 }

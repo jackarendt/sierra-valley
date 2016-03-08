@@ -37,11 +37,11 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     private let darkTexture = SKTexture(imageNamed: SVLevelResource.DarkParallaxBackground.rawValue)
     private let avalancheTexture = SKTexture(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
     
-    private let middleBackground = SKSpriteNode(imageNamed: SVLevelResource.ParallaxBackground.rawValue)
-    private let leftBackground = SKSpriteNode(imageNamed: SVLevelResource.ParallaxBackground.rawValue)
-    private let rightBackground = SKSpriteNode(imageNamed: SVLevelResource.ParallaxBackground.rawValue)
-    private let farLeftBackground = SKSpriteNode(imageNamed: SVLevelResource.ParallaxBackground.rawValue)
-    private let farRightBackground = SKSpriteNode(imageNamed: SVLevelResource.ParallaxBackground.rawValue)
+    private let middleBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
+    private let leftBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
+    private let rightBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
+    private let farLeftBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
+    private let farRightBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
     
     override init() {
         super.init()
@@ -87,26 +87,18 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     
     private func endAvalanche(time : NSTimeInterval) {
         print("end avalanche")
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(CFTimeInterval(NSEC_PER_SEC) * 0)), dispatch_get_main_queue(), {
-            self.middleBackground.texture = self.lightTexture
-            self.leftBackground.texture = self.darkTexture
-            self.rightBackground.texture = self.darkTexture
-            self.farLeftBackground.texture = self.lightTexture
-            self.farRightBackground.texture = self.lightTexture
-            
-            for n in [self.middleBackground, self.leftBackground, self.rightBackground, self.farLeftBackground, self.farRightBackground] {
-                n.runAction(SKAction.colorizeWithColor(UIColor.clearColor(), colorBlendFactor: 0, duration: 0))
+        for n in [middleBackground, leftBackground, farLeftBackground, rightBackground, farRightBackground].enumerate() {
+            if n.index % 2 == 0 {
+                n.element.runAction(SKAction.colorizeWithColor(SVColor.backgroundPrimaryColor(), colorBlendFactor: colorBlendFactor, duration: time))
+            } else {
+                n.element.runAction(SKAction.colorizeWithColor(SVColor.backgroundSecondaryColor(), colorBlendFactor: colorBlendFactor, duration: time))
             }
-        })
+        }
     }
     
     private func startAvalanche(time : NSTimeInterval) {
-        let color = SVColor.darkMaroonColor()
-        let avalancheColorAction = SKAction.colorizeWithColor(SVColor.avalancheColor(), colorBlendFactor: colorBlendFactor, duration: 0)
+        let avalancheColorAction = SKAction.colorizeWithColor(SVColor.avalancheColor(), colorBlendFactor: colorBlendFactor, duration: time)
         for n in [middleBackground, leftBackground, rightBackground, farLeftBackground, farRightBackground] {
-            n.color = color
-            n.colorBlendFactor = colorBlendFactor
-            n.texture = avalancheTexture
             n.runAction(avalancheColorAction)
         }
     }
