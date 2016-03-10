@@ -198,6 +198,7 @@
 			children = (
 				2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */,
 				2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */,
+				2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */,
 			);
 			name = "Custom Animations";
 			sourceTree = "<group>";
@@ -317,7 +318,6 @@
 				2EF818701C544A93008ADAEF /* PauseView.swift */,
 				2EF818741C557BBA008ADAEF /* GameOverView.swift */,
 				2EF818721C547336008ADAEF /* SVPauseBaseView.swift */,
-				2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */,
 				2E6A921A1C5339EA00CF8E65 /* Arrow.swift */,
 			);
 			name = "Custom Views";
@@ -799,6 +799,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -813,6 +814,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.Sierra-ValleyUITests";

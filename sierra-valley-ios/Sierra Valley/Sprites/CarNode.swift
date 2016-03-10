@@ -19,16 +19,18 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var impulse : CGFloat = 140
+    public var maximumImpulseValue : CGFloat = 140
     
     /// The current impulse value for jumping
-    private var currentImpulse : CGFloat = 0
+    private var impulse : CGFloat = 0
+    
     
     /// boolean denoting whether the car is currently jumping or not
-    private var inAir = false
+    private var isJumping = false
     
-    /// boolean denoting whether the car has double jumped (or super jumped)
-    private var doubleJumped = false
+    /// boolean denoting whether the car is able to jump or not
+    private var jumpAvailable = true
+
     
     /// Initializes a new car object using the name of a car.  The initializer will then create
     /// the texture for that car, and a physics body that appropriately fits the texture.
@@ -38,7 +40,7 @@ final public class CarNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: car.rawValue)
         super.init(texture: texture, color: SVColor.lightColor(), size: texture.size())
         
-        currentImpulse = impulse
+        impulse = maximumImpulseValue
         
         // shrink slightly
         xScale = 0.9
@@ -62,8 +64,6 @@ final public class CarNode: SKSpriteNode {
         
         setCollisionBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle, CollisionBitmaskCategory.Triangle])
         setContactBitmask([CollisionBitmaskCategory.Spike, CollisionBitmaskCategory.Rectangle, CollisionBitmaskCategory.Triangle])
-        
-        print(physicsBody?.collisionBitMask)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -92,11 +92,32 @@ final public class CarNode: SKSpriteNode {
         physicsBody?.contactTestBitMask = bitmask
     }
     
+    // MARK: - Car Actions
+    
     /// Causes the car to jump up by the set impulse amount
-    /// - Note: The car can double jump
     public func jump() {
-        physicsBody?.applyImpulse(CGVector(dx: 0, dy: currentImpulse), atPoint: position)
-        currentImpulse /= 2 // shrink it in half for each jump
+        if jumpAvailable {
+            physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
+            impulse /= 4
+            isJumping = true
+        }
+    }
+    
+    /// Denotes that the user has stopped trying to make the car jump (stopped pressing)
+    public func stopJump() {
+        isJumping = false
+    }
+    
+    /// Call this to end the jump. This denotes that the user has collided back with the ground
+    /// and it will reset the impulse value and determine if the user is able to jump again
+    public func endJump() {
+        impulse = maximumImpulseValue
+        if isJumping {
+            jumpAvailable = false
+        } else {
+            jumpAvailable = true
+            isJumping = false
+        }
     }
     
     /// This will switch the car direction based on the new direction.  If the direction has not changed,
@@ -108,12 +129,5 @@ final public class CarNode: SKSpriteNode {
             xScale *= -1 // causes a vertical flip
             // TODO: move car
         }
-    }
-    
-    /// Call this to end the jump.  This will reset the flags so the user can jump again
-    public func endJump() {
-        inAir = false
-        doubleJumped = false
-        currentImpulse = impulse
     }
 }

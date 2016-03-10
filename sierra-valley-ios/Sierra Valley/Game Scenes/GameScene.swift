@@ -42,6 +42,7 @@ class GameScene: SVBaseScene {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        gestureDelegate = self
         // create game manager and renderer
         gameManager = GameManager(delegate: self)
         renderer = Renderer(scene: self)
@@ -73,14 +74,29 @@ class GameScene: SVBaseScene {
         car.zPosition = 1000001
         car.switchDirection(.Left)
         addChild(car)
-        swipeRightGestureRecognized(UISwipeGestureRecognizer()) // GET RID OF THIS NONSENSE
+        
+        swipeRight()
     }
     
-    override func tapGestureRecognized(tap: UITapGestureRecognizer) {
+    override func update(currentTime: CFTimeInterval) {
+        // every time the game loop updates, send that update to the game manager, and send the current camera position
+        gameManager.update(time: currentTime)
+        if gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position) {
+            pause()
+        }
+    }
+}
+
+extension GameScene : SceneGestureDelegate {
+    func jump() {
         car.jump()
     }
     
-    override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
+    func endJump() {
+        car.stopJump()
+    }
+    
+    func swipeLeft() {
         if car.direction == .Left {
             return
         }
@@ -93,7 +109,7 @@ class GameScene: SVBaseScene {
         renderer.alterCategoryBitMask()
     }
     
-    override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
+    func swipeRight() {
         if car.direction == .Right {
             return
         }
@@ -104,14 +120,6 @@ class GameScene: SVBaseScene {
         car.runAction(SKAction.repeatActionForever(moveRightAction))
         
         renderer.alterCategoryBitMask()
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
-        // every time the game loop updates, send that update to the game manager, and send the current camera position
-        gameManager.update(time: currentTime)
-        if gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position) {
-            pause()
-        }
     }
 }
 

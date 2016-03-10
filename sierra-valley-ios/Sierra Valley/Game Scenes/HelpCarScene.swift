@@ -17,9 +17,11 @@ final class HelpCarScene: SVBaseScene {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        
+        gestureDelegate = self
         // add car to scene
         car.position = CGPoint(x: view.bounds.width/2, y: car.size.height/2 + 10)
-        car.impulse = 900
+        car.maximumImpulseValue = 900
         addChild(car)
         
         // Create a "floor" that is clear below the car so that the car can rest on it easily.
@@ -37,19 +39,25 @@ final class HelpCarScene: SVBaseScene {
         addChild(floorNode)
     }
     
-    override func tapGestureRecognized(tap: UITapGestureRecognizer) {
-        car.jump() // jump when tapped
-    }
-    
-    override func swipeLeftGestureRecognized(swipeLeft: UISwipeGestureRecognizer) {
-        car.switchDirection(.Left) // switch direction to move to the left
-    }
-    
-    override func swipeRightGestureRecognized(swipeRight: UISwipeGestureRecognizer) {
-        car.switchDirection(.Right) // switch direction to move to the right
-    }
-    
     override func didBeginContact(contact: SKPhysicsContact) {
         car.endJump() // when the car comes back down to the floor, reset so it can jump again
+    }
+}
+
+extension HelpCarScene : SceneGestureDelegate {
+    func jump() {
+        car.jump()
+    }
+    
+    func endJump() {
+        car.stopJump()
+    }
+    
+    func swipeLeft() {
+        car.switchDirection(.Left)
+    }
+    
+    func swipeRight() {
+        car.switchDirection(.Right)
     }
 }

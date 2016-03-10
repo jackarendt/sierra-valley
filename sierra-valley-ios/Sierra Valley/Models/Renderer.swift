@@ -61,10 +61,13 @@ final class Renderer {
 
         if duration >= 0 {
             for resource in usedResrouces {
-                resource.position.y += 3 * rectHeight
+                let depressedFactor : CGFloat = 2
+                resource.position.y -= depressedFactor * rectHeight
+                resource.alpha = 0
                 let delay = SKAction.waitForDuration(duration)
-                let rise = SKAction.moveBy(CGVector(dx: 0, dy: -3 * rectHeight), duration: 0.5)
-                resource.runAction(SKAction.sequence([delay,rise]))
+                let rise = SKAction.moveBy(CGVector(dx: 0, dy: depressedFactor * rectHeight), duration: 0.75)
+                let alpha = SKAction.fadeInWithDuration(1.25)
+                resource.runAction(SKAction.sequence([delay,SKAction.group([rise, alpha])]))
             }
         }
         

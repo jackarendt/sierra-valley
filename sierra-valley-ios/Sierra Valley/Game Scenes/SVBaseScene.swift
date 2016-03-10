@@ -8,34 +8,32 @@
 
 import SpriteKit
 
+public protocol SceneGestureDelegate : class {
+    func jump()
+    func endJump()
+    func swipeLeft()
+    func swipeRight()
+}
+
 /// Base SKScene class that has the tap gestures involved with the game.
 public class SVBaseScene: SKScene {
     
-    /// The tap gesture is primarily used for making the car jump
-    public var tapGesture : UITapGestureRecognizer?
-    /// The swipe left gesture is used to make the front of the car face left
-    public var swipeLeftGesture : UISwipeGestureRecognizer?
-    /// The swipe right gesture is used to make the front of the car face right
-    public var swipeRightGesture : UISwipeGestureRecognizer?
+    /// Delegate methods for when game gestures happen
+    public weak var gestureDelegate : SceneGestureDelegate?
+    
+    /// The original location of a touch event
+    private var originalTouch = CGPoint.zero
+    
+    private var currentTouch = CGPoint.zero
+    
+    /// Timer for starting to jump
+    private var touchTimer : NSTimer?
     
     override public init(size: CGSize) {
         super.init(size: size)
-        // set the gravity to be -8.0m/s^2 (regular gravity is -9.8m/s^2)
+        // set the gravity
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -19.6)
         physicsWorld.contactDelegate = self
-        
-        // create gestures
-        tapGesture = UITapGestureRecognizer(target: self, action: "tapGestureRecognized:")
-        tapGesture?.delegate = self
-        tapGesture?.numberOfTapsRequired = 1
-        
-        swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: "swipeLeftGestureRecognized:")
-        swipeLeftGesture?.delegate = self
-        swipeLeftGesture?.direction = .Left
-        
-        swipeRightGesture = UISwipeGestureRecognizer(target: self, action: "swipeRightGestureRecognized:")
-        swipeRightGesture?.delegate = self
-        swipeRightGesture?.direction = .Right
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -46,35 +44,54 @@ public class SVBaseScene: SKScene {
         super.didMoveToView(view)
         view.allowsTransparency = true
         backgroundColor = SKColor.clearColor()
-        
-        // Add gestures to the view
-        view.addGestureRecognizer(tapGesture!)
-        view.addGestureRecognizer(swipeLeftGesture!)
-        view.addGestureRecognizer(swipeRightGesture!)
     }
     
     // MARK: - Gesture recognizer selectors
     
-    /// Called when the view recognizes a tap gesture
-    public func tapGestureRecognized(tap : UITapGestureRecognizer) {
-        
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
+        if let touch = touches.first, view = view {
+            originalTouch = touch.locationInView(view)
+            touchTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "timerFired", userInfo: nil, repeats: true)
+            currentTouch = originalTouch
+        }
     }
     
-    /// Called when the player swipes to the left (<-)
-    public func swipeLeftGestureRecognized(swipeLeft : UISwipeGestureRecognizer) {
-        
+    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesMoved(touches, withEvent: event)
+        if let touch = touches.first, view = view {
+            currentTouch = touch.locationInView(view)
+            
+            let threshold : CGFloat = 40
+            let xDiff = currentTouch.x - originalTouch.x
+            
+            if xDiff > 0 && abs(xDiff) > threshold {
+                gestureDelegate?.swipeRight()
+            } else if xDiff < 0 && abs(xDiff) > threshold {
+                gestureDelegate?.swipeLeft()
+            }
+        }
     }
     
-    /// Called when the player swipes to the right
-    public func swipeRightGestureRecognized(swipeRight : UISwipeGestureRecognizer) {
-        
+    public override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
+        touchTimer?.invalidate()
+        touchTimer = nil
+        gestureDelegate?.endJump()
+    }
+    
+    func timerFired() {
+        let xDiff = currentTouch.x - originalTouch.x
+        if abs(xDiff) < 10 {
+            gestureDelegate?.jump()
+        }
     }
 }
 
 // MARK: - Physics world contact delegate
 extension SVBaseScene : SKPhysicsContactDelegate {
     public func didBeginContact(contact: SKPhysicsContact) {
-        
+
     }
     
     public func didEndContact(contact: SKPhysicsContact) {

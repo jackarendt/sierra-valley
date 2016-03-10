@@ -106,6 +106,11 @@ class GameViewController: SVBaseViewController {
             pause()
         }
     }
+    
+    override func applicationDidBecomeActive(notification: NSNotification) {
+        pauseView.blinkSubtitle = true
+        gameOverView.blinkSubtitle = true
+    }
 }
 
 extension GameViewController : GameSceneDelegate {
