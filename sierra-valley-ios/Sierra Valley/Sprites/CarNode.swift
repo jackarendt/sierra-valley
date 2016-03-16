@@ -97,6 +97,7 @@ final public class CarNode: SKSpriteNode {
     /// Causes the car to jump up by the set impulse amount
     public func jump() {
         if jumpAvailable {
+            print(impulse)
             physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
             impulse /= 4
             isJumping = true
@@ -111,12 +112,15 @@ final public class CarNode: SKSpriteNode {
     /// Call this to end the jump. This denotes that the user has collided back with the ground
     /// and it will reset the impulse value and determine if the user is able to jump again
     public func endJump() {
-        impulse = maximumImpulseValue
-        if isJumping {
+        if isJumping && physicsBody?.velocity.dy < 10 { // trying to jump, but on the ground
             jumpAvailable = false
+        } else if isJumping && physicsBody?.velocity.dy >= 10 {
+            // jumped, but has a weird collision, continue jumping but don't reset
+            jumpAvailable = true
         } else {
             jumpAvailable = true
             isJumping = false
+            impulse = maximumImpulseValue
         }
     }
     
