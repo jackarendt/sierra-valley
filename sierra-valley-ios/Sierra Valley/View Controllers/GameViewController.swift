@@ -20,6 +20,8 @@ class GameViewController: SVBaseViewController {
     var pauseView : PauseView!
     var gameOverView : GameOverView!
     
+    var avalancheAvoidedView : AvalancheAvoidedView!
+    
     var distance = 0
     
     override func viewDidLoad() {
@@ -35,9 +37,9 @@ class GameViewController: SVBaseViewController {
         gameScene.gameDelegate = self
         
         // Configure the view.
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.showsDrawCount = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
+//        skView.showsDrawCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
@@ -58,6 +60,9 @@ class GameViewController: SVBaseViewController {
         distanceLabel.text = "\(distance)"
         distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))
         view.addSubview(distanceLabel)
+        
+        avalancheAvoidedView = AvalancheAvoidedView(frame: CGRect(x: 80, y: view.bounds.height - 65, width: view.bounds.width - 160, height: 60))
+        view.addSubview(avalancheAvoidedView)
         
         pauseView = PauseView(frame: contentView.bounds)
         pauseView.delegate = self
@@ -130,6 +135,18 @@ extension GameViewController : GameSceneDelegate {
     
     func scoreDidChange(newScore: Int) {
         distanceLabel.text = "\(newScore)"
+    }
+    
+    func avalancheAvoided() {
+        avalancheAvoidedView.showAvoidedView()
+//        UIView.animateKeyframesWithDuration(4.0, delay: 0, options: .AllowUserInteraction, animations: {
+//            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.09375, animations: {
+//                self.distanceLabel.alpha = 0
+//            })
+//            UIView.addKeyframeWithRelativeStartTime(0.90625, relativeDuration: 0.09375, animations: {
+//                self.distanceLabel.alpha = 1
+//            })
+//        }, completion: nil)
     }
 }
 

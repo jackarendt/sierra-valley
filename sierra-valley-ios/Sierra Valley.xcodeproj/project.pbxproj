@@ -31,6 +31,7 @@
 		2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
+		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
@@ -106,6 +107,7 @@
 		2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
+		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				2EF818741C557BBA008ADAEF /* GameOverView.swift */,
 				2EF818721C547336008ADAEF /* SVPauseBaseView.swift */,
 				2E6A921A1C5339EA00CF8E65 /* Arrow.swift */,
+				2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				2EF8187E1C559719008ADAEF /* GameManager.swift in Sources */,
 				2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */,
 				2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */,
+				2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */,
 				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
 				2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,

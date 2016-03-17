@@ -16,6 +16,9 @@ protocol GameSceneDelegate : class {
     func gameDidEnd(finalScore : Int, newAvalanches : Int)
     
     func scoreDidChange(newScore : Int)
+    
+    /// Called when an avalanche is avoided and the UI needs to react to that
+    func avalancheAvoided()
 }
 
 /// The GameScene is where the actual game takes place.  A majority of the game logic has been loaded off of the scene
@@ -158,7 +161,7 @@ extension GameScene : GameManagerDelegate {
     }
     
     func avalancheAvoided(gameTotal total: Int) {
-        
+        gameDelegate?.avalancheAvoided()
     }
 }
 
