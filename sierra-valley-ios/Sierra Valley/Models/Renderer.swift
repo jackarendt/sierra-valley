@@ -26,7 +26,7 @@ final class Renderer {
     weak var delegate : RendererDelegate?
     
     /// The information of the game for renders
-    private let gameSettings = GameSettings()
+    private let gameSettings = GameSettings.sharedSettings
     
     private var zPosition : CGFloat = 1000000
     

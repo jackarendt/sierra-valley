@@ -9,7 +9,10 @@
 import UIKit
 
 /// A bunch of important information regarding the scene's info
-public struct GameSettings {
+public class GameSettings {
+    
+    static let sharedSettings = GameSettings()
+    
     /// The width of the row
     public var rowWidth : CGFloat = 30
     

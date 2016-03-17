@@ -13,7 +13,7 @@ import UIKit
 public final class Level {
     
     /// Contains important settings about the current game such as how high the camera will have to pan, etc.
-    public var gameSettings : GameSettings
+    public var gameSettings = GameSettings.sharedSettings
     
     /// The width of a level
     public var levelWidth : CGFloat {
@@ -52,8 +52,7 @@ public final class Level {
     /// Initializes a level with the settings object and a difficulty
     /// - Parameter settings: The game settings for proper computation
     /// - Parameter difficulty: The difficulty of a level between 0 and 100
-    public init(settings : GameSettings, difficulty : Int) {
-        self.gameSettings = settings
+    public init(difficulty : Int) {
         self.difficulty = difficulty
         flatRowCount = Int(gameSettings.numFrames/2) - 1
         computeLevel(difficulty, queue: rows, flatRowLength: flatRowCount)

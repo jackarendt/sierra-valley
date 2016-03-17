@@ -40,7 +40,7 @@ class LevelQueue : Queue<Level> {
     /// Generates a level with a given difficulty and enqueues it
     /// - Parameter difficulty: The difficulty of the level to be generated
     private func generateLevel(difficulty : Int) {
-        let level = Level(settings: GameSettings(), difficulty: difficulty)
+        let level = Level(difficulty: difficulty)
         enqueue(level)
     }
 }

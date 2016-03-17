@@ -30,12 +30,15 @@ public protocol GameManagerDelegate : class {
     
     /// Called when the game has ended.
     // TODO: revise this function
-    func gameEnded(finalScore : Int)
-    
+    func gameEnded(finalScore finalScore : Int, avalanches : Int)
     
     /// Changes the background to make it either an avalanche or not
     /// - Parameter avalanche: Whether the background should resemeble an avalanche or not
     func alterBackground(avalanche : Bool)
+    
+    /// Called when the user avoids an avalanche successfully
+    /// - Parameter total: The total number of avalanches passed that round
+    func avalancheAvoided(gameTotal total : Int)
 }
 
 /// The GameManager manages level generation, and telling the delegate what to render, where it should placed and when. 
@@ -47,13 +50,16 @@ final public class GameManager {
     /// The score of the game
     public var score = 0
     
+    /// The number of avalanches that have passed
+    public var avalanches = 0
+    
     /// The number of total frames that have been passed since the beginning
     /// - Note: Used for scoring
-    public var totalFrames = 0
+    private var totalFrames = 0
     
     /// Game settings, specifically different things about the game such as frames/row, height difference between rows, amongst
     /// many other things
-    public let gameSettings = GameSettings()
+    public let gameSettings = GameSettings.sharedSettings
     
     /// The previous time the gameloop was updated. (used for counting frames)
     private var previousTime : CFTimeInterval = 0
@@ -127,7 +133,7 @@ final public class GameManager {
         
         if adjustedRotation > CGFloat(M_PI) - gameSettings.angle && adjustedRotation < CGFloat(M_PI) + gameSettings.angle {
             pause()
-            delegate?.gameEnded(score)
+            delegate?.gameEnded(finalScore: score, avalanches: avalanches)
             return true
         }
         return false
@@ -143,7 +149,7 @@ final public class GameManager {
         let maxX = cameraPosition.x + gameSettings.screenWidth/2 + size.width
         if position.y < minY || position.x < minX || position.x > maxX { // checks to see if the car is still above the screen
             pause()
-            delegate?.gameEnded(score)
+            delegate?.gameEnded(finalScore: score, avalanches: avalanches)
             return true
         }
         return false
@@ -201,9 +207,14 @@ final public class GameManager {
     /// Dequeues a new level from the level queue and alerts the delegate that
     /// a new level has been dequeued.
     private func dequeueNewLevel() {
+        if level.avalanche { // if the previous level was an avalanche, increment it and say that the avalanche was avoided
+            avalanches += 1
+            delegate?.avalancheAvoided(gameTotal: avalanches)
+            print(avalanches)
+        }
         level = levelQueue.dequeue()
         delegate?.alterBackground(level.avalanche)
-        // TODO: do something with avalanche
+        print(level.avalanche)
         var levelWidth = level.levelWidth
         if currentDirection == .Right {
             currentDirection = .Left

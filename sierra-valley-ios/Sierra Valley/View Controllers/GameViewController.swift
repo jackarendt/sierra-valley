@@ -87,6 +87,7 @@ class GameViewController: SVBaseViewController {
         pauseView.hidden = false
         pauseView.showMenu()
         pauseView.distance = gameScene.currentDistance()
+        pauseView.avalanche = gameScene.currentAvalanches()
         UIView.animateWithDuration(0.5, animations: {
             self.pauseView.alpha = 1
             self.pauseButton.alpha = 0
@@ -118,7 +119,7 @@ extension GameViewController : GameSceneDelegate {
         gameOverView.hidden = false
         gameOverView.showMenu()
         gameOverView.distance = finalScore
-        gameOverView.avalanche = 0
+        gameOverView.avalanche = newAvalanches
         UIView.animateWithDuration(0.5, animations: {
             self.gameOverView.alpha = 1
             self.pauseButton.alpha = 0

@@ -12,16 +12,16 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     
     var queue = Queue<SKAction>()
     
-    var gameSettings = GameSettings()
+    var gameSettings = GameSettings.sharedSettings
     
     let colorBlendFactor : CGFloat = 1.0
     
     var avalancheActive = false {
         didSet {
             let time = 1.25
-            if avalancheActive && !oldValue {
+            if avalancheActive  {
                 startAvalanche(time)
-            } else if oldValue {
+            } else {
                 endAvalanche(time)
             }
         }
@@ -45,7 +45,6 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     
     override init() {
         super.init()
-        
         
         middleBackground.alpha = 0.75
         middleBackground.zPosition = -3
@@ -77,7 +76,6 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
         farRightBackground.colorBlendFactor = colorBlendFactor
         addChild(farRightBackground)
         
-        startAvalanche(0)
         endAvalanche(0)
     }
     
@@ -86,7 +84,6 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     }
     
     private func endAvalanche(time : NSTimeInterval) {
-        print("end avalanche")
         for n in [middleBackground, leftBackground, farLeftBackground, rightBackground, farRightBackground].enumerate() {
             if n.index % 2 == 0 {
                 n.element.runAction(SKAction.colorizeWithColor(SVColor.backgroundPrimaryColor(), colorBlendFactor: colorBlendFactor, duration: time))

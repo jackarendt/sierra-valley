@@ -148,12 +148,17 @@ extension GameScene : GameManagerDelegate {
         gameDelegate?.scoreDidChange(newScore)
     }
 
-    func gameEnded(finalScore: Int) {
-        gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // send that action to the delegate for handling
+    func gameEnded(finalScore finalScore: Int, avalanches: Int) {
+        gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: gameManager.avalanches) // send that action to the delegate for handling
     }
     
     func alterBackground(avalanche: Bool) {
+        print("called")
         backgroundNode.avalancheActive = avalanche
+    }
+    
+    func avalancheAvoided(gameTotal total: Int) {
+        
     }
 }
 
@@ -207,5 +212,9 @@ extension GameScene {
     /// Returns the current distance that the car has traveled
     func currentDistance() -> Int {
         return gameManager.score
+    }
+    
+    func currentAvalanches() -> Int {
+        return gameManager.avalanches
     }
 }
