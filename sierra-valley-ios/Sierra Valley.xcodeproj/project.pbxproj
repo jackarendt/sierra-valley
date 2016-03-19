@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0D486E1C9DE0BE0020D8D3 /* GraphProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */; };
+		2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */; };
 		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
 		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
 		2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */; };
@@ -32,6 +34,10 @@
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
+		2EB690721C9B9C9D00B06A58 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690711C9B9C9D00B06A58 /* Stack.swift */; };
+		2EB690741C9BA50C00B06A58 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690731C9BA50C00B06A58 /* Node.swift */; };
+		2EB690761C9BA7C800B06A58 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690751C9BA7C800B06A58 /* Graph.swift */; };
+		2EB690781C9BC2A300B06A58 /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690771C9BC2A300B06A58 /* StackTests.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
@@ -61,6 +67,7 @@
 		2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818831C55E1EA008ADAEF /* GameSettings.swift */; };
 		2EF818861C572AE0008ADAEF /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818851C572AE0008ADAEF /* Queue.swift */; };
 		2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818871C572D8F008ADAEF /* ResourceRow.swift */; };
+		934D7874F8B276DA0B5F6F0F /* libPods-Sierra ValleyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */; };
 		93B2FA10D585D8EEDF8F0EC2 /* libPods-Sierra Valley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +89,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra ValleyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphProtocols.swift; path = Models/GraphProtocols.swift; sourceTree = "<group>"; };
+		2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelPaths.swift; path = Models/LevelPaths.swift; sourceTree = "<group>"; };
 		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
 		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
 		2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Extensions/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
@@ -108,6 +118,10 @@
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
+		2EB690711C9B9C9D00B06A58 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Models/Stack.swift; sourceTree = "<group>"; };
+		2EB690731C9BA50C00B06A58 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Models/Node.swift; sourceTree = "<group>"; };
+		2EB690751C9BA7C800B06A58 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = Models/Graph.swift; sourceTree = "<group>"; };
+		2EB690771C9BC2A300B06A58 /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,7 +160,9 @@
 		2EF818871C572D8F008ADAEF /* ResourceRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRow.swift; path = Models/ResourceRow.swift; sourceTree = "<group>"; };
 		5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra Valley.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley.debug.xcconfig"; sourceTree = "<group>"; };
 		6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra Valley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81F062A5799182CCBD479617 /* Pods-Sierra ValleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra ValleyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra ValleyTests/Pods-Sierra ValleyTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6E86030DCF37FFF78E0C663 /* Pods-Sierra Valley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra Valley.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley.release.xcconfig"; sourceTree = "<group>"; };
+		D1A8108CAF7A4488DD4BAB2B /* Pods-Sierra ValleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra ValleyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra ValleyTests/Pods-Sierra ValleyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934D7874F8B276DA0B5F6F0F /* libPods-Sierra ValleyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +198,8 @@
 			children = (
 				5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */,
 				B6E86030DCF37FFF78E0C663 /* Pods-Sierra Valley.release.xcconfig */,
+				D1A8108CAF7A4488DD4BAB2B /* Pods-Sierra ValleyTests.debug.xcconfig */,
+				81F062A5799182CCBD479617 /* Pods-Sierra ValleyTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -231,6 +250,41 @@
 			name = Particles;
 			sourceTree = "<group>";
 		};
+		2EB6906E1C9A760900B06A58 /* Level Generation */ = {
+			isa = PBXGroup;
+			children = (
+				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
+				2E3756611C646FDA00DA7715 /* LevelQueue.swift */,
+				2E37562E1C5C616400DA7715 /* LevelGenerator.swift */,
+				2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */,
+			);
+			name = "Level Generation";
+			sourceTree = "<group>";
+		};
+		2EB6906F1C9A761700B06A58 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				2EF818851C572AE0008ADAEF /* Queue.swift */,
+				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
+				2EB690711C9B9C9D00B06A58 /* Stack.swift */,
+				2EB690731C9BA50C00B06A58 /* Node.swift */,
+				2EB690751C9BA7C800B06A58 /* Graph.swift */,
+				2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */,
+			);
+			name = Generics;
+			sourceTree = "<group>";
+		};
+		2EB690701C9A762000B06A58 /* Render Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
+				2E3756301C5D88E000DA7715 /* Renderer.swift */,
+				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
+				2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */,
+			);
+			name = "Render Models";
+			sourceTree = "<group>";
+		};
 		2EBA3BDE1C4D9E16005C0D76 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */,
+				2EB690771C9BC2A300B06A58 /* StackTests.swift */,
 				2EBA3C051C4D9E16005C0D76 /* Info.plist */,
 			);
 			path = "Sierra ValleyTests";
@@ -332,15 +387,9 @@
 				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
 				2EF8187D1C559719008ADAEF /* GameManager.swift */,
 				2EF818831C55E1EA008ADAEF /* GameSettings.swift */,
-				2EF818851C572AE0008ADAEF /* Queue.swift */,
-				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
-				2EF818871C572D8F008ADAEF /* ResourceRow.swift */,
-				2E3756301C5D88E000DA7715 /* Renderer.swift */,
-				2E8A88431C588D3C0009CF1C /* RowBuffer.swift */,
-				2E37565B1C608A8F00DA7715 /* RowBufferPool.swift */,
-				2E2F0C8D1C5B077A003D3B26 /* Level.swift */,
-				2E3756611C646FDA00DA7715 /* LevelQueue.swift */,
-				2E37562E1C5C616400DA7715 /* LevelGenerator.swift */,
+				2EB6906F1C9A761700B06A58 /* Generics */,
+				2EB690701C9A762000B06A58 /* Render Models */,
+				2EB6906E1C9A760900B06A58 /* Level Generation */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -350,6 +399,7 @@
 			children = (
 				2EF818771C558F6D008ADAEF /* CloudKit.framework */,
 				6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */,
+				158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -394,9 +444,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EBA3C161C4D9E16005C0D76 /* Build configuration list for PBXNativeTarget "Sierra ValleyTests" */;
 			buildPhases = (
+				ABC4D2906EA3FB7D52D1245C /* Check Pods Manifest.lock */,
 				2EBA3BFB1C4D9E16005C0D76 /* Sources */,
 				2EBA3BFC1C4D9E16005C0D76 /* Frameworks */,
 				2EBA3BFD1C4D9E16005C0D76 /* Resources */,
+				ED9F57C3A9A974420D2FA490 /* Embed Pods Frameworks */,
+				C3CE40BBD0E46815014E502E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -551,6 +604,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ABC4D2906EA3FB7D52D1245C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C3CE40BBD0E46815014E502E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sierra ValleyTests/Pods-Sierra ValleyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED9F57C3A9A974420D2FA490 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sierra ValleyTests/Pods-Sierra ValleyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -568,6 +666,7 @@
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
 				2EF818711C544A93008ADAEF /* PauseView.swift in Sources */,
+				2EB690721C9B9C9D00B06A58 /* Stack.swift in Sources */,
 				2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */,
 				2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */,
 				2EF818731C547336008ADAEF /* SVPauseBaseView.swift in Sources */,
@@ -579,7 +678,10 @@
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
 				2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */,
+				2EB690741C9BA50C00B06A58 /* Node.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
+				2EB690761C9BA7C800B06A58 /* Graph.swift in Sources */,
+				2E0D486E1C9DE0BE0020D8D3 /* GraphProtocols.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */,
 				2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */,
@@ -595,6 +697,7 @@
 				2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */,
 				2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */,
 				2E3756621C646FDA00DA7715 /* LevelQueue.swift in Sources */,
+				2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,
@@ -610,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB690781C9BC2A300B06A58 /* StackTests.swift in Sources */,
 				2EBA3C041C4D9E16005C0D76 /* Sierra_ValleyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +880,7 @@
 		};
 		2EBA3C171C4D9E16005C0D76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1A8108CAF7A4488DD4BAB2B /* Pods-Sierra ValleyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -783,18 +888,21 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.Sierra-ValleyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sierra Valley/Sierra Valley-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sierra Valley.app/Sierra Valley";
 			};
 			name = Debug;
 		};
 		2EBA3C181C4D9E16005C0D76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F062A5799182CCBD479617 /* Pods-Sierra ValleyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Sierra ValleyTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.Sierra-ValleyTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sierra Valley/Sierra Valley-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sierra Valley.app/Sierra Valley";
 			};
 			name = Release;

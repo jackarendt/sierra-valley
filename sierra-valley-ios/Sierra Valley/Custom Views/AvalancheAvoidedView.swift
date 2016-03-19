@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Shows the user that they have avoided an avalanche.  Consists of two mountains on each side, with
+/// text in the middle
 class AvalancheAvoidedView: UIView {
     
     private let leftMountain = UIImageView(image: UIImage(asset: .Avalanche))
@@ -37,7 +39,7 @@ class AvalancheAvoidedView: UIView {
         super.init(coder: aDecoder)
     }
     
-    
+    /// Uses keyframe animations to make it appear, then disappear
     func showAvoidedView() {
         UIView.animateKeyframesWithDuration(4.0, delay: 0, options: .AllowUserInteraction, animations: {
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.1875, animations: {

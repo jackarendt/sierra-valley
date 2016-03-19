@@ -5,11 +5,10 @@
 
 target 'Sierra Valley' do
     pod 'Google/Analytics'
-    pod 'ChartboostSDK'
 end
 
 target 'Sierra ValleyTests' do
-
+    pod 'Google/Analytics'
 end
 
 target 'Sierra ValleyUITests' do
