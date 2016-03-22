@@ -9,7 +9,7 @@
 import Foundation
 
 /// The Graph class represents a 2D graph. It allows for graphs to be generated, and traversed using a special
-/// graphing algorithm that is a modified version of DFS.
+/// graphing algorithm that is a modified version of DFS.  It is currently not weighted, and bidirectional.
 public class Graph {
     
     /// The number of edges on the graph
@@ -22,6 +22,7 @@ public class Graph {
     /// The multiplier can be varied so that it
     public var multiplier : Int = 3
     
+    /// The verticies of a graph
     public var verticies = [Node]()
     
     /// Adds a vertex to the 
@@ -29,6 +30,10 @@ public class Graph {
         verticies.append(newVertex)
     }
     
+    /// Adds an edge to the graph between two verticies
+    /// - Parameter source: The source node
+    /// - Parameter destination: The destination node
+    /// - Returns: Boolean denoting whether the edge was added or not
     public func addEdge(source source : Node, destination : Node) -> Bool {
         
         if source == destination {

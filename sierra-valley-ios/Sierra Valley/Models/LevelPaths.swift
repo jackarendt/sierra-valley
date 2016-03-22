@@ -31,7 +31,7 @@ public protocol LevelGenerationProtocol {
     /// - Returns: An array of resource rows to be enqueued
     mutating func generatePath() -> [ResourceRow]
     
-    
+    // Creates a new object with a length and difficulty
     init(length : Int, difficulty : Int)
 }
 

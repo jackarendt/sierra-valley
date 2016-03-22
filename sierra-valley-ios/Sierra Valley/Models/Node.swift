@@ -20,6 +20,7 @@ public class Node : Equatable {
     /// Array of nodes that the graph touches
     public var edges = [Node]()
     
+    
     /// The length of the path
     public var length : Int {
         get {

@@ -83,4 +83,20 @@ class LevelGenerationTests: XCTestCase {
         // there should be double the amount, (count one for source, one for destination, etc.)
         XCTAssertEqual(edgeCount, 2 * graph.edgeCount)
     }
+    
+    func testSmallGraphPerformance() {
+        let nodes = createRandomNodeSet(100)
+        self.measureBlock({
+            let graph = Graph()
+            graph.generateGraphWithNodes(nodes)
+        })
+    }
+    
+    func testLargeGraphPerformance() {
+        let nodes = createRandomNodeSet(100000)
+        self.measureBlock({
+            let graph = Graph()
+            graph.generateGraphWithNodes(nodes)
+        })
+    }
 }

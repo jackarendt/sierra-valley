@@ -887,6 +887,7 @@
 			baseConfigurationReference = D1A8108CAF7A4488DD4BAB2B /* Pods-Sierra ValleyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "Sierra ValleyTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -902,6 +903,7 @@
 			baseConfigurationReference = 81F062A5799182CCBD479617 /* Pods-Sierra ValleyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				INFOPLIST_FILE = "Sierra ValleyTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.Sierra-ValleyTests";
@@ -914,7 +916,7 @@
 		2EBA3C1A1C4D9E16005C0D76 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
@@ -929,7 +931,7 @@
 		2EBA3C1B1C4D9E16005C0D76 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Sierra Valley.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = "Sierra ValleyUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
