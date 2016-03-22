@@ -9,26 +9,26 @@
 import Foundation
 
 /// The Node class represents one vertex of a graph.
-class Node : Equatable {
+public class Node : Equatable {
     
     /// The path that will be used in the level if this node is selected
-    var path : LevelGenerationProtocol!
+    public var path : LevelGenerationProtocol!
     
     /// Boolean denoting whether the node was visited or not
-    var visited = false
+    public var visited = false
     
     /// Array of nodes that the graph touches
-    var edges = [Node]()
+    public var edges = [Node]()
     
     /// The length of the path
-    var length : Int {
+    public var length : Int {
         get {
             return path.length
         }
     }
     
     /// The difficulty of the path
-    var difficulty : Int {
+    public var difficulty : Int {
         get {
             return path.difficulty
         }
@@ -36,11 +36,11 @@ class Node : Equatable {
     
     /// Creates a new graph node
     /// - Parameter path: The path that is represented by the node
-    init(path : LevelGenerationProtocol) {
+    public init(path : LevelGenerationProtocol) {
         self.path = path
     }
 }
 
-func ==(lhs: Node, rhs: Node) -> Bool {
+public func ==(lhs: Node, rhs: Node) -> Bool {
     return unsafeAddressOf(lhs) == unsafeAddressOf(rhs)
 }

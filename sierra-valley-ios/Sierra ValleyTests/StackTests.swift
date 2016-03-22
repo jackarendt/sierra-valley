@@ -29,6 +29,8 @@ class StackTests: XCTestCase {
         XCTAssertEqual(stack.pop(), 4)
         XCTAssertEqual(stack.pop(), 1)
         
+        XCTAssertNil(stack.pop())
+        
         XCTAssertTrue(stack.isEmpty())
     }
     

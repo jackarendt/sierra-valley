@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Level Generation Protocol
 
 /// The Level Generation Protocol eases making different level pieces and makes them interchangable
-protocol LevelGenerationProtocol {
+public protocol LevelGenerationProtocol {
     /// The easiest the level can get
     static var minDifficulty : Int { get set }
     

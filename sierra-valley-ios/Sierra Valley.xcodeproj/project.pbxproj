@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E0D486E1C9DE0BE0020D8D3 /* GraphProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */; };
 		2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */; };
+		2E0D48721C9E1EC20020D8D3 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */; };
 		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
 		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
 		2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */; };
@@ -25,6 +26,7 @@
 		2E6A92171C5322AA00CF8E65 /* SVBlinkAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */; };
 		2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */; };
 		2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6A921A1C5339EA00CF8E65 /* Arrow.swift */; };
+		2E6B0C7C1C9E2151001244F1 /* LevelGenerationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6B0C7B1C9E2151001244F1 /* LevelGenerationTests.swift */; };
 		2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582C81C53439D000508EB /* Number+Extensions.swift */; };
 		2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CA1C534FEE000508EB /* HelpCarScene.swift */; };
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
@@ -41,7 +43,6 @@
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
 		2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF71C4D9E16005C0D76 /* LaunchScreen.storyboard */; };
-		2EBA3C041C4D9E16005C0D76 /* Sierra_ValleyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */; };
 		2EBA3C0F1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C0E1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift */; };
 		2EBA3C1F1C4DB588005C0D76 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C1E1C4DB588005C0D76 /* UIColor+Extensions.swift */; };
 		2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3C211C4DDEDE005C0D76 /* SVBaseViewController.swift */; };
@@ -92,6 +93,7 @@
 		158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra ValleyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphProtocols.swift; path = Models/GraphProtocols.swift; sourceTree = "<group>"; };
 		2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelPaths.swift; path = Models/LevelPaths.swift; sourceTree = "<group>"; };
+		2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
 		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
 		2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Extensions/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		2E6A92161C5322AA00CF8E65 /* SVBlinkAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBlinkAnimation.swift; path = "Custom Views/SVBlinkAnimation.swift"; sourceTree = "<group>"; };
 		2E6A92181C5326BF00CF8E65 /* TapAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapAnimationView.swift; path = "Custom Views/TapAnimationView.swift"; sourceTree = "<group>"; };
 		2E6A921A1C5339EA00CF8E65 /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arrow.swift; path = "Custom Views/Arrow.swift"; sourceTree = "<group>"; };
+		2E6B0C7B1C9E2151001244F1 /* LevelGenerationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGenerationTests.swift; sourceTree = "<group>"; };
 		2E8582C81C53439D000508EB /* Number+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Number+Extensions.swift"; path = "Extensions/Number+Extensions.swift"; sourceTree = "<group>"; };
 		2E8582CA1C534FEE000508EB /* HelpCarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpCarScene.swift; path = "Game Scenes/HelpCarScene.swift"; sourceTree = "<group>"; };
 		2E8582CE1C536A99000508EB /* CarNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarNode.swift; path = Sprites/CarNode.swift; sourceTree = "<group>"; };
@@ -128,7 +131,6 @@
 		2EBA3BF81C4D9E16005C0D76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EBA3BFA1C4D9E16005C0D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EBA3BFF1C4D9E16005C0D76 /* Sierra ValleyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sierra ValleyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sierra_ValleyTests.swift; sourceTree = "<group>"; };
 		2EBA3C051C4D9E16005C0D76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EBA3C0A1C4D9E16005C0D76 /* Sierra ValleyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sierra ValleyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3C0E1C4D9E16005C0D76 /* Sierra_ValleyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sierra_ValleyUITests.swift; sourceTree = "<group>"; };
@@ -326,8 +328,9 @@
 		2EBA3C021C4D9E16005C0D76 /* Sierra ValleyTests */ = {
 			isa = PBXGroup;
 			children = (
-				2EBA3C031C4D9E16005C0D76 /* Sierra_ValleyTests.swift */,
 				2EB690771C9BC2A300B06A58 /* StackTests.swift */,
+				2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */,
+				2E6B0C7B1C9E2151001244F1 /* LevelGenerationTests.swift */,
 				2EBA3C051C4D9E16005C0D76 /* Info.plist */,
 			);
 			path = "Sierra ValleyTests";
@@ -713,8 +716,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6B0C7C1C9E2151001244F1 /* LevelGenerationTests.swift in Sources */,
 				2EB690781C9BC2A300B06A58 /* StackTests.swift in Sources */,
-				2EBA3C041C4D9E16005C0D76 /* Sierra_ValleyTests.swift in Sources */,
+				2E0D48721C9E1EC20020D8D3 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

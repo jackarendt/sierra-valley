@@ -8,7 +8,27 @@
 
 import UIKit
 
-let maximumLevelDifficulty = 90
+public struct PathProbabilities  {
+    static let NoRoadblockPath = 60
+    static let SpikePath = 15
+    static let SpikePitPath = 13
+    static let SpikeIslandPath = 7
+    static let IslandPath = 5
+    
+    static func compoundProbabilityForPath(path: Int) -> Int {
+        let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath]
+        if let idx = paths.indexOf(path) {
+            var total = 0
+            for item in paths.enumerate() {
+                if item.index <= idx {
+                    total += item.element
+                }
+            }
+            return total
+        }
+        return 0
+    }
+}
 
 /// Generates a level with a given difficulty and a queue to load it in to
 /// - Parameter difficulty: The difficulty of the level
@@ -48,39 +68,41 @@ func generateOpeningFlatLevel(length : Int, queue : Queue<ResourceRow>) {
 func createRandomNodeSet(totalNodes : Int) -> [Node] {
     var nodes = [Node]()
     for _ in 0.stride(to: totalNodes, by: 1) {
-        let val = arc4random() % 100
+        let val = Int(arc4random() % 100)
         var path : LevelGenerationProtocol!
         switch val {
-        case 0..<60: // chance of getting a no roadblock trail
+        case 0..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.NoRoadblockPath): // chance of getting a no roadblock trail
             let length = Int(arc4random() % 5 + 5)
-            let difficulty = generateDifficulty(NoRoadblockTrail)
+            let difficulty = generateDifficulty(maxDifficulty: NoRoadblockTrail.maxDifficulty, minDifficulty: NoRoadblockTrail.minDifficulty)
             path = NoRoadblockTrail(length: length, difficulty: difficulty)
-            break;
-        case 60..<75: // chance of getting spikes
-            let difficulty = generateDifficulty(SpikeTrail)
+            
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.NoRoadblockPath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePath):
+            let difficulty = generateDifficulty(maxDifficulty: SpikeTrail.maxDifficulty, minDifficulty: SpikeTrail.minDifficulty)
             path = SpikeTrail(length: 0, difficulty: difficulty)
-            break;
-        case 75..<88:
-            let difficulty = generateDifficulty(SpikePitTrail)
+            
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePitPath):
+            let difficulty = generateDifficulty(maxDifficulty: SpikePitTrail.maxDifficulty, minDifficulty: SpikePitTrail.minDifficulty)
             path = SpikePitTrail(length: 0, difficulty: difficulty)
-            break;
-        case 88..<95:
-            let difficulty = generateDifficulty(SpikeIslandTrail)
+            
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePitPath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikeIslandPath):
+            let difficulty = generateDifficulty(maxDifficulty: SpikeIslandTrail.maxDifficulty, minDifficulty: SpikeIslandTrail.minDifficulty)
             path = SpikeIslandTrail(length: 0, difficulty: difficulty)
-            break;
-        case 95..<100:
-            let difficulty = generateDifficulty(IslandTrail)
+            
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikeIslandPath)..<100:
+            let difficulty = generateDifficulty(maxDifficulty: IslandTrail.maxDifficulty, minDifficulty: IslandTrail.minDifficulty)
             path = IslandTrail(length: 0, difficulty: difficulty)
-            break;
         default:
-            break;
+            break
         }
         nodes.append(Node(path: path))
     }
     return nodes
 }
 
-func generateDifficulty(path : LevelGenerationProtocol.Type) -> Int {
-    return Int(arc4random()) % (path.maxDifficulty - path.minDifficulty) + path.minDifficulty
+func generateDifficulty(maxDifficulty maxDifficulty : Int, minDifficulty : Int) -> Int {
+    if maxDifficulty == 0 && minDifficulty == 0 {
+        return 0
+    }
+    return Int(arc4random()) % (maxDifficulty - minDifficulty) + minDifficulty
 }
 

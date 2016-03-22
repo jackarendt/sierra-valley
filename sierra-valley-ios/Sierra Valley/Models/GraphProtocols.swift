@@ -26,6 +26,6 @@ protocol DFSTraversalProtocol {
 /// of the graph.
 protocol GraphGenerationProtocol {
     /// Generates a graph using the nodes that are passed in.  Randomly assigns each edge of the graph.
-    /// It creates 5 times the amount of edges as there are nodes.
+    /// It creates an arbitrary number of times the amount of edges as there are nodes.
     func generateGraphWithNodes(nodes: [Node])
 }
