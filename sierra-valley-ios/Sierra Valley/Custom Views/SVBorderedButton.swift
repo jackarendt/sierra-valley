@@ -35,8 +35,8 @@ public class SVBorderedButton: UIButton {
         
         tintColor = borderColor
         
-        addTarget(self, action: "touchUp", forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
-        addTarget(self, action: "touchDown", forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside, .TouchDownRepeat])
+        addTarget(self, action: #selector(SVBorderedButton.touchUp), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
+        addTarget(self, action: #selector(SVBorderedButton.touchDown), forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside, .TouchDownRepeat])
     }
     
     /// Sets the font size of the title

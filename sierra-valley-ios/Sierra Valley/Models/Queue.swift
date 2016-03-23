@@ -48,11 +48,12 @@ public class Queue<T> {
     /// Allows to see into the queue by peeking at the first nth items
     /// - Parameter length: The number of items to peek
     /// - Returns: The first n items in the queue
-    public func peek(var length : Int) -> [T] {
-        if length > count {
-            length = count
+    public func peek(length : Int) -> [T] {
+        var l = length
+        if l > count {
+            l = count
         }
-        return Array(_queue[0..<length])
+        return Array(_queue[0..<l])
     }
     
     /// Checks to see if the queue is empty or not

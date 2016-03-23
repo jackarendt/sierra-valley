@@ -41,13 +41,13 @@ class GameOverView: SVPauseBaseView {
         shareButton.frame = CGRect(x: 40, y: bounds.height - 70, width: bounds.width/2 - 60, height: 45)
         shareButton.setTitle("SHARE", forState: .Normal)
         shareButton.setFontSize(25)
-        shareButton.addTarget(self, action: "shareButtonTapped:", forControlEvents: .TouchUpInside)
+        shareButton.addTarget(self, action: #selector(GameOverView.shareButtonTapped(_:)), forControlEvents: .TouchUpInside)
         addSubview(shareButton)
         
         leaderboardButton.frame = CGRect(x: bounds.width/2, y: bounds.height - 70, width: bounds.width/2 - 60, height: 45)
         leaderboardButton.setTitle("LEADERBOARD", forState: .Normal)
         leaderboardButton.setFontSize(25)
-        leaderboardButton.addTarget(self, action: "leaderboardButtonTapped:", forControlEvents: .TouchUpInside)
+        leaderboardButton.addTarget(self, action: #selector(GameOverView.leaderboardButtonTapped(_:)), forControlEvents: .TouchUpInside)
         addSubview(leaderboardButton)
     }
     

@@ -43,7 +43,9 @@ final class Renderer {
     /// - Parameter color: The color for the row
     /// - Parameter direction: The direction that the car will travel
     /// - Parameter cameraPosition: The center of the camear in the scene
-    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, var position : CGPoint, duration : CFTimeInterval){
+    func renderResourceRow(row : ResourceRow, color : UIColor , direction : CarDirection, position : CGPoint, duration : CFTimeInterval){
+        
+        var pos = position
         // get proper buffer and z position for the row
         var buffer : RowBufferItem!
         var zPos : CGFloat = zPosition
@@ -56,8 +58,8 @@ final class Renderer {
         }
         
         let rectHeight : CGFloat = 300
-        position.y = position.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
-        let usedResrouces = renderPieces(buffer, color: color, row: row, position: position, zPos: zPos, rectHeight: rectHeight, direction: direction)
+        pos.y = pos.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
+        let usedResrouces = renderPieces(buffer, color: color, row: row, position: pos, zPos: zPos, rectHeight: rectHeight, direction: direction)
 
         if duration >= 0 {
             for resource in usedResrouces {

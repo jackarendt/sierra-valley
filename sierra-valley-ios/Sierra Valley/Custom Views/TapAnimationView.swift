@@ -56,7 +56,7 @@ class TapAnimationView: UIView {
         let initial = createAnimation(toPath: smallPath, fromPath: normalPath, alpha: 1, beginTime: 0, duration: 0.5)
         layer.addAnimation(initial, forKey: "initial")
         
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "infiniteAnimation", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(TapAnimationView.infiniteAnimation), userInfo: nil, repeats: false)
     }
     
     /// Stops the tap animation and returns the inner circle to the original value

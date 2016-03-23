@@ -61,7 +61,7 @@ public class SVBaseScene: SKScene {
         super.touchesBegan(touches, withEvent: event)
         if let touch = touches.first, view = view {
             originalTouch = touch.locationInView(view)
-            touchTimer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "timerFired", userInfo: nil, repeats: true)
+            touchTimer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: #selector(SVBaseScene.timerFired), userInfo: nil, repeats: true)
             currentTouch = originalTouch
             startTouchTime = NSDate()
         }

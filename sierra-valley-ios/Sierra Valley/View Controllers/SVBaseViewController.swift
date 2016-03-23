@@ -54,19 +54,19 @@ public class SVBaseViewController: UIViewController {
         
         // create left navigation item
         leftNavigationButton.frame = CGRect(x: 20, y: 15, width: 40, height: 40)
-        leftNavigationButton.addTarget(self, action: "leftNavigationButtonTapped:", forControlEvents: .TouchUpInside)
+        leftNavigationButton.addTarget(self, action: #selector(SVBaseViewController.leftNavigationButtonTapped(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(leftNavigationButton)
         
         // create right navigation item
         rightNavigationButton.frame = CGRect(x: view.bounds.width - 60, y: 15, width: 40, height: 40)
-        rightNavigationButton.addTarget(self, action: "rightNavigationButtonTapped:", forControlEvents: .TouchUpInside)
+        rightNavigationButton.addTarget(self, action: #selector(SVBaseViewController.rightNavigationButtonTapped(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(rightNavigationButton)
         
         // add notifications for application states
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: applicationWillResignNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillEnterForeground:", name: applicationDidEnterForegroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: applicationDidBecomeActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: applicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillResignActive(_:)), name: applicationWillResignNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillEnterForeground(_:)), name: applicationDidEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidBecomeActive(_:)), name: applicationDidBecomeActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: applicationDidEnterBackgroundNotification, object: nil)
         
     }
     

@@ -36,7 +36,7 @@ class SettingsViewController: SVBaseViewController {
         musicButton.frame = CGRect(x: contentView.frame.width/2 - 75, y: _musicLabel.frame.origin.y, width: 55, height: 35)
         musicButton.setImage(UIImage(asset: .VolumeIcon), forState: .Normal)
         musicButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 10, bottom: 3, right: 10)
-        musicButton.addTarget(self, action: "musicButtonTapped:", forControlEvents: .TouchUpInside)
+        musicButton.addTarget(self, action: #selector(SettingsViewController.musicButtonTapped(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(musicButton)
         
         let _soundLabel = UILabel(frame: CGRect(x: contentView.bounds.width/2 + 20, y: contentView.frame.height/4 + 20, width: contentView.frame.width/2 - 80, height: 35))
@@ -48,7 +48,7 @@ class SettingsViewController: SVBaseViewController {
         soundButton.frame = CGRect(x: contentView.frame.width - 75, y: _soundLabel.frame.origin.y, width: 55, height: 35)
         soundButton.setImage(UIImage(asset: .VolumeIcon), forState: .Normal)
         soundButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 10, bottom: 3, right: 10)
-        soundButton.addTarget(self, action: "soundButtonTapped:", forControlEvents: .TouchUpInside)
+        soundButton.addTarget(self, action: #selector(SettingsViewController.soundButtonTapped(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(soundButton)
         
         restoreButton.frame = CGRect(x: 20, y: contentView.bounds.height/2 + 20, width: contentView.bounds.width/2 - 40, height: 45)
@@ -64,7 +64,7 @@ class SettingsViewController: SVBaseViewController {
         helpButton.frame = CGRect(x: contentView.bounds.width/4 + 20, y: contentView.bounds.height - 75, width: contentView.bounds.width/2 - 40, height: 45)
         helpButton.setTitle("HELP", forState: .Normal)
         helpButton.setFontSize(min(25, contentView.bounds.width * 0.03748))
-        helpButton.addTarget(self, action: "helpButtonPressed:", forControlEvents: .TouchUpInside)
+        helpButton.addTarget(self, action: #selector(SettingsViewController.helpButtonPressed(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(helpButton)
         
         musicButton.selected = !settings.musicMuted

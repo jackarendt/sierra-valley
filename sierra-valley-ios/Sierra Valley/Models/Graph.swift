@@ -44,8 +44,8 @@ public class Graph {
             return false
         }
         
-        source.edges.append(destination)
-        destination.edges.append(source)
+        source.edges.insert(destination)
+        destination.edges.insert(source)
         return true
     }
 }

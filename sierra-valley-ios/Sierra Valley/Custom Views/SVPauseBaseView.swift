@@ -70,7 +70,7 @@ class SVPauseBaseView: UIView {
         backgroundView.alpha = 0.7
         addSubview(backgroundView)
         
-        tapGesture = UITapGestureRecognizer(target: self, action: "tapGestureRecognized:")
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(SVPauseBaseView.tapGestureRecognized(_:)))
         addGestureRecognizer(tapGesture)
         
         titleLabel.frame = CGRect(x: 40, y: bounds.height/2 - 65, width: bounds.width - 80, height: 50)

@@ -52,7 +52,7 @@ class GameViewController: SVBaseViewController {
         pauseButton.setImage(UIImage(asset: .PauseIcon), forState: .Normal)
         pauseButton.frame = CGRect(x: contentView.frame.width - 60, y: 0, width: 60, height: 65)
         pauseButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 25, bottom: 20, right: 20)
-        pauseButton.addTarget(self, action: "pauseButtonTapped:", forControlEvents: .TouchUpInside)
+        pauseButton.addTarget(self, action: #selector(GameViewController.pauseButtonTapped(_:)), forControlEvents: .TouchUpInside)
         contentView.addSubview(pauseButton)
         
         distanceLabel.frame = CGRect(x: 20, y: 5, width: view.bounds.width/2 - 40, height: 60)

@@ -70,7 +70,7 @@ class HomeViewController: SVBaseViewController {
         settingsButton.setTitleColor(SVColor.lightColor().colorWithAlphaComponent(0.7), forState: .Highlighted)
         settingsButton.setTitle("SETTINGS", forState: .Normal)
         settingsButton.alpha = 0
-        settingsButton.addTarget(self, action: "settingsButtonTapped", forControlEvents: .TouchUpInside)
+        settingsButton.addTarget(self, action: #selector(HomeViewController.settingsButtonTapped), forControlEvents: .TouchUpInside)
         contentView.addSubview(settingsButton)
         
         // larger hit boxes for the choose car button so that there are no accidental taps
@@ -84,11 +84,11 @@ class HomeViewController: SVBaseViewController {
         chooseCarButton.setTitleColor(SVColor.lightColor().colorWithAlphaComponent(0.7), forState: .Highlighted)
         chooseCarButton.setTitle("CHANGE CAR", forState: .Normal)
         chooseCarButton.alpha = 0
-        chooseCarButton.addTarget(self, action: "chooseCarButtonTapped", forControlEvents: .TouchUpInside)
+        chooseCarButton.addTarget(self, action: #selector(HomeViewController.chooseCarButtonTapped), forControlEvents: .TouchUpInside)
         contentView.addSubview(chooseCarButton)
         
         // add tap gesture to start the game
-        let tapGesture = UITapGestureRecognizer(target: self, action: "startGame")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.startGame))
         contentView.addGestureRecognizer(tapGesture)
     }
     
