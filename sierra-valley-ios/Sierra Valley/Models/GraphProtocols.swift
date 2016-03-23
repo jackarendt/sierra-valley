@@ -9,7 +9,7 @@
 import Foundation
 
 /// The DFSTraversalProtocol is a protocol designed to help traverse a graph using the DFS algorithm
-protocol DFSTraversalProtocol {
+public protocol DFSTraversalProtocol {
     
     /// Traverses the graph using a modified version of DFS.  In addition to retreating when
     /// there are no more new nodes to discover, the algorithm will also stop when it hits a suggested
@@ -17,14 +17,12 @@ protocol DFSTraversalProtocol {
     /// the most appropriate path from the generated list.
     /// - Parameter difficulty: The difficulty that the level should be
     /// - Parameter suggestedLength: The suggested length of the path to be generated. (Just a guideline, not strictly followed)
-    /// - Parameter completionHandler: A callback that is called when the operation has finished
-    /// - Note: This runs in a background queue for better performance
-    func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength : Int, completionHandler : (results : [[Node]]) -> ())
+    func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength : Int) -> [[Node]]
 }
 
 /// The graph generation protocol is designed to create a graph using a set of nodes by randomly assigning each edge
 /// of the graph.
-protocol GraphGenerationProtocol {
+public protocol GraphGenerationProtocol {
     /// Generates a graph using the nodes that are passed in.  Randomly assigns each edge of the graph.
     /// It creates an arbitrary number of times the amount of edges as there are nodes.
     func generateGraphWithNodes(nodes: [Node])

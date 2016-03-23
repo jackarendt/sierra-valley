@@ -51,7 +51,7 @@ public class Graph {
 }
 
 extension Graph : GraphGenerationProtocol {
-    func generateGraphWithNodes(nodes : [Node]) {
+    public func generateGraphWithNodes(nodes : [Node]) {
         verticies = nodes
         
         // keep track of number of edges that have been created
@@ -66,5 +66,38 @@ extension Graph : GraphGenerationProtocol {
                 edges += 1
             }
         }
+    }
+}
+
+
+extension Graph : DFSTraversalProtocol {
+    public func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength: Int) -> [[Node]] {
+        let nodeStack = Stack<Node>() // get the stack to visit nodes
+        
+        /*
+         * The Visited Dictionary keeps a paper trail of sorts to figure out what path the DFS search travels.
+         * It works as such:
+         * visited[child] = parent
+         */
+        var visitedDictionary = [Node : Node]()
+        
+        var remainingDifficulty = difficulty
+        
+        let startingIndex = Int(arc4random()) % verticies.count
+        
+        nodeStack.push(verticies[startingIndex])
+        
+        while !nodeStack.isEmpty() {
+            if let node = nodeStack.pop(){ // get the topmost item
+                if !node.visited { // go to the node if it hasn't been visited
+                    node.visited = true // set it as visited
+                    for newNode in node.edges {
+                        nodeStack.push(newNode)
+                    }
+                }
+            }
+        }
+        
+        return [[Node]]()
     }
 }
