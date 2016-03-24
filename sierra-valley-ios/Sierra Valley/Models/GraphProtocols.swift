@@ -17,7 +17,7 @@ public protocol DFSTraversalProtocol {
     /// the most appropriate path from the generated list.
     /// - Parameter difficulty: The difficulty that the level should be
     /// - Parameter suggestedLength: The suggested length of the path to be generated. (Just a guideline, not strictly followed)
-    func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength : Int) -> [[Node]]
+    func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength : Int) -> [Node]
 }
 
 /// The graph generation protocol is designed to create a graph using a set of nodes by randomly assigning each edge

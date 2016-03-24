@@ -31,6 +31,9 @@ public protocol LevelGenerationProtocol {
     /// - Returns: An array of resource rows to be enqueued
     mutating func generatePath() -> [ResourceRow]
     
+    /// The name of the level (meant for debugging)
+    var name : String { get set }
+    
     // Creates a new object with a length and difficulty
     init(length : Int, difficulty : Int)
 }
@@ -42,6 +45,8 @@ public protocol LevelGenerationProtocol {
 struct NoRoadblockTrail : LevelGenerationProtocol {
     static var minDifficulty = 0
     static var maxDifficulty = 0
+    
+    var name = "NoRoadblockTrail"
     
     var difficulty = 0
     var length = 0
@@ -69,6 +74,8 @@ struct NoRoadblockTrail : LevelGenerationProtocol {
 struct SpikeTrail : LevelGenerationProtocol {
     static var minDifficulty = 5
     static var maxDifficulty = 25
+
+    var name = "SpikeTrail"
     
     var difficulty = 0
     var length = 0
@@ -82,7 +89,7 @@ struct SpikeTrail : LevelGenerationProtocol {
     }
 
     mutating func generatePath() -> [ResourceRow] {
-        length = Int(Double(difficulty - SpikeTrail.minDifficulty)/Double(SpikeTrail.maxDifficulty - SpikeTrail.minDifficulty) * 4) // maximum of 4 spikes
+        length = Int(ceil(Double(difficulty - SpikeTrail.minDifficulty)/Double(SpikeTrail.maxDifficulty - SpikeTrail.minDifficulty) * 4)) // maximum of 5 spikes
         var rows = [ResourceRow]()
         for _ in 0.stride(to: length, by: 1) {
             rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
@@ -95,6 +102,8 @@ struct SpikeTrail : LevelGenerationProtocol {
 struct SpikePitTrail : LevelGenerationProtocol {
     static var minDifficulty = 10
     static var maxDifficulty = 50
+
+    var name = "SpikePitTrail"
     
     var difficulty = 0
     var length = 0
@@ -131,6 +140,8 @@ struct SpikePitTrail : LevelGenerationProtocol {
 struct SpikeIslandTrail : LevelGenerationProtocol {
     static var minDifficulty = 30
     static var maxDifficulty = 70
+
+    var name = "SpikeIslandTrail"
     
     var difficulty = 0
     var length = 0
@@ -171,6 +182,8 @@ struct IslandTrail : LevelGenerationProtocol {
     var difficulty = 0
     var length = 0
     
+    var name = "IslandTrail"
+    
     var rows : [ResourceRow]!
     
     init(length: Int, difficulty : Int) {
@@ -210,6 +223,8 @@ struct FlatTrail : LevelGenerationProtocol {
     static var minDifficulty = 0
     static var maxDifficulty = 0
     
+    var name = "FlatTrail"
+    
     var difficulty = 0
     var length = 0
     
@@ -234,6 +249,8 @@ struct EmptyRowTrail : LevelGenerationProtocol {
     
     static var minDifficulty = 0
     static var maxDifficulty = 0
+    
+    var name = "EmptyRowTrail"
     
     var difficulty = 0
     var length = 0

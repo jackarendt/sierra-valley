@@ -9,7 +9,7 @@
 import Foundation
 
 /// The Graph class represents a 2D graph. It allows for graphs to be generated, and traversed using a special
-/// graphing algorithm that is a modified version of DFS.  It is currently not weighted, and bidirectional.
+/// graphing algorithm that is a modified version of DFS.  It is currently not weighted, and directional.
 public class Graph {
     
     /// The number of edges on the graph
@@ -30,7 +30,7 @@ public class Graph {
         verticies.append(newVertex)
     }
     
-    /// Adds an edge to the graph between two verticies
+    /// Adds a directed edge to the graph between two verticies
     /// - Parameter source: The source node
     /// - Parameter destination: The destination node
     /// - Returns: Boolean denoting whether the edge was added or not
@@ -71,33 +71,89 @@ extension Graph : GraphGenerationProtocol {
 
 
 extension Graph : DFSTraversalProtocol {
-    public func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength: Int) -> [[Node]] {
+    public func traverseGraphUsingDFS(difficulty difficulty: Int, suggestedLength: Int) -> [Node] {
         let nodeStack = Stack<Node>() // get the stack to visit nodes
         
-        /*
-         * The Visited Dictionary keeps a paper trail of sorts to figure out what path the DFS search travels.
-         * It works as such:
-         * visited[child] = parent
-         */
-        var visitedDictionary = [Node : Node]()
+        var visitedPath = [Node : Node]()
         
         var remainingDifficulty = difficulty
         
         let startingIndex = Int(arc4random()) % verticies.count
+        let startingNode = verticies[startingIndex]
+        nodeStack.push(startingNode)
         
-        nodeStack.push(verticies[startingIndex])
+        var finalNode : Node!
         
-        while !nodeStack.isEmpty() {
+        var pathsTaken = 0
+        
+        while !nodeStack.isEmpty() && remainingDifficulty > 0 {
             if let node = nodeStack.pop(){ // get the topmost item
                 if !node.visited { // go to the node if it hasn't been visited
                     node.visited = true // set it as visited
+                    node.visitedRemainingDifficulty = remainingDifficulty
+                    remainingDifficulty -= node.difficulty
+                    pathsTaken += 1
+                    if remainingDifficulty <= 0 {
+                        finalNode = node
+                    }
                     for newNode in node.edges {
-                        nodeStack.push(newNode)
+                        if !newNode.visited {
+                            nodeStack.push(newNode)
+                            visitedPath[newNode] = node
+                        }
                     }
                 }
             }
         }
         
-        return [[Node]]()
+        var currentNode : Node? = finalNode
+        var path = [Node]()
+        
+        while currentNode != nil {
+            path.append(currentNode!)
+            currentNode = visitedPath[currentNode!]
+        }
+        
+        return path
+    }
+    
+    public func determineBestPath(difficulty difficulty : Int, suggestedLength : Int) -> [ResourceRow] {
+        while true {
+            let nodePath = traverseGraphUsingDFS(difficulty: difficulty, suggestedLength: suggestedLength)
+            let length = calculateLengthForPath(nodePath)
+//            let difficulty = calculateDifficultyForPath(nodePath)
+            print(length)
+            if abs(length - suggestedLength) < 30 {
+                return createRowsForNodePath(nodePath)
+            } else {
+                for node in verticies {
+                    node.visited = false
+                }
+            }
+        }
+    }
+    
+    private func calculateLengthForPath(nodes : [Node]) -> Int {
+        var length = 0
+        for node in nodes {
+            length += node.length
+        }
+        return length
+    }
+    
+    private func calculateDifficultyForPath(nodes : [Node]) -> Int {
+        var difficulty = 0
+        for node in nodes {
+            difficulty += node.difficulty
+        }
+        return difficulty
+    }
+    
+    private func createRowsForNodePath(nodes : [Node]) -> [ResourceRow] {
+        var rows = [ResourceRow]()
+        for node in nodes {
+            rows.appendContentsOf(node.path.rows)
+        }
+        return rows
     }
 }

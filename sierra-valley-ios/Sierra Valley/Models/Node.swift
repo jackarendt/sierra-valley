@@ -35,6 +35,9 @@ public class Node : NSObject {
         }
     }
     
+    /// The remaining difficulty when the node was visited
+    public var visitedRemainingDifficulty : Int = Int.min
+    
     /// Creates a new graph node
     /// - Parameter path: The path that is represented by the node
     public init(path : LevelGenerationProtocol) {

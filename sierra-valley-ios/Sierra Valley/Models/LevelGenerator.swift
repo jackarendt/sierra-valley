@@ -9,11 +9,11 @@
 import UIKit
 
 public struct PathProbabilities  {
-    static let NoRoadblockPath = 60
+    static let NoRoadblockPath = 72
     static let SpikePath = 15
-    static let SpikePitPath = 13
-    static let SpikeIslandPath = 7
-    static let IslandPath = 5
+    static let SpikePitPath = 9
+    static let SpikeIslandPath = 4
+    static let IslandPath = 1
     
     static func compoundProbabilityForPath(path: Int) -> Int {
         let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath]
@@ -36,8 +36,10 @@ public struct PathProbabilities  {
 func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : Int) {
     while queue.count < 100 {
         var rows : [ResourceRow]!
-        let path = NoRoadblockTrail(length: 10, difficulty: 0)
-        rows = path.rows
+        let nodes = createRandomNodeSet(100)
+        let graph = Graph()
+        graph.generateGraphWithNodes(nodes)
+        rows = graph.determineBestPath(difficulty: 100, suggestedLength: 100)
         for row in rows {
             queue.enqueue(row)
         }
