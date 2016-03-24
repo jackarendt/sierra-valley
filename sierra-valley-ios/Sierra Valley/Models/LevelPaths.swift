@@ -38,6 +38,23 @@ public protocol LevelGenerationProtocol {
     init(length : Int, difficulty : Int)
 }
 
+public func >(lhs : LevelGenerationProtocol, rhs : LevelGenerationProtocol) -> Bool {
+    return lhs.difficulty > rhs.difficulty
+}
+
+public func <(lhs : LevelGenerationProtocol, rhs : LevelGenerationProtocol) -> Bool {
+    return lhs.difficulty < rhs.difficulty
+}
+
+
+public enum TrailTypes : String {
+    case NoRoadblockTrail = "NoRoadblockTrail"
+    case SpikeTrail = "SpikeTrail"
+    case SpikePitTrail = "SpikePitTrail"
+    case SpikeIslandTrail = "SpikeIslandTrail"
+    case IslandTrail = "IslandTrail"
+}
+
 // MARK: - Paths
 
 
@@ -46,7 +63,7 @@ struct NoRoadblockTrail : LevelGenerationProtocol {
     static var minDifficulty = 0
     static var maxDifficulty = 0
     
-    var name = "NoRoadblockTrail"
+    var name = TrailTypes.NoRoadblockTrail.rawValue
     
     var difficulty = 0
     var length = 0
@@ -75,7 +92,7 @@ struct SpikeTrail : LevelGenerationProtocol {
     static var minDifficulty = 5
     static var maxDifficulty = 25
 
-    var name = "SpikeTrail"
+    var name = TrailTypes.SpikeTrail.rawValue
     
     var difficulty = 0
     var length = 0
@@ -100,10 +117,10 @@ struct SpikeTrail : LevelGenerationProtocol {
 
 
 struct SpikePitTrail : LevelGenerationProtocol {
-    static var minDifficulty = 10
+    static var minDifficulty = 20
     static var maxDifficulty = 50
 
-    var name = "SpikePitTrail"
+    var name = TrailTypes.SpikePitTrail.rawValue
     
     var difficulty = 0
     var length = 0
@@ -118,11 +135,9 @@ struct SpikePitTrail : LevelGenerationProtocol {
     
     mutating func generatePath() -> [ResourceRow] {
         var rows = [ResourceRow]()
-        if difficulty > Int(Double(SpikePitTrail.maxDifficulty) * 0.4) {
-            length = 1
-        } else if difficulty > Int(Double(SpikePitTrail.maxDifficulty) * 0.6) {
+        if difficulty > Int(Double(SpikePitTrail.maxDifficulty) * 0.57) {
             length = 2
-        } else if difficulty > Int(Double(SpikeTrail.maxDifficulty) * 0.8){
+        } else if difficulty > Int(Double(SpikeTrail.maxDifficulty) * 0.78){
             length = 3
         } else {
             length = 4
@@ -141,7 +156,7 @@ struct SpikeIslandTrail : LevelGenerationProtocol {
     static var minDifficulty = 30
     static var maxDifficulty = 70
 
-    var name = "SpikeIslandTrail"
+    var name = TrailTypes.SpikeIslandTrail.rawValue
     
     var difficulty = 0
     var length = 0
@@ -160,14 +175,12 @@ struct SpikeIslandTrail : LevelGenerationProtocol {
         
         let moatLength = 1
         let islandFraction : Double = Double(difficulty - SpikeIslandTrail.minDifficulty)/(Double(diff) * 0.8)
-        let islandLength = Int(2 * islandFraction) + 1
+        let islandLength = Int(2 * islandFraction) + 2
         for i in 0.stride(to: moatLength * 2 + islandLength, by: 1) {
-            if i < moatLength || i > moatLength + islandLength - 1{
+            if i < moatLength || i > moatLength + islandLength - 1 {
                 rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: GameSettings.sharedSettings.rowWidth + CGFloat(i) * GameSettings.sharedSettings.triangleHeight))
-            } else if islandLength == 3 && i == 2 {
-                rows.append(ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0))
             } else {
-                rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: 0))
+                rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
             }
         }
         length = rows.count
@@ -176,13 +189,13 @@ struct SpikeIslandTrail : LevelGenerationProtocol {
 }
 
 struct IslandTrail : LevelGenerationProtocol {
-    static var minDifficulty = 50
-    static var maxDifficulty = 90
+    static var minDifficulty = 30
+    static var maxDifficulty = 60
     
     var difficulty = 0
     var length = 0
     
-    var name = "IslandTrail"
+    var name = TrailTypes.IslandTrail.rawValue
     
     var rows : [ResourceRow]!
     
@@ -197,14 +210,18 @@ struct IslandTrail : LevelGenerationProtocol {
         let diff = IslandTrail.maxDifficulty - IslandTrail.minDifficulty
         
         let islandFraction : Double = Double(difficulty - IslandTrail.minDifficulty)/Double(IslandTrail.maxDifficulty)
-        let islandLength = Int(6 * 1 - islandFraction)
-        var moatLength = 1
+        let islandLength = Int(ceil(6 * 1 - islandFraction))
+        var moatLength = 2
         if difficulty > IslandTrail.maxDifficulty - diff/2 {
-            moatLength = 2
+            moatLength = 3
+        } else if difficulty > Int(Double(IslandTrail.maxDifficulty) * 0.9) {
+            moatLength = 4
         }
         
-        for i in 0.stride(to: moatLength * 2 + islandLength, by: 1) {
-            if i < moatLength || i > moatLength + islandLength - 1{
+        for i in 0.stride(to: moatLength * 2 + islandLength + 2, by: 1) {
+            if i == 0 || i == moatLength * 2 + islandLength + 1 {
+                rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
+            } else if i <= moatLength || i > moatLength + islandLength {
                 rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: GameSettings.sharedSettings.rowWidth + CGFloat(i) * GameSettings.sharedSettings.triangleHeight))
             } else {
                 rows.append(ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0))

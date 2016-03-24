@@ -18,21 +18,21 @@ class LevelQueue : Queue<Level> {
     override init() {
         super.init()
         while count < elementThreshold {
-            generateLevel(10)
+            generateLevel(100)
         }
     }
     
     override init(items: [Level]) {
         super.init(items: items)
         while count < elementThreshold {
-            generateLevel(10)
+            generateLevel(100)
         }
     }
     
     override func dequeue() -> Level? {
         let item = super.dequeue()
         while count < elementThreshold { // generate new levels until threshold is met
-            generateLevel(10)
+            generateLevel(100)
         }
         return item
     }
@@ -41,6 +41,9 @@ class LevelQueue : Queue<Level> {
     /// - Parameter difficulty: The difficulty of the level to be generated
     private func generateLevel(difficulty : Int) {
         let level = Level(difficulty: difficulty)
+        if isEmpty() || peek(count).last?.avalanche == true {
+            level.avalanche = false
+        }
         enqueue(level)
     }
 }

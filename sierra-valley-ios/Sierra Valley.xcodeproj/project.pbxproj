@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E0D486E1C9DE0BE0020D8D3 /* GraphProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */; };
 		2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */; };
 		2E0D48721C9E1EC20020D8D3 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */; };
+		2E0F10431CA3A12E00DAB25A /* NodeCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F10421CA3A12E00DAB25A /* NodeCreation.swift */; };
 		2E156DAF1C71016100EE1C0F /* CameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DAE1C71016100EE1C0F /* CameraNode.swift */; };
 		2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */; };
 		2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */; };
@@ -37,8 +37,6 @@
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
 		2EB690721C9B9C9D00B06A58 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690711C9B9C9D00B06A58 /* Stack.swift */; };
-		2EB690741C9BA50C00B06A58 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690731C9BA50C00B06A58 /* Node.swift */; };
-		2EB690761C9BA7C800B06A58 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690751C9BA7C800B06A58 /* Graph.swift */; };
 		2EB690781C9BC2A300B06A58 /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB690771C9BC2A300B06A58 /* StackTests.swift */; };
 		2EBA3BEB1C4D9E16005C0D76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */; };
 		2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EBA3BF51C4D9E16005C0D76 /* Assets.xcassets */; };
@@ -91,9 +89,9 @@
 
 /* Begin PBXFileReference section */
 		158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra ValleyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GraphProtocols.swift; path = Models/GraphProtocols.swift; sourceTree = "<group>"; };
 		2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelPaths.swift; path = Models/LevelPaths.swift; sourceTree = "<group>"; };
 		2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
+		2E0F10421CA3A12E00DAB25A /* NodeCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeCreation.swift; path = Models/NodeCreation.swift; sourceTree = "<group>"; };
 		2E156DAE1C71016100EE1C0F /* CameraNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraNode.swift; path = Sprites/CameraNode.swift; sourceTree = "<group>"; };
 		2E156DB01C710B2D00EE1C0F /* ParallaxBackgroundNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxBackgroundNode.swift; path = Sprites/ParallaxBackgroundNode.swift; sourceTree = "<group>"; };
 		2E156DB21C71115F00EE1C0F /* GameActionQueueProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameActionQueueProtocol.swift; path = Extensions/GameActionQueueProtocol.swift; sourceTree = "<group>"; };
@@ -122,8 +120,6 @@
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
 		2EB690711C9B9C9D00B06A58 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Models/Stack.swift; sourceTree = "<group>"; };
-		2EB690731C9BA50C00B06A58 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Models/Node.swift; sourceTree = "<group>"; };
-		2EB690751C9BA7C800B06A58 /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = Models/Graph.swift; sourceTree = "<group>"; };
 		2EB690771C9BC2A300B06A58 /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		2EBA3BE71C4D9E16005C0D76 /* Sierra Valley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sierra Valley.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +255,7 @@
 				2E3756611C646FDA00DA7715 /* LevelQueue.swift */,
 				2E37562E1C5C616400DA7715 /* LevelGenerator.swift */,
 				2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */,
+				2E0F10421CA3A12E00DAB25A /* NodeCreation.swift */,
 			);
 			name = "Level Generation";
 			sourceTree = "<group>";
@@ -269,9 +266,6 @@
 				2EF818851C572AE0008ADAEF /* Queue.swift */,
 				2E2F0C891C59C1AB003D3B26 /* Buffer.swift */,
 				2EB690711C9B9C9D00B06A58 /* Stack.swift */,
-				2EB690731C9BA50C00B06A58 /* Node.swift */,
-				2EB690751C9BA7C800B06A58 /* Graph.swift */,
-				2E0D486D1C9DE0BE0020D8D3 /* GraphProtocols.swift */,
 			);
 			name = Generics;
 			sourceTree = "<group>";
@@ -681,10 +675,7 @@
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
 				2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */,
-				2EB690741C9BA50C00B06A58 /* Node.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
-				2EB690761C9BA7C800B06A58 /* Graph.swift in Sources */,
-				2E0D486E1C9DE0BE0020D8D3 /* GraphProtocols.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */,
 				2EBA3C291C4DEB3E005C0D76 /* SVBorderedButton.swift in Sources */,
@@ -709,6 +700,7 @@
 				2EBA3C261C4DE1A6005C0D76 /* UIImage+Extensions.swift in Sources */,
 				2E8582CF1C536A99000508EB /* CarNode.swift in Sources */,
 				2EF3306C1C7A608E00085E5F /* StarBackgroundManager.swift in Sources */,
+				2E0F10431CA3A12E00DAB25A /* NodeCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

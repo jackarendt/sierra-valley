@@ -49,7 +49,7 @@ class LevelGenerationTests: XCTestCase {
         var island = 0
         
         for node in nodes {
-            switch node.path {
+            switch node {
             case is NoRoadblockTrail:   noRoadblock += 1;
             case is SpikeTrail:         spike += 1;
             case is SpikePitTrail:      spikePit += 1
@@ -66,64 +66,5 @@ class LevelGenerationTests: XCTestCase {
         print(island)
         
         XCTAssertEqual(noRoadblock + spike + spikePit + spikeIsland + island, count)
-    }
-    
-    func testGraphGeneration() {
-        let count = 100
-        let nodes = createRandomNodeSet(count)
-        
-        let graph = Graph()
-        graph.generateGraphWithNodes(nodes)
-        
-        var edgeCount = 0
-        for node in graph.verticies {
-            edgeCount += node.edges.count
-        }
-        
-        // there should be double the amount, (count one for source, one for destination, etc.)
-        XCTAssertEqual(edgeCount, 2 * graph.edgeCount)
-    }
-    
-    func testSmallGraphPerformance() {
-        let nodes = createRandomNodeSet(100)
-        self.measureBlock({
-            let graph = Graph()
-            graph.generateGraphWithNodes(nodes)
-        })
-    }
-    
-    func testLargeGraphPerformance() {
-        let nodes = createRandomNodeSet(100000)
-        self.measureBlock({
-            let graph = Graph()
-            graph.generateGraphWithNodes(nodes)
-        })
-    }
-    
-    func testDFSTraversalAccuracy() {
-        let nodes = createRandomNodeSet(100)
-        let graph = Graph()
-        graph.generateGraphWithNodes(nodes)
-        let path = graph.determineBestPath(difficulty: 100, suggestedLength: 100)
-        
-        print(path.count)
-        
-    }
-    
-    func testLargeDFSTraversalAccuracy() {
-        let nodes = createRandomNodeSet(1000)
-        let graph = Graph()
-        graph.generateGraphWithNodes(nodes)
-        graph.traverseGraphUsingDFS(difficulty: 0, suggestedLength: 0)
-        
-    }
-    
-    func testFullGraphTraversalPerformance() {
-        self.measureBlock({
-            let nodes = createRandomNodeSet(100)
-            let graph = Graph()
-            graph.generateGraphWithNodes(nodes)
-            graph.traverseGraphUsingDFS(difficulty: 0, suggestedLength: 0)
-        })
     }
 }
