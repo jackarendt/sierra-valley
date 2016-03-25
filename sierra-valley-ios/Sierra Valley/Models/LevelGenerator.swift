@@ -39,7 +39,7 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
         var idx = 0 // the index of the row that was selected
         
         // currently give a 2/3 shot of selecting an obstacle (with proper difficulty)
-        if arc4random() % 3 != 0 && remainingDifficulty > 0 {
+        if arc4random() % 3 != 0 && remainingDifficulty > 0 && paths.last?.name == TrailTypes.NoRoadblockTrail.rawValue{
             // get the available nodes for the remaining difficulty
             availableNodes = filterNodesForAvailableDifficulty(remainingDifficulty, nodes: availableNodes)
             
@@ -63,6 +63,8 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
         // remove the node from the pool, and append the path to the paths array
         nodes.removeAtIndex(idx)
         paths.append(path)
+        
+        print(path.name)
     
         // enqueue the rows into the level queue
         for row in path.rows {
@@ -130,7 +132,7 @@ func findAvailableNodesForDifficulty(remainingDifficulty : Int, currentLength : 
     
     // If there is no more difficulty left, or there was previously an obstacle,
     // make sure there is a clear path
-    else if remainingDifficulty <= 0 || lastItem?.name != TrailTypes.NoRoadblockTrail.rawValue {
+    else if remainingDifficulty <= 0 {
         availableTrails = [.NoRoadblockTrail] // if you have no difficulty remaining, keep it 0
     }
     

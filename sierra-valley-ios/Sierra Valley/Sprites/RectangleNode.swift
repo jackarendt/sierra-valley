@@ -21,7 +21,7 @@ final public class RectangleNode: SKSpriteNode, LevelResourceProtocol {
     
     override public var size : CGSize {
         didSet {
-            if size != CGSizeZero {
+            if size != oldValue && size != CGSize.zero {
                 physicsBody = SKPhysicsBody(rectangleOfSize: size)
                 physicsBody?.categoryBitMask = categoryBitMask
                 physicsBody?.dynamic = false

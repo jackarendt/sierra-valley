@@ -22,7 +22,7 @@ final public class TriangleNode: SKSpriteNode, LevelResourceProtocol {
     
     override public var size : CGSize {
         didSet {
-            if size != CGSizeZero {
+            if size != oldValue && size != CGSize.zero  {
                 let path = UIBezierPath()
                 path.moveToPoint(CGPoint(x: -size.width/2, y: -size.height/2))
                 path.addLineToPoint(CGPoint(x: size.width/2, y: -size.height/2))
