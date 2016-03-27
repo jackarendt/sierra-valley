@@ -41,7 +41,7 @@ public class SVBaseScene: SKScene {
     override public init(size: CGSize) {
         super.init(size: size)
         // set the gravity
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -19.6)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -23.5)
         physicsWorld.contactDelegate = self
     }
     
