@@ -156,7 +156,6 @@ extension GameScene : GameManagerDelegate {
     }
     
     func alterBackground(avalanche: Bool) {
-        print("called")
         backgroundNode.avalancheActive = avalanche
     }
     

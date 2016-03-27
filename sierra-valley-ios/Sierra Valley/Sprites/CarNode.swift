@@ -19,7 +19,7 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var maximumImpulseValue : CGFloat = 140
+    public var maximumImpulseValue : CGFloat = 145
     
     /// The current impulse value for jumping
     private var impulse : CGFloat = 0
@@ -41,10 +41,6 @@ final public class CarNode: SKSpriteNode {
         super.init(texture: texture, color: SVColor.lightColor(), size: texture.size())
         
         impulse = maximumImpulseValue
-        
-        // shrink slightly
-        xScale = 0.9
-        yScale = 0.9
         
         // car initially faces left, need it to face right.
         xScale *= -1

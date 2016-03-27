@@ -79,6 +79,7 @@ struct NoRoadblockTrail : LevelGenerationProtocol {
     mutating func generatePath() -> [ResourceRow] {
         var rows = [ResourceRow]()
         for _ in 0.stride(to: length, by: 1) {
+            // create path with no obstacles, easy.
             rows.append(ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0))
         }
         return rows
@@ -90,7 +91,7 @@ struct NoRoadblockTrail : LevelGenerationProtocol {
 /// Adds a a bunch of spikes in a row on the level ground
 struct SpikeTrail : LevelGenerationProtocol {
     static var minDifficulty = 5
-    static var maxDifficulty = 25
+    static var maxDifficulty = 20
 
     var name = TrailTypes.SpikeTrail.rawValue
     
@@ -99,6 +100,8 @@ struct SpikeTrail : LevelGenerationProtocol {
     
     var rows : [ResourceRow]!
     
+    var maxSpikes : Double = 3
+    
     init(length: Int, difficulty : Int) {
         self.difficulty = difficulty
         self.length = length
@@ -106,7 +109,7 @@ struct SpikeTrail : LevelGenerationProtocol {
     }
 
     mutating func generatePath() -> [ResourceRow] {
-        length = Int(ceil(Double(difficulty - SpikeTrail.minDifficulty)/Double(SpikeTrail.maxDifficulty - SpikeTrail.minDifficulty) * 4)) // maximum of 5 spikes
+        length = Int(ceil(Double(difficulty - SpikeTrail.minDifficulty)/Double(SpikeTrail.maxDifficulty - SpikeTrail.minDifficulty) * maxSpikes)) // maximum of 3 spikes
         var rows = [ResourceRow]()
         for _ in 0.stride(to: length, by: 1) {
             rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
@@ -115,10 +118,11 @@ struct SpikeTrail : LevelGenerationProtocol {
     }
 }
 
-
+/// Creates a pit of spikes that need to be jumped over.
+/// each spike is at the same height, and creates almost like a ditch
 struct SpikePitTrail : LevelGenerationProtocol {
     static var minDifficulty = 20
-    static var maxDifficulty = 50
+    static var maxDifficulty = 60
 
     var name = TrailTypes.SpikePitTrail.rawValue
     
@@ -135,14 +139,21 @@ struct SpikePitTrail : LevelGenerationProtocol {
     
     mutating func generatePath() -> [ResourceRow] {
         var rows = [ResourceRow]()
-        if difficulty > Int(Double(SpikePitTrail.maxDifficulty) * 0.57) {
+        // get the difference between the difficulty and minimum difficulty
+        let diff : Double = Double(difficulty - SpikePitTrail.minDifficulty)
+        // get the maximum range of the obstacle
+        let range : Double = Double(SpikePitTrail.maxDifficulty - SpikePitTrail.minDifficulty)
+        if diff < range * 0.25 { // easy
             length = 2
-        } else if difficulty > Int(Double(SpikeTrail.maxDifficulty) * 0.78){
+        } else if diff < range * 0.5 { // medium
             length = 3
-        } else {
+        } else if diff < range * 0.75 { // hard
             length = 4
+        } else { // damn
+            length = 5
         }
         for i in 0.stride(to: length, by: 1) {
+            // append rows each with a depressed height equal to the triangle height (so it appears flat)
             rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: GameSettings.sharedSettings.rowWidth + CGFloat(i) * GameSettings.sharedSettings.triangleHeight))
         }
         return rows
@@ -152,9 +163,10 @@ struct SpikePitTrail : LevelGenerationProtocol {
 
 // MARK: - Advanced obstacles
 
+/// Creates a moat of 1 spike with anywhere from 2 to 4 spikes forming an island in between
 struct SpikeIslandTrail : LevelGenerationProtocol {
     static var minDifficulty = 30
-    static var maxDifficulty = 70
+    static var maxDifficulty = 60
 
     var name = TrailTypes.SpikeIslandTrail.rawValue
     
@@ -188,6 +200,7 @@ struct SpikeIslandTrail : LevelGenerationProtocol {
     }
 }
 
+/// Creates a moat with a spike at the beginning and end with an island in between over variable length
 struct IslandTrail : LevelGenerationProtocol {
     static var minDifficulty = 30
     static var maxDifficulty = 60
@@ -219,9 +232,11 @@ struct IslandTrail : LevelGenerationProtocol {
         }
         
         for i in 0.stride(to: moatLength * 2 + islandLength + 2, by: 1) {
-            if i == 0 || i == moatLength * 2 + islandLength + 1 {
+            if i == 0 {
+                rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: 0))
+            } else if i == moatLength * 2 + islandLength + 1 {
                 rows.append(ResourceRow(row: [.Rectangle, .Triangle, .Spike], depressedHeight: 0))
-            } else if i <= moatLength || i > moatLength + islandLength {
+            }else if i <= moatLength || i > moatLength + islandLength {
                 rows.append(ResourceRow(row: [.Rectangle, .Spike], depressedHeight: GameSettings.sharedSettings.rowWidth + CGFloat(i) * GameSettings.sharedSettings.triangleHeight))
             } else {
                 rows.append(ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: 0))
@@ -256,12 +271,15 @@ struct FlatTrail : LevelGenerationProtocol {
     mutating func generatePath() -> [ResourceRow] {
         var rows = [ResourceRow]()
         for i in 0.stride(through: max(4, length), by: 1) {
+            // flat rows, similar to no roadblock, except each row is depressed by the height of the
+            // triangle so it appears flat to the user
             rows.append(ResourceRow(row: [.Rectangle], depressedHeight: CGFloat(i) * GameSettings.sharedSettings.triangleHeight))
         }
         return rows
     }
 }
 
+/// Creates a set of empty rows at the end of a level so that it appears that there is a "cliff"
 struct EmptyRowTrail : LevelGenerationProtocol {
     
     static var minDifficulty = 0
@@ -283,6 +301,7 @@ struct EmptyRowTrail : LevelGenerationProtocol {
     mutating func generatePath() -> [ResourceRow] {
         var rows = [ResourceRow]()
         for _ in 0.stride(to: length, by: 1) {
+            // empty rows, nothing to see here
             rows.append(ResourceRow(row: [.None], depressedHeight: 0))
         }
         return rows

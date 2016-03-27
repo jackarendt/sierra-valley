@@ -76,6 +76,12 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
         farRightBackground.colorBlendFactor = colorBlendFactor
         addChild(farRightBackground)
         
+        // make background nodes a little bit larger than original (will be changed for final build)
+        for child in children {
+            child.xScale = 1.2
+            child.yScale = 1.2
+        }
+        
         endAvalanche(0)
     }
     

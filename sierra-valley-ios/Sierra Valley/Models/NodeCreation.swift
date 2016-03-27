@@ -10,13 +10,11 @@ import Foundation
 
 /// Represents the different probabilities of generating a certain path type
 public struct PathProbabilities  {
-    /// The probability of getting a NoRoadblockTrail
-    static var NoRoadblockPath = 55
-    /// The probability of getting a SpikePath
-    static var SpikePath = 17
-    static var SpikePitPath = 13
-    static var SpikeIslandPath = 7
-    static var IslandPath = 8
+    static var NoRoadblockPath = 30
+    static var SpikePath = 25
+    static var SpikePitPath = 18
+    static var SpikeIslandPath = 12
+    static var IslandPath = 15
     
     static func compoundProbabilityForPath(path: Int) -> Int {
         let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath]

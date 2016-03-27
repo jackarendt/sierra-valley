@@ -100,9 +100,9 @@ final class Renderer {
         
         // if empty row, make them all hidden
         if row.row.contains(3) {
-            buffer.rectangle?.size = CGSizeZero
-            buffer.triangle?.size = CGSizeZero
-            buffer.spike?.size = CGSizeZero
+            buffer.rectangle?.position = CGPoint.zero
+            buffer.triangle?.position = CGPoint.zero
+            buffer.spike?.position = CGPoint.zero
             return [buffer.rectangle!, buffer.triangle!, buffer.spike!]
         }
         
