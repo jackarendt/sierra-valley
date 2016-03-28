@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E09A3181CA8A893005CA811 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E09A3171CA8A893005CA811 /* TimeManager.swift */; };
+		2E09A31A1CA8A950005CA811 /* time.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E09A3191CA8A950005CA811 /* time.plist */; };
 		2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */; };
 		2E0D48721C9E1EC20020D8D3 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */; };
 		2E0F10431CA3A12E00DAB25A /* NodeCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F10421CA3A12E00DAB25A /* NodeCreation.swift */; };
@@ -89,6 +91,8 @@
 
 /* Begin PBXFileReference section */
 		158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra ValleyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E09A3171CA8A893005CA811 /* TimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeManager.swift; path = Models/TimeManager.swift; sourceTree = "<group>"; };
+		2E09A3191CA8A950005CA811 /* time.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = time.plist; path = "Supporting Files/time.plist"; sourceTree = "<group>"; };
 		2E0D486F1C9DE7290020D8D3 /* LevelPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LevelPaths.swift; path = Models/LevelPaths.swift; sourceTree = "<group>"; };
 		2E0D48711C9E1EC20020D8D3 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		2E0F10421CA3A12E00DAB25A /* NodeCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeCreation.swift; path = Models/NodeCreation.swift; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2E09A3161CA8A871005CA811 /* App Models */ = {
+			isa = PBXGroup;
+			children = (
+				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
+				2E09A3171CA8A893005CA811 /* TimeManager.swift */,
+			);
+			name = "App Models";
+			sourceTree = "<group>";
+		};
 		2E8582CC1C534FF3000508EB /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3BEA1C4D9E16005C0D76 /* AppDelegate.swift */,
-				2EF8186D1C543C67008ADAEF /* Models */,
+				2E09A3161CA8A871005CA811 /* App Models */,
+				2EF8186D1C543C67008ADAEF /* Game Models */,
 				2E8582D01C536A9D000508EB /* Sprites */,
 				2E8582CC1C534FF3000508EB /* Game Scenes */,
 				2E8582CD1C535E22000508EB /* Custom Animations */,
@@ -378,17 +392,16 @@
 			name = "Custom Views";
 			sourceTree = "<group>";
 		};
-		2EF8186D1C543C67008ADAEF /* Models */ = {
+		2EF8186D1C543C67008ADAEF /* Game Models */ = {
 			isa = PBXGroup;
 			children = (
-				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
 				2EF8187D1C559719008ADAEF /* GameManager.swift */,
 				2EF818831C55E1EA008ADAEF /* GameSettings.swift */,
 				2EB6906F1C9A761700B06A58 /* Generics */,
 				2EB690701C9A762000B06A58 /* Render Models */,
 				2EB6906E1C9A760900B06A58 /* Level Generation */,
 			);
-			name = Models;
+			name = "Game Models";
 			sourceTree = "<group>";
 		};
 		2EF818791C558FB1008ADAEF /* Frameworks */ = {
@@ -409,6 +422,7 @@
 				2EF818761C558F69008ADAEF /* Sierra Valley.entitlements */,
 				2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */,
 				2EBA3BFA1C4D9E16005C0D76 /* Info.plist */,
+				2E09A3191CA8A950005CA811 /* time.plist */,
 				2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -532,6 +546,7 @@
 			files = (
 				2EF330681C7A4E1C00085E5F /* ShootingStarParticle.sks in Resources */,
 				2EBA3BF91C4D9E16005C0D76 /* LaunchScreen.storyboard in Resources */,
+				2E09A31A1CA8A950005CA811 /* time.plist in Resources */,
 				2E284D201C784F6200B3805A /* spark.png in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
 				2E284D1F1C784F6200B3805A /* StarParticle.sks in Resources */,
@@ -662,6 +677,7 @@
 				2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
+				2E09A3181CA8A893005CA811 /* TimeManager.swift in Sources */,
 				2EF818711C544A93008ADAEF /* PauseView.swift in Sources */,
 				2EB690721C9B9C9D00B06A58 /* Stack.swift in Sources */,
 				2E6A921B1C5339EA00CF8E65 /* Arrow.swift in Sources */,

@@ -36,6 +36,10 @@ class SVColor {
         return UIColor.whiteColor()
     }
     
+    class func darkColor() -> UIColor {
+        return UIColor(r: 28, g: 28, b: 28)
+    }
+    
     
     class func avalancheColor() -> UIColor {
         return UIColor(r: 236, g: 240, b: 241)

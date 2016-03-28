@@ -77,9 +77,10 @@ class GameViewController: SVBaseViewController {
         contentView.addSubview(gameOverView)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        pauseView.blinkSubtitle = true
+        gameOverView.blinkSubtitle = true
     }
 
     

@@ -33,6 +33,12 @@ public class SVBaseViewController: UIViewController {
     /// The view in which all content should be added to.  This will be faded when segueing from one view controller to another
     public let contentView = UIView()
     
+    /// If dusk view is enabled, this will determine whether it should animate in or not.
+    public var animateDuskView = false
+    
+    /// This is used for dimming the colors at night to make a "night mode"
+    private let duskView = UIView()
+    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +46,11 @@ public class SVBaseViewController: UIViewController {
         let background =  UIImageView(image: UIImage(asset: .Background))
         background.frame = view.bounds
         view.addSubview(background)
+        
+        duskView.frame = view.bounds
+        duskView.alpha = 0
+        duskView.backgroundColor = SVColor.darkColor()
+        view.addSubview(duskView)
         
         
         contentView.frame = view.bounds
@@ -77,6 +88,15 @@ public class SVBaseViewController: UIViewController {
             tracker.send(builder.build() as [NSObject : AnyObject])
         } else {
             print("tracker is nil. cannot update")
+        }
+        
+        if animateDuskView {
+            UIView.animateWithDuration(1.5, animations: {
+                self.duskView.alpha = 1// CGFloat(TimeManager.sharedManager.getAlphaForTime())
+            })
+            animateDuskView = false
+        } else {
+            duskView.alpha = 1//CGFloat(TimeManager.sharedManager.getAlphaForTime())
         }
     }
 

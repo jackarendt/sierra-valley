@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = HomeViewController()
+        let homeVC = HomeViewController()
+        homeVC.animateDuskView = true
+        window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
         
         // set up google analytics
@@ -28,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         gai.trackUncaughtExceptions = true  // report uncaught exceptions
 //        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
         gai.defaultTracker = gai.trackerWithTrackingId("UA-74428626-1")
+        
+        print(TimeManager.sharedManager.getAlphaForTime())
         return true
     }
 

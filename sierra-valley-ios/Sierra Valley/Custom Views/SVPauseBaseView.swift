@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// The SVPauseBaseView is what is shown when the user either pauses the game, or the game has ended.
+/// It shows things like the score of the game, along with the avalanche information, and specific screen functionality
 class SVPauseBaseView: UIView {
     
     var titleText = "" {

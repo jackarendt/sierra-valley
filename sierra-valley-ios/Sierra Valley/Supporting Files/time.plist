@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>description</key>
+	<string>This feature changes the sky according to the time of day.</string>
+	<key>dawn</key>
+	<integer>6</integer>
+	<key>sunrise</key>
+	<integer>8</integer>
+	<key>sunset</key>
+	<integer>18</integer>
+	<key>dusk</key>
+	<integer>21</integer>
+</dict>
+</plist>
