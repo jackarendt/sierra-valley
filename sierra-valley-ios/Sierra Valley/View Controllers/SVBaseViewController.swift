@@ -92,11 +92,11 @@ public class SVBaseViewController: UIViewController {
         
         if animateDuskView {
             UIView.animateWithDuration(1.5, animations: {
-                self.duskView.alpha = 1// CGFloat(TimeManager.sharedManager.getAlphaForTime())
+                self.duskView.alpha = CGFloat(TimeManager.sharedManager.getAlphaForTime())
             })
             animateDuskView = false
         } else {
-            duskView.alpha = 1//CGFloat(TimeManager.sharedManager.getAlphaForTime())
+            duskView.alpha = CGFloat(TimeManager.sharedManager.getAlphaForTime())
         }
     }
 
