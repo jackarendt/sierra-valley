@@ -19,45 +19,90 @@ extension UIColor {
 /// The SVColor is a color class that contains all of the colors used in the game
 class SVColor {
     
-    // MARK: - Background Colors
-    
-    /// The Dark Blue background color - #0f3057
-    class func darkBlueBackgroundColor() -> UIColor {
-        return UIColor(r: 15, g: 48, b: 87)
-    }
-    
-    /// The Light Blue background color - #84ccd1
-    class func lightBlueBackgroundColor() -> UIColor {
-        return UIColor(r: 132, g: 204, b: 209)
-    }
+    // MARK: - General colors
     
     /// The light color that is used throughout - #ffffff
     class func lightColor() -> UIColor {
         return UIColor.whiteColor()
     }
     
+    /// The background color of the night sky
     class func darkColor() -> UIColor {
         return UIColor(r: 28, g: 28, b: 28)
     }
     
+    /// MARK: - Level colors
     
+    class func lightLevelPrimaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (22, 160, 133)
+    }
+    
+    class func darkLevelPrimaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (16, 115, 96)
+    }
+    
+    class func lightLevelSecondaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (34, 49, 63)
+    }
+    
+    class func darkLevelSecondaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (16, 23, 30)
+    }
+    
+    class func levelPrimaryColor() -> UIColor {
+        let light = lightLevelPrimaryColorComponents()
+        let dark = darkLevelPrimaryColorComponents()
+        let color = timeConversion(light, dark: dark)
+        return UIColor(r: color.r, g: color.g, b: color.b)
+    }
+    
+    class func levelSecondaryColor() -> UIColor {
+        let light = lightLevelSecondaryColorComponents()
+        let dark = darkLevelSecondaryColorComponents()
+        let color = timeConversion(light, dark: dark)
+        return UIColor(r: color.r, g: color.g, b: color.b)
+    }
+    
+    // MARK: - Background colors
+    
+    /// The color of the mountains during an avalanche
     class func avalancheColor() -> UIColor {
         return UIColor(r: 236, g: 240, b: 241)
     }
     
-    class func levelPrimaryColor() -> UIColor {
-        return UIColor(r: 22, g: 160, b: 133)
+    class func lightBackgroundPrimaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (74, 84, 94)
     }
     
-    class func levelSecondaryColor() -> UIColor {
-       return UIColor(r: 34, g: 49, b: 63)
+    class func darkBackgroundPrimaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (52, 59, 65)
+    }
+    
+    class func lightBackgroundSecondaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (114, 127, 128)
+    }
+    
+    class func darkBackgroundSecondaryColorComponents() -> (r: Int, g: Int, b: Int) {
+        return (90, 100, 101)
     }
     
     class func backgroundPrimaryColor() -> UIColor {
-        return UIColor(r: 74, g: 84, b: 94)
+        let light = lightBackgroundPrimaryColorComponents()
+        let dark = darkBackgroundPrimaryColorComponents()
+        let color = timeConversion(light, dark: dark)
+        return UIColor(r: color.r, g: color.g, b: color.b)
     }
     
     class func backgroundSecondaryColor() -> UIColor {
-        return UIColor(r: 114, g: 127, b: 128)
+        let light = lightBackgroundSecondaryColorComponents()
+        let dark = darkBackgroundSecondaryColorComponents()
+        let color = timeConversion(light, dark: dark)
+        return UIColor(r: color.r, g: color.g, b: color.b)
+    }
+    
+    private class func timeConversion(light : (r: Int, g: Int, b: Int), dark: (r: Int, g: Int, b: Int)) -> (r: Int, g: Int, b: Int) {
+        let alpha = TimeManager.sharedManager.getAlphaForTime()
+        let diff = (r: light.r - dark.r, g: light.g - dark.g, b: light.b - dark.b)
+        return (light.r - Int(Float(diff.r) * alpha), light.g - Int(Float(diff.g) * alpha), light.b - Int(Float(diff.b) * alpha))
     }
 }

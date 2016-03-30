@@ -67,10 +67,20 @@ class SVPauseBaseView: UIView {
     }
     
     private func commonInit() {
+        
+        let baseAlpha : CGFloat = 0.7
+        
         let backgroundView = UIImageView(image: UIImage(asset: .Background))
         backgroundView.frame = bounds
-        backgroundView.alpha = 0.7
+        backgroundView.alpha = baseAlpha * CGFloat(1 - TimeManager.sharedManager.getAlphaForTime())
         addSubview(backgroundView)
+        
+        let duskView = UIView(frame: bounds)
+        duskView.backgroundColor = SVColor.darkColor()
+        duskView.alpha = baseAlpha * CGFloat(TimeManager.sharedManager.getAlphaForTime())
+        addSubview(duskView)
+        
+        
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(SVPauseBaseView.tapGestureRecognized(_:)))
         addGestureRecognizer(tapGesture)
