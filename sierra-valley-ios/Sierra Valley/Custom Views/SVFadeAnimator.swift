@@ -17,7 +17,7 @@ class SVFadeAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     var presenting = false
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5 // transition for half a second
+        return 0.75 // transition for half a second
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {

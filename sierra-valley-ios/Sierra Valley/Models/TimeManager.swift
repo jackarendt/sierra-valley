@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+/// Keeps track of the time, and different time zones
 public class TimeManager {
     public static let sharedManager = TimeManager()
     
@@ -21,6 +21,7 @@ public class TimeManager {
     
     private var timeDescription = ""
     
+    /// Creates a new instance of a time manager by reading the plist from a path
     init() {
         if let path = timePath {
             let data = NSData(contentsOfURL: path)!
@@ -52,7 +53,18 @@ public class TimeManager {
         }
     }
     
+    /// Gets the alpha value based on the time of day
+    /// - Note: reads the settings, and returns a value based on the theme that was selected
+    /// - Returns: The alpha for the dusk view
     public func getAlphaForTime() -> Float {
+        
+        let settings = Settings()
+        if settings.theme == GameTheme.Day {
+            return 0
+        } else if settings.theme == GameTheme.Night {
+            return 1
+        }
+        
         let hour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
         

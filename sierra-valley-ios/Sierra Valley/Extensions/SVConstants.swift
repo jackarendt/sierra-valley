@@ -50,5 +50,15 @@ public enum CarDirection {
     }
 }
 
+/// The current theme for the game
+public enum GameTheme : Int {
+    /// The color theme changes based on the time of day
+    case TimeBased = 0
+    /// The day theme is always on
+    case Day = 1
+    /// It is always night time
+    case Night = 2
+}
+
 
 

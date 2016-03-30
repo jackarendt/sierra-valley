@@ -89,7 +89,15 @@ public class SVBaseViewController: UIViewController {
         } else {
             print("tracker is nil. cannot update")
         }
-        
+        changeThemeAlpha()
+    }
+
+    override public func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func changeThemeAlpha() {
         if animateDuskView {
             UIView.animateWithDuration(1.5, animations: {
                 self.duskView.alpha = CGFloat(TimeManager.sharedManager.getAlphaForTime())
@@ -98,11 +106,6 @@ public class SVBaseViewController: UIViewController {
         } else {
             duskView.alpha = CGFloat(TimeManager.sharedManager.getAlphaForTime())
         }
-    }
-
-    override public func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // MARK: - Navigation button selectors

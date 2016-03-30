@@ -81,7 +81,6 @@ class SVPauseBaseView: UIView {
         addSubview(duskView)
         
         
-        
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(SVPauseBaseView.tapGestureRecognized(_:)))
         addGestureRecognizer(tapGesture)
         
