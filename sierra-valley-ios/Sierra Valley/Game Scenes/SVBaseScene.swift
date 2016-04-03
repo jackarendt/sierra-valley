@@ -33,7 +33,7 @@ public class SVBaseScene: SKScene {
     private var startTouchTime = NSDate.distantPast()
     
     /// The interval in which the timer fires
-    private let timerInterval : NSTimeInterval = 0.05
+    private let timerInterval : NSTimeInterval = 0.075
     
     /// Boolean for whether a gesture has been handled or not
     private var gestureHandled = false
@@ -41,7 +41,7 @@ public class SVBaseScene: SKScene {
     override public init(size: CGSize) {
         super.init(size: size)
         // set the gravity
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -23.5)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -25.5)
         physicsWorld.contactDelegate = self
     }
     

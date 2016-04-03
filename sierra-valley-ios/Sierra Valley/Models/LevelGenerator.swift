@@ -63,8 +63,6 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
         // remove the node from the pool, and append the path to the paths array
         nodes.removeAtIndex(idx)
         paths.append(path)
-        
-        print(path.name)
     
         // enqueue the rows into the level queue
         for row in path.rows {
