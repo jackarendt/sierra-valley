@@ -31,4 +31,9 @@ class SVSegmentedControl: UISegmentedControl {
         layer.borderWidth = 1
         layer.masksToBounds = true
     }
+    
+    func setFont(font : UIFont) {
+        let attributes = [NSFontAttributeName : font]
+        setTitleTextAttributes(attributes, forState: .Normal)
+    }
 }

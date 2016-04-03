@@ -40,13 +40,13 @@ class SettingsViewController: SVBaseViewController {
         _musicLabel.textColor = SVColor.lightColor()
         scrollView.addSubview(_musicLabel)
         
-        musicButton.frame = CGRect(x: scrollView.frame.width/2 - 75, y: _musicLabel.frame.origin.y, width: 55, height: 35)
+        musicButton.frame = CGRect(x: scrollView.frame.width - 75, y: _musicLabel.frame.origin.y, width: 55, height: 35)
         musicButton.setImage(UIImage(asset: .VolumeIcon), forState: .Normal)
         musicButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 10, bottom: 3, right: 10)
         musicButton.addTarget(self, action: #selector(SettingsViewController.musicButtonTapped(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(musicButton)
         
-        let _soundLabel = UILabel(frame: CGRect(x: scrollView.bounds.width/2 + 20, y: 20, width: scrollView.frame.width/2 - 80, height: 35))
+        let _soundLabel = UILabel(frame: CGRect(x: 20, y: _musicLabel.frame.maxY + 40, width: scrollView.frame.width/2 - 80, height: 35))
         _soundLabel.text = "SOUND"
         _soundLabel.font = UIFont.svHeavyFont(30)
         _soundLabel.textColor = SVColor.lightColor()
@@ -58,14 +58,15 @@ class SettingsViewController: SVBaseViewController {
         soundButton.addTarget(self, action: #selector(SettingsViewController.soundButtonTapped(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(soundButton)
         
-        let _themeLabel = UILabel(frame: CGRect(x: 20, y: _musicLabel.frame.maxY + 40, width: scrollView.frame.width/2 - 80, height: 35))
+        let _themeLabel = UILabel(frame: CGRect(x: 20, y: _soundLabel.frame.maxY + 40, width: scrollView.frame.width/2 - 80, height: 35))
         _themeLabel.text = "THEME"
         _themeLabel.font = UIFont.svHeavyFont(30)
         _themeLabel.textColor = SVColor.lightColor()
         scrollView.addSubview(_themeLabel)
         
-        let _segmented = SVSegmentedControl(items: ["Time", "Day", "Night"])
-        _segmented.frame = CGRect(x: scrollView.frame.width/2 - 100, y: _musicLabel.frame.maxY + 40, width: 200, height: _themeLabel.frame.height)
+        let _segmented = SVSegmentedControl(items: ["TIME", "DAY", "NIGHT"])
+        _segmented.frame = CGRect(x: scrollView.frame.width - 220, y: _themeLabel.frame.origin.y, width: 200, height: _themeLabel.frame.height)
+        _segmented.setFont(UIFont.svHeavyFont(18)!)
         _segmented.selectedSegmentIndex = settings.theme.rawValue
         _segmented.addTarget(self, action: #selector(themeChanged(_:)), forControlEvents: .ValueChanged)
         scrollView.addSubview(_segmented)
