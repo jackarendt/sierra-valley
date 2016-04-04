@@ -23,6 +23,17 @@ class GameOverView: SVPauseBaseView {
     
     private let shareButton = SVBorderedButton()
     private let leaderboardButton = SVBorderedButton()
+    private let highScoreLabel = UILabel()
+    
+    override var distance: Int {
+        didSet {
+            if distance == Database.database.user.highScore {
+                highScoreLabel.text = "NEW PEAK!"
+            } else {
+                highScoreLabel.text = "PEAK: " + Database.database.user.highScore.description
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,6 +60,11 @@ class GameOverView: SVPauseBaseView {
         leaderboardButton.setFontSize(25)
         leaderboardButton.addTarget(self, action: #selector(GameOverView.leaderboardButtonTapped(_:)), forControlEvents: .TouchUpInside)
         addSubview(leaderboardButton)
+        
+        highScoreLabel.frame = CGRect(x: distanceLabel.frame.origin.x, y: distanceLabel.frame.maxY, width: bounds.width/2, height: 25)
+        highScoreLabel.textColor = SVColor.lightColor()
+        highScoreLabel.font = UIFont.svHeavyFont(25)
+        addSubview(highScoreLabel)
     }
     
     override func tapGestureRecognized(gesture: UITapGestureRecognizer) {

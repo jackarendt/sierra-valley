@@ -93,7 +93,7 @@ class GameViewController: SVBaseViewController {
         pauseView.hidden = false
         pauseView.showMenu()
         pauseView.distance = gameScene.currentDistance()
-        pauseView.avalanche = gameScene.currentAvalanches()
+        pauseView.avalanche = gameScene.currentAvalanches() + Database.database.user.avalanches
         UIView.animateWithDuration(0.5, animations: {
             self.pauseView.alpha = 1
             self.pauseButton.alpha = 0
@@ -122,10 +122,14 @@ class GameViewController: SVBaseViewController {
 
 extension GameViewController : GameSceneDelegate {
     func gameDidEnd(finalScore: Int, newAvalanches: Int) {
+        
+        Database.database.user.gamePlayed(score: finalScore, newAvalanches: newAvalanches)
+        
         gameOverView.hidden = false
         gameOverView.showMenu()
         gameOverView.distance = finalScore
-        gameOverView.avalanche = newAvalanches
+        gameOverView.avalanche = Database.database.user.avalanches
+        
         UIView.animateWithDuration(0.5, animations: {
             self.gameOverView.alpha = 1
             self.pauseButton.alpha = 0

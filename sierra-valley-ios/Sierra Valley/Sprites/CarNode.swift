@@ -19,7 +19,7 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var maximumImpulseValue : CGFloat = 160
+    public var maximumImpulseValue : CGFloat = 165
     
     /// The current impulse value for jumping
     private var impulse : CGFloat = 0

@@ -36,6 +36,8 @@
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
 		2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */; };
+		2EA387571CB1AF8B00216CD1 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387561CB1AF8B00216CD1 /* Database.swift */; };
+		2EA387591CB1B9A800216CD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387581CB1B9A800216CD1 /* User.swift */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
@@ -122,6 +124,8 @@
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
 		2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sierra Valley-Bridging-Header.h"; sourceTree = "<group>"; };
 		2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2EA387561CB1AF8B00216CD1 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Models/Database.swift; sourceTree = "<group>"; };
+		2EA387581CB1B9A800216CD1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			children = (
 				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
 				2E09A3171CA8A893005CA811 /* TimeManager.swift */,
+				2EA387561CB1AF8B00216CD1 /* Database.swift */,
+				2EA387581CB1B9A800216CD1 /* User.swift */,
 			);
 			name = "App Models";
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EA387591CB1B9A800216CD1 /* User.swift in Sources */,
 				2EBA3C331C4F5093005C0D76 /* GameViewController.swift in Sources */,
 				2EF8187E1C559719008ADAEF /* GameManager.swift in Sources */,
 				2E37562F1C5C616400DA7715 /* LevelGenerator.swift in Sources */,
@@ -701,6 +708,7 @@
 				2EBA3C341C4F5093005C0D76 /* HomeViewController.swift in Sources */,
 				2EF818801C55C3E0008ADAEF /* RectangleNode.swift in Sources */,
 				2EF818821C55C5BC008ADAEF /* LevelResourceProtocol.swift in Sources */,
+				2EA387571CB1AF8B00216CD1 /* Database.swift in Sources */,
 				2EF818861C572AE0008ADAEF /* Queue.swift in Sources */,
 				2EF8187C1C559438008ADAEF /* SpikeNode.swift in Sources */,
 				2E2F0C8A1C59C1AB003D3B26 /* Buffer.swift in Sources */,

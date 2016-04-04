@@ -48,11 +48,11 @@ class SVPauseBaseView: UIView {
     }
     
     var tapGesture : UITapGestureRecognizer!
-    private let titleLabel = UILabel()
-    private let subtitleLabel = UILabel()
-    private let avalancheImageView = UIImageView(image: UIImage(asset: .Avalanche))
-    private let avalancheLabel = UILabel()
-    private let distanceLabel = UILabel()
+    let titleLabel = UILabel()
+    let subtitleLabel = UILabel()
+    let avalancheImageView = UIImageView(image: UIImage(asset: .Avalanche))
+    let avalancheLabel = UILabel()
+    let distanceLabel = UILabel()
     
     private var blinkAnimation : SVBlinkAnimation!
 
@@ -84,7 +84,7 @@ class SVPauseBaseView: UIView {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(SVPauseBaseView.tapGestureRecognized(_:)))
         addGestureRecognizer(tapGesture)
         
-        titleLabel.frame = CGRect(x: 40, y: bounds.height/2 - 65, width: bounds.width - 80, height: 50)
+        titleLabel.frame = CGRect(x: 40, y: bounds.height/2 - 55, width: bounds.width - 80, height: 50)
         titleLabel.textAlignment = .Center
         titleLabel.textColor = SVColor.lightColor()
         titleLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))

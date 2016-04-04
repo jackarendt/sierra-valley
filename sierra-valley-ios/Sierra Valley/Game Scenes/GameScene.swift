@@ -176,7 +176,7 @@ extension GameScene {
             }
             if validateSpikeCollision(spike, car: car, contactPoint: contact.contactPoint) {
                 pause() // pause the scene
-                gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: 0) // end the game
+                gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: gameManager.avalanches) // end the game
             }
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
             handleCarCollision()
