@@ -143,6 +143,13 @@ class HomeViewController: SVBaseViewController {
         }
     }
     
+    override func applicationDidEnterBackground(notification: NSNotification) {
+        if animationsFinished {
+            blinkAnimation.stopBlink(false)
+            tapToPlayLabel.alpha = 0
+        }
+    }
+    
     // segues to settings page
     func settingsButtonTapped() {
         let settings = SettingsViewController()      

@@ -41,11 +41,14 @@ public class Database {
     init() {
         // if the path exists parse the JSON and create db objects
         if let path = path, data = NSData(contentsOfURL: path) {
-            if let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String : AnyObject] {
-                parseJSON(json!)
-                print(json)
-            } else {
-                print("database is corrupted")
+            do {
+                if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String : AnyObject] {
+                   parseJSON(json)
+                } else {
+                    print("database corrupted")
+                }
+            } catch {
+                print(error)
             }
         } else { // first time launch, creates db objects and saves the db file
             let db = initializeDatabase()

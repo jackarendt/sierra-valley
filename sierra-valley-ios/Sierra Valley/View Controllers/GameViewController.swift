@@ -123,6 +123,8 @@ class GameViewController: SVBaseViewController {
 extension GameViewController : GameSceneDelegate {
     func gameDidEnd(finalScore: Int, newAvalanches: Int) {
         
+        AnalyticsManager.sharedManager.gameEnded(finalScore, newAvalanches: newAvalanches)
+        
         Database.database.user.gamePlayed(score: finalScore, newAvalanches: newAvalanches)
         
         gameOverView.hidden = false
@@ -144,14 +146,6 @@ extension GameViewController : GameSceneDelegate {
     
     func avalancheAvoided() {
         avalancheAvoidedView.showAvoidedView()
-//        UIView.animateKeyframesWithDuration(4.0, delay: 0, options: .AllowUserInteraction, animations: {
-//            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.09375, animations: {
-//                self.distanceLabel.alpha = 0
-//            })
-//            UIView.addKeyframeWithRelativeStartTime(0.90625, relativeDuration: 0.09375, animations: {
-//                self.distanceLabel.alpha = 1
-//            })
-//        }, completion: nil)
     }
 }
 

@@ -83,12 +83,7 @@ public class SVBaseViewController: UIViewController {
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let tracker = GAI.sharedInstance().defaultTracker, builder = GAIDictionaryBuilder.createScreenView() {
-            tracker.set(kGAIScreenName, value: gaName)
-            tracker.send(builder.build() as [NSObject : AnyObject])
-        } else {
-            print("tracker is nil. cannot update")
-        }
+        AnalyticsManager.sharedManager.updateScreen(gaName)
         changeThemeAlpha()
     }
 

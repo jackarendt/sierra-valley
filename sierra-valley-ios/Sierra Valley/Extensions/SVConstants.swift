@@ -58,6 +58,14 @@ public enum GameTheme : Int {
     case Day = 1
     /// It is always night time
     case Night = 2
+    
+    func name() -> String {
+        switch self {
+        case .TimeBased: return "Time"
+        case .Day: return "Day"
+        case .Night: return "Night"
+        }
+    }
 }
 
 

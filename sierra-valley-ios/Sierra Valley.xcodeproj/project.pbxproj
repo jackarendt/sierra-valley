@@ -38,6 +38,7 @@
 		2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */; };
 		2EA387571CB1AF8B00216CD1 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387561CB1AF8B00216CD1 /* Database.swift */; };
 		2EA387591CB1B9A800216CD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387581CB1B9A800216CD1 /* User.swift */; };
+		2EA3875B1CB9840500216CD1 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
@@ -126,6 +127,7 @@
 		2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EA387561CB1AF8B00216CD1 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Models/Database.swift; sourceTree = "<group>"; };
 		2EA387581CB1B9A800216CD1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyticsManager.swift; path = Models/AnalyticsManager.swift; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
+				2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */,
 				2E09A3171CA8A893005CA811 /* TimeManager.swift */,
 				2EA387561CB1AF8B00216CD1 /* Database.swift */,
 				2EA387581CB1B9A800216CD1 /* User.swift */,
@@ -720,6 +723,7 @@
 				2E3756311C5D88E000DA7715 /* Renderer.swift in Sources */,
 				2E3756621C646FDA00DA7715 /* LevelQueue.swift in Sources */,
 				2E0D48701C9DE7290020D8D3 /* LevelPaths.swift in Sources */,
+				2EA3875B1CB9840500216CD1 /* AnalyticsManager.swift in Sources */,
 				2E8582CB1C534FEE000508EB /* HelpCarScene.swift in Sources */,
 				2E156DB11C710B2D00EE1C0F /* ParallaxBackgroundNode.swift in Sources */,
 				2EBA3C2C1C4DEF23005C0D76 /* UIFont+Extensions.swift in Sources */,

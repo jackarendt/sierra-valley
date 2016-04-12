@@ -33,10 +33,6 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
         }
     }
     
-    private let lightTexture = SKTexture(imageNamed: SVLevelResource.LightParallaxBackground.rawValue)
-    private let darkTexture = SKTexture(imageNamed: SVLevelResource.DarkParallaxBackground.rawValue)
-    private let avalancheTexture = SKTexture(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
-    
     private let middleBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
     private let leftBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
     private let rightBackground = SKSpriteNode(imageNamed: SVLevelResource.AvalancheParallaxBackground.rawValue)
@@ -46,40 +42,40 @@ class ParallaxBackgroundNode: SKNode, GameActionQueueProtocol {
     override init() {
         super.init()
         
-        middleBackground.alpha = 0.75
+        middleBackground.alpha = 0.65
         middleBackground.zPosition = -3
         middleBackground.position = CGPoint(x: position.x, y: position.y - 75)
         middleBackground.colorBlendFactor = colorBlendFactor
         addChild(middleBackground)
         
-        leftBackground.alpha = 0.85
+        leftBackground.alpha = 0.75
         leftBackground.zPosition = -2
         leftBackground.position = CGPoint(x: position.x - gameSettings.actualWidth/4, y: position.y - 175)
         leftBackground.colorBlendFactor = colorBlendFactor
         addChild(leftBackground)
         
-        rightBackground.alpha = 0.85
+        rightBackground.alpha = 0.75
         rightBackground.zPosition = -2
         rightBackground.position = CGPoint(x: position.x + gameSettings.actualWidth/4, y: position.y - 175)
         rightBackground.colorBlendFactor = colorBlendFactor
         addChild(rightBackground)
         
-        farLeftBackground.alpha = 0.9
+        farLeftBackground.alpha = 0.8
         farLeftBackground.zPosition = -1
-        farLeftBackground.position = CGPoint(x: position.x - gameSettings.actualWidth * 0.4, y: position.y - 125)
+        farLeftBackground.position = CGPoint(x: position.x - gameSettings.actualWidth * 0.45, y: position.y - 125)
         farLeftBackground.colorBlendFactor = colorBlendFactor
         addChild(farLeftBackground)
         
-        farRightBackground.alpha = 0.9
+        farRightBackground.alpha = 0.8
         farRightBackground.zPosition = -1
-        farRightBackground.position = CGPoint(x: position.x + gameSettings.actualWidth * 0.4, y: position.y - 125)
+        farRightBackground.position = CGPoint(x: position.x + gameSettings.actualWidth * 0.45, y: position.y - 125)
         farRightBackground.colorBlendFactor = colorBlendFactor
         addChild(farRightBackground)
         
         // make background nodes a little bit larger than original (will be changed for final build)
         for child in children {
-            child.xScale = 1.2
-            child.yScale = 1.2
+            child.xScale = 1.25
+            child.yScale = 1.25
         }
         
         endAvalanche(0)

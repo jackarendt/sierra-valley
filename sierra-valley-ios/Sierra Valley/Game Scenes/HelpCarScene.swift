@@ -21,7 +21,7 @@ final class HelpCarScene: SVBaseScene {
         gestureDelegate = self
         // add car to scene
         car.position = CGPoint(x: view.bounds.width/2, y: car.size.height/2 + 10)
-        car.maximumImpulseValue = 900
+        car.maximumImpulseValue = 1400
         addChild(car)
         
         // Create a "floor" that is clear below the car so that the car can rest on it easily.

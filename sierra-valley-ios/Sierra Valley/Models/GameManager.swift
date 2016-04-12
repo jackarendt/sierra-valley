@@ -61,6 +61,9 @@ final public class GameManager {
     /// many other things
     public let gameSettings = GameSettings.sharedSettings
     
+    /// The number of rows that need to pass for the score to change
+    public let scoreOffset = 10
+    
     /// The previous time the gameloop was updated. (used for counting frames)
     private var previousTime : CFTimeInterval = 0
     
@@ -177,7 +180,7 @@ final public class GameManager {
                 if let row = level.rows.dequeue() {
                     if !row.isEmpty {
                         totalFrames += 1
-                        score = totalFrames/10
+                        score = totalFrames/scoreOffset
                         delegate?.scoreChanged(score)
                     }
                     let position = CGPoint(x: renderXLocation, y: renderYLocation)
@@ -210,11 +213,10 @@ final public class GameManager {
         if level.avalanche { // if the previous level was an avalanche, increment it and say that the avalanche was avoided
             avalanches += 1
             delegate?.avalancheAvoided(gameTotal: avalanches)
-            print(avalanches)
         }
         level = levelQueue.dequeue()
+        
         delegate?.alterBackground(level.avalanche)
-        print(level.avalanche)
         var levelWidth = level.levelWidth
         if currentDirection == .Right {
             currentDirection = .Left
