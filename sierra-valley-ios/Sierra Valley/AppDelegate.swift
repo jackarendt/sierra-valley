@@ -7,7 +7,10 @@
 //
 
 import SpriteKit
-import CoreData
+import Fabric
+import GameAnalytics
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,16 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
         
-        // set up google analytics
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
-
-        let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true  // report uncaught exceptions
-//        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
-        gai.defaultTracker = gai.trackerWithTrackingId("UA-74428626-1")
-
+        Fabric.with([Crashlytics.self, GameAnalytics.self])
+        
         return true
     }
 

@@ -4,11 +4,13 @@
 # use_frameworks!
 
 target 'Sierra Valley' do
-    pod 'Google/Analytics'
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'GA-SDK-IOS'
 end
 
 target 'Sierra ValleyTests' do
-    pod 'Google/Analytics'
+
 end
 
 target 'Sierra ValleyUITests' do

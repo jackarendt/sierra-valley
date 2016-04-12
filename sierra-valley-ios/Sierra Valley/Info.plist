@@ -20,6 +20,31 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>48a5b480aab49d0e31123430d7c2d258433ca636</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>api-key</key>
+					<string>51d3d103116e4bfd302832c9e79e0cab</string>
+					<key>api-secret</key>
+					<string>babfa038cd47f1210108264573cf933597fd0430</string>
+				</dict>
+				<key>KitName</key>
+				<string>GameAnalytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
