@@ -22,6 +22,8 @@ class GameViewController: SVBaseViewController {
     
     var avalancheAvoidedView : AvalancheAvoidedView!
     
+    var distance = 0
+    
     override var name: String {
         get { return "Game" } set { }
     }
@@ -131,6 +133,8 @@ extension GameViewController : GameSceneDelegate {
         gameOverView.distance = finalScore
         gameOverView.avalanche = Database.database.user.avalanches
         
+        distance = finalScore
+        
         UIView.animateWithDuration(0.5, animations: {
             self.gameOverView.alpha = 1
             self.pauseButton.alpha = 0
@@ -176,7 +180,16 @@ extension GameViewController : GameOverViewDelegate {
     
     func gameOverViewDidHitShare(gameOverView: GameOverView) {
         AnalyticsManager.logGameScreenActivity("share")
-        let activityController = UIActivityViewController(activityItems: ["Share your high score: 75"], applicationActivities: nil)
+        let peak = Database.database.user.highScore
+        let shareView = ShareImageView(car: SVCar.SierraTurboLarge, peak: peak, score: distance)
+        let image = shareView.createImage()
+        
+        var text = "I climbed up to \(distance). Try to beat my peak at \(peak) on #SierraValley"
+        if peak == distance {
+            text = "I just set a new peak at \(peak). Try to beat me on #SierraValley"
+        }
+        
+        let activityController = UIActivityViewController(activityItems: [image, text], applicationActivities: nil)
         activityController.excludedActivityTypes = [UIActivityTypeAirDrop]
         presentViewController(activityController, animated: true, completion: nil)
     }

@@ -35,10 +35,10 @@
 		2E8582CF1C536A99000508EB /* CarNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582CE1C536A99000508EB /* CarNode.swift */; };
 		2E8582D21C536CE9000508EB /* SVBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8582D11C536CE9000508EB /* SVBaseScene.swift */; };
 		2E8A88441C588D3C0009CF1C /* RowBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8A88431C588D3C0009CF1C /* RowBuffer.swift */; };
-		2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */; };
 		2EA387571CB1AF8B00216CD1 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387561CB1AF8B00216CD1 /* Database.swift */; };
 		2EA387591CB1B9A800216CD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387581CB1B9A800216CD1 /* User.swift */; };
 		2EA3875B1CB9840500216CD1 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */; };
+		2EA3875E1CBE067B00216CD1 /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875D1CBE067B00216CD1 /* ShareImageView.swift */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
@@ -124,10 +124,10 @@
 		2E8582D11C536CE9000508EB /* SVBaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVBaseScene.swift; path = "Game Scenes/SVBaseScene.swift"; sourceTree = "<group>"; };
 		2E8A88431C588D3C0009CF1C /* RowBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowBuffer.swift; path = Models/RowBuffer.swift; sourceTree = "<group>"; };
 		2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sierra Valley-Bridging-Header.h"; sourceTree = "<group>"; };
-		2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EA387561CB1AF8B00216CD1 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Models/Database.swift; sourceTree = "<group>"; };
 		2EA387581CB1B9A800216CD1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyticsManager.swift; path = Models/AnalyticsManager.swift; sourceTree = "<group>"; };
+		2EA3875D1CBE067B00216CD1 /* ShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareImageView.swift; path = "Custom Views/ShareImageView.swift"; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
@@ -394,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				2EBA3C281C4DEB3E005C0D76 /* SVBorderedButton.swift */,
+				2EA3875D1CBE067B00216CD1 /* ShareImageView.swift */,
 				2EF818701C544A93008ADAEF /* PauseView.swift */,
 				2EF818741C557BBA008ADAEF /* GameOverView.swift */,
 				2EF818721C547336008ADAEF /* SVPauseBaseView.swift */,
@@ -435,7 +436,6 @@
 				2E9AAF051C83DD530051465F /* Sierra Valley-Bridging-Header.h */,
 				2EBA3BFA1C4D9E16005C0D76 /* Info.plist */,
 				2E09A3191CA8A950005CA811 /* time.plist */,
-				2E9AAF0B1C83E3870051465F /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -563,7 +563,6 @@
 				2E284D201C784F6200B3805A /* spark.png in Resources */,
 				2EBA3BF61C4D9E16005C0D76 /* Assets.xcassets in Resources */,
 				2E284D1F1C784F6200B3805A /* StarParticle.sks in Resources */,
-				2E9AAF0C1C83E3870051465F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +718,7 @@
 				2E8582C91C53439D000508EB /* Number+Extensions.swift in Sources */,
 				2E6A92131C531D8A00CF8E65 /* HelpViewController.swift in Sources */,
 				2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */,
+				2EA3875E1CBE067B00216CD1 /* ShareImageView.swift in Sources */,
 				2EBA3C301C4F5075005C0D76 /* SettingsViewController.swift in Sources */,
 				2EBA3C221C4DDEDE005C0D76 /* SVBaseViewController.swift in Sources */,
 				2E6A92191C5326BF00CF8E65 /* TapAnimationView.swift in Sources */,
@@ -886,7 +886,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -908,7 +908,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sierra Valley/Sierra Valley.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Sierra Valley/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
