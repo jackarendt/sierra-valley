@@ -8,7 +8,6 @@
 
 import SpriteKit
 import Fabric
-import GameAnalytics
 import Crashlytics
 
 
@@ -25,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = homeVC
         window?.makeKeyAndVisible()
         
-        Fabric.with([Crashlytics.self, GameAnalytics.self])
+        AnalyticsManager.initializeAnalytics()
+        AnalyticsManager.sendTheme(Settings().theme)
+        AnalyticsManager.sendSoundPreferences(!Settings().soundMuted, music: !Settings().musicMuted)
         
         return true
     }

@@ -48,7 +48,7 @@ final public class CarNode: SKSpriteNode {
         name = SVSpriteName.Car.rawValue
         
         // create physics body for car
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: size.width * 0.9, height: size.height))
         physicsBody?.dynamic = true
         physicsBody?.allowsRotation = true
         physicsBody?.restitution = 0

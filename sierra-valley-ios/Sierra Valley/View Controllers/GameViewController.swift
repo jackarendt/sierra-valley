@@ -22,12 +22,12 @@ class GameViewController: SVBaseViewController {
     
     var avalancheAvoidedView : AvalancheAvoidedView!
     
-    var distance = 0
+    override var name: String {
+        get { return "Game" } set { }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        gaName = "Main Game Loop" // set the name for Google Analytics
         
         skView = SKView(frame: view.bounds)
         contentView.addSubview(skView)
@@ -57,7 +57,7 @@ class GameViewController: SVBaseViewController {
         
         distanceLabel.frame = CGRect(x: 20, y: 5, width: view.bounds.width/2 - 40, height: 60)
         distanceLabel.textColor = SVColor.lightColor()
-        distanceLabel.text = "\(distance)"
+        distanceLabel.text = "0"
         distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))
         view.addSubview(distanceLabel)
         
@@ -89,6 +89,7 @@ class GameViewController: SVBaseViewController {
     }
     
     func pause() {
+        AnalyticsManager.logGameScreenActivity("pause")
         gameScene.pause()
         pauseView.hidden = false
         pauseView.showMenu()
@@ -121,10 +122,8 @@ class GameViewController: SVBaseViewController {
 }
 
 extension GameViewController : GameSceneDelegate {
+    
     func gameDidEnd(finalScore: Int, newAvalanches: Int) {
-        
-        AnalyticsManager.sharedManager.gameEnded(finalScore, newAvalanches: newAvalanches)
-        
         Database.database.user.gamePlayed(score: finalScore, newAvalanches: newAvalanches)
         
         gameOverView.hidden = false
@@ -151,6 +150,7 @@ extension GameViewController : GameSceneDelegate {
 
 extension GameViewController : PauseViewDelegate {
     func pauseViewDidHitResume(pauseView: PauseView) {
+        AnalyticsManager.logGameScreenActivity("resume")
         UIView.animateWithDuration(0.5, animations: {
             pauseView.alpha = 0
             self.pauseButton.alpha = 1
@@ -165,20 +165,23 @@ extension GameViewController : PauseViewDelegate {
 extension GameViewController : GameOverViewDelegate {
     func gameOverViewDidHitRetry(gameOverView: GameOverView) {
         dismissViewControllerAnimated(true, completion: nil)
+        AnalyticsManager.logGameScreenActivity("retry")
     }
     
     func gameOverViewDidHitNewCar(gameOverView: GameOverView) {
         // show garage view controller
         gameOverView.subtitleText = "TAP TO RETRY"
+        AnalyticsManager.logGameScreenActivity("new-car")
     }
     
     func gameOverViewDidHitShare(gameOverView: GameOverView) {
+        AnalyticsManager.logGameScreenActivity("share")
         let activityController = UIActivityViewController(activityItems: ["Share your high score: 75"], applicationActivities: nil)
         activityController.excludedActivityTypes = [UIActivityTypeAirDrop]
         presentViewController(activityController, animated: true, completion: nil)
     }
     
     func gameOverViewDidHitLeaderboard(gameOverView: GameOverView) {
-        
+        AnalyticsManager.logGameScreenActivity("leaderboard")
     }
 }

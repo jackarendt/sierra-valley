@@ -44,8 +44,6 @@ class Settings {
             let userDefaults = NSUserDefaults.standardUserDefaults()
             userDefaults.setInteger(theme.rawValue, forKey: themeKey)
             userDefaults.synchronize()
-            
-            AnalyticsManager.sharedManager.sendTheme(theme.rawValue)
         }
     }
     

@@ -21,11 +21,13 @@ class HomeViewController: SVBaseViewController {
     var animationsFinished = false
     
     var blinkAnimation = SVBlinkAnimation()
+    
+    override var name: String {
+        get { return "Home" } set { }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        gaName = "Home" // set the name for Google Analytics
         
         logoLabel.text = "SIERRA VALLEY"
         logoLabel.textColor = SKColor.whiteColor()
@@ -152,12 +154,14 @@ class HomeViewController: SVBaseViewController {
     
     // segues to settings page
     func settingsButtonTapped() {
+        AnalyticsManager.logHomeScreenActivity("settings")
         let settings = SettingsViewController()      
         presentViewController(settings, animated: true, completion: nil)
     }
     
     // segues to choosing the car
     func chooseCarButtonTapped() {
+        AnalyticsManager.logHomeScreenActivity("choose-car")
         let changeCar = ChangeCarViewController()
         presentViewController(changeCar, animated: true, completion: nil)
     }
@@ -168,6 +172,7 @@ class HomeViewController: SVBaseViewController {
             print("not so fast")
             return
         }
+        AnalyticsManager.logHomeScreenActivity("start-game")
         presentViewController(GameViewController(), animated: true, completion: nil)
     }
 }

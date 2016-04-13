@@ -79,6 +79,9 @@ class GameScene: SVBaseScene {
         addChild(car)
         
         swipeRight()
+        
+        // start for analytics
+        AnalyticsManager.gameStarted(car.car!)
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -152,6 +155,7 @@ extension GameScene : GameManagerDelegate {
     }
 
     func gameEnded(finalScore finalScore: Int, avalanches: Int) {
+        AnalyticsManager.gameEnded(finalScore, newAvalanches: avalanches, car: car.car!)
         gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: gameManager.avalanches) // send that action to the delegate for handling
     }
     
@@ -176,7 +180,7 @@ extension GameScene {
             }
             if validateSpikeCollision(spike, car: car, contactPoint: contact.contactPoint) {
                 pause() // pause the scene
-                gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: gameManager.avalanches) // end the game
+                gameEnded(finalScore: gameManager.score, avalanches: gameManager.avalanches) // end the game
             }
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
             handleCarCollision()

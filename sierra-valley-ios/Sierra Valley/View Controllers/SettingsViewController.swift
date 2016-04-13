@@ -21,9 +21,12 @@ class SettingsViewController: SVBaseViewController {
     
     private let settings = Settings()
     
+    override var name: String {
+       get { return "Settings" } set { }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        gaName = "Settings" // set the name for Google Analytics
         
         navigationTitle = "SETTINGS"
         leftNavigationButton.setImage(UIImage(asset: .CloseButton), forState: .Normal)

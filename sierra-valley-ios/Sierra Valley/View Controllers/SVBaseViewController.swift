@@ -19,7 +19,7 @@ public class SVBaseViewController: UIViewController {
     }
     
     /// The name of the view controller for Google Analytics
-    public var gaName = "VC Name Not Set"
+    public var name = "VC Name Not Set"
     
     /// Title at the top of the view controller. Similar to a UINavigationItem's title.
     public let navigationTitleLabel = UILabel()
@@ -83,7 +83,7 @@ public class SVBaseViewController: UIViewController {
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        AnalyticsManager.sharedManager.updateScreen(gaName)
+        AnalyticsManager.logScreenView(name)
         changeThemeAlpha()
     }
 

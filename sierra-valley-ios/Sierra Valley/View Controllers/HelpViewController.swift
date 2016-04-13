@@ -18,10 +18,12 @@ class HelpViewController: SVBaseViewController {
     var leftArrow : Arrow!
     var rightArrow : Arrow!
     
+    override var name: String {
+        get { return "Help" } set { }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        gaName = "Help" // set the name for Google Analytics
         
         navigationTitle = "HELP"
         leftNavigationButton.setImage(UIImage(asset: .BackButton), forState: .Normal)
