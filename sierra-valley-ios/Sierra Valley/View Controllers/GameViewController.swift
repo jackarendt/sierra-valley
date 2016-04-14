@@ -191,6 +191,11 @@ extension GameViewController : GameOverViewDelegate {
         
         let activityController = UIActivityViewController(activityItems: [image, text], applicationActivities: nil)
         activityController.excludedActivityTypes = [UIActivityTypeAirDrop]
+        activityController.completionWithItemsHandler = {(activityType, completed, returnedTypes, error) in
+            if let activityType = activityType {
+                AnalyticsManager.share(activityType, highScore: peak == self.distance, finished: completed)
+            }
+        }
         presentViewController(activityController, animated: true, completion: nil)
     }
     
@@ -198,3 +203,4 @@ extension GameViewController : GameOverViewDelegate {
         AnalyticsManager.logGameScreenActivity("leaderboard")
     }
 }
+

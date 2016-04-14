@@ -106,7 +106,7 @@ final public class CarNode: SKSpriteNode {
     /// Call this to end the jump. This denotes that the user has collided back with the ground
     /// and it will reset the impulse value and determine if the user is able to jump again
     public func endJump() {
-        let motionDY = GameSettings.sharedSettings.triangleHeight * 2
+        let motionDY = GameSettings.sharedSettings.triangleHeight * 3
         if isJumping && physicsBody?.velocity.dy < motionDY { // trying to jump, but on the ground
             jumpAvailable = false
         } else if isJumping && physicsBody?.velocity.dy >= motionDY {
