@@ -39,6 +39,7 @@
 		2EA387591CB1B9A800216CD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA387581CB1B9A800216CD1 /* User.swift */; };
 		2EA3875B1CB9840500216CD1 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */; };
 		2EA3875E1CBE067B00216CD1 /* ShareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875D1CBE067B00216CD1 /* ShareImageView.swift */; };
+		2EA387601CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA3875F1CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift */; };
 		2EB3A37C1C6D855200979DE5 /* SVFadeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */; };
 		2EB3A37E1C6D855C00979DE5 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB3A37D1C6D855C00979DE5 /* GameScene.swift */; };
 		2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */; };
@@ -128,6 +129,7 @@
 		2EA387581CB1B9A800216CD1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalyticsManager.swift; path = Models/AnalyticsManager.swift; sourceTree = "<group>"; };
 		2EA3875D1CBE067B00216CD1 /* ShareImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareImageView.swift; path = "Custom Views/ShareImageView.swift"; sourceTree = "<group>"; };
+		2EA3875F1CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangeCarCollectionViewCell.swift; path = "Custom Views/ChangeCarCollectionViewCell.swift"; sourceTree = "<group>"; };
 		2EB3A37B1C6D855200979DE5 /* SVFadeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SVFadeAnimator.swift; path = "Custom Views/SVFadeAnimator.swift"; sourceTree = "<group>"; };
 		2EB3A37D1C6D855C00979DE5 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "Game Scenes/GameScene.swift"; sourceTree = "<group>"; };
 		2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvalancheAvoidedView.swift; path = "Custom Views/AvalancheAvoidedView.swift"; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				2E09A31B1CAB8FFE005CA811 /* SVSegmentedControl.swift */,
 				2E6A921A1C5339EA00CF8E65 /* Arrow.swift */,
 				2EB6906C1C9A609E00B06A58 /* AvalancheAvoidedView.swift */,
+				2EA3875F1CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */,
 				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
 				2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */,
+				2EA387601CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,
 				2E09A3181CA8A893005CA811 /* TimeManager.swift in Sources */,

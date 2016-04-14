@@ -17,6 +17,7 @@ public enum SVImage : String {
     case Mountains = "mountains"
     case MuteIcon = "mute-icon"
     case PauseIcon = "pause"
+    case Random = "random"
     case ShareBackground = "share-background"
     case VolumeIcon = "volume-icon"
 }

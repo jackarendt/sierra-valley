@@ -54,6 +54,6 @@ public class SVBorderedButton: UIButton {
     
     func touchDown() {
         backgroundColor = borderColor
-        setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        setTitleColor(SVColor.darkColor(), forState: .Normal)
     }
 }

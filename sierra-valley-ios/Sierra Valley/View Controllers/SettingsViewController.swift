@@ -68,7 +68,7 @@ class SettingsViewController: SVBaseViewController {
         scrollView.addSubview(_themeLabel)
         
         let _segmented = SVSegmentedControl(items: ["TIME", "DAY", "NIGHT"])
-        _segmented.frame = CGRect(x: scrollView.frame.width - 220, y: _themeLabel.frame.origin.y, width: 200, height: _themeLabel.frame.height)
+        _segmented.frame = CGRect(x: scrollView.frame.width - 260, y: _themeLabel.frame.origin.y, width: 240, height: _themeLabel.frame.height)
         _segmented.setFont(UIFont.svHeavyFont(18)!)
         _segmented.selectedSegmentIndex = settings.theme.rawValue
         _segmented.addTarget(self, action: #selector(themeChanged(_:)), forControlEvents: .ValueChanged)
