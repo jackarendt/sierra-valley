@@ -15,26 +15,50 @@ class LevelQueue : Queue<Level> {
     /// Sets the minimum amount of items that will be available in the queue
     var elementThreshold = 4
     
+    /// the max difficulty a level can be
+    private var maxDifficulty = 125
+    
+    /// the min difficulty a level can be
+    private var minDifficulty = 75
+    
     override init() {
         super.init()
-        while count < elementThreshold {
-            generateLevel(100)
-        }
+        refillQueue(background: false)
     }
     
     override init(items: [Level]) {
         super.init(items: items)
-        while count < elementThreshold {
-            generateLevel(100)
-        }
+        refillQueue(background: false)
     }
     
     override func dequeue() -> Level? {
         let item = super.dequeue()
-        while count < elementThreshold { // generate new levels until threshold is met
-            generateLevel(100)
-        }
+        refillQueue(background: true)
         return item
+    }
+    
+    private func refillQueue(background inBackground : Bool) {
+        func generate() {
+            while count < elementThreshold {
+                let difficulty = assessDifficulty()
+                generateLevel(difficulty)
+                
+                minDifficulty = min(minDifficulty + 5, 150) // set thresholds so it doesn't become impossible
+                maxDifficulty = min(maxDifficulty + 10, 225)
+            }
+        }
+        
+        if inBackground {
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+                generate()
+            })
+        } else {
+            generate()
+        }
+    }
+    
+    private func assessDifficulty() -> Int {
+        return Int(arc4random()) % (maxDifficulty - minDifficulty) + minDifficulty
     }
     
     /// Generates a level with a given difficulty and enqueues it

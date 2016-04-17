@@ -10,8 +10,8 @@ import Foundation
 
 /// Represents the different probabilities of generating a certain path type
 public struct PathProbabilities  {
-    static var NoRoadblockPath = 30
-    static var SpikePath = 25
+    static var NoRoadblockPath = 25
+    static var SpikePath = 30
     static var SpikePitPath = 18
     static var SpikeIslandPath = 12
     static var IslandPath = 15

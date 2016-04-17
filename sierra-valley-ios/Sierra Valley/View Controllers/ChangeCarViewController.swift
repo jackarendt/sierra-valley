@@ -8,26 +8,33 @@
 
 import UIKit
 
+/// Allows the user to change what car they are driving
 class ChangeCarViewController: SVBaseViewController {
 
     override var name: String {
         get { return "Change Car" } set { }
     }
     
+    /// Starts at random as the first car
     var carName : String = "RANDOM" {
         didSet {
             nameLabel.text = carName.uppercaseString
         }
     }
     
+    /// The name of the car being displayed
     private let nameLabel = UILabel()
     
+    /// The number of the car in order
     private let carNumberLabel = UILabel()
     
+    /// Allows the user to drive or to buy the car
     private let actionButton = SVBorderedButton()
     
+    /// Collectionview to show all the different cars
     private var collectionView : UICollectionView!
     
+    /// Spacing between the collection view cells
     private var spacing : CGFloat = 20
     
     override func viewDidLoad() {
@@ -118,7 +125,7 @@ extension ChangeCarViewController : UICollectionViewDataSource, UICollectionView
         if let indexPath = collectionView.indexPathsForVisibleItems().first {
             carNumberLabel.text = "\(indexPath.row + 1)/25"
             if indexPath.row != 0 {
-                nameLabel.text = "SIERRA VALLEY"
+                nameLabel.text = "SIERRA TURBO"
             } else {
                 nameLabel.text = "RANDOM"
             }

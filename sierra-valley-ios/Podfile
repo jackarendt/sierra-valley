@@ -6,6 +6,7 @@
 target 'Sierra Valley' do
     pod 'Fabric'
     pod 'Crashlytics'
+    # pod 'mopub-ios-sdk'
 end
 
 target 'Sierra ValleyTests' do

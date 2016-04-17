@@ -13,8 +13,41 @@ import UIKit
 /// - Parameter queue: The queue to load the level in to.
 func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : Int) {
     
+    var accepted = false
+    var usedRows = [ResourceRow]()
+    while !accepted { // keep generating levels until we find one that's suitable
+        let (remainingDifficulty, rows) = createLevelObstacles(difficulty)
+        if remainingDifficulty < 10 {
+            accepted = true
+            usedRows = rows
+        }
+    }
+    
+    for row in usedRows {
+        queue.enqueue(row)
+    }
+    
+    // adds flat at the end so the user can go up to the top level
+    let flatPath = FlatTrail(length: 7, difficulty: 0)
+    for row in flatPath.rows {
+        queue.enqueue(row)
+    }
+    
+    // add extra space to end so the camera pans
+    let emptyPath = EmptyRowTrail(length: flatRowLength - 7, difficulty: 0)
+    for row in emptyPath.rows {
+        queue.enqueue(row)
+    }
+}
+
+/// Creates the actual obstacle part of the level
+/// - Parameter difficulty: The difficulty of the level
+/// - Returns: Tuple containing remaining difficulty and the rows it generated
+func createLevelObstacles(difficulty : Int) -> (remainingDifficulty : Int, rows : [ResourceRow]) {
+    var rows = [ResourceRow]()
+    
     // create nodes and sort them by difficulty
-    var nodes = createRandomNodeSet(100)
+    var nodes = createRandomNodeSet(150)
     nodes.sortInPlace { (first, second) -> Bool in
         return first.difficulty < second.difficulty
     }
@@ -26,13 +59,13 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
     var paths = [LevelGenerationProtocol]()
     
     // estimated length of a level should be 100 rows (3000px)
-    while queue.count < 100 {
+    while rows.count < 150 {
         
         // get the available nodes for a set of qualifiers
         // don't make something more difficult than you can
         // obey length guidelines
         // don't cause too many obstacles in a row
-        var availableNodes = findAvailableNodesForDifficulty(remainingDifficulty, currentLength: queue.count, nodes: nodes, lastItem: paths.last)
+        var availableNodes = findAvailableNodesForDifficulty(remainingDifficulty, currentLength: rows.count, nodes: nodes, lastItem: paths.last)
         
         
         var path : LevelGenerationProtocol // the path that was selected
@@ -63,24 +96,14 @@ func computeLevel(difficulty : Int, queue : Queue<ResourceRow>, flatRowLength : 
         // remove the node from the pool, and append the path to the paths array
         nodes.removeAtIndex(idx)
         paths.append(path)
-    
+        
         // enqueue the rows into the level queue
         for row in path.rows {
-            queue.enqueue(row)
+            rows.append(row)
         }
     }
-
-    // adds flat at the end so the user can go up to the top level
-    let flatPath = FlatTrail(length: 7, difficulty: 0)
-    for row in flatPath.rows {
-        queue.enqueue(row)
-    }
     
-    // add extra space to end so the camera pans
-    let emptyPath = EmptyRowTrail(length: flatRowLength - 7, difficulty: 0)
-    for row in emptyPath.rows {
-        queue.enqueue(row)
-    }
+    return (remainingDifficulty, rows)
 }
 
 

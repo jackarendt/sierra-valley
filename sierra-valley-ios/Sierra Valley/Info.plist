@@ -43,6 +43,12 @@
 				<key>KitName</key>
 				<string>GameAnalytics</string>
 			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>MoPub</string>
+			</dict>
 		</array>
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
@@ -62,5 +68,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

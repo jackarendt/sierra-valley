@@ -145,13 +145,13 @@ struct SpikePitTrail : LevelGenerationProtocol {
         // get the maximum range of the obstacle
         let range : Double = Double(SpikePitTrail.maxDifficulty - SpikePitTrail.minDifficulty)
         if diff < range * 0.25 { // easy
-            length = 2
-        } else if diff < range * 0.5 { // medium
             length = 3
-        } else if diff < range * 0.75 { // hard
+        } else if diff < range * 0.5 { // medium
             length = 4
-        } else { // damn
+        } else if diff < range * 0.75 { // hard
             length = 5
+        } else { // damn
+            length = 6
         }
         for i in 0.stride(to: length, by: 1) {
             // append rows each with a depressed height equal to the triangle height (so it appears flat)
