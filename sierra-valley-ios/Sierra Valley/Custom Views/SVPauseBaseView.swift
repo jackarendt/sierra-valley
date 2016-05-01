@@ -104,13 +104,13 @@ class SVPauseBaseView: UIView {
         avalancheLabel.textColor = SVColor.lightColor()
         avalancheLabel.text = String(format: "%i", avalanche)
         avalancheLabel.textAlignment = .Right
-        avalancheLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))
+        avalancheLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))?.monospacedDigitFont
         addSubview(avalancheLabel)
         
         distanceLabel.frame = CGRect(x: 20, y: 5, width: bounds.width/2 - 40, height: 60)
         distanceLabel.textColor = SVColor.lightColor()
         distanceLabel.text = String(format: "%i", distance)
-        distanceLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))
+        distanceLabel.font = UIFont.svFont(min(60, 0.16 * bounds.height))?.monospacedDigitFont
         addSubview(distanceLabel)
     }
     

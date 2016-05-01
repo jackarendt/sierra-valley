@@ -16,10 +16,10 @@ class LevelQueue : Queue<Level> {
     var elementThreshold = 4
     
     /// the max difficulty a level can be
-    private var maxDifficulty = 125
+    private var maxDifficulty = 150
     
     /// the min difficulty a level can be
-    private var minDifficulty = 75
+    private var minDifficulty = 100
     
     override init() {
         super.init()
@@ -43,8 +43,8 @@ class LevelQueue : Queue<Level> {
                 let difficulty = assessDifficulty()
                 generateLevel(difficulty)
                 
-                minDifficulty = min(minDifficulty + 5, 150) // set thresholds so it doesn't become impossible
-                maxDifficulty = min(maxDifficulty + 10, 225)
+                minDifficulty = min(minDifficulty + 5, 175) // set thresholds so it doesn't become impossible
+                maxDifficulty = min(maxDifficulty + 10, 250)
             }
         }
         

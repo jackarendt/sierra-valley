@@ -61,14 +61,33 @@ public final class AnalyticsManager {
     }
     
     /// Called when an action occurs on on the game screen
+    /// - Parameter contentId: The button that was pressed on the game screen
     public class func logGameScreenActivity(contentId : String) {
         Answers.logContentViewWithName("GameScreen", contentType: "button", contentId: contentId, customAttributes: nil)
     }
     
+    /// Called when a user shares the results of the game
+    /// - Parameter activityType: The bundle ID of the share activity that was chosen
+    /// - Parameter highScore: Whether the user shared their high score
+    /// - Parameter finished: Whether the sharing was completed
     public class func share(activityType : String, highScore : Bool, finished : Bool) {
         let score = highScore ? "High Score" : "Normal"
         let completed = finished ? "Finished" : "Abandoned"
         Answers.logShareWithMethod(activityType, contentName: nil, contentType: "image", contentId: score, customAttributes: ["completed" : completed])
+    }
+    
+    /// Called to determine whether game center is available
+    /// - Parameter enabled: 
+    public class func gameCenterEnabled(enabled: Bool, errorCode : Int?) {
+        let en = enabled ? "Enabled" : "Disabled"
+        var dict = ["Activation Status" : en]
+        var code = ""
+        if let errorCode = errorCode {
+            code = String(errorCode)
+            dict["Error Code"] = code
+        }
+        
+        Answers.logCustomEventWithName("GameCenter", customAttributes: dict)
     }
     
 }

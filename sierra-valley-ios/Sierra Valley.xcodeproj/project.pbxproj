@@ -73,6 +73,8 @@
 		2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818831C55E1EA008ADAEF /* GameSettings.swift */; };
 		2EF818861C572AE0008ADAEF /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818851C572AE0008ADAEF /* Queue.swift */; };
 		2EF818881C572D8F008ADAEF /* ResourceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF818871C572D8F008ADAEF /* ResourceRow.swift */; };
+		2EFE24EA1CC43384004D601B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFE24E91CC43384004D601B /* GameKit.framework */; };
+		2EFE24EC1CC433E7004D601B /* GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE24EB1CC433E7004D601B /* GameCenterManager.swift */; };
 		934D7874F8B276DA0B5F6F0F /* libPods-Sierra ValleyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */; };
 		93B2FA10D585D8EEDF8F0EC2 /* libPods-Sierra Valley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */; };
 /* End PBXBuildFile section */
@@ -170,6 +172,8 @@
 		2EF818831C55E1EA008ADAEF /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameSettings.swift; path = Models/GameSettings.swift; sourceTree = "<group>"; };
 		2EF818851C572AE0008ADAEF /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Models/Queue.swift; sourceTree = "<group>"; };
 		2EF818871C572D8F008ADAEF /* ResourceRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRow.swift; path = Models/ResourceRow.swift; sourceTree = "<group>"; };
+		2EFE24E91CC43384004D601B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		2EFE24EB1CC433E7004D601B /* GameCenterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameCenterManager.swift; path = Models/GameCenterManager.swift; sourceTree = "<group>"; };
 		5B7EA3133E7224C72E24CC34 /* Pods-Sierra Valley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra Valley.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra Valley/Pods-Sierra Valley.debug.xcconfig"; sourceTree = "<group>"; };
 		6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sierra Valley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81F062A5799182CCBD479617 /* Pods-Sierra ValleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sierra ValleyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sierra ValleyTests/Pods-Sierra ValleyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EFE24EA1CC43384004D601B /* GameKit.framework in Frameworks */,
 				2EF818781C558F6D008ADAEF /* CloudKit.framework in Frameworks */,
 				93B2FA10D585D8EEDF8F0EC2 /* libPods-Sierra Valley.a in Frameworks */,
 			);
@@ -221,6 +226,7 @@
 			children = (
 				2EF8186B1C543A0B008ADAEF /* Settings.swift */,
 				2EA3875A1CB9840500216CD1 /* AnalyticsManager.swift */,
+				2EFE24EB1CC433E7004D601B /* GameCenterManager.swift */,
 				2E09A3171CA8A893005CA811 /* TimeManager.swift */,
 				2EA387561CB1AF8B00216CD1 /* Database.swift */,
 				2EA387581CB1B9A800216CD1 /* User.swift */,
@@ -423,6 +429,7 @@
 		2EF818791C558FB1008ADAEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EFE24E91CC43384004D601B /* GameKit.framework */,
 				2EF818771C558F6D008ADAEF /* CloudKit.framework */,
 				6B06E6CEE3163A988BEB14F6 /* libPods-Sierra Valley.a */,
 				158D0ADE88AE1221E18C73E9 /* libPods-Sierra ValleyTests.a */,
@@ -520,6 +527,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 35RV9RPQY7;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -705,6 +715,7 @@
 				2EB6906D1C9A609E00B06A58 /* AvalancheAvoidedView.swift in Sources */,
 				2E37565C1C608A8F00DA7715 /* RowBufferPool.swift in Sources */,
 				2E156DB31C71115F00EE1C0F /* GameActionQueueProtocol.swift in Sources */,
+				2EFE24EC1CC433E7004D601B /* GameCenterManager.swift in Sources */,
 				2EA387601CBF50B400216CD1 /* ChangeCarCollectionViewCell.swift in Sources */,
 				2EF818841C55E1EA008ADAEF /* GameSettings.swift in Sources */,
 				2EF8186F1C543FD3008ADAEF /* ChangeCarViewController.swift in Sources */,

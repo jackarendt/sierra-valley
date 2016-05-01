@@ -39,9 +39,9 @@ class GameViewController: SVBaseViewController {
         gameScene.gameDelegate = self
         
         // Configure the view.
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.showsDrawCount = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.showsDrawCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
@@ -60,7 +60,7 @@ class GameViewController: SVBaseViewController {
         distanceLabel.frame = CGRect(x: 20, y: 5, width: view.bounds.width/2 - 40, height: 60)
         distanceLabel.textColor = SVColor.lightColor()
         distanceLabel.text = "0"
-        distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))
+        distanceLabel.font = UIFont.svFont(min(60, 0.16 * view.bounds.height))?.monospacedDigitFont
         view.addSubview(distanceLabel)
         
         avalancheAvoidedView = AvalancheAvoidedView(frame: CGRect(x: 80, y: view.bounds.height - 65, width: view.bounds.width - 160, height: 60))
@@ -127,6 +127,7 @@ extension GameViewController : GameSceneDelegate {
     
     func gameDidEnd(finalScore: Int, newAvalanches: Int) {
         Database.database.user.gamePlayed(score: finalScore, newAvalanches: newAvalanches)
+        GameCenterManager.sharedManager.reportScore(finalScore)
         
         gameOverView.hidden = false
         gameOverView.showMenu()
@@ -201,6 +202,7 @@ extension GameViewController : GameOverViewDelegate {
     
     func gameOverViewDidHitLeaderboard(gameOverView: GameOverView) {
         AnalyticsManager.logGameScreenActivity("leaderboard")
+        GameCenterManager.sharedManager.showLeaderboard(self)
     }
 }
 

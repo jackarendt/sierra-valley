@@ -1,0 +1,100 @@
+html, body {
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-padding-start: 0px;
+    -webkit-overflow-scrolling: touch;
+    color: white;
+}
+
+.home-page {
+    background-color: #22313f;
+    background-image: url("images/title-background.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+}
+
+.title-font {
+    font-family: "Avenir Next", "Helvetica", sans-serif;
+}
+
+.main-title-font {
+    font-size: 6em;
+}
+
+.main-subtitle-font {
+    font-size: 3em;
+}
+
+.secondary-font-size {
+    font-size: 2em;
+}
+
+.ultra-light-title {
+    font-weight: 100;
+}
+
+.light-title {
+    font-weight: 400;
+}
+
+.box-button {
+    color: white;
+    font-weight: 400;
+    font-size: 1.5em;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 0;
+    padding: 10px 5% 10px 5%;
+    margin: 25px auto;
+    transition: all 0.2s;
+}
+
+.box-button:hover {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+}
+
+.box-button:focus {
+    outline: none;
+}
+
+.title-button {
+    margin: 5vw;
+}
+
+.about-page {
+    background-color: #4a545e;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.about-content {
+    width: 100%;
+    text-align: center;;
+}
+
+.beta-page {
+    background-color: #16a085;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
