@@ -132,6 +132,7 @@ extension GameViewController : GameSceneDelegate {
         gameOverView.showMenu()
         gameOverView.distance = finalScore
         gameOverView.avalanche = Database.database.user.avalanches
+        gameOverView.blinkSubtitle = false
         
         distance = finalScore
         
@@ -140,6 +141,7 @@ extension GameViewController : GameSceneDelegate {
             self.pauseButton.alpha = 0
             self.distanceLabel.alpha = 0
             }, completion: { finsihed in
+                
         })
     }
     

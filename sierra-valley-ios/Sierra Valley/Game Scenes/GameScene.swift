@@ -90,6 +90,24 @@ class GameScene: SVBaseScene {
         if gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position) {
             pause()
         }
+        car.explosion?.position = car.position
+    }
+    
+    func endGame(finalScore : Int, avalanches : Int) {
+        AnalyticsManager.gameEnded(finalScore, newAvalanches: avalanches, car: car.car!)
+        
+        camera?.removeAllActions()
+        car.removeAllActions()
+        backgroundNode.removeAllActions()
+        starNode.removeAllActions()
+        car.explode()
+        weak var weakself = self
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.75)), dispatch_get_main_queue(), {
+            if let weakself = weakself {
+                weakself.gameDelegate?.gameDidEnd(weakself.gameManager.score, newAvalanches: weakself.gameManager.avalanches) // send that action to the delegate for handling
+            }
+        })
+        
     }
 }
 
@@ -155,8 +173,7 @@ extension GameScene : GameManagerDelegate {
     }
 
     func gameEnded(finalScore finalScore: Int, avalanches: Int) {
-        AnalyticsManager.gameEnded(finalScore, newAvalanches: avalanches, car: car.car!)
-        gameDelegate?.gameDidEnd(gameManager.score, newAvalanches: gameManager.avalanches) // send that action to the delegate for handling
+        endGame(finalScore, avalanches: avalanches)
     }
     
     func alterBackground(avalanche: Bool) {
@@ -179,8 +196,8 @@ extension GameScene {
                 spike = contact.bodyB
             }
             if validateSpikeCollision(spike, car: car, contactPoint: contact.contactPoint) {
-                pause() // pause the scene
-                gameEnded(finalScore: gameManager.score, avalanches: gameManager.avalanches) // end the game
+                gameManager.pauseRendering()
+                endGame(gameManager.score, avalanches: gameManager.avalanches)
             }
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
             handleCarCollision()
@@ -193,7 +210,7 @@ extension GameScene {
     private func handleCarCollision() {
         car.endJump()
         if gameManager.checkCarRotation(car.zRotation) {
-            pause()
+            gameManager.pauseRendering()
         }
     }
     

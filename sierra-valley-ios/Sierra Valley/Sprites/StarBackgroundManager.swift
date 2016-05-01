@@ -55,4 +55,8 @@ class StarBackgroundManager : GameActionQueueProtocol {
     func enqueueGameAction(width: CGFloat, height: CGFloat, time: CFTimeInterval) {
         enqueueDefaultGameAction(width, height: height, time: time)
     }
+    
+    func removeAllActions() {
+        starNode.removeAllActions()
+    }
 }

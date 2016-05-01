@@ -125,6 +125,10 @@ final public class GameManager {
         previousTime = 0
     }
     
+    public func pauseRendering() {
+        readyToRender = false
+    }
+    
     /// Checks to see if the car has rotated on to its back
     /// - Parameter rotation: The zRotation of the car
     /// - Returns: Boolean denoting whether the car is on it's back or not
@@ -135,7 +139,7 @@ final public class GameManager {
         }
         
         if adjustedRotation > CGFloat(M_PI) - gameSettings.angle && adjustedRotation < CGFloat(M_PI) + gameSettings.angle {
-            pause()
+            pauseRendering()
             delegate?.gameEnded(finalScore: score, avalanches: avalanches)
             return true
         }
@@ -151,7 +155,7 @@ final public class GameManager {
         let minX = cameraPosition.x - gameSettings.screenWidth/2 - size.width
         let maxX = cameraPosition.x + gameSettings.screenWidth/2 + size.width
         if position.y < minY || position.x < minX || position.x > maxX { // checks to see if the car is still above the screen
-            pause()
+            pauseRendering()
             delegate?.gameEnded(finalScore: score, avalanches: avalanches)
             return true
         }

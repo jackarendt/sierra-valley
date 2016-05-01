@@ -21,6 +21,8 @@ final public class CarNode: SKSpriteNode {
     /// The dy of the impulse vector that causes the car to jump
     public var maximumImpulseValue : CGFloat = 165
     
+    public var explosion : SKEmitterNode?
+    
     /// The current impulse value for jumping
     private var impulse : CGFloat = 0
     
@@ -29,6 +31,8 @@ final public class CarNode: SKSpriteNode {
     
     /// boolean denoting whether the car is able to jump or not
     private var jumpAvailable = true
+    
+    private var exploding = false
 
     
     /// Initializes a new car object using the name of a car.  The initializer will then create
@@ -91,6 +95,9 @@ final public class CarNode: SKSpriteNode {
     
     /// Causes the car to jump up by the set impulse amount
     public func jump() {
+        if exploding {
+            return
+        }
         if jumpAvailable {
             physicsBody?.applyImpulse(CGVector(dx: 0, dy: impulse), atPoint: position)
             impulse /= 4
@@ -123,9 +130,27 @@ final public class CarNode: SKSpriteNode {
     /// the car will not do anything
     /// - Parameter newDirection: The new direction that the car will face
     public func switchDirection(newDirection : CarDirection) {
+        if exploding {
+            return
+        }
         if direction != newDirection {
             direction = newDirection
             xScale *= -1 // causes a vertical flip in scale
+        }
+    }
+    
+    public func explode() {
+        runAction(SKAction.scaleTo(0, duration: 0.5))
+        if exploding {
+            return
+        }
+        exploding = true
+        explosion = SKEmitterNode(fileNamed: "CarExplosion.sks")
+        if let explosion = explosion {
+            explosion.numParticlesToEmit = 3 * Int(explosion.particleBirthRate)
+            explosion.position = CGPoint(x: position.x, y: position.y - 5)
+            explosion.zPosition = zPosition
+            scene?.addChild(explosion)
         }
     }
 }
