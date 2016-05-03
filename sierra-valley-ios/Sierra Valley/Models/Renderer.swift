@@ -57,7 +57,7 @@ final class Renderer {
             buffer = bufferPool.nextForegroundItem()
         }
         
-        let rectHeight : CGFloat = 300
+        let rectHeight : CGFloat = 400
         pos.y = pos.y - UIScreen.mainScreen().bounds.height/2 + gameSettings.maxMountainHeight - rectHeight/2 - row.depressedHeight
         let usedResrouces = renderPieces(buffer, color: color, row: row, position: pos, zPos: zPos, rectHeight: rectHeight, direction: direction)
 
@@ -115,9 +115,9 @@ final class Renderer {
         
         if row.row.contains(1) { // render triangle if necessary
             let triangle = buffer.triangle!
-            triangle.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + gameSettings.triangleHeight/2)
+            triangle.position = CGPoint(x: position.x, y: position.y + rect.size.height/2 + row.triangleHeight/2)
             triangle.color = color
-            triangle.size = CGSize(width: gameSettings.rowWidth, height: gameSettings.triangleHeight)
+            triangle.size = CGSize(width: gameSettings.rowWidth, height: row.triangleHeight)
             triangle.zPosition = zPos
             if triangle.xScale < 0 && direction == .Right {
                 triangle.xScale *= -1

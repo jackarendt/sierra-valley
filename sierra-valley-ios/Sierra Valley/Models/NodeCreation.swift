@@ -10,14 +10,15 @@ import Foundation
 
 /// Represents the different probabilities of generating a certain path type
 public struct PathProbabilities  {
-    static var NoRoadblockPath = 25
+    static var NoRoadblockPath = 15
     static var SpikePath = 30
     static var SpikePitPath = 18
     static var SpikeIslandPath = 12
-    static var IslandPath = 15
+    static var IslandPath = 10
+    static var RampPath = 15
     
     static func compoundProbabilityForPath(path: Int) -> Int {
-        let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath]
+        let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath, RampPath]
         if let idx = paths.indexOf(path) {
             var total = 0
             for item in paths.enumerate() {
@@ -41,26 +42,37 @@ func createRandomNodeSet(totalNodes : Int) -> [LevelGenerationProtocol] {
         let val = Int(arc4random() % 100)
         var path : LevelGenerationProtocol!
         switch val {
-        case 0..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.NoRoadblockPath): // chance of getting a no roadblock trail
+        // no roadblock trail
+        case 0..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.NoRoadblockPath):
             let length = Int(arc4random() % 5 + 6)
             let difficulty = generateDifficulty(maxDifficulty: NoRoadblockTrail.maxDifficulty, minDifficulty: NoRoadblockTrail.minDifficulty)
             path = NoRoadblockTrail(length: length, difficulty: difficulty)
             
+        // spike trail
         case PathProbabilities.compoundProbabilityForPath(PathProbabilities.NoRoadblockPath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePath):
             let difficulty = generateDifficulty(maxDifficulty: SpikeTrail.maxDifficulty, minDifficulty: SpikeTrail.minDifficulty)
             path = SpikeTrail(length: 0, difficulty: difficulty)
             
+        // spike pit path
         case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePitPath):
             let difficulty = generateDifficulty(maxDifficulty: SpikePitTrail.maxDifficulty, minDifficulty: SpikePitTrail.minDifficulty)
             path = SpikePitTrail(length: 0, difficulty: difficulty)
-            
+           
+        // spike island trail
         case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikePitPath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikeIslandPath):
             let difficulty = generateDifficulty(maxDifficulty: SpikeIslandTrail.maxDifficulty, minDifficulty: SpikeIslandTrail.minDifficulty)
             path = SpikeIslandTrail(length: 0, difficulty: difficulty)
-            
-        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikeIslandPath)..<100:
+           
+        // island trail
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.SpikeIslandPath)..<PathProbabilities.compoundProbabilityForPath(PathProbabilities.IslandPath):
             let difficulty = generateDifficulty(maxDifficulty: IslandTrail.maxDifficulty, minDifficulty: IslandTrail.minDifficulty)
             path = IslandTrail(length: 0, difficulty: difficulty)
+            
+        // ramp path
+        case PathProbabilities.compoundProbabilityForPath(PathProbabilities.IslandPath)..<100:
+            let difficulty = generateDifficulty(maxDifficulty: RampTrail.maxDifficulty, minDifficulty: RampTrail.minDifficulty)
+            let length = Int(arc4random() % 5 + 10)
+            path = RampTrail(length: length, difficulty: difficulty)
         default:
             break
         }

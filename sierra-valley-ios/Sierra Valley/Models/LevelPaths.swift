@@ -54,6 +54,11 @@ public enum TrailTypes : String {
     case SpikePitTrail = "SpikePitTrail"
     case SpikeIslandTrail = "SpikeIslandTrail"
     case IslandTrail = "IslandTrail"
+    case RampTrail = "RampTrail"
+    
+    static func allTypes() -> [TrailTypes] {
+        return [.NoRoadblockTrail, .SpikeTrail, .SpikePitTrail, .SpikeIslandTrail, .IslandTrail, .RampTrail]
+    }
 }
 
 // MARK: - Paths
@@ -244,6 +249,40 @@ struct IslandTrail : LevelGenerationProtocol {
             }
         }
         length = rows.count
+        return rows
+    }
+}
+
+
+// MARK: - Level mutating paths
+
+/// The RampTrail creates a ramp that allows the user to go off a jump
+struct RampTrail : LevelGenerationProtocol {
+    static var minDifficulty = 20
+    static var maxDifficulty = 50
+    
+    var name = TrailTypes.RampTrail.rawValue
+    
+    var difficulty: Int = 0
+    var length: Int = 0
+    
+    var rows : [ResourceRow]!
+    
+    init(length: Int, difficulty : Int) {
+        self.difficulty = difficulty
+        self.length = length
+        self.rows = generatePath()
+    }
+    
+    mutating func generatePath() -> [ResourceRow] {
+        var rows = [ResourceRow]()
+        let triangleHeight : CGFloat = 10
+        let depressedHeight = GameSettings.sharedSettings.triangleHeight - triangleHeight
+        for i in 0.stride(to: length, by: 1) {
+            var row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: CGFloat(i) * depressedHeight)
+            row.triangleHeight = triangleHeight
+            rows.append(row)
+        }
         return rows
     }
 }

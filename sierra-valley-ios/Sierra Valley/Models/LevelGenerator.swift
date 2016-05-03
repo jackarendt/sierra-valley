@@ -59,7 +59,7 @@ func createLevelObstacles(difficulty : Int) -> (remainingDifficulty : Int, rows 
     var paths = [LevelGenerationProtocol]()
     
     // estimated length of a level should be 100 rows (3000px)
-    while rows.count < 150 {
+    while rows.count < 125 {
         
         // get the available nodes for a set of qualifiers
         // don't make something more difficult than you can
@@ -67,12 +67,11 @@ func createLevelObstacles(difficulty : Int) -> (remainingDifficulty : Int, rows 
         // don't cause too many obstacles in a row
         var availableNodes = findAvailableNodesForDifficulty(remainingDifficulty, currentLength: rows.count, nodes: nodes, lastItem: paths.last)
         
-        
         var path : LevelGenerationProtocol // the path that was selected
         var idx = 0 // the index of the row that was selected
         
         // currently give a 2/3 shot of selecting an obstacle (with proper difficulty)
-        if arc4random() % 3 != 0 && remainingDifficulty > 0 && paths.last?.name == TrailTypes.NoRoadblockTrail.rawValue{
+        if arc4random() % 3 != 0 && remainingDifficulty > 0 && paths.last?.name == TrailTypes.NoRoadblockTrail.rawValue {
             // get the available nodes for the remaining difficulty
             availableNodes = filterNodesForAvailableDifficulty(remainingDifficulty, nodes: availableNodes)
             
@@ -144,7 +143,7 @@ func findNearestDifficulty(difficulty : Int, nodes : [LevelGenerationProtocol]) 
 /// - Parameter lastItem: The last item that was generated (so no duplicate obstacles in a row)
 func findAvailableNodesForDifficulty(remainingDifficulty : Int, currentLength : Int, nodes : [LevelGenerationProtocol], lastItem : LevelGenerationProtocol?) -> [LevelGenerationProtocol] {
     // start with all available types
-    var availableTrails : [TrailTypes] = [.NoRoadblockTrail, .SpikeTrail, .SpikePitTrail, .SpikeIslandTrail, .IslandTrail]
+    var availableTrails = TrailTypes.allTypes()
     
     // For the beginning, due to rendering issues, only no roadblocks and spikes are allowed.
     if currentLength < GameSettings.sharedSettings.framesToTop {
@@ -171,7 +170,7 @@ func findAvailableNodesForDifficulty(remainingDifficulty : Int, currentLength : 
 /// - Parameter remainingDifficulty: The remaining difficulty of the level
 /// - Returns: Array of valid types after filtering based on difficulty
 func filterAvailableTypesForRemainingDifficulty(availableTypes : [TrailTypes], remainingDifficulty : Int) -> [TrailTypes] {
-    var remainingTypes = availableTypes
+    var remainingTypes = [TrailTypes]()
     
     /// if the suggested difficulty is less than the remaining difficulty, then make it accessible
     func checkDifficulty(difficulty : Int, type : TrailTypes) {
@@ -180,6 +179,7 @@ func filterAvailableTypesForRemainingDifficulty(availableTypes : [TrailTypes], r
         }
     }
     
+    // loop through all of the available types and filter out ones with too high of difficulty
     for type in availableTypes {
         switch type {
         case .NoRoadblockTrail:
@@ -192,9 +192,10 @@ func filterAvailableTypesForRemainingDifficulty(availableTypes : [TrailTypes], r
             checkDifficulty(SpikeIslandTrail.minDifficulty, type: type)
         case .IslandTrail:
             checkDifficulty(IslandTrail.minDifficulty, type: type)
+        case .RampTrail:
+            checkDifficulty(RampTrail.minDifficulty, type: type)
         }
     }
-    
     return remainingTypes
 }
 

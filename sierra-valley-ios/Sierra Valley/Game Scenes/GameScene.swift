@@ -87,9 +87,7 @@ class GameScene: SVBaseScene {
     override func update(currentTime: CFTimeInterval) {
         // every time the game loop updates, send that update to the game manager, and send the current camera position
         gameManager.update(time: currentTime)
-        if gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position) {
-            pause()
-        }
+        gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position)
         car.explosion?.position = car.position
     }
     
@@ -129,7 +127,6 @@ extension GameScene : SceneGestureDelegate {
         let dy = sin(atan(gameManager.gameSettings.angle))/2
         let moveLeftAction = SKAction.moveBy(CGVector(dx: -gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveLeftAction))
-        
         renderer.alterCategoryBitMask()
     }
     
@@ -142,7 +139,6 @@ extension GameScene : SceneGestureDelegate {
         let dy = sin(atan(gameManager.gameSettings.angle))/2
         let moveRightAction = SKAction.moveBy(CGVector(dx: gameManager.gameSettings.rowWidth * (1 + dy), dy: 0), duration: gameManager.gameSettings.rowRefreshRate)
         car.runAction(SKAction.repeatActionForever(moveRightAction))
-        
         renderer.alterCategoryBitMask()
     }
 }

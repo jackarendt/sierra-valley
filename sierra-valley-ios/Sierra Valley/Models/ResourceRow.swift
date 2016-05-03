@@ -14,6 +14,18 @@ public struct ResourceRow {
     /// height to drop the rectangle by, relative to its neighbors
     public var depressedHeight : CGFloat = 0
     
+    /// The height of the triangle to be rendered.  Defaults to settings triangle height
+    public var triangleHeight : CGFloat = GameSettings.sharedSettings.triangleHeight
+    
+    /// If a row will osciallate, this is the oscillation period of the row
+    public var oscillationPeriod : CFTimeInterval = 0
+    
+    /// Whether the row will oscillate or not
+    public var oscillate : Bool = false
+    
+    /// Whether the row will drop out as soon it's touched
+    public var dropOut : Bool = false
+    
     /// The different types that make up that row.
     /// Maximum number are 3. [0] is the base (or first to be added), while the last idx is the top piece.
     ///
