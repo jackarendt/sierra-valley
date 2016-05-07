@@ -6,7 +6,7 @@
 //  Copyright © 2016 John Arendt. All rights reserved.
 //
 
-import SpriteKit
+import UIKit
 
 /// Represents the logic behind a row.  Does not hold any reference types.
 public struct ResourceRow {
@@ -25,6 +25,15 @@ public struct ResourceRow {
     
     /// Whether the row will drop out as soon it's touched
     public var dropOut : Bool = false
+    
+    /// Whether the row should be detected when the car runs over it.
+    public var detectRowContact : Bool = false
+    
+    /// the movement multiple that the node will take
+    public var movementScalar : CGPoint = CGPointZero
+    
+    /// Whether the car will move or not
+    public var moveCar : Bool = false
     
     /// The different types that make up that row.
     /// Maximum number are 3. [0] is the base (or first to be added), while the last idx is the top piece.

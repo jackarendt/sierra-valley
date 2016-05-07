@@ -20,4 +20,13 @@ protocol LevelResourceProtocol {
     init(position : CGPoint, color : UIColor, resourceSize : CGSize)
     
     var categoryBitMask : UInt32 { get set }
+    
+    /// Boolean denoting whether that sprite has special behavior.
+    var hasSpecialBehavior : Bool { get set }
+    
+    /// The vector that the special behavior will perform
+    var specialBehaviorAction : CGVector { get set }
+    
+    /// The node to have the special action performed on
+    var specialActionNode : SKNode? { get set }
 }

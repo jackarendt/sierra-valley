@@ -19,6 +19,12 @@ final public class SpikeNode: SKSpriteNode, LevelResourceProtocol  {
         }
     }
     
+    var hasSpecialBehavior: Bool = false
+    
+    var specialActionNode: SKNode? = nil
+    
+    var specialBehaviorAction: CGVector = CGVector.zero
+    
     override public var size : CGSize {
         didSet {
             if size != oldValue && size != CGSize.zero {

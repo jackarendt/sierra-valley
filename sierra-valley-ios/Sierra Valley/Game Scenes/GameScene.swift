@@ -49,6 +49,7 @@ class GameScene: SVBaseScene {
         // create game manager and renderer
         gameManager = GameManager(delegate: self)
         renderer = Renderer(scene: self)
+        renderer.car = car
         
         // create the camera node, and make it the default camera of the game
         let newCamera = CameraNode()
@@ -196,17 +197,25 @@ extension GameScene {
                 endGame(gameManager.score, avalanches: gameManager.avalanches)
             }
         } else if contact.bodyA.categoryBitMask & CollisionBitmaskCategory.Car > 0 && contact.bodyB.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0{
-            handleCarCollision()
+            handleCarCollision(contact.bodyB)
         } else if contact.bodyA.categoryBitMask & (CollisionBitmaskCategory.Triangle | CollisionBitmaskCategory.Rectangle) > 0 && contact.bodyB.categoryBitMask & CollisionBitmaskCategory.Car > 0 {
-            handleCarCollision()
+            handleCarCollision(contact.bodyA)
         }
     }
     
     /// Method that handles when the car touches back down to the level
-    private func handleCarCollision() {
+    private func handleCarCollision(physicsBody: SKPhysicsBody) {
         car.endJump()
         if gameManager.checkCarRotation(car.zRotation) {
             gameManager.pauseRendering()
+        }
+        if let rowResource = physicsBody.node as? LevelResourceProtocol {
+            if rowResource.hasSpecialBehavior {
+                print("Special behavior")
+                if let node = rowResource.specialActionNode where rowResource.specialBehaviorAction != CGVector.zero {
+                    node.physicsBody?.applyImpulse(rowResource.specialBehaviorAction)
+                }
+            }
         }
     }
     

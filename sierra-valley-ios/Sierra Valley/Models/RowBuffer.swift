@@ -26,9 +26,10 @@ final public class RowBufferItem {
         self.triangle = TriangleNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
         self.spike = SpikeNode(position: CGPointZero, color: UIColor.clearColor(), resourceSize: CGSizeZero)
         
-        scene.addChild(rectangle!)
-        scene.addChild(triangle!)
-        scene.addChild(spike!)
+        node.addChild(rectangle!)
+        node.addChild(triangle!)
+        node.addChild(spike!)
+        scene.addChild(node)
     }
     /// The Rectangle node.
     public var rectangle : RectangleNode?
@@ -38,4 +39,7 @@ final public class RowBufferItem {
     
     /// The spike node
     public var spike : SpikeNode?
+    
+    /// Parent holding node used for grouping actions together
+    public let node : SKNode = SKNode()
 }

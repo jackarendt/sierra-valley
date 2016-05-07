@@ -38,10 +38,12 @@ public class SVBaseScene: SKScene {
     /// Boolean for whether a gesture has been handled or not
     private var gestureHandled = false
     
+    public var gravity : CGVector = CGVector(dx: 0.0, dy: -25.5)
+    
     override public init(size: CGSize) {
         super.init(size: size)
         // set the gravity
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -25.5)
+        physicsWorld.gravity = gravity
         physicsWorld.contactDelegate = self
     }
     

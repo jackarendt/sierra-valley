@@ -112,6 +112,10 @@ func createLevelObstacles(difficulty : Int) -> (remainingDifficulty : Int, rows 
 /// - Returns: Tuple containing the element and the index of the element
 func findNearestDifficulty(difficulty : Int, nodes : [LevelGenerationProtocol]) -> (level : LevelGenerationProtocol, index : Int) {
     
+    if nodes.count == 0 {
+        return (nodes[0], 0)
+    }
+
     var min = 0 // get min index to look at
     var max = nodes.count - 1 // get max index to look at
     var pivot = (min + max)/2 // pivot splites min and max

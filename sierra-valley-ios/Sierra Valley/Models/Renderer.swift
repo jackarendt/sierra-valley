@@ -25,6 +25,8 @@ final class Renderer {
     
     weak var delegate : RendererDelegate?
     
+    weak var car : CarNode?
+    
     /// The information of the game for renders
     private let gameSettings = GameSettings.sharedSettings
     
@@ -135,6 +137,25 @@ final class Renderer {
             spike.zPosition = zPos
             usedResources.append(spike)
         }
+        
+        // detect if row has special behavior (drop out, speed boost, oscillation, etc.)
+        let objects : [LevelResourceProtocol] = [buffer.rectangle!, buffer.triangle!, buffer.spike!]
+        
+        for var object in objects {
+            object.hasSpecialBehavior = row.detectRowContact
+            
+            if row.detectRowContact {
+                if row.moveCar {
+                    var vector = CGVector(dx: row.movementScalar.x, dy: row.movementScalar.y)
+                    if car?.direction == .Left {
+                        vector.dx *= -1
+                    }
+                    object.specialBehaviorAction = vector
+                    object.specialActionNode = car
+                }
+            }
+        }
+        
         addNodes(usedResources)
         return usedResources
     }
