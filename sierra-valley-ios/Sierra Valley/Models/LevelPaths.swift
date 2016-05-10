@@ -278,15 +278,16 @@ struct RampTrail : LevelGenerationProtocol {
         var rows = [ResourceRow]()
         let triangleHeight : CGFloat = 10
         let depressedHeight = GameSettings.sharedSettings.triangleHeight - triangleHeight
+        
+        let force : CGFloat = 4
         for i in 0.stride(to: length, by: 1) {
             var row = ResourceRow(row: [.Rectangle, .Triangle], depressedHeight: CGFloat(i) * depressedHeight)
             row.triangleHeight = triangleHeight
-            row.detectRowContact = true
-            
-            if i < length * 4/5 {
-                row.movementScalar = CGPoint(x:67 * (1 - (CGFloat(abs(length - i)) * 1.125)/CGFloat(length)), y: 0)
-            }
+            let ratio = 1 - CGFloat(i)/CGFloat(length - 1)
+                row.movementScalar = CGPoint(x:ratio * force,
+                                             y: GameSettings.sharedSettings.triangleHeight * ratio)
             row.moveCar = true
+            row.detectRowContact = true
             rows.append(row)
         }
         return rows

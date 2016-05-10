@@ -24,6 +24,8 @@ class GameViewController: SVBaseViewController {
     
     var distance = 0
     
+    var gameOver = false
+    
     override var name: String {
         get { return "Game" } set { }
     }
@@ -126,6 +128,11 @@ class GameViewController: SVBaseViewController {
 extension GameViewController : GameSceneDelegate {
     
     func gameDidEnd(finalScore: Int, newAvalanches: Int) {
+        if gameOver {
+            return
+        }
+        gameOver = true
+        
         Database.database.user.gamePlayed(score: finalScore, newAvalanches: newAvalanches)
         
         gameOverView.hidden = false

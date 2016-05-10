@@ -10,12 +10,12 @@ import Foundation
 
 /// Represents the different probabilities of generating a certain path type
 public struct PathProbabilities  {
-    static var NoRoadblockPath = 15
-    static var SpikePath = 30
-    static var SpikePitPath = 18
+    static var NoRoadblockPath = 20
+    static var SpikePath = 10
+    static var SpikePitPath = 16
     static var SpikeIslandPath = 12
-    static var IslandPath = 10
-    static var RampPath = 15
+    static var IslandPath = 12
+    static var RampPath = 30
     
     static func compoundProbabilityForPath(path: Int) -> Int {
         let paths = [NoRoadblockPath, SpikePath, SpikePitPath, SpikeIslandPath, IslandPath, RampPath]
@@ -71,7 +71,7 @@ func createRandomNodeSet(totalNodes : Int) -> [LevelGenerationProtocol] {
         // ramp path
         case PathProbabilities.compoundProbabilityForPath(PathProbabilities.IslandPath)..<100:
             let difficulty = generateDifficulty(maxDifficulty: RampTrail.maxDifficulty, minDifficulty: RampTrail.minDifficulty)
-            let length = Int(arc4random() % 5 + 10)
+            let length = 10
             path = RampTrail(length: length, difficulty: difficulty)
         default:
             break

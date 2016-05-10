@@ -47,7 +47,7 @@ func createLevelObstacles(difficulty : Int) -> (remainingDifficulty : Int, rows 
     var rows = [ResourceRow]()
     
     // create nodes and sort them by difficulty
-    var nodes = createRandomNodeSet(150)
+    var nodes = createRandomNodeSet(300)
     nodes.sortInPlace { (first, second) -> Bool in
         return first.difficulty < second.difficulty
     }

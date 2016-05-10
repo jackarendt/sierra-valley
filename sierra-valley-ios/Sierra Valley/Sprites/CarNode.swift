@@ -19,7 +19,7 @@ final public class CarNode: SKSpriteNode {
     public var direction : CarDirection = .Right
     
     /// The dy of the impulse vector that causes the car to jump
-    public var maximumImpulseValue : CGFloat = 165
+    public var maximumImpulseValue : CGFloat = 175
     
     public var explosion : SKEmitterNode?
     
@@ -57,6 +57,7 @@ final public class CarNode: SKSpriteNode {
         physicsBody?.allowsRotation = true
         physicsBody?.restitution = 0
         physicsBody?.collisionBitMask = 0
+        physicsBody?.mass = 0.15
         
         // set default collision and contact bitmasks
         physicsBody?.categoryBitMask = CollisionBitmaskCategory.Car

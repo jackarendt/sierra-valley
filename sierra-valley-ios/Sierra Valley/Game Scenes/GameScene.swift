@@ -43,6 +43,8 @@ class GameScene: SVBaseScene {
     
     var starNode : StarBackgroundManager!
     
+    var commitBlock : (() -> ())?
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         gestureDelegate = self
@@ -90,6 +92,7 @@ class GameScene: SVBaseScene {
         gameManager.update(time: currentTime)
         gameManager.checkCarPosition(position: car.position, size: car.size, cameraPosition: camera!.position)
         car.explosion?.position = car.position
+        commitBlock?()
     }
     
     func endGame(finalScore : Int, avalanches : Int) {
@@ -209,12 +212,15 @@ extension GameScene {
         if gameManager.checkCarRotation(car.zRotation) {
             gameManager.pauseRendering()
         }
-        if let rowResource = physicsBody.node as? LevelResourceProtocol {
+        if var rowResource = physicsBody.node as? LevelResourceProtocol {
             if rowResource.hasSpecialBehavior {
-                print("Special behavior")
-                if let node = rowResource.specialActionNode where rowResource.specialBehaviorAction != CGVector.zero {
-                    node.physicsBody?.applyImpulse(rowResource.specialBehaviorAction)
+                if let physicsBody = rowResource.specialActionNode?.physicsBody where rowResource.specialBehaviorAction != CGVector.zero {
+                    commitBlock = {
+                        physicsBody.applyImpulse(rowResource.specialBehaviorAction)
+                    }
                 }
+            } else {
+                commitBlock = nil
             }
         }
     }
